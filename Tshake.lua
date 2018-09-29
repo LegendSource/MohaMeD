@@ -4468,6 +4468,23 @@ local function getpro(extra, result, success)
 local all_photo_tshake = result.total_count_ 
 local user_msgs = database:get('tshake:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
 local edit = database:get('tshake:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
+local user_msgs = database:get('user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
+local ikeko_text = "سلبوح"
+if user_msgs then 
+if tonumber(user_msgs) < 50 then 
+ikeko_text = "غير متفاعل "
+elseif tonumber(msgs) < 500 then 
+ikeko_text = "متفاعل"
+elseif tonumber(msgs) < 100 then 
+ikeko_text = "سريع تفاعل"
+elseif tonumber(msgs) < 1000 then 
+ikeko_text = "نايس تفاعل"
+elseif tonumber(msgs) < 2000 then 
+ikeko_text = "اقوئ تفاعل"
+elseif tonumber(msgs) < 5000 then 
+ikeko_text = "جيد بتفاعل"
+end
+end
 if result.photos_[0] then
 if is_sudo(msg) then
 t = 'مطور البوت'
@@ -4496,7 +4513,7 @@ local keko_text = {
 "منور 😚",
 }
 keko3 = math.random(#keko_text)
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"📷┇"..keko_text[keko3].."\n👥┇عدد صورك ~⪼ "..all_photo_tshake.."\n🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n📜┇معرفك ~⪼ "..keko_info.."\n📡┇موقعك ~⪼ "..t.."\n📨┇رسائلك ~⪼ {"..user_msgs.."}\n📧┇السحكات ~⪼ {"..edit.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ",msg.id_,msg.id_.."")
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"📷┇"..keko_text[keko3].."\n👥┇عدد صورك ~⪼ "..all_photo_tshake.."\n🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n📜┇معرفك ~⪼ "..keko_info.."\n📡┇موقعك ~⪼ "..t.."\n📨┇رسائلك ~⪼ {"..user_msgs.."}\n🌪┇تفاعلك ~⪼ "..ikeko_text.."\n📧┇السحكات ~⪼ {"..edit.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ",msg.id_,msg.id_.."")
 else 
 local tshake_new_text = database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_)
 local tshake_new_text = tshake_new_text:gsub('#username',(keko_info or 'لا يوجد'))
