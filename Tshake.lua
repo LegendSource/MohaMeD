@@ -3008,20 +3008,20 @@ function id_by_reply(extra, result, success)
 if not database:get('tshake:'..bot_id..'id:mute'..msg.chat_id_) then 
 local msgs = database:get('tshake:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.sender_user_id_) or 0
 local edit = database:get('tshake:'..bot_id..'user:editmsg'..msg.chat_id_..':'..result.sender_user_id_) or 0
-local user_msgs = database:get('user:msgs'..msg.chat_id_..':'..msg.chat_id_)
+local user_msgs = database:get('user:msgs'..msg.chat_id_..':'..msg.chat_id_..':'..result.sender_user_id_) or 0
 local ikeko_text = "سلبوح"
 if user_msgs then 
 if tonumber(user_msgs) < 50 then 
 ikeko_text = "غير متفاعل "
-elseif tonumber(user_msgs) < 500 then 
+elseif tonumber(msgs) < 500 then 
 ikeko_text = "متفاعل"
-elseif tonumber(user_msgs) < 100 then 
+elseif tonumber(msgs) < 100 then 
 ikeko_text = "سريع تفاعل"
-elseif tonumber(user_msgs) < 1000 then 
+elseif tonumber(msgs) < 1000 then 
 ikeko_text = "نايس تفاعل"
-elseif tonumber(user_msgs) < 2000 then 
+elseif tonumber(msgs) < 2000 then 
 ikeko_text = "اقوئ تفاعل"
-elseif tonumber(user_msgs) < 5000 then 
+elseif tonumber(msgs) < 5000 then 
 ikeko_text = "جيد بتفاعل"
 end
 end
