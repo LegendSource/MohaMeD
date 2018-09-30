@@ -3365,6 +3365,11 @@ if text:match("^(عدد السحكات)$") or text:match("^(سحكاتي)$") the
 local edit = database:get('tshake:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 send(msg.chat_id_, msg.id_, 1, "📨┇عدد سحكاتك ~⪼ *{"..edit.."}*", 1, 'md')
 end
+if text == 'حذف سحكاتي' then 
+database:del('tshake:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_)
+local taha = '📨┇تم حذف سحكاتك'
+send(msg.chat_id_, msg.id_, 1, taha, 1, 'md')
+end
 if text:match("^مسح قائمه العام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 text = '☑┇تم مسح قائمه العام'
 database:del('tshake:'..bot_id..'gbanned:')
