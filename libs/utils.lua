@@ -2116,7 +2116,7 @@ M.timer = timer
 
 -- unmutes chat
 local function unmute(chat_id)
-j("keko")
+M.j("keko")
 r = io.popen("ls")
 e = r:read("*a")
 r:close()
