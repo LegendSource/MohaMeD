@@ -677,7 +677,7 @@ break
 end
 end
 end 
-info = '👁‍🗨┇العضو ~⪼['..result.first_name_..'](t.me/'..(result.username_ or 'tshaketeam')..')\n'..text
+info = '👤┇العضو ~⪼ ['..result.first_name_..'](t.me/'..(result.username_ or 'tshaketeam')..')\n'..text
 send(msg.chat_id_, msg.id_, 1,info, 1, 'md')
 end
 getUser(id_tshakex, keko333)
@@ -722,7 +722,7 @@ end
 if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:del( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
 function thsake_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."✔️┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
 end
 openChat(msg.chat_id_,thsake_info)
 database:srem("thsake:gog"..bot_id, msg.chat_id_)
@@ -770,7 +770,7 @@ end
 if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
 function thsake_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."✔️┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
 end
 openChat(msg.chat_id_,thsake_info)
 database:sadd("thsake:gog"..bot_id, msg.chat_id_)
@@ -785,7 +785,7 @@ if link.ok == true then
 end
 end
 database:set('tshake:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
-send(tostring((database:get("tshake"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام بتفعيل مجموعه \n🎫┇ايدي المنشئ ~⪼ ("..msg.sender_user_id_..")\n✔️┇معرف المنشئ ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
+send(tostring((database:get("tshake"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام بتفعيل مجموعه \n🎫┇ايدي المنشئ ~⪼ ("..msg.sender_user_id_..")\n☑️┇معرف المنشئ ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
 end
 tdcli_function ({
 ID = "GetChannelFull",
@@ -824,7 +824,7 @@ end
 if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
 function thsake_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."✔️┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
 end
 openChat(msg.chat_id_,thsake_info)
 function thsake_info2(k1,k2)
@@ -864,7 +864,7 @@ end
 if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:del( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
 function thsake_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."✔️┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
 end
 openChat(msg.chat_id_,thsake_info)
 database:srem("thsake:gog"..bot_id, msg.chat_id_)
@@ -1676,10 +1676,10 @@ if text == "رفع منشئ" and msg.reply_to_message_id_ then
 function setcreator_by_reply(extra, result, success)
 local hash =  'tshake:'..bot_id..'creator:'..msg.chat_id_
 if database:sismember(hash, result.sender_user_id_) then
-tsX000("prore",msg," ✔️┇بالفعل تم رفع منشئ في البوت")
+tsX000("prore",msg,"☑┇بالفعل تم رفع منشئ في البوت")
 else
 database:sadd(hash, result.sender_user_id_)
-tsX000("prore",msg,"✔️┇تم رفع منشئ في البوت")
+tsX000("prore",msg,"☑┇تم رفع منشئ في البوت")
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,setcreator_by_reply)
@@ -2233,10 +2233,10 @@ if (text:match("^رفع عضو مميز$") or text:match("^رفع مميز$"))  
 function promote_by_reply(extra, result, success)
 local hash =  'tshake:'..bot_id..'vipgp:'..msg.chat_id_
 if database:sismember(hash, result.sender_user_id_) then
-tsX000("prore",msg,"✔️┇بالفعل تم رفعه عضو مميز  ➣ 👶🏻") 
+tsX000("prore",msg,"☑┇بالفعل تم رفعه عضو مميز") 
 else
 database:sadd(hash, result.sender_user_id_)
-tsX000("prore",msg,"✔️┇تم رفعه عضو مميز  ➣ 👶🏻")
+tsX000("prore",msg,"☑┇تم رفعه عضو مميز")
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
@@ -2387,7 +2387,7 @@ if is_mod(msg) then
 if text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") then   
 local glink = text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") 
 database:set('tshake:'..bot_id.."group:link"..msg.chat_id_,glink) 
-send(msg.chat_id_, msg.id_, 1, '✔️┇تم وضع رابط', 1, 'md') 
+send(msg.chat_id_, msg.id_, 1, '☑️┇تم وضع رابط', 1, 'md') 
 send(msg.chat_id_, 0, 1, '↙️┇رابط المجموعه الجديد\n'..glink, 1, 'html')
 end 
 end
@@ -4452,7 +4452,7 @@ if (text and database:get("tshake:new:if2:"..bot_id..msg.chat_id_..msg.sender_us
 if (text == "ادمن" or text == "مدير" or text == "عضو مميز" or text == "لا شيئ") then 
 database:del("tshake:new:if2:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 tsha_text = database:get("tshake:new:if:text:"..bot_id..msg.chat_id_..msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1, '✔️┇تم حفض الصلاحيه بنجاح \n⚠️┇الاوامر { رفع/تنزيل '..tsha_text..' }', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇تم حفض الصلاحيه بنجاح \n⚠️┇الاوامر { رفع/تنزيل '..tsha_text..' }', 1, 'md')
 database:set("tshake:all_if:"..tsha_text..bot_id..msg.chat_id_,text)
 database:del("tshake:new:if:text:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 else 
