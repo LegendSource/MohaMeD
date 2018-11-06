@@ -3367,8 +3367,8 @@ send(msg.chat_id_, msg.id_, 1, "📨┇عدد سحكاتك ~⪼ *{"..edit.."}*",
 end
 if text == 'حذف سحكاتي' then 
 database:del('tshake:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_)
-local taha = '📨┇تم حذف سحكاتك'
-send(msg.chat_id_, msg.id_, 1, taha, 1, 'md')
+local tshake = '📨┇تم حذف سحكاتك'
+send(msg.chat_id_, msg.id_, 1, tshake, 1, 'md')
 end
 if text:match("^مسح قائمه العام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 text = '☑┇تم مسح قائمه العام'
@@ -5219,13 +5219,13 @@ local text =  [[
 
 🌐┇<strong>TshAkE TEAM</strong>
 
-🦁┇<a href="https://telegram.me/TshAkETEAM">قناه السورس</a>
-📜┇<a href="https://telegram.me/TshAkE_DEV">قناه شروحات سورس</a>
-📁┇<a href="https://telegram.me/TshAkEfiles">قناه ملفات السورس</a>
+🦁┇<a href="https://telegram.me/Zx_xx">قناه السورس</a>
+📜┇<a href="https://telegram.me/TZx_xx">قناه شروحات سورس</a>
+📁┇<a href="https://telegram.me/tshakeFile">قناه ملفات السورس</a>
 
-🔎┇<a href="https://t.me/TshAkE_DEV/227">طريقه التنصيب</a>
+🔎┇<a href="https://t.me/ZX_XX/134">طريقه التنصيب</a>
 
-📮┇<a href="t.me/TSHELPBOT">لـ تواصل </a> 
+📮┇<a href="t.me/A_5bot">لـ تواصل </a> 
 ]]
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
