@@ -4680,7 +4680,7 @@ end
 end
 end
 end
-local game = database:get('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_)
+local game = database:get('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_) or 0
 local edit = database:get('tshake:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 if result.photos_[0] then
 if is_sudo(msg) then
@@ -5054,18 +5054,19 @@ end
 
 
 
-if text == 'بيع نقودي' then
-if tonumber((database:get('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
-keko = '*💠¦ ليس لديك نقود \n📬¦ للحصول على نقود ارسل الاسرع وابدأ اللعب*\n'
-send(msg.chat_id_, msg.id_, 1,keko, 1, 'md')
-else
-keko = (database:get('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_) * 50)
-database:incrby('tshake:'..bot_id..'user:msgs'..msg.chat_id_..msg.sender_user_id_,keko)  
-database:del('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_)
-keko = '*📬¦ تم بيع نقودك كل نقطه تساوي ❪50❫ رسالهہ*'
-send(msg.chat_id_, msg.id_, 1,keko, 1, 'md')
-end
-end
+-- if text == 'بيع نقودي' then
+-- if tonumber((database:get('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
+-- keko = '*💠¦ ليس لديك نقود \n📬¦ للحصول على نقود ارسل الاسرع وابدأ اللعب*\n'
+-- send(msg.chat_id_, msg.id_, 1,keko, 1, 'md')
+-- else
+-- keko = (database:get('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_) * 50)
+-- local msg = database:get('tshake:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_) 
+-- database:incrby('tshake:'..bot_id..'user:msgs'..msg.chat_id_..msg.sender_user_id_,keko)  
+-- database:del('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_)
+-- keko = '*📬¦ تم بيع نقودك كل نقطه تساوي ❪50❫ رسالهہ*'
+-- send(msg.chat_id_, msg.id_, 1,keko, 1, 'md')
+-- end
+-- end
 
 
 if text == 'تفعيل اللعبه' and is_owner(msg) then   
@@ -5078,7 +5079,7 @@ keko = '*📛¦*تم تعطيل اللعبه  ❌'
 send(msg.chat_id_, msg.id_, 1,keko, 1, 'md')
 database:del('tshake:'..bot_id..'lock_geam'..msg.chat_id_) 
 end
-end
+
 -------------------------------------------العبه------------------------------------
 
 
