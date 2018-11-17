@@ -4970,7 +4970,7 @@ name = string.gsub(name,'⏰','⏰')
 name = string.gsub(name,'📺','📺')
 name = string.gsub(name,'🎚','🎚')
 name = string.gsub(name,'☎️','☎️')
-keko = 'اسرع واحد يدز » {'..name..'}'
+keko = '📚┇اسرع واحد يدز » {'..name..'}'
 send(msg.chat_id_, msg.id_, 1,keko, 1, 'md')
 end
 
@@ -5030,7 +5030,7 @@ name = string.gsub(name,'انترنيت','ا ت ن ر ن ي ت')
 name = string.gsub(name,'ساحه','ح ا ه س')
 name = string.gsub(name,'جسر','ر ج س')
 
-keko = 'اسرع واحد يرتبها » {'..name..'}'
+keko = '📚┇اسرع واحد يرتبها » {'..name..'}'
 send(msg.chat_id_, msg.id_, 1,keko, 1, 'md')
 end
 
@@ -5068,25 +5068,21 @@ end
 -- end
 -- end
 
-if text == 'تفعيل اللعبه' and is_owner(msg) then  
-keko1 = '*🏵┇*لبدء اللعب ارسل امر (الاسرع) او (سمايلات)'
-send(msg.chat_id_, 0, 1, keko1,1, 'md')
-end
+
 if text == 'تفعيل اللعبه' and is_owner(msg) then   
-keko = '*📛¦*تم تفعيل اللعبه  ✔️' 
+keko = '*🎡¦*تم تفعيل اللعبه  ✔️' 
 send(msg.chat_id_, msg.id_, 1,keko, 1, 'md')
 database:set('tshake:'..bot_id..'lock_geam'..msg.chat_id_,true)  
 end
 if text == 'تعطيل اللعبه' and is_owner(msg) then  
-keko = '*📛¦*تم تعطيل اللعبه  ❌' 
-keko1 = '*🏵┇*لبدء اللعب ارسل امر (الاسرع) او (سمايلات)'
+keko = '*🎡¦*تم تعطيل اللعبه  ❌' 
 send(msg.chat_id_, msg.id_, 1,keko, 1, 'md')
 database:del('tshake:'..bot_id..'lock_geam'..msg.chat_id_) 
-
-send(msg.chat_id_, 1,keko1, 1, 'md')
-
 end
-
+if text == 'تفعيل اللعبه' and is_owner(msg) then  
+keko1 = '*🏵┇*لبدء اللعب ارسل امر (الاسرع) او (سمايلات)'
+send(msg.chat_id_, 0, 1, keko1,1, 'md')
+end
 -------------------------------------------العبه------------------------------------
 
 
