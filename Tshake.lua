@@ -4731,7 +4731,7 @@ local keko_text = {
 "منور 😚",
 }
 keko3 = math.random(#keko_text)
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"📷┇"..keko_text[keko3].."\n👥┇عدد صورك ~⪼ "..all_photo_tshake.."\n🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n📜┇معرفك ~⪼ "..keko_info.."\n📡┇موقعك ~⪼ "..t.."\n📨┇رسائلك ~⪼ {"..user_msgs.."}\n📧┇السحكات ~⪼ {"..edit.."}\n📚┇تفاعلك ~⪼ "..ikeko_text.."\n💰┇نقودك ~⪼ {"..nko.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ",msg.id_,msg.id_.."")
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"📷┇"..keko_text[keko3].."\n👥┇عدد صورك ~⪼ "..all_photo_tshake.."\n🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n📜┇معرفك ~⪼ "..keko_info.."\n📡┇موقعك ~⪼ "..t.."\n📨┇رسائلك ~⪼ {"..user_msgs.."}\n📧┇السحكات ~⪼ {"..edit.."}\n📚┇تفاعلك ~⪼ "..ikeko_text.."\n💎┇مجوهراتك ~⪼ {"..nko.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ",msg.id_,msg.id_.."")
 else 
 local tshake_new_text = database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_)
 local tshake_new_text = tshake_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -5480,7 +5480,7 @@ local text =  [[
 
 🦁┇<a href="https://telegram.me/Zx_xx">قناه السورس</a>
 📜┇<a href="https://telegram.me/Zx_xx">قناه شروحات سورس</a>
-📁┇<a href="https://telegram.me/tshakeFile">قناه ملفات السورس</a>
+📁┇<a href="https://t.me/TSHAKETEAM">قناه ملفات السورس</a>
 
 🔎┇<a href="https://t.me/ZX_XX/134">طريقه التنصيب</a>
 
