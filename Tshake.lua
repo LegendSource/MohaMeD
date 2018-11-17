@@ -5042,12 +5042,12 @@ database:incrby('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_,
 end
 database:set('tshake:'..bot_id..'l:id'..msg.chat_id_,true)
 end
-if text =='نقودي' then 
+if text =='نقاطي' then 
 if tonumber((database:get('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
-keko = '*💠¦ ليس لديك نقود \n📬¦ للحصول على نقود ارسل الاسرع وابدأ اللعب*\n'
+keko = '*💠¦ ليس لديك نقاط \n📬¦ للحصول على نقود ارسل الاسرع وابدأ اللعب*\n'
 send(msg.chat_id_, msg.id_, 1,keko, 1, 'md')
 else
-keko = '*📬¦ عدد نقودك من اللعبه هي ('..(database:get('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_))..')*'
+keko = '*📬¦ عدد نقاطك من اللعبه هي ('..(database:get('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_))..')*'
 send(msg.chat_id_, msg.id_, 1,keko, 1, 'md')
 end
 end
@@ -5068,7 +5068,10 @@ end
 -- end
 -- end
 
-
+if text == 'تفعيل اللعبه' and is_owner(msg) then  
+keko1 = '*🏵┇*لبدء اللعب ارسل امر (الاسرع) او (سمايلات)'
+send(msg.chat_id_, 0, 1, keko1,1, 'md')
+end
 if text == 'تفعيل اللعبه' and is_owner(msg) then   
 keko = '*📛¦*تم تفعيل اللعبه  ✔️' 
 send(msg.chat_id_, msg.id_, 1,keko, 1, 'md')
@@ -5076,8 +5079,12 @@ database:set('tshake:'..bot_id..'lock_geam'..msg.chat_id_,true)
 end
 if text == 'تعطيل اللعبه' and is_owner(msg) then  
 keko = '*📛¦*تم تعطيل اللعبه  ❌' 
+keko1 = '*🏵┇*لبدء اللعب ارسل امر (الاسرع) او (سمايلات)'
 send(msg.chat_id_, msg.id_, 1,keko, 1, 'md')
 database:del('tshake:'..bot_id..'lock_geam'..msg.chat_id_) 
+
+send(msg.chat_id_, 1,keko1, 1, 'md')
+
 end
 
 -------------------------------------------العبه------------------------------------
