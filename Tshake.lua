@@ -5489,7 +5489,7 @@ local text =  [[
 
 🦁┇<a href="https://telegram.me/Zx_xx">قناه السورس</a>
 📜┇<a href="https://telegram.me/Zx_xx">قناه شروحات سورس</a>
-📁┇<a href="https://telegram.me/tshakeFile">قناه ملفات السورس</a>
+📁┇<a href="https://telegram.me/TSHAKETEAM">قناه ملفات السورس</a>
 
 🔎┇<a href="https://t.me/ZX_XX/134">طريقه التنصيب</a>
 
