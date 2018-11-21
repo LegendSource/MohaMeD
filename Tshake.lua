@@ -4731,7 +4731,7 @@ local keko_text = {
 "منور 😚",
 }
 keko3 = math.random(#keko_text)
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"📷┇"..keko_text[keko3].."\n👥┇عدد صورك ~⪼ "..all_photo_tshake.."\n🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n📜┇معرفك ~⪼ "..keko_info.."\n📡┇موقعك ~⪼ "..t.."\n📨┇رسائلك ~⪼ {"..user_msgs.."}\n📧┇السحكات ~⪼ {"..edit.."}\n📚┇تفاعلك ~⪼ "..ikeko_text.."\n💎┇مجموع مجوهراتك ~⪼ {"..nko.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ",msg.id_,msg.id_.."")
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"📷┐ "..keko_text[keko3].."\n💳┤ايديك ~⪼ ("..msg.sender_user_id_..")\n🎫┤معرفك ~⪼ "..keko_info.."\n👨‍✈️┤رتبتك ~⪼ "..t.."\n📨┤رسائلك ~⪼ {"..user_msgs.."}\n📧┤السحكات ~⪼ {"..edit.."}\n⌨️┤تتفاعلك ~⪼ "..ikeko_text.."\n💎┘مجموع مجوهراتك ~⪼ {"..nko.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ",msg.id_,msg.id_.."")
 else 
 local tshake_new_text = database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_)
 local tshake_new_text = tshake_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4741,6 +4741,8 @@ local tshake_new_text = tshake_new_text:gsub('#msgs',(user_msgs or 'لا يوج�
 local tshake_new_text = tshake_new_text:gsub('#stast',(t or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#auto',(ikeko_text or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#photos',(all_photo_tshake or 'لا يوجد'))
+local tshake_new_text = tshake_new_text:gsub('#game',(nko or 'لا يوجد'))
+
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,tshake_new_text,msg.id_,msg.id_.."")
 end
 else
@@ -4760,7 +4762,7 @@ else
 t = 'عضو فقط'
 end
 if not database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n📜┇معرفك ~⪼ "..keko_info.."\n📡┇موقعك ~⪼ "..t.."\n📨┇رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n📧┇السحكات ~⪼ <b>{"..edit.."}</b>\n📚┇تفاعلك ~⪼ "..ikeko_text.."\n💎┇مجموع مجوهراتك ~⪼ {"..nko.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "💳┐ايديك ~⪼ ("..msg.sender_user_id_..")\n🎫┤معرفك ~⪼ "..keko_info.."\n👨‍✈️┤رتبتك ~⪼ "..t.."\n📨┤رسائلك ~⪼ {"..user_msgs.."}\n📧┤السحكات ~⪼ {"..edit.."}\n⌨️┤تتفاعلك ~⪼ "..ikeko_text.."\n💎┘مجموع مجوهراتك ~⪼ {"..nko.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ", 1, 'html')
 else 
 local tshake_new_text = database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_)
 local tshake_new_text = tshake_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4770,6 +4772,8 @@ local tshake_new_text = tshake_new_text:gsub('#msgs',(user_msgs or 'لا يوج�
 local tshake_new_text = tshake_new_text:gsub('#stast',(t or 'لا يوجد'))   
 local tshake_new_text = tshake_new_text:gsub('#auto',(ikeko_text or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#photos',(all_photo_tshake or 'لا يوجد'))
+local tshake_new_text = tshake_new_text:gsub('#game',(nko or 'لا يوجد'))
+
 send(msg.chat_id_, msg.id_, 1, tshake_new_text, 1, 'html')
 end   
 end
@@ -4794,7 +4798,7 @@ end
 if not database:get('tshake:'..bot_id..'id:mute'..msg.chat_id_) then
 if not database:get('tshake:'..bot_id..'id:photo'..msg.chat_id_) then
 if not database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "❕┇انت لا تملك صوره لحسابك\n🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n📜┇معرفك ~⪼ "..keko_info.."\n📡┇موقعك ~⪼ "..t.."\n📨┇رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n📧┇السحكات ~⪼ <b>{"..edit.."}</b>\n📚┇تفاعلك ~⪼ "..ikeko_text.."\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "❕┐انت لا تملك صوره لحسابك\n💳┤ايديك ~⪼ ("..msg.sender_user_id_..")\n🎫┤معرفك ~⪼ "..keko_info.."\n👨‍✈️┤رتبتك ~⪼ "..t.."\n📨┤رسائلك ~⪼ {"..user_msgs.."}\n📧┤السحكات ~⪼ {"..edit.."}\n⌨️┤تتفاعلك ~⪼ "..ikeko_text.."\n💎┘مجموع مجوهراتك ~⪼ {"..nko.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ", 1, 'html')
 else 
 local tshake_new_text = database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_)
 local tshake_new_text = tshake_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4804,6 +4808,8 @@ local tshake_new_text = tshake_new_text:gsub('#msgs',(user_msgs or 'لا يوج�
 local tshake_new_text = tshake_new_text:gsub('#stast',(t or 'لا يوجد'))   
 local tshake_new_text = tshake_new_text:gsub('#auto',(ikeko_text or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#photos',(all_photo_tshake or 'لا يوجد'))
+local tshake_new_text = tshake_new_text:gsub('#game',(nko or 'لا يوجد'))
+
 send(msg.chat_id_, msg.id_, 1, tshake_new_text, 1, 'html')
 end
 else
@@ -4823,7 +4829,7 @@ else
 t = 'عضو فقط'
 end
 if not database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n📜┇معرفك ~⪼ "..keko_info.."\n📡┇موقعك ~⪼ "..t.."\n📨┇رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n📧┇السحكات ~⪼ <b>{"..edit.."}</b>\n📚┇تفاعلك ~⪼ "..ikeko_text.."\n💎┇مجموع مجوهراتك ~⪼ {"..nko.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "💳┐ايديك ~⪼ ("..msg.sender_user_id_..")\n🎫┤معرفك ~⪼ "..keko_info.."\n👨‍✈️┤رتبتك ~⪼ "..t.."\n📨┤رسائلك ~⪼ {"..user_msgs.."}\n📧┤السحكات ~⪼ {"..edit.."}\n⌨️┤تتفاعلك ~⪼ "..ikeko_text.."\n💎┘مجموع مجوهراتك ~⪼ {"..nko.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ", 1, 'html')
 else 
 local tshake_new_text = database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_)
 local tshake_new_text = tshake_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4833,6 +4839,8 @@ local tshake_new_text = tshake_new_text:gsub('#msgs',(user_msgs or 'لا يوج�
 local tshake_new_text = tshake_new_text:gsub('#stast',(t or 'لا يوجد'))   
 local tshake_new_text = tshake_new_text:gsub('#auto',(ikeko_text or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#photos',(all_photo_tshake or 'لا يوجد'))
+local tshake_new_text = tshake_new_text:gsub('#game',(nko or 'لا يوجد'))
+
 send(msg.chat_id_, msg.id_, 1, tshake_new_text, 1, 'html')  
 end 
 end
@@ -5144,6 +5152,61 @@ end
 database:set('tshake:'..bot_id..'l:id'..msg.chat_id_,true)
 end 
 
+if text == 'حزوره' and database:get('tshake:'..bot_id..'lock_geam'..msg.chat_id_) then
+database:del('tshake:'..bot_id..'l:id1'..msg.chat_id_)
+katu = {'الجرس','عقربا','السمك','المطر','5','امعه الدول العربيه','الكتاب','البسمار','7','الكعبه','بيت الشعر','لهانه','انا','امي','الابره','الساعه','22','غلط','كم الساعه','البيتنجان','البيض','المرايه','الضوء','الهواء','الضل','العمر','القلم','المشط','الحفره','البحر','الثلج','الاسفنج','الصوت','بلم'};
+name = katu[math.random(#katu)]
+database:set('tshake:'..bot_id..'klmoa'..msg.chat_id_,name)
+name = string.gsub(name,'الجرس','شيئ اذا لمسته صرخ ما هوه ؟')
+name = string.gsub(name,'عقربا الساعه','اخوان لا يستطيعان تمضيه اكثر من دقيقه معا فما هما ؟')
+name = string.gsub(name,'السمك','ما هو الحيوان الذي لم يصعد الى سفينة نوح عليه السلام ؟')
+name = string.gsub(name,'المطر','شيئ يسقط على رأسك من الاعلى ولا يجرحك فما هو ؟')
+name = string.gsub(name,'5','ما العدد الذي اذا ضربته بنفسه واضفت عليه 5 يصبح ثلاثين ')
+name = string.gsub(name,'جامعه الدول العربيه','ما هي الجامعه الخاليه من الطلاب ؟')
+name = string.gsub(name,'الكتاب','ما الشيئ الذي له اوراق وليس له جذور ؟')
+name = string.gsub(name,'البسمار','ما هو الشيئ الذي لا يمشي الا بالضرب ؟')
+name = string.gsub(name,'7','عائله مؤلفه من 6 بنات واخ لكل منهن .فكم عدد افراد العائله ')
+name = string.gsub(name,'الكعبه','ما هو الشيئ الموجود وسط مكة ؟')
+name = string.gsub(name,'بيت الشعر','ما هو البيت الذي ليس فيه ابواب ولا نوافذ ؟ ')
+name = string.gsub(name,'لهانه','وحده حلوه ومغروره تلبس مية تنوره .من هيه ؟ ')
+name = string.gsub(name,'انا','ابن امك وابن ابيك وليس باختك ولا باخيك فمن يكون ؟')
+name = string.gsub(name,'امي','اخت خالك وليست خالتك من تكون ؟ ')
+name = string.gsub(name,'الابره','ما هو الشيئ الذي كلما خطا خطوه فقد شيئا من ذيله ؟ ')
+name = string.gsub(name,'الساعه','ما هو الشيئ الذي يقول الصدق ولكنه اذا جاع كذب ؟')
+name = string.gsub(name,'22','كم مره ينطبق عقربا الساعه على بعضهما في اليوم الواحد ')
+name = string.gsub(name,'غلط','ما هي الكلمه الوحيده التي تلفض غلط دائما ؟ ')
+name = string.gsub(name,'كم الساعه','ما هو السؤال الذي تختلف اجابته دائما ؟')
+name = string.gsub(name,'البيتنجان','جسم اسود وقلب ابيض وراس اخظر فما هو ؟')
+name = string.gsub(name,'البيض','ماهو الشيئ الذي اسمه على لونه ؟')
+name = string.gsub(name,'المرايه','ارى كل شيئ من دون عيون من اكون ؟ ')
+name = string.gsub(name,'الضوء','ما هو الشيئ الذي يخترق الزجاج ولا يكسره ؟')
+name = string.gsub(name,'الهواء','ما هو الشيئ الذي يسير امامك ولا تراه ؟')
+name = string.gsub(name,'الضل','ما هو الشيئ الذي يلاحقك اينما تذهب ؟ ')
+name = string.gsub(name,'العمر','ما هو الشيء الذي كلما طال قصر ؟ ')
+name = string.gsub(name,'القلم','ما هو الشيئ الذي يكتب ولا يقرأ ؟')
+name = string.gsub(name,'المشط','له أسنان ولا يعض ما هو ؟ ')
+name = string.gsub(name,'الحفره','ما هو الشيئ اذا أخذنا منه ازداد وكبر ؟')
+name = string.gsub(name,'البحر','ما هو الشيئ الذي يرفع اثقال ولا يقدر يرفع مسمار ؟')
+name = string.gsub(name,'الثلج','انا ابن الماء فان تركوني في الماء مت فمن انا ؟')
+name = string.gsub(name,'الاسفنج','كلي ثقوب ومع ذالك احفض الماء فمن اكون ؟')
+name = string.gsub(name,'الصوت','اسير بلا رجلين ولا ادخل الا بالاذنين فمن انا ؟')
+name = string.gsub(name,'بلم','حامل ومحمول نصف ناشف ونصف مبلول فمن اكون ؟ ')
+
+taha = 'اول واحد يحلها » {'..name..'}'
+send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
+end
+
+if text == ''..(database:get('tshake:'..bot_id..'klmoa'..msg.chat_id_) or 'لفاتع')..'' and not database:get('tshake:'..bot_id..'l:id1'..msg.chat_id_) then
+if not database:get('tshake:'..bot_id..'l:id1'..msg.chat_id_) then 
+taha = '*💎¦ مبروك فزت \n📬¦ للعب مره اخره ارسل الاسرع*'
+send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
+database:incrby('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)
+database:incrby('tshake:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
+end
+database:set('tshake:'..bot_id..'l:id1'..msg.chat_id_,true)
+end 
+
+
 if text =='مجوهراتي' then 
 if tonumber((database:get('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
 taha = '*💎¦ ليس لديك مجوهرات \n📬¦ للحصول على مجوهرات ارسل الاسرع وابدأ اللعب*\n'
@@ -5162,7 +5225,7 @@ if tonumber(kara[2]) > 500 or tonumber(kara[2]) < 1 then
 msgg = '💎┇لا تستطيع وضع اكثر من 500 رساله ❌ '
 send(msg.chat_id_, msg.id_, 1, msgg, 1, 'html')
 else
-database:set('tshake:'..bot_id..'gamepoint' .. msg.chat_id_, kara[2])
+database:set('tshake:'..bot_id..'gamepoint' .. msg.chat_id_, kara[2] or 50)
 send(msg.chat_id_, msg.id_, 1,'💎¦تم اضافه عدد الرسائل المطلوب ✅  ', 1, 'md')
 end
 end
@@ -5174,7 +5237,7 @@ else
 taha = (database:get('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_) * tonumber(database:get('tshake:'..bot_id..'gamepoint' .. msg.chat_id_)or 50))
 database:incrby('tshake:'..bot_id..'nummsg'..msg.chat_id_..msg.sender_user_id_,taha)  
 database:del('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_)
-taha = tonumber((database:get('tshake:'..bot_id..'gamepoint' .. msg.chat_id_) or 0))
+taha = tonumber((database:get('tshake:'..bot_id..'gamepoint' .. msg.chat_id_) or 50))
 send(msg.chat_id_, msg.id_, 1,'💎¦ تم بيع جواهرك كل مجوهره تساوي '..taha..' رساله', 'md')
 end
 end
@@ -5191,7 +5254,7 @@ send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 database:del('tshake:'..bot_id..'lock_geam'..msg.chat_id_) 
 end
 if text == 'تفعيل اللعبه' and is_owner(msg) then  
-keko1 = '*🏵┇*لبدء اللعب ارسل امر (الاسرع) او (سمايلات)'
+keko1 = '*🏵┇*لبدء اللعب ارسل امر (الاسرع) او (سمايلات) او (حزوره)'
 send(msg.chat_id_, 0, 1, keko1,1, 'md')
 end
 
@@ -5371,6 +5434,7 @@ local text =  [[
 💬┇تفعيل/تعطيل الايدي بالصوره
 💬┇تفعيل/تعطيل الايدي
 💬┇تفعيل/تعطيل ردود المطور
+💬┇تفعيل/تعطيل اللعبه
 💬┇تفعيل/تعطيل ردود المدير
 💬┇تفعيل/تعطيل التثبيت
 💬┇تفعيل/تعطيل اطردني
@@ -5825,7 +5889,7 @@ function get_msg_contact(extra, result, success)
 local text = (result.content_.text_ or result.content_.caption_)
 local msgg = result 
 database:incr('tshake:'..bot_id..'user:editmsg'..msgg.chat_id_..':'..msgg.sender_user_id_)
-if (not is_vip(msgg) and not text) then 
+if (not is_creator(msgg) and not text) then 
 if database:get("tshake:lo:edit:new:"..bot_id..msgg.chat_id_) then 
 msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs)
