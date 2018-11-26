@@ -1484,8 +1484,15 @@ if database:get("lock_bot:tshake"..msg.chat_id_..bot_id) then
 changeChatMemberStatus(msg.chat_id_, msg.content_.members_[0].id_, "Kicked")
 end
 if database:get("lock_botAndBan:tshake"..msg.chat_id_..bot_id) then
-changeChatMemberStatus(msg.chat_id_, msg.content_.members_[0].id_, "Kicked")
+local function cb(extra,result,success)
+local bots = result.members_
+for i=0 , #bots do
+if tonumber(bots[i].user_id_) ~= tonumber(bot_id) then chat_kick(msg.chat_id_,bots[i].user_id_)
+end
 changeChatMemberStatus(msg.chat_id_, msg.sender_user_id_, "Kicked")
+end
+end
+bot.channel_get_bots(msg.chat_id_,cb)
 end
 end
 end
@@ -5154,7 +5161,7 @@ end
 
 if text == 'حزوره' and database:get('tshake:'..bot_id..'lock_geam'..msg.chat_id_) then
 database:del('tshake:'..bot_id..'l:id1'..msg.chat_id_)
-katu = {'الجرس','عقربا','السمك','المطر','5','امعه الدول العربيه','الكتاب','البسمار','7','الكعبه','بيت الشعر','لهانه','انا','امي','الابره','الساعه','22','غلط','كم الساعه','البيتنجان','البيض','المرايه','الضوء','الهواء','الضل','العمر','القلم','المشط','الحفره','البحر','الثلج','الاسفنج','الصوت','بلم'};
+katu = {'الجرس','عقربا','السمك','المطر','5','جامعه الدول العربيه','الكتاب','البسمار','7','الكعبه','بيت الشعر','لهانه','انا','امي','الابره','الساعه','22','غلط','كم الساعه','البيتنجان','البيض','المرايه','الضوء','الهواء','الضل','العمر','القلم','المشط','الحفره','البحر','الثلج','الاسفنج','الصوت','بلم'};
 name = katu[math.random(#katu)]
 database:set('tshake:'..bot_id..'klmoa'..msg.chat_id_,name)
 name = string.gsub(name,'الجرس','شيئ اذا لمسته صرخ ما هوه ؟')
