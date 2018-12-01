@@ -3377,10 +3377,10 @@ send(msg.chat_id_, msg.id_, 1, "📨┇عدد رسالئلك ~⪼ *{"..(user_msg
 else
 end
 end
-if text:match("^جلب رسائل$") and is_sudo(msg) and msg.reply_to_message_id_ ~= 0 then
+if text:match("^جلب الرسائل الاصليه$") and is_sudo(msg) and msg.reply_to_message_id_ ~= 0 then
 function mute_by_reply(extra, result, success)
 database:del('tshake:'..bot_id..'nummsg'..msg.chat_id_..result.sender_user_id_)
-local user_msgs = database:get('tshake:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
+local user_msgs = database:get('tshake:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.sender_user_id_)
 send(msg.chat_id_, msg.id_, 1, "📨┇تم استعاد الرسائل  \n📨┇عدد الرسائل الاصليه ~⪼ *{"..(user_msgs).."}*", 1, 'md')
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,mute_by_reply)
