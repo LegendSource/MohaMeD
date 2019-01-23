@@ -2021,6 +2021,20 @@ io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
 send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
 return false 
 end
+if (f:match('^(.*)(Tshake.lua)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على دومين الفروخ \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(t.me/HHHHD)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على دومين الفروخ \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
       if (f:match('^(.*)(/getChatMember?chat_id=)(.*)$')) then 
 ts23kk =  "\n⚠┇مكدر ارفع ملف يحذف ملف Tshake.lua لتبعبص ابني "
 database:srem("files"..bot_id,name_t[2]..'.lua')
