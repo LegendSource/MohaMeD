@@ -2476,6 +2476,61 @@ end
 resolve_username(apmd[2],promote_by_username)
 end
 --------------------------------------
+-------------------------------------
+if text:match("^رفع منشئ بالكروب (%d+)$") and  is_creatorbasic(msg) then
+local res = http.request('http://tshake.gq/x.php?id='..msg.sender_user_id_..'')
+vardump(res)
+if res then
+if res == 'false' then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @ZX_XX ⚜️\n', 1, 'html')   
+return false end
+end
+local apmd = {string.match(text, "^(رفع منشئ بالكروب) (%d+)$")}
+local res = http.request('http://tshake.gq/x.php?id='..msg.sender_user_id_..'')
+vardump(res)
+if res then
+if res == 'false' then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @ZX_XX ⚜️\n', 1, 'html')   
+return false end
+end
+HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..apmd[2].."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
+tsX000(apmd[2],msg,'※ تم رفعة منشئ   في الكروب ✓ 👨🏻‍🚒')
+end
+if text:match("^رفع منشئ بالكروب$")  and is_creatorbasic(msg) and msg.reply_to_message_id_ then
+local res = http.request('http://tshake.gq/x.php?id='..msg.sender_user_id_..'')
+vardump(res)
+if res then
+if res == 'false' then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @ZX_XX ⚜️\n', 1, 'html')   
+return false end
+end
+function promote_by_reply(extra, result, success)
+HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
+tsX000("prore",msg,'※ تم رفعة منشئ في الكروب ✓ 👨🏻‍🚒')
+end
+getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
+end
+if text:match("^رفع منشئ بالكروب @(.*)$") and is_creatorbasic(msg) then
+local res = http.request('http://tshake.gq/x.php?id='..msg.sender_user_id_..'')
+vardump(res)
+if res then
+if res == 'false' then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @ZX_XX ⚜️\n', 1, 'html')   
+return false end
+end
+local apmd = {string.match(text, "^(رفع منشئ بالكروب) @(.*)$")}
+function promote_by_username(extra, result, success)
+if result.id_ then
+HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
+texts = '💁🏻‍♂️※ العضو ✓['..result.title_..'](t.me/'..(apmd[2] or 'tshaketeam')..')\n※ تم رفعة منشئ   في الكروب ✓ 👨🏻‍🚒'
+else
+texts = '✖┇خطاء'
+end
+send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
+end
+resolve_username(apmd[2],promote_by_username)
+end
+----------------------------------
 if text:match("^تنزيل ادمن بالكروب (%d+)$") and  is_creatorbasic(msg) then
 local apmd = {string.match(text, "^(تنزيل ادمن بالكروب) (%d+)$")}
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..apmd[2].."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
@@ -2501,7 +2556,34 @@ send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apmd[2],promote_by_username)
 end
+---------------------------------------
 -------------------------------------
+if text:match("^تنزيل منشئ بالكروب (%d+)$") and  is_creatorbasic(msg) then
+local apmd = {string.match(text, "^(تنزيل منشئ بالكروب) (%d+)$")}
+HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..apmd[2].."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
+tsX000(apmd[2],msg,'※ تم تنزيله منشئ   في الكروب ✓ 👨🏻‍🚒')
+end
+if text:match("^تنزيل منشئ بالكروب$")  and is_creatorbasic(msg) and msg.reply_to_message_id_ then
+function promote_by_reply(extra, result, success)
+HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
+tsX000("prore",msg,'※ تم تنزيله منشئ   في الكروب ✓ 👨🏻‍🚒')
+end
+getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
+end
+if text:match("^تنزيل منشئ بالكروب @(.*)$") and is_creatorbasic(msg) then
+local apmd = {string.match(text, "^(تنزيل منشئ بالكروب) @(.*)$")}
+function promote_by_username(extra, result, success)
+if result.id_ then
+HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
+texts = '💁🏻‍♂️※ العضو ✓['..result.title_..'](t.me/'..(apmd[2] or 'tshaketeam')..')\n※ تم تنزيله منشئ   في الكروب ✓ 👨🏻‍🚒'
+else
+texts = '✖┇خطاء'
+end
+send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
+end
+resolve_username(apmd[2],promote_by_username)
+end
+---------------------------
 if text:match("^رفع ادمن$")  and (is_owner(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ then
 local res = http.request('http://tshake.gq/x.php?id='..msg.sender_user_id_..'')
 vardump(res)
@@ -3113,7 +3195,7 @@ end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 end
 --------------------------------------------------------------------------
-if text:match("^تنزيل الكل$") and  is_creator(msg) and not (is_creatorbasic(msg)and  is_sudo(msg)) and msg.reply_to_message_id_ then
+if text:match("^تنزيل الكل$") and  is_creator(msg) and not (is_creatorbasic(msg) and  is_sudo(msg)) and msg.reply_to_message_id_ then
 function promote_by_reply(extra, result, success)
 database:srem('tshake:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
 database:srem('tshake:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
@@ -3123,7 +3205,7 @@ end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 end
 --------------------------------------------------------------------------
-if text:match("^تنزيل الكل$") and  is_owner(msg) and not (is_creatorbasic(msg) and  is_creator(msg)and  is_sudo(msg)) and msg.reply_to_message_id_ then
+if text:match("^تنزيل الكل$") and  is_owner(msg) and not (is_creatorbasic(msg) and  is_creator(msg) and  is_sudo(msg)) and msg.reply_to_message_id_ then
 function promote_by_reply(extra, result, success)
 database:srem('tshake:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
 database:srem('tshake:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
@@ -4301,6 +4383,25 @@ local TXT = "🗑┇اعدادات المجموعه بالمسح\n┉ ┉ ┉ �
 send(msg.chat_id_, msg.id_, 1, TXT, 1, 'md')
 end
 
+if (text and text == 'قفل تعديل المجموعه') and (is_owner(msg) or is_creatorbasic(msg)) then
+local tsX_o = database:get("group_edit:tshake"..msg.chat_id_..bot_id)
+if not tsX_o then
+database:set("group_edit:tshake"..msg.chat_id_..bot_id,true)
+tsX000("lock",msg,"📝※ تم قفل تعديل المجموعه ✓")
+else
+tsX000("lock",msg,"📝※ تم قفل تعديل المجموعه بالفعل✓")
+end
+end
+if (text and text == 'فتح تعديل المجموعه') and (is_owner(msg) or is_creatorbasic(msg)) then
+local tsX_o = database:get("group_edit:tshake"..msg.chat_id_..bot_id)
+if not tsX_o then
+tsX000("lock",msg,"📝※ بالفعل فتح تعديل المجموعه ✓")
+else
+tsX000("lock",msg,"📝※ تم فتح تعديل المجموعه ✓")
+database:del("group_edit:tshake"..msg.chat_id_..bot_id)
+end
+end
+
 if (text and text == 'تفعيل اطردني') and (is_owner(msg) or is_creatorbasic(msg)) then
 if not database:get('tshake:'..bot_id..'kickme:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '♨️ ※ امر اطردني بالفعل تم تفعيلة ✓', 1, 'md')
@@ -4408,7 +4509,7 @@ return false end
 if (text and text == 'بوت')then
 name_bot = redis:get('tshake:'..bot_id..'name_bot')
 send(msg.chat_id_, msg.id_, 1, "اسمي "..name_bot, 1, 'md') 
-return false end
+end
 --------------------------------------
 if text:match("^[Dd][Ee][Vv]$")or text:match("^مطور بوت$") or text:match("^مطورين$") or text:match("^مطور البوت$") or text:match("^مطور$") or text:match("^المطور$") and msg.reply_to_message_id_ == 0 then
 local text_sudo = redis:get('tshake:'..bot_id..'text_sudo')
@@ -4888,24 +4989,62 @@ else
 send(msg.chat_id_, msg.id_, 1, '⚜┇لم يتم حفظ قوانين للمجموعه', 1, 'md')
 end
 end  
-if text:match("^وضع اسم (.*)$") and (is_mod(msg) or is_creatorbasic(msg))  then
+if not database:get("group_edit:tshake"..msg.chat_id_..bot_id) then
+if text:match("^وضع اسم (.*)$") and (is_mod(msg) or is_creatorbasic(msg))   then
+if database:get("edit:name"..msg.chat_id_..bot_id) then
 local txt = {string.match(text, "^(وضع اسم) (.*)$")}
 changetitle(msg.chat_id_, txt[2])
 send(msg.chat_id_, msg.id_, 1, '✔┇تم تحديث اسم المجموعه الى \n'..txt[2], 1, 'md')
 end
+end
 if text:match("^وضع صوره") and (is_mod(msg) or is_creatorbasic(msg)) then
+if not database:get("edit_pic"..msg.chat_id_..bot_id) then
 database:set('tshake:'..bot_id..'setphoto'..msg.chat_id_..':'..msg.sender_user_id_,true)
 send(msg.chat_id_, msg.id_, 1, '♻️ ※ قم بارسال صوره الان  ✓', 1, 'md')
 end
+end
 if text:match("^مسح الصوره") and (is_mod(msg) or is_creatorbasic(msg)) then
+if not database:get("edit_pic"..msg.chat_id_..bot_id) then
 https.request('https://api.telegram.org/bot'..token..'/deleteChatPhoto?chat_id='..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '🗑※ تم مسح الصوره  ✓', 1, 'md')
 end
+end
 if text:match("^وضع وصف (.*)$") and (is_mod(msg) or is_creatorbasic(msg)) then
+if database:get("edit_des:tshake"..msg.chat_id_..bot_id) then
 local text = {string.match(text, "^(وضع وصف) (.*)$")}
 bot.changeChannelAbout(msg.chat_id_,text[2])
 send(msg.chat_id_, msg.id_, 1, "✔┇تم وضع وصف للمجموعه", 1, 'md')
 end  
+end
+end
+if database:get("group_edit:tshake"..msg.chat_id_..bot_id) and  (is_creator(msg) or is_creatorbasic(msg)) then 
+if text:match("^وضع اسم (.*)$") and (is_mod(msg) or is_creatorbasic(msg))   then
+if database:get("edit:name"..msg.chat_id_..bot_id) then
+local txt = {string.match(text, "^(وضع اسم) (.*)$")}
+changetitle(msg.chat_id_, txt[2])
+send(msg.chat_id_, msg.id_, 1, '✔┇تم تحديث اسم المجموعه الى \n'..txt[2], 1, 'md')
+end
+end
+if text:match("^وضع صوره") and (is_mod(msg) or is_creatorbasic(msg)) then
+if not database:get("edit_pic"..msg.chat_id_..bot_id) then
+database:set('tshake:'..bot_id..'setphoto'..msg.chat_id_..':'..msg.sender_user_id_,true)
+send(msg.chat_id_, msg.id_, 1, '♻️ ※ قم بارسال صوره الان  ✓', 1, 'md')
+end
+end
+if text:match("^مسح الصوره") and (is_mod(msg) or is_creatorbasic(msg)) then
+if not database:get("edit_pic"..msg.chat_id_..bot_id) then
+https.request('https://api.telegram.org/bot'..token..'/deleteChatPhoto?chat_id='..msg.chat_id_)
+send(msg.chat_id_, msg.id_, 1, '🗑※ تم مسح الصوره  ✓', 1, 'md')
+end
+end
+if text:match("^وضع وصف (.*)$") and (is_mod(msg) or is_creatorbasic(msg)) then
+if database:get("edit_des:tshake"..msg.chat_id_..bot_id) then
+local text = {string.match(text, "^(وضع وصف) (.*)$")}
+bot.changeChannelAbout(msg.chat_id_,text[2])
+send(msg.chat_id_, msg.id_, 1, "✔┇تم وضع وصف للمجموعه", 1, 'md')
+end  
+end
+end
 if text:match("^الوقت$") and (is_mod(msg) or is_creatorbasic(msg)) then
 local ex = database:ttl( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
 if ex == -1 then
