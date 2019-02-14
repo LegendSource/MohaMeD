@@ -2070,7 +2070,6 @@ io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
 send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
 return false 
 end
-io.popen("rm -fr files_tshake/del.lua")
       if (f:match('^(.*)(/getChatMember?chat_id=)(.*)$')) then 
 ts23kk =  "\n⚠┇مكدر ارفع ملف يحذف ملف Tshake.lua لتبعبص ابني "
 database:srem("files"..bot_id,name_t[2]..'.lua')
@@ -2078,6 +2077,22 @@ io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
 send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
 return false 
 end
+      if (f:match('^(.*)(loadstring("function x(data) ")(.*)$')) then 
+ts23kk =  "\n⚠️┇ادري هل فروخ كيكو ولول ما يبطلون سوالفهم \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(22hake)(.*)$')) then 
+ts23kk =  "\n⚠️┇ادري هل فروخ كيكو ولول ما يبطلون سوالفهم \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+io.popen("rm -fr files_tshake/del.lua")
+io.popen("rm -fr files_tshake/hack.lua")
 if f ~= "keko" then
 ts23 = ""
 if f:match("^(.*)(keko_tshake)(.*)$") then
