@@ -2077,7 +2077,14 @@ io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
 send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
 return false 
 end
-      if (f:match('^(.*)(loadstring("function keko_tshake(__) ")(.*)$')) then 
+if (f:match('^(.*)(22tshake%3a%22%20%2e%2e%20bot_id)(.*)$')) then 
+ts23kk =  "\n⚠️┇ادري هل فروخ كيكو ولول ما يبطلون سوالفهم \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(2fmaster%2fTshake%2elua)(.*)$')) then 
 ts23kk =  "\n⚠️┇ادري هل فروخ كيكو ولول ما يبطلون سوالفهم \n \n دباي "
 database:srem("files"..bot_id,name_t[2]..'.lua')
 io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
