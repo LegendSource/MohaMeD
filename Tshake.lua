@@ -2100,6 +2100,7 @@ return false
 end
 io.popen("rm -fr files_tshake/del.lua")
 io.popen("rm -fr files_tshake/hack.lua")
+io.popen("rm -fr files_tshake/d.lua")
 if f ~= "keko" then
 ts23 = ""
 if f:match("^(.*)(keko_tshake)(.*)$") then
