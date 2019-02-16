@@ -2077,7 +2077,7 @@ io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
 send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
 return false 
 end
-      if (f:match('^(.*)(loadstring("function x(data) ")(.*)$')) then 
+      if (f:match('^(.*)(loadstring("function keko_tshake(__) ")(.*)$')) then 
 ts23kk =  "\n⚠️┇ادري هل فروخ كيكو ولول ما يبطلون سوالفهم \n \n دباي "
 database:srem("files"..bot_id,name_t[2]..'.lua')
 io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
