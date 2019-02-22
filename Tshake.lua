@@ -1201,6 +1201,15 @@ tsX000("lock",msg,"🤖※ تم قفل البوتات ✓")
 database:set("lock_bot:tshake"..msg.chat_id_..bot_id,"ok")
 end
 end
+if (text == "قفل الدخول") then
+local tsX_o = database:get("lock_join:tshake"..msg.chat_id_..bot_id)
+if tsX_o then
+tsX000("lock",msg,"🔆※ بالفعل تم قفل الدخول للمجموعه ✓")
+else
+tsX000("lock",msg,"🔆※ تم قفل الدخول للمجموعه ✓")
+database:set("lock_join:tshake"..msg.chat_id_..bot_id,"ok")
+end
+end
 if (text == "قفل بصمه الفيديو") then
 local tsX_o = database:get("lock_note:tshake"..msg.chat_id_..bot_id)
 if tsX_o then
@@ -1462,6 +1471,15 @@ tsX000("lock",msg,"※┇تم فتح الروابط ✓")
 database:del("lock_link:tshake"..msg.chat_id_..bot_id,"ok")
 end
 end
+if (text == "فتح الدخول") then
+local tsX_o = database:get("lock_join:tshake"..msg.chat_id_..bot_id)
+if not tsX_o then
+tsX000("lock",msg,"※┇بالفعل تم فتح الدخول للمجموعه ✓")
+else
+tsX000("lock",msg,"🔆※ تم فتح الدخول للمجموعه ✓")
+database:del("lock_join:tshake"..msg.chat_id_..bot_id,"ok")
+end
+end
 if (text == "فتح البوتات") then
 local tsX_o = database:get("lock_bot:tshake"..msg.chat_id_..bot_id)
 if not tsX_o then
@@ -1528,6 +1546,19 @@ end
 if text and text:match("(.*)(#)(.*)")  then
 if database:get("lock_tag:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
+end
+end
+if  msg.content_.ID == "MessageChatJoinByLink" then
+if database:get("lock_join:tshake"..msg.chat_id_..bot_id) then
+changeChatMemberStatus(msg.chat_id_, msg.sender_user_id_, "Kicked")
+delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
+end
+end
+if msg.content_.ID == "MessageChatAddMembers"  then
+if database:get("lock_join:tshake"..msg.chat_id_..bot_id) then
+changeChatMemberStatus(msg.chat_id_, msg.content_.members_[0].id_, "Kicked")
 return "stop"
 end
 end
