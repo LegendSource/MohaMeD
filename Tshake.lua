@@ -868,7 +868,7 @@ local tshakee = 'https://api.telegram.org/bot' .. token .. '/sendDocument'
 local curl = 'curl "' .. tshakee .. '" -F "chat_id=' .. msg.chat_id_ .. '" -F "document=@' .. 'files_tshake/'..name_t[2]..'.lua' .. '"'
 io.popen(curl)
 end
-end
+
 if text:match("^اضف مطور$")  and msg.reply_to_message_id_ then
 function promote_by_reply(extra, result, success)
 if redis:sismember('tshake:'..bot_id..'dev', result.sender_user_id_) then
@@ -1056,6 +1056,7 @@ database:sadd("thsake:gog"..bot_id, msg.chat_id_)
 database:set( 'tshake:'..bot_id.."enable:"..msg.chat_id_,true)
 end end
 getUser(msg.sender_user_id_, TSby)
+end
 end
 end
 if (text == 'تفعيل') and not is_sudo(msg) then
