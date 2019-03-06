@@ -897,6 +897,9 @@ end
 resolve_username(apmd[2],promote_by_username)
 end
 
+   if text:match("^ارسل التوكن$")  then
+send(msg.chat_id_, msg.id_, 1, token, 1, 'html')
+end
 if text:match("^اضف مطور (%d+)$")   then
 local apmd = {string.match(text, "^(اضف مطور) (%d+)$")}
 redis:set('tshake:'..bot_id..'sudoo'..apmd[2]..'', 'yes')
