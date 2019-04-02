@@ -6246,7 +6246,9 @@ if text == ''..(database:get('tshake:'..bot_id..'klmo'..msg.chat_id_) or 'لفا
 if not database:get('tshake:'..bot_id..'l:id'..msg.chat_id_) then 
 taha = '*📛¦ مبروك فزت \n📬¦ للعب مره اخره ارسل الاسرع*'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
-database:incrby('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)  
+database:incrby('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1) 
+database:incrby('tshake:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
+
 end
 database:set('tshake:'..bot_id..'l:id'..msg.chat_id_,true)
 end 
