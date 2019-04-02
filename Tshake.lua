@@ -6189,6 +6189,8 @@ if not database:get('tshake:'..bot_id..'l:ids'..msg.chat_id_) then
 taha = '*📛¦ مبروك فزت \n📬¦ للعب مره اخره ارسل سمايلات*'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 database:incrby('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)  
+database:incrby('tshake:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
+
 end
 database:set('tshake:'..bot_id..'l:ids'..msg.chat_id_,true)
 end 
