@@ -4470,7 +4470,7 @@ send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = getChatId(msg.chat_id_).ID,offset_ = 0,limit_ = 5000}, check_deactive, nil)
 end
-if text and text == "تاك للكل" (is_owner(msg) or is_creatorbasic(msg)) then
+if text and text == "تاك للكل" and (is_owner(msg) or is_creatorbasic(msg)) then
 function tag_all(t1, t2)
 local text = "👨‍👧‍👦 ※ قائمه الاعضاء  ✓ ،\nꔹ┉♦️┉ ┉ ┉ ┉♦️┉ꔹ \n"
 i = 0
