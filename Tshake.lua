@@ -2071,6 +2071,53 @@ else
 send(msg.chat_id_, msg.id_, 1, '☑┇ الاذاعه معطله ', 1, 'md')
 end
 end
+if text == "تنظيف الكروبات الوهميه" and tonumber(msg.sender_user_id_) == tonumber(sudo_add)  then
+local group = database:smembers("thsake:gog"..bot_id)
+local t = 0
+local s = 0
+for i = 1, #group do
+tdcli_function({ID='GetChat',chat_id_ = group[i]
+},function(arg,data)
+if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusMember" then
+database:srem("thsake:gog"..bot_id,group[i]) 
+changeChatMemberStatus(group[i], bot_id, "Left")
+t = t + 1
+end
+if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusLeft" then
+database:srem("thsake:gog"..bot_id,group[i]) 
+s = s + 1
+end
+if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusKicked" then
+database:srem("thsake:gog"..bot_id,group[i]) 
+s = s + 1
+end
+if data and data.code_ and data.code_ == 400 then
+database:srem("thsake:gog"..bot_id,group[i]) 
+t = t + 1
+end
+if #group == i then 
+if (t + s) == 0 then
+send(msg.chat_id_, msg.id_, 1,'*📮¦ لا يوجد مجموعات وهميه في البوت* \n🍃', 1, 'md')   
+else
+local kara = (t + s)
+local sendok = #group - kara
+if s == 0 then
+kara = ''
+else
+kara = '\n*🚸¦ تم ازالة ↫ ❪ '..s..' ❫ مجموعات من البوت*'
+end
+if t == 0 then
+tshake = ''
+else
+tshake = '\n*📬¦ تم ازالة ↫ ❪'..t..'❫ مجموعه لان البوت عضو*'
+end
+send(msg.chat_id_, msg.id_, 1,'*📮¦ عدد المجموعات الان ↫ ❪ '..#group..' ❫*'..tshake..''..kara..'\n*📡¦ الان عدد المجموعات الحقيقي ↫ ❪ '..sendok..' ❫ مجموعات*\n💥', 1, 'md')   
+end
+end
+end,nil)
+end
+return false
+end
 if (text:match("^عدد الكروبات$") or text:match("^الاحصائيات$")) and is_vip(msg) then
 local gps = database:scard('tshake:'..bot_id.."groups") or 0
 local user = database:scard('tshake:'..bot_id.."userss") or 0
@@ -4422,6 +4469,23 @@ text = '☑┇تم طرد الحسابات المتروكة من المجموع�
 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = getChatId(msg.chat_id_).ID,offset_ = 0,limit_ = 5000}, check_deactive, nil)
+end
+if text and text == "تاك للكل" (is_owner(msg) or is_creatorbasic(msg)) then
+function tag_all(t1, t2)
+local text = "👨‍👧‍👦 ※ قائمه الاعضاء  ✓ ،\nꔹ┉♦️┉ ┉ ┉ ┉♦️┉ꔹ \n"
+i = 0
+for k, v in pairs(t2.members_) do
+i = i + 1
+local user_info = database:hgetall('tshake:'..bot_id..'user:'..v.user_id_)
+if user_info and user_info.username then
+local username = user_info.username
+text = text.."<b>|"..i.."|</b>~⪼(@"..username..")\n"
+end
+end
+send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
+print(text)
+end
+tdcli_function({ID = "GetChannelMembers",channel_id_ = getChatId(msg.chat_id_).ID, offset_ = 0,limit_ = 200000},tag_all,nil)
 end
 if text:match("^ادمنيه المجموعه$") and (is_owner(msg) or is_creatorbasic(msg)) then
 local txt = {string.match(text, "^ادمنيه المجموعه$")}
