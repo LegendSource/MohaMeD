@@ -7137,12 +7137,6 @@ local msg = data
 function get_msg_contact(extra, result, success)
 local msgg = result 
 database:incr('tshake:'..bot_id..'user:editmsg'..msgg.chat_id_..':'..msgg.sender_user_id_)
-if not is_owner (msgg) then 
-if database:get("lock_edit:tshake:"..bot_id..msgg.chat_id_) then 
-msgs = {[0] = data.message_id_}
-delete_msg(msg.chat_id_,msgs)
-end
-end
 if (result.content_.caption_ and not is_vip(msgg)) then 
 if (result.content_.caption_:match("(.*)@(.*)") or result.content_.caption_:match("@")) then 
 if database:get("lock_username:tshake"..msg.chat_id_..bot_id) then
@@ -7151,7 +7145,7 @@ delete_msg(msg.chat_id_,msgs)
 end 
 end 
 end
-     if (not is_mod(msgg) ) then
+     if (not is_owner(msgg) ) then
 check_filter_words(result, text)
 if database:get("lock_edit:tshake"..msg.chat_id_..bot_id) then
 local id = msg.message_id_
