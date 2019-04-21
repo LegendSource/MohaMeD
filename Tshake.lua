@@ -1200,15 +1200,6 @@ tsX000("lock",msg,"🔗※ تم قفل الشارحه ✓")
 database:set("lock_sarha:tshake"..msg.chat_id_..bot_id,"ok")
 end
 end
-if (text == "قفل تعديل الميديا") then
-local tsX_o = database:get("tshake:lo:edit:new:"..bot_id..msg.chat_id_)
-if tsX_o then
-tsX000("lock",msg,"🔇※ بالفعل تم قفل تعديل الميديا ✓")
-else
-tsX000("lock",msg,"🔇※ تم قفل تعديل الميديا ✓")
-database:set("tshake:lo:edit:new:"..bot_id..msg.chat_id_,"ok")
-end
-end
 if (text == "قفل الكلايش") then
 local tsX_o = database:get("lock_word:tshake"..msg.chat_id_..bot_id)
 if tsX_o then
@@ -1479,15 +1470,7 @@ tsX000("lock",msg,"※┇تم فتح الكلايش ✓")
 database:del("lock_word:tshake"..msg.chat_id_..bot_id)
 end
 end
-if (text == "فتح تعديل الميديا") then
-local tsX_o = database:get("tshake:lo:edit:new:"..bot_id..msg.chat_id_)
-if not tsX_o then
-tsX000("lock",msg,"※┇بالفعل تم فتح تعديل الميديا ✓")
-else
-tsX000("lock",msg,"※┇تم فتح تعديل الميديا ✓")
-database:del("tshake:lo:edit:new:"..bot_id..msg.chat_id_)
-end
-end
+
 if (text == "فتح الشارحه") then
 local tsX_o = database:get("lock_sarha:tshake"..msg.chat_id_..bot_id)
 if not tsX_o then
@@ -3110,7 +3093,7 @@ return "tshakke"
 end
 function ban_by_reply(extra, result, success)
 local hash =  'tshake:'..bot_id..'banned:'..msg.chat_id_
-if ck_mod(result.sender_user_id_, msg.chat_id_) then
+if ck_mod(result.sender_user_id_, msg.chat_id_) or is_creatorbasic(msg, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
 else
 if database:sismember(hash, result.sender_user_id_) then
@@ -3134,7 +3117,7 @@ end
 local apba = {string.match(text, "^(حظر) @(.*)$")}
 function ban_by_username(extra, result, success)
 if result.id_ then
-if ck_mod(result.id_, msg.chat_id_) then
+if ck_mod(result.id_, msg.chat_id_) or is_creatorbasic(msg, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
 else
 database:sadd('tshake:'..bot_id..'banned:'..msg.chat_id_, result.id_)
@@ -3155,7 +3138,7 @@ send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع حظر', 1, 'md')
 return "tshakke"
 end
 local apba = {string.match(text, "^([Bb][Aa][Nn]) (%d+)$")}
-if ck_mod(apba[2], msg.chat_id_) then
+if ck_mod(apba[2], msg.chat_id_) or is_creatorbasic(msg, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️※ لا تستطيع حظر او طرد (مدراء، ادمنية،مميزين)البوت   ✓', 1, 'md')
 else
 database:sadd('tshake:'..bot_id..'banned:'..msg.chat_id_, apba[2])
@@ -3464,7 +3447,7 @@ end
 if text:match("^كتم$") and (is_mod(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ ~= 0 then
 function mute_by_reply(extra, result, success)
 local hash =  'tshake:'..bot_id..'muted:'..msg.chat_id_
-if ck_mod(result.sender_user_id_, msg.chat_id_) then
+if ck_mod(result.sender_user_id_, msg.chat_id_) or is_creatorbasic(msg, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️※ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت   ✓', 1, 'md')
 else
 if database:sismember(hash, result.sender_user_id_) then
@@ -3481,9 +3464,9 @@ if text:match("^كتم @(.*)$") and (is_mod(msg) or is_creatorbasic(msg)) then
 local apsi = {string.match(text, "^(كتم) @(.*)$")}
 function mute_by_username(extra, result, success)
 if result.id_ then
-if ck_mod(result.id_, msg.chat_id_) then
+if ck_mod(result.id_, msg.chat_id_) or is_creatorbasic(msg, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️※ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت   ✓', 1, 'md')
-else
+else 
 database:sadd('tshake:'..bot_id..'muted:'..msg.chat_id_, result.id_)
 texts = '💁🏻‍♂️※ العضو ✓['..result.title_..'](t.me/'..(apsi[2] or 'tshaketeam')..')\n🚫┇تم كتمه من البوت'
 end
@@ -3496,7 +3479,7 @@ resolve_username(apsi[2],mute_by_username)
 end
 if text:match("^كتم (%d+)$") and (is_mod(msg) or is_creatorbasic(msg)) then
 local apsi = {string.match(text, "^(كتم) (%d+)$")}
-if ck_mod(apsi[2], msg.chat_id_) then
+if ck_mod(apsi[2], msg.chat_id_) or is_creatorbasic(msg, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️※ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت   ✓', 1, 'md')
 else
 database:sadd('tshake:'..bot_id..'muted:'..msg.chat_id_, apsi[2])
@@ -3541,7 +3524,7 @@ send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد', 1, 'md')
 return "tshakke"
 end
 function kick_reply(extra, result, success)
-if ck_mod(result.sender_user_id_, msg.chat_id_) then
+if ck_mod(result.sender_user_id_, msg.chat_id_) or is_creatorbasic(msg, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️※ لا تستطيع حظر او طرد (مدراء، ادمنية،مميزين)البوت   ✓', 1, 'md')
 else
 tsX000("prore",msg,"🚫┇تم طرده من المجموعه")
@@ -3558,7 +3541,7 @@ end
 local apki = {string.match(text, "^(طرد) @(.*)$")}
 function kick_by_username(extra, result, success)
 if result.id_ then
-if ck_mod(result.id_, msg.chat_id_) then
+if ck_mod(result.id_, msg.chat_id_) or is_creatorbasic(msg, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️※ لا تستطيع حظر او طرد (مدراء، ادمنية،مميزين)البوت   ✓', 1, 'md')
 else
 texts = '💁🏻‍♂️※ العضو ✓['..result.title_..'](t.me/'..(apki[2] or 'tshaketeam')..')\n🚫┇تم طرده من المجموعه'
@@ -3577,7 +3560,7 @@ send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد', 1, 'md')
 return "tshakke"
 end
 local apki = {string.match(text, "^(طرد) (%d+)$")}
-if ck_mod(apki[2], msg.chat_id_) then
+if ck_mod(apki[2], msg.chat_id_) or is_creatorbasic(msg, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️※ لا تستطيع حظر او طرد (مدراء، ادمنية،مميزين)البوت   ✓', 1, 'md')
 else
 chat_kick(msg.chat_id_, apki[2])
@@ -4898,15 +4881,15 @@ end
 if (text and text == redis:get('tshake:'..bot_id..'name_bot'))then
 name_bot = redis:get('tshake:'..bot_id..'name_bot')
 local namebot = {
-"فداك "..name_bot.. " كول شرايد ",
-"حبيبي اتفضل وياك "..name_bot,
-"ها يمعود اسمعك شتريد",
-"ما سمعك ما سمعك ",
-"ها حياتي",
-"ها حبي",
-"صاعد تصال ويا وحدة من الكروب  اكمل وجيك ،",
-"ها يمعود اسمعك شتريد",
-" كول ياروح "..name_bot,
+"عمري فداك "..name_bot.. " كول حب ",
+"كول حبيبي ؟ اني "..name_bot,
+"شبيك يمعود شكو ",
+"نايم حبي نايم ",
+"ها ضلعي",
+"ها شني ؟",
+"حبي داخابر دعبل :| ،",
+"دوخر شبيك دوختني :|",
+" هايروحي؟ "..name_bot,
 }
 name = math.random(#namebot)
 send(msg.chat_id_, msg.id_, 1, namebot[name] , 1, 'md') 
@@ -5880,12 +5863,12 @@ if not database:get('tshake:'..bot_id..'id:mute'..msg.chat_id_) then
 if not database:get('tshake:'..bot_id..'id:photo'..msg.chat_id_) then
 if not database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_) then 
 local keko_text = {
-'ببكن نتعرف  ؟ ',
-"دغيرها شلزكت بيها🙂",
-"تخليني 😻",
-"طالع حلو ^_^",
-"ليش مغير صورتك 🤣",
-"شهلكيك هذا 😍",
+'صورتك فدشي 😘😔❤️  ',
+"صارلك شكد مخليه 😐",
+"وفالله 😔💘",
+"كشخه برب 😉💘",
+"دغيره شبي هذ 😒",
+"عمري الحلوين 🙈💘",
 }
 keko3 = math.random(#keko_text)
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"🎥 ※ "..keko_text[keko3].."\n🎟 ※ ايديك ✓ "..msg.sender_user_id_.."\n🎫 ※ يوزرك ✓"..keko_info.."\n🛰 ※ موقعك ✓ "..t.."\n📖 ※ رسائلك ✓("..user_msgs..")\n🗃 ※ سحكاتك ✓("..edit..")\n📓 ※ تفاعلك ✓ ("..ikeko_text..")\n🤹🏻‍♂️ ※ مجوهراتك ✓ ("..nko..")\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ",msg.id_,msg.id_.."")
@@ -6245,12 +6228,12 @@ name = string.gsub(name,'⏰','⏰')
 name = string.gsub(name,'📺','📺')
 name = string.gsub(name,'🎚','🎚')
 name = string.gsub(name,'☎️','☎️')
-taha = 'اسرع واحد يدز » {`'..name..'`}'
+taha = '🚀¦اسرع واحد يدز » {`'..name..'`}'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 end
 if text == ''..(database:get('tshake:'..bot_id..'klmos'..msg.chat_id_) or 'لفاتع')..'' and not database:get('tshake:'..bot_id..'l:ids'..msg.chat_id_) then
 if not database:get('tshake:'..bot_id..'l:ids'..msg.chat_id_) then 
-taha = '*📛¦ مبروك فزت \n📬¦ للعب مره اخره ارسل سمايلات*'
+taha = '*👾| مبروك لقد فزت ,\n👨🏽‍💻| لعب مره اخره ارسل سمايلات ,*'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 database:incrby('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)  
 database:incrby('tshake:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
@@ -6303,12 +6286,12 @@ name = string.gsub(name,'حاسوب','س ا ح و ب')
 name = string.gsub(name,'انترنيت','ا ت ن ر ن ي ت')
 name = string.gsub(name,'ساحه','ح ا ه س')
 name = string.gsub(name,'جسر','ر ج س')
-taha = 'اسرع واحد يرتبها » {'..name..'}'
+taha = '🚀¦اسرع واحد يرتبها » {'..name..'}'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 end
 if text == ''..(database:get('tshake:'..bot_id..'klmo'..msg.chat_id_) or 'لفاتع')..'' and not database:get('tshake:'..bot_id..'l:id'..msg.chat_id_) then
 if not database:get('tshake:'..bot_id..'l:id'..msg.chat_id_) then 
-taha = '*📛¦ مبروك فزت \n📬¦ للعب مره اخره ارسل الاسرع*'
+taha = '*👾| مبروك لقد فزت ,\n👨🏽‍💻| لعب مره اخره ارسل الاسرع ,*'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 database:incrby('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1) 
 database:incrby('tshake:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
@@ -6354,17 +6337,101 @@ name = string.gsub(name,'الثلج','انا ابن الماء فان تركون
 name = string.gsub(name,'الاسفنج','كلي ثقوب ومع ذالك احفض الماء فمن اكون ؟')
 name = string.gsub(name,'الصوت','اسير بلا رجلين ولا ادخل الا بالاذنين فمن انا ؟')
 name = string.gsub(name,'بلم','حامل ومحمول نصف ناشف ونصف مبلول فمن اكون ؟ ')
-taha = 'اول واحد يحلها » {'..name..'}'
+taha = '🕐¦اسرع واحد يحلها » {'..name..'}'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 end
 if text == ''..(database:get('tshake:'..bot_id..'klmoa'..msg.chat_id_) or 'لفاتع')..'' and not database:get('tshake:'..bot_id..'l:id1'..msg.chat_id_) then
 if not database:get('tshake:'..bot_id..'l:id1'..msg.chat_id_) then 
-taha = '*💎¦ مبروك فزت \n📬¦ للعب مره اخره ارسل الاسرع*'
+taha = '*👾| مبروك لقد فزت ,\n👨🏽‍💻| لعب مره اخره ارسل حزوره ,*'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 database:incrby('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)
 database:incrby('tshake:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
 end
 database:set('tshake:'..bot_id..'l:id1'..msg.chat_id_,true)
+end 
+if text == 'معاني' and database:get('tshake:'..bot_id..'lock_geam'..msg.chat_id_) then
+database:del('tshake:'..bot_id..'l:id2'..msg.chat_id_)
+katu = {'قرد','دجاجه','بطريق','ضفدع','بومه','نحله','ديج','جمل','بقره','دولفين','تمساح','قرش','نمر','اخطبوط','سمكه','خفاش','اسد','فأر','ذئب','فراشه','عقرب','زرافه','قنفذ','تفاحه','باذنجان'}
+name = katu[math.random(#katu)]
+database:set('tshake:'..bot_id..'means'..msg.chat_id_,name)
+name = string.gsub(name,'قرد','🐒')
+name = string.gsub(name,'دجاجه','🐔')
+name = string.gsub(name,'بطريق','🐧')
+name = string.gsub(name,'ضفدع','🐸')
+name = string.gsub(name,'بومه','🦉')
+name = string.gsub(name,'نحله','🐝')
+name = string.gsub(name,'ديك','🐓')
+name = string.gsub(name,'جمل','🐫')
+name = string.gsub(name,'بقره','🐄')
+name = string.gsub(name,'دولفين','🐬')
+name = string.gsub(name,'تمساح','🐊')
+name = string.gsub(name,'قرش','🦈')
+name = string.gsub(name,'نمر','🐅')
+name = string.gsub(name,'اخطبوط','🐙')
+name = string.gsub(name,'سمكه','🐟')
+name = string.gsub(name,'خفاش','🦇')
+name = string.gsub(name,'اسد','🦁')
+name = string.gsub(name,'فأر','🐭')
+name = string.gsub(name,'ذئب','🐺')
+name = string.gsub(name,'فراشه','🦋')
+name = string.gsub(name,'عقرب','🦂')
+name = string.gsub(name,'زرافه','🦒')
+name = string.gsub(name,'قنفذ','🦔')
+name = string.gsub(name,'تفاحه','🍎')
+name = string.gsub(name,'باذنجان','🍆')
+taha = '🔵¦اول واحد يكتب معنئ السمايل » {'..name..'}'
+send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
+end
+if text == ''..(database:get('tshake:'..bot_id..'means'..msg.chat_id_) or 'لفاتع')..'' and not database:get('tshake:'..bot_id..'l:id2'..msg.chat_id_) then
+if not database:get('tshake:'..bot_id..'l:id2'..msg.chat_id_) then 
+taha = '*👾| مبروك لقد فزت ,\n👨🏽‍💻| لعب مره اخره ارسل المعاني ,*'
+send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
+database:incrby('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)
+database:incrby('tshake:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
+end
+database:set('tshake:'..bot_id..'l:id2'..msg.chat_id_,true)
+end 
+if text == 'العكس' and database:get('tshake:'..bot_id..'lock_geam'..msg.chat_id_) then
+database:del('tshake:'..bot_id..'l:id3'..msg.chat_id_)
+katu = {'باي','فهمت','موزين','اسمعك','احبك','موحلو','نضيف','حاره','ناصي','جوه','سريع','ونسه','طويل','سمين','ضعيف','شريف','قوي','رحت','عدل','نشيط','شبعان','موعطشان','خوش ولد','اني','هادئ'}
+name = katu[math.random(#katu)]
+database:set('tshake:'..bot_id..'aks'..msg.chat_id_,name)
+name = string.gsub(name,'باي','هلو')
+name = string.gsub(name,'فهمت','مافهمت')
+name = string.gsub(name,'موزين','زين')
+name = string.gsub(name,'اسمعك','ماسمعك')
+name = string.gsub(name,'احبك','ماحبك')
+name = string.gsub(name,'موحلو','حلو')
+name = string.gsub(name,'نضيف','وصخ')
+name = string.gsub(name,'حاره','بارده')
+name = string.gsub(name,'ناصي','عالي')
+name = string.gsub(name,'جوه','فوك')
+name = string.gsub(name,'سريع','بطيء')
+name = string.gsub(name,'ونسه','ضوجه')
+name = string.gsub(name,'طويل','قزم')
+name = string.gsub(name,'سمين','ضعيف')
+name = string.gsub(name,'ضعيف','قوي')
+name = string.gsub(name,'شريف','كواد')
+name = string.gsub(name,'قوي','جبان')
+name = string.gsub(name,'رحت','اجيت')
+name = string.gsub(name,'عدل','ميت')
+name = string.gsub(name,'نشيط','كسول')
+name = string.gsub(name,'شبعان','جوعان')
+name = string.gsub(name,'موعطشان','عطشان')
+name = string.gsub(name,'خوش ولد','موخوش ولد')
+name = string.gsub(name,'اني','مطي')
+name = string.gsub(name,'هادئ','عصبي')
+taha = '✖️¦عكس كلمه » {'..name..'} ⚜️'
+send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
+end
+if text == ''..(database:get('tshake:'..bot_id..'aks'..msg.chat_id_) or 'لفاتع')..'' and not database:get('tshake:'..bot_id..'l:id2'..msg.chat_id_) then
+if not database:get('tshake:'..bot_id..'l:id3'..msg.chat_id_) then 
+taha = '*👾| مبروك لقد فزت ,\n👨🏽‍💻| لعب مره اخره ارسل العكس ,*'
+send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
+database:incrby('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)
+database:incrby('tshake:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
+end
+database:set('tshake:'..bot_id..'l:id3'..msg.chat_id_,true)
 end 
 if text =='مجوهراتي' then 
 if tonumber((database:get('tshake:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
@@ -6411,7 +6478,7 @@ send(msg.chat_id_, msg.id_, 1, "🗑 ※ تم حذف رسائلك  ✓", 1, "md"
 end
 ---------------------------------------------------------------------------
 if text == 'تفعيل اللعبه' and (is_owner(msg) or is_creatorbasic(msg)) then   
-send(msg.chat_id_, msg.id_, 1,"🎪※ تم تفعيل اللعبة   ✓\n🎪※ لبدء اللعب ارسل امر (الاسرع) او (سمايلات) او (حزوره)   ✓", 1, 'md')
+send(msg.chat_id_, msg.id_, 1,"👾 | تم تفعيل اللعبة   ✓\n👾 | تم تفعيل اللعبة   ✓ هناك خمس العاب 👾\n 🕛 | ارسل امر (الاسرع) لبدء لعبه الاسرع  👾\n🏴 | ارسل امر (سمايلات) لبدء لعبه السمايلات 👾\n🤔 | ارسل امر (حزوره) لبدء لعبه الحزوره 👾\n💿| ارسل امر (المعاني) لبدء لعبه المعاني 👾\n✖️| ارسل امر (العكس) لبدء لعبه العكس 👾\n   ✓", 1, 'md')
 database:set('tshake:'..bot_id..'lock_geam'..msg.chat_id_,true)  
 end
 if text == 'تعطيل اللعبه' and (is_owner(msg) or is_creatorbasic(msg)) then  
@@ -7068,11 +7135,10 @@ chats[chat.id_] = chat
 elseif (data.ID == "UpdateMessageEdited") then
 local msg = data
 function get_msg_contact(extra, result, success)
-local text = (result.content_.text_ or result.content_.caption_)
 local msgg = result 
 database:incr('tshake:'..bot_id..'user:editmsg'..msgg.chat_id_..':'..msgg.sender_user_id_)
-if (not is_creator(msgg) and not text) then 
-if database:get("tshake:lo:edit:new:"..bot_id..msgg.chat_id_) then 
+if not is_admin(msgg) then 
+if database:get("lock_edit:tshake:"..bot_id..msgg.chat_id_) then 
 msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs)
 end
@@ -7188,7 +7254,7 @@ if text:match("[ASDFGHJKLQWERTYUIOPZXCVBNMasdfghjklqwertyuiopzxcvbnm]") then
 if database:get("lock_en.note:tshake"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end end 
-if not is_vip(msgg) then
+if not is_admin(msgg) then
 check_filter_words(result, text)
 if database:get("lock_edit:tshake"..msg.chat_id_..bot_id) then
 local id = msg.message_id_
