@@ -6393,7 +6393,7 @@ database:set('tshake:'..bot_id..'l:id2'..msg.chat_id_,true)
 end 
 if text == 'العكس' and database:get('tshake:'..bot_id..'lock_geam'..msg.chat_id_) then
 database:del('tshake:'..bot_id..'l:id3'..msg.chat_id_)
-katu = {'باي','فهمت','موزين','اسمعك','احبك','موحلو','نضيف','حاره','ناصي','جوه','سريع','ونسه','طويل','سمين','ضعيف','شريف','قوي','رحت','عدل','نشيط','شبعان','موعطشان','خوش ولد','اني','هادئ'}
+katu = {'باي','فهمت','موزين','اسمعك','احبك','موحلو','نضيف','حاره','ناصي','جوه','سريع','ونسه','طويل','سمين','ضعيف','شريف','شجاع','رحت','عدل','نشيط','شبعان','موعطشان','خوش ولد','اني','هادئ'}
 name = katu[math.random(#katu)]
 database:set('tshake:'..bot_id..'aks'..msg.chat_id_,name)
 name = string.gsub(name,'باي','هلو')
@@ -6412,7 +6412,7 @@ name = string.gsub(name,'طويل','قزم')
 name = string.gsub(name,'سمين','ضعيف')
 name = string.gsub(name,'ضعيف','قوي')
 name = string.gsub(name,'شريف','كواد')
-name = string.gsub(name,'قوي','جبان')
+name = string.gsub(name,'شجاع','جبان')
 name = string.gsub(name,'رحت','اجيت')
 name = string.gsub(name,'عدل','ميت')
 name = string.gsub(name,'نشيط','كسول')
@@ -7137,7 +7137,7 @@ local msg = data
 function get_msg_contact(extra, result, success)
 local msgg = result 
 database:incr('tshake:'..bot_id..'user:editmsg'..msgg.chat_id_..':'..msgg.sender_user_id_)
-if not is_admin(msgg) then 
+if not is_mod (msgg) then 
 if database:get("lock_edit:tshake:"..bot_id..msgg.chat_id_) then 
 msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs)
