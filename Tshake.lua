@@ -7145,7 +7145,7 @@ delete_msg(msg.chat_id_,msgs)
 end 
 end 
 end
-     if (not is_owner(msgg) ) then
+     if (not is_creator(msgg) ) then
 check_filter_words(result, text)
 if database:get("lock_edit:tshake"..msg.chat_id_..bot_id) then
 local id = msg.message_id_
