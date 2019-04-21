@@ -6424,7 +6424,7 @@ name = string.gsub(name,'هادئ','عصبي')
 taha = '✖️¦عكس كلمه » {'..name..'} ⚜️'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 end
-if text == ''..(database:get('tshake:'..bot_id..'aks'..msg.chat_id_) or 'لفاتع')..'' and not database:get('tshake:'..bot_id..'l:id2'..msg.chat_id_) then
+if text == ''..(database:get('tshake:'..bot_id..'aks'..msg.chat_id_) or 'لفاتع')..'' and not database:get('tshake:'..bot_id..'l:id3'..msg.chat_id_) then
 if not database:get('tshake:'..bot_id..'l:id3'..msg.chat_id_) then 
 taha = '*👾| مبروك لقد فزت ,\n👨🏽‍💻| لعب مره اخره ارسل العكس ,*'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
