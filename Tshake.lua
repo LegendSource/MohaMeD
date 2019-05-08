@@ -1209,7 +1209,7 @@ tsX000("lock",msg,"🗞※ تم قفل الكلايش ✓")
 database:set("lock_word:tshake"..msg.chat_id_..bot_id,"ok")
 end
 end
-if (text == "قفل التعديل") then
+if (text == "قفل التعديل") and (is_creator(msg) or is_creatorbasic(msg)) then
 local tsX_o = database:get("lock_edit:tshake"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🎛※ بالفعل تم قفل التعديل ✓")
@@ -1489,7 +1489,7 @@ tsX000("lock",msg,"※┇تم فتح التكرار ✓")
 database:del("lock_lllll:tshake"..msg.chat_id_..bot_id,"ok")
 end
 end
-if (text == "فتح التعديل") then
+if (text == "فتح التعديل") and (is_creator(msg) or is_creatorbasic(msg)) then
 local tsX_o = database:get("lock_edit:tshake"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"※┇بالفعل تم فتح التعديل ✓")
@@ -5807,6 +5807,7 @@ send(msg.chat_id_, msg.id_, 1, '☑┇ تم مسح مجموعه المطور', 1
 database:del("tshake"..bot_id..":sudo:gr")
 end
 if (text:match("^ايدي$") or text:match("^id$") ) and msg.reply_to_message_id_ == 0 then
+if not database:sismember('tshake:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_,'ايدي') then
 local keko_info = nil
 function keko333(extra,result,success)
 keko_info = '@'..(result.username_ or 'لا يوجد')..''
@@ -6026,6 +6027,13 @@ limit_ = 1
 }, getpro, nil)
 end
 getUser(msg.sender_user_id_, keko333)
+end
+end
+if text then
+if database:sismember('tshake:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_,text) then
+else
+database:del('tshake:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_) 
+end
 end
 if text:match('^الحساب (%d+)$') then
 local id = text:match('^الحساب (%d+)$')
@@ -7166,6 +7174,7 @@ end
      if (not is_creator(msgg) ) then
 check_filter_words(result, text)
 if database:get("lock_edit:tshake"..msg.chat_id_..bot_id) then
+send(msg.chat_id_, data.message_id_, 1, " ❗️※ انتبه ! \n هناك شخص قام بالتعديل وتم حذف رسالته " , 1, 'md') 
 local id = msg.message_id_
 local msgs = {[0] = id}
 local chat = msg.chat_id_
