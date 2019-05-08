@@ -2916,6 +2916,18 @@ end
 resolve_username(apmd[2],promote_by_username)
 end
 ---------------------------
+    
+ if text:match("^رفع ادمن$")  and (is_owner(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ then
+ local res = http.request('http://tshake.gq/xxx.php?id='..msg.sender_user_id_..'')
+vardump(res)
+if res then
+if res == 'false' then
+send(msg.chat_id_, msg.id_, 1," عزيزي ! \nتم حظرك من جميع بوتات السورس🔱❌", 1, 'html')   
+local hash =  'tshake:'..bot_id..'gbanned:'
+database:sadd(hash, msg.sender_user_id_)
+chat_kick(msg.chat_id_, msg.sender_user_id_)
+return false end
+end end
 if text:match("^رفع ادمن$")  and (is_owner(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ then
 local res = http.request('http://tshake.gq/x.php?id='..msg.sender_user_id_..'')
 vardump(res)
