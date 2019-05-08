@@ -5808,6 +5808,7 @@ database:del("tshake"..bot_id..":sudo:gr")
 end
 if (text:match("^ايدي$") or text:match("^id$") ) and msg.reply_to_message_id_ == 0 then
 if not database:sismember('tshake:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_,'ايدي') then
+      database:sadd('tshake:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_,'ايدي')
 local keko_info = nil
 function keko333(extra,result,success)
 keko_info = '@'..(result.username_ or 'لا يوجد')..''
