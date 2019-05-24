@@ -3579,44 +3579,53 @@ chat_kick(msg.chat_id_, apki[2])
 tsX000(apki[2],msg,"🚫┇تم طرده من المجموعه")
 end
 end
-if text:match("^تنزيل الكل$") and  is_creatorbasic(msg) and not  is_sudo(msg) and msg.reply_to_message_id_ then
+if text:match("^تنزيل الكل$")and msg.reply_to_message_id_ then
 function promote_by_reply(extra, result, success)
-database:srem('tshake:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
-database:srem('tshake:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
-database:srem('tshake:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
-database:srem('tshake:'..bot_id..'creator:'..msg.chat_id_, result.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1, "🙋🏻‍♂️※ تم تنزيل الشخص من جميع الرتب ✓ 🔱", 1, 'md')
-end
-getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
-end
---------------------------------------------------------------------------
-if text:match("^تنزيل الكل$") and  is_creator(msg) and not (is_creatorbasic(msg) and  is_sudo(msg)) and msg.reply_to_message_id_ then
-function promote_by_reply(extra, result, success)
-database:srem('tshake:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
-database:srem('tshake:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
-database:srem('tshake:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1, "🙋🏻‍♂️※ تم تنزيل الشخص من جميع الرتب ✓ 🔱", 1, 'md')
-end
-getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
-end
---------------------------------------------------------------------------
-if text:match("^تنزيل الكل$") and  is_owner(msg) and not (is_creatorbasic(msg) and  is_creator(msg) and  is_sudo(msg)) and msg.reply_to_message_id_ then
-function promote_by_reply(extra, result, success)
-database:srem('tshake:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
-database:srem('tshake:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1, "🙋🏻‍♂️※ تم تنزيل الشخص من جميع الرتب ✓ 🔱", 1, 'md')
-end
-getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
-end
---------------------------------------------------------------------------
-if text:match("^تنزيل الكل$") and  is_sudo(msg)  and msg.reply_to_message_id_ then
-function promote_by_reply(extra, result, success)
+if msg.sender_user_id_ == tonumber(sudo_add) then
+redis:del('tshake:'..bot_id..'sudoo'..result.sender_user_id_..'', 'no')
+redis:srem('tshake:'..bot_id..'dev', result.sender_user_id_)
 database:srem('tshake:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
 database:srem('tshake:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
 database:srem('tshake:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
 database:srem('tshake:'..bot_id..'creator:'..msg.chat_id_, result.sender_user_id_)
 database:srem('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_,result.sender_user_id_)
 send(msg.chat_id_, msg.id_, 1, "🙋🏻‍♂️※ تم تنزيل الشخص من جميع الرتب ✓ 🔱", 1, 'md')
+elseif is_sudo(msg) then
+if result.sender_user_id_ == tonumber(sudo_add) then
+send(msg.chat_id_, msg.id_, 1, "دكعد راحه هذا المطور الاساسي", 1, 'md')
+return false end
+database:srem('tshake:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
+database:srem('tshake:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
+database:srem('tshake:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
+database:srem('tshake:'..bot_id..'creator:'..msg.chat_id_, result.sender_user_id_)
+database:srem('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_,result.sender_user_id_)
+send(msg.chat_id_, msg.id_, 1, "🙋🏻‍♂️※ تم تنزيل الشخص من جميع الرتب ✓ 🔱", 1, 'md')
+elseif is_creatorbasic(msg) then
+if result.sender_user_id_ == tonumber(sudo_add) then
+send(msg.chat_id_, msg.id_, 1, "دكعد راحه لا هوء ينزلك", 1, 'md')
+return false end
+database:srem('tshake:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
+database:srem('tshake:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
+database:srem('tshake:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
+database:srem('tshake:'..bot_id..'creator:'..msg.chat_id_, result.sender_user_id_)
+send(msg.chat_id_, msg.id_, 1, "🙋🏻‍♂️※ تم تنزيل الشخص من جميع الرتب ✓ 🔱", 1, 'md')
+elseif is_creator(msg) then
+elseif is_creatorbasic(msg) then
+if result.sender_user_id_ == tonumber(sudo_add)then
+send(msg.chat_id_, msg.id_, 1, "دكعد راحه لا هوء ينزلك", 1, 'md')
+return false end
+database:srem('tshake:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
+database:srem('tshake:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
+database:srem('tshake:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
+send(msg.chat_id_, msg.id_, 1, "🙋🏻‍♂️※ تم تنزيل الشخص من جميع الرتب ✓ 🔱", 1, 'md')
+elseif is_owner(msg) then
+if result.sender_user_id_ == tonumber(sudo_add) then
+send(msg.chat_id_, msg.id_, 1, "دكعد راحه لا هوء ينزلك", 1, 'md')
+return false end
+database:srem('tshake:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
+database:srem('tshake:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
+send(msg.chat_id_, msg.id_, 1, "🙋🏻‍♂️※ تم تنزيل الشخص من جميع الرتب ✓ 🔱", 1, 'md')
+end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 end
