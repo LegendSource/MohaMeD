@@ -1070,6 +1070,7 @@ end
 database:set( 'tshake:'..bot_id.."enable:"..msg.chat_id_,true)
 if data.result.status == 'creator' then
 database:sadd('tshake:'..bot_id..'creator:'..msg.chat_id_, msg.sender_user_id_)
+database:sadd('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 else
