@@ -4360,10 +4360,10 @@ end
 if text:match("^الرابط$") then
 if not database:get("tshake:mute:link:gr:"..bot_id..msg.chat_id_) then 
 function dl_cb222( t1,t2 )
-if t2.invite_link_ ~= false then 
-send(msg.chat_id_, msg.id_, 1, '🎴※ رابط المجموعة 👩🏿‍🚒✓\n'..(t2.invite_link_ or "Error"), 1, "html")
-elseif (database:get('tshake:'..bot_id.."group:link"..msg.chat_id_) and database:get('tshake:'..bot_id.."group:link"..msg.chat_id_) ~= "Error") then 
+if (database:get('tshake:'..bot_id.."group:link"..msg.chat_id_) and database:get('tshake:'..bot_id.."group:link"..msg.chat_id_) ~= "Error") then 
 send(msg.chat_id_, msg.id_, 1, '🎴※ رابط المجموعة 👩🏿‍🚒✓\n'..database:get('tshake:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
+elseif t2.invite_link_ ~= false then 
+send(msg.chat_id_, msg.id_, 1, '🎴※ رابط المجموعة 👩🏿‍🚒✓\n'..(t2.invite_link_ or "Error"), 1, "html")
 else
 local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
 local req = https.request(getlink)
