@@ -967,7 +967,7 @@ database:srem(hash, apbll[2])
 tsX000(apbll[2],msg,"🚫┇تم الغاء حظره من مجموعات البوت")
 end
 if text:match("^تحديث السورس$")  then
-send(msg.chat_id_, msg.id_, 1, '☑️┇تم التحديث', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑┇تم التحديث', 1, 'md')
 os.execute('rm -rf ./libs/utils.lua')
 os.execute('cd libs && wget https://raw.githubusercontent.com/TshAkETEAM/Tshake/master/libs/utils.lua')
 os.execute('rm -rf Tshake.lua')
