@@ -689,7 +689,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 function TSby(extra,result,success)
@@ -1025,7 +1025,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 function TSby(extra,result,success)
@@ -1103,7 +1103,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 function TSby(extra,result,success)
@@ -1155,7 +1155,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 function TSby(extra,result,success)
@@ -2009,7 +2009,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 function promote_by_reply(extra, result, success)
@@ -2029,7 +2029,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apmd = {string.match(text, "^(رفع منشئ اساسي) @(.*)$")}
@@ -2055,7 +2055,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apmd = {string.match(text, "^(رفع منشئ اساسي) (%d+)$")}
@@ -2156,7 +2156,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local gps = database:smembers('tshake:'..bot_id.."groups") or 0
@@ -2254,7 +2254,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local txt = {string.match(text, "^(مغادره) (-%d+)$")}
@@ -2272,7 +2272,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local txt = {string.match(text, "^(المده1) (-%d+)$")}
@@ -2539,7 +2539,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 database:del('key_ts'..bot_id)
@@ -2700,7 +2700,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 function setcreator_by_reply(extra, result, success)
@@ -2724,7 +2724,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apow = {string.match(text, "^(رفع منشئ) @(.*)$")}
@@ -2737,7 +2737,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 function setcreator_by_username(extra, result, success)
@@ -2761,7 +2761,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apow = {string.match(text, "^(رفع منشئ) (%d+)$")}
@@ -2774,7 +2774,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 database:sadd('tshake:'..bot_id..'creator:'..msg.chat_id_, apow[2])
@@ -2845,7 +2845,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apmd = {string.match(text, "^(رفع ادمن بالكروب) (%d+)$")}
@@ -2858,7 +2858,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..apmd[2].."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=false")
@@ -2874,7 +2874,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 function promote_by_reply(extra, result, success)
@@ -2893,7 +2893,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apmd = {string.match(text, "^(رفع ادمن بالكروب) @(.*)$")}
@@ -2920,7 +2920,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apmd = {string.match(text, "^(رفع منشئ بالكروب) (%d+)$")}
@@ -2933,7 +2933,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..apmd[2].."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
@@ -2949,7 +2949,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 function promote_by_reply(extra, result, success)
@@ -2968,7 +2968,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apmd = {string.match(text, "^(رفع منشئ بالكروب) @(.*)$")}
@@ -3059,7 +3059,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 function promote_by_reply(extra, result, success)
@@ -3083,7 +3083,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apmd = {string.match(text, "^(رفع ادمن) @(.*)$")}
@@ -3108,7 +3108,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apmd = {string.match(text, "^(رفع ادمن) (%d+)$")}
@@ -3121,7 +3121,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 database:sadd('tshake:'..bot_id..'mods:'..msg.chat_id_, apmd[2])
@@ -3780,7 +3780,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 function setowner_by_reply(extra, result, success)
@@ -3804,7 +3804,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apow = {string.match(text, "^(رفع مدير) @(.*)$")}
@@ -3830,7 +3830,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apow = {string.match(text, "^(رفع مدير) (%d+)$")}
@@ -3847,7 +3847,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 function deowner_by_reply(extra, result, success)
@@ -3871,7 +3871,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apow = {string.match(text, "^(تنزيل مدير) @(.*)$")}
@@ -3897,7 +3897,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local hash =  'tshake:'..bot_id..'owners:'..msg.chat_id_
@@ -3915,7 +3915,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local hash =   'tshake:'..bot_id..'mods:'..msg.chat_id_
@@ -4707,7 +4707,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local txt = {string.match(text, "^رفع الادمنيه$")}
@@ -5154,7 +5154,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 function promote_by_reply(extra, result, success)
@@ -5179,7 +5179,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apmd = {string.match(text, "^(اضف مطور) @(.*)$")}
@@ -5192,7 +5192,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 function promote_by_username(extra, result, success)
@@ -5218,7 +5218,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apmd = {string.match(text, "^(اضف مطور) (%d+)$")}
@@ -5237,7 +5237,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 
@@ -5263,7 +5263,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apmd = {string.match(text, "^(حذف مطور) @(.*)$")}
@@ -5289,7 +5289,7 @@ return false end
 if res == 'kicked' then
  hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, msg.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @A_5bot', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'عذراً انتا محظور من جميع بوتات السورس \n راسل مطورين السورس لمعرفه سبب الحظر @TshakeBBot', 1, 'html')   
 return false end
 end
 local apmd = {string.match(text, "^(حذف مطور) (%d+)$")}
@@ -6047,8 +6047,6 @@ end
 if (text:match("^ايدي$") or text:match("^id$") ) and msg.reply_to_message_id_ == 0 then
 if not database:sismember('tshake:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_,'ايدي') then
       database:sadd('tshake:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_,'ايدي')
-	  send(msg.chat_id_, msg.id_, 1, "قناة السورس الجديده <3 \n @TshakeX", 1, 'html')
-
 local keko_info = nil
 function keko333(extra,result,success)
 keko_info = '@'..(result.username_ or 'لا يوجد')..''
