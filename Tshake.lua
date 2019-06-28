@@ -6047,6 +6047,7 @@ end
 if (text:match("^ايدي$") or text:match("^id$") ) and msg.reply_to_message_id_ == 0 then
 if not database:sismember('tshake:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_,'ايدي') then
       database:sadd('tshake:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_,'ايدي')
+
 local keko_info = nil
 function keko333(extra,result,success)
 keko_info = '@'..(result.username_ or 'لا يوجد')..''
@@ -6123,6 +6124,7 @@ local keko_text = {
 "عمري الحلوين 🙈💘",
 }
 keko3 = math.random(#keko_text)
+send(msg.chat_id_, msg.id_, 1, "قناه السورس الجديده \n @tshakeX", 1, 'html')
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"🎥 ※ "..keko_text[keko3].."\n🎟 ※ ايديك ✓ "..msg.sender_user_id_.."\n🎫 ※ يوزرك ✓"..keko_info.."\n🛰 ※ موقعك ✓ "..t.."\n📖 ※ رسائلك ✓("..user_msgs..")\n🗃 ※ سحكاتك ✓("..edit..")\n📓 ※ تفاعلك ✓ ("..ikeko_text..")\n🤹🏻‍♂️ ※ مجوهراتك ✓ ("..nko..")\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ",msg.id_,msg.id_.."")
 else 
 local tshake_new_text = database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_)
@@ -6134,7 +6136,7 @@ local tshake_new_text = tshake_new_text:gsub('#stast',(t or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#auto',(ikeko_text or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#photos',(all_photo_tshake or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#game',(nko or 'لا يوجد'))
-
+send(msg.chat_id_, msg.id_, 1, "قناه السورس الجديده \n @tshakeX", 1, 'html')
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,tshake_new_text,msg.id_,msg.id_.."")
 end
 else
@@ -6160,6 +6162,7 @@ else
 t = database:get("tshake:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط 👶🏻' 
 end
 if not database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_) then 
+send(msg.chat_id_, msg.id_, 1, "قناه السورس الجديده \n @tshakeX", 1, 'html')
 send(msg.chat_id_, msg.id_, 1, "🎟 ※ ايديك ✓ ("..msg.sender_user_id_..")\n🎫 ※ يوزرك ✓ "..keko_info.."\n🛰 ※ موقعك ✓"..t.."\n📖 ※ رسائلك ✓("..user_msgs..")\n🗃 ※ سحكاتك ✓ ("..edit..")\n📓 ※ تفاعلك ✓ "..ikeko_text.."\n🤹🏻‍♂️ ※ مجوهراتك ✓  ("..nko..")\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ ", 1, 'html')
 else 
 local tshake_new_text = database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_)
@@ -6171,7 +6174,7 @@ local tshake_new_text = tshake_new_text:gsub('#stast',(t or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#auto',(ikeko_text or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#photos',(all_photo_tshake or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#game',(nko or 'لا يوجد'))
-
+send(msg.chat_id_, msg.id_, 1, "قناه السورس الجديده \n @tshakeX", 1, 'html')
 send(msg.chat_id_, msg.id_, 1, tshake_new_text, 1, 'html')
 end   
 end
@@ -6202,6 +6205,7 @@ end
 if not database:get('tshake:'..bot_id..'id:mute'..msg.chat_id_) then
 if not database:get('tshake:'..bot_id..'id:photo'..msg.chat_id_) then
 if not database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_) then 
+send(msg.chat_id_, msg.id_, 1, "قناه السورس الجديده \n @tshakeX", 1, 'html')
 send(msg.chat_id_, msg.id_, 1,"🎥 ※ انت لا تملك صوره لحسابك !\n🎟 ※ ايديك ✓ "..msg.sender_user_id_.."\n🎫 ※ يوزرك ✓ "..keko_info.."\n🛰 ※ موقعك ✓  "..t.."\n📖 ※ رسائلك ✓ ("..user_msgs..")\n🗃 ※ سحكاتك ✓("..edit..")\n📓 ※ تفاعلك ✓"..ikeko_text.."\n🤹🏻‍♂️ ※ مجوهراتك ✓ ("..nko..")\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ", 1, 'html')
 else 
 local tshake_new_text = database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_)
@@ -6213,7 +6217,7 @@ local tshake_new_text = tshake_new_text:gsub('#stast',(t or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#auto',(ikeko_text or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#photos',(all_photo_tshake or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#game',(nko or 'لا يوجد'))
-
+send(msg.chat_id_, msg.id_, 1, "قناه السورس الجديده \n @tshakeX", 1, 'html')
 send(msg.chat_id_, msg.id_, 1, tshake_new_text, 1, 'html')
 end
 else
@@ -6239,6 +6243,7 @@ else
 t = database:get("tshake:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط 👶🏻' 
 end
 if not database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_) then 
+send(msg.chat_id_, msg.id_, 1, "قناه السورس الجديده \n @tshakeX", 1, 'html')
 send(msg.chat_id_, msg.id_, 1,"🎟 ※ ايديك ✓ ("..msg.sender_user_id_..")\n🎫 ※ يوزرك ✓ "..keko_info.."\n🛰 ※ موقعك ✓ "..t.."\n📖 ※ رسائلك ✓ {"..user_msgs..")\n🗃 ※ سحكاتك ✓("..edit..")\n📓 ※ تفاعلك ✓ "..ikeko_text.."\n🤹🏻‍♂️ ※ مجوهراتك ✓ ("..nko..")\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ", 1, 'html')
 else 
 local tshake_new_text = database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_)
@@ -6250,7 +6255,7 @@ local tshake_new_text = tshake_new_text:gsub('#stast',(t or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#auto',(ikeko_text or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#photos',(all_photo_tshake or 'لا يوجد'))
 local tshake_new_text = tshake_new_text:gsub('#game',(nko or 'لا يوجد'))
-
+send(msg.chat_id_, msg.id_, 1, "قناه السورس الجديده \n @tshakeX", 1, 'html')
 send(msg.chat_id_, msg.id_, 1, tshake_new_text, 1, 'html')  
 end 
 end
