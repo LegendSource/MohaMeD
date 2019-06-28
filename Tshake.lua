@@ -6831,7 +6831,7 @@ local text =  [[
 
 📮┇[لـ تواصل](t.me/A_5bot)
 ]]
-send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
+send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
 if text:match("^اريد رابط حذف$") or text:match("^رابط حذف$") or text:match("^رابط الحذف$") or text:match("^الرابط حذف$") or text:match("^اريد رابط الحذف$") then
 local text =  [[
