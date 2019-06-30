@@ -2739,16 +2739,15 @@ data = JSON.decode(url)
 if data.Ch_Member.TshAkE ~= true then
 send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
 return false end
-
 local apmd = {string.match(text, "^(رفع ادمن بالكروب) (%d+)$")}
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.TshAkE ~= true then
 send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
 return false end
-
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..apmd[2].."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=false")
 tsX000(apmd[2],msg,'※ تم رفعة ادمن   في الكروب ✓ 👨🏻‍🚒')
+return false
 end
 if text:match("^رفع ادمن بالكروب$")  and is_creatorbasic(msg) and msg.reply_to_message_id_ then
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
@@ -2756,12 +2755,12 @@ data = JSON.decode(url)
 if data.Ch_Member.TshAkE ~= true then
 send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
 return false end
-
 function promote_by_reply(extra, result, success)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=false")
 tsX000("prore",msg,'※ تم رفعة ادمن   في الكروب ✓ 👨🏻‍🚒')
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
+return false
 end
 if text:match("^رفع ادمن بالكروب @(.*)$") and is_creatorbasic(msg) then
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
@@ -2769,7 +2768,6 @@ data = JSON.decode(url)
 if data.Ch_Member.TshAkE ~= true then
 send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
 return false end
-
 local apmd = {string.match(text, "^(رفع ادمن بالكروب) @(.*)$")}
 function promote_by_username(extra, result, success)
 if result.id_ then
@@ -2781,6 +2779,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apmd[2],promote_by_username)
+return false
 end
 --------------------------------------
 -------------------------------------
@@ -2790,16 +2789,15 @@ data = JSON.decode(url)
 if data.Ch_Member.TshAkE ~= true then
 send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
 return false end
-
 local apmd = {string.match(text, "^(رفع منشئ بالكروب) (%d+)$")}
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.TshAkE ~= true then
 send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
 return false end
-
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..apmd[2].."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
 tsX000(apmd[2],msg,'※ تم رفعة منشئ   في الكروب ✓ 👨🏻‍🚒')
+return false
 end
 if text:match("^رفع منشئ بالكروب$")  and is_creatorbasic(msg) and msg.reply_to_message_id_ then
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
@@ -2807,12 +2805,12 @@ data = JSON.decode(url)
 if data.Ch_Member.TshAkE ~= true then
 send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
 return false end
-
 function promote_by_reply(extra, result, success)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
 tsX000("prore",msg,'※ تم رفعة منشئ في الكروب ✓ 👨🏻‍🚒')
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
+return false
 end
 if text:match("^رفع منشئ بالكروب @(.*)$") and is_creatorbasic(msg) then
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
@@ -2820,7 +2818,6 @@ data = JSON.decode(url)
 if data.Ch_Member.TshAkE ~= true then
 send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
 return false end
-
 local apmd = {string.match(text, "^(رفع منشئ بالكروب) @(.*)$")}
 function promote_by_username(extra, result, success)
 if result.id_ then
@@ -2832,12 +2829,14 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apmd[2],promote_by_username)
+return false
 end
 ----------------------------------
 if text:match("^تنزيل ادمن بالكروب (%d+)$") and  is_creatorbasic(msg) then
 local apmd = {string.match(text, "^(تنزيل ادمن بالكروب) (%d+)$")}
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..apmd[2].."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
 tsX000(apmd[2],msg,'※ تم تنزيله ادمن   في الكروب ✓ 👨🏻‍🚒')
+return false
 end
 if text:match("^تنزيل ادمن بالكروب$")  and is_creatorbasic(msg) and msg.reply_to_message_id_ then
 function promote_by_reply(extra, result, success)
@@ -2845,6 +2844,7 @@ HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?cha
 tsX000("prore",msg,'※ تم تنزيله ادمن   في الكروب ✓ 👨🏻‍🚒')
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
+return false
 end
 if text:match("^تنزيل ادمن بالكروب @(.*)$") and is_creatorbasic(msg) then
 local apmd = {string.match(text, "^(تنزيل ادمن بالكروب) @(.*)$")}
@@ -2858,6 +2858,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apmd[2],promote_by_username)
+return false
 end
 ---------------------------------------
 -------------------------------------
@@ -2865,6 +2866,7 @@ if text:match("^تنزيل منشئ بالكروب (%d+)$") and  is_creatorbasic
 local apmd = {string.match(text, "^(تنزيل منشئ بالكروب) (%d+)$")}
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..apmd[2].."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
 tsX000(apmd[2],msg,'※ تم تنزيله منشئ   في الكروب ✓ 👨🏻‍🚒')
+return false
 end
 if text:match("^تنزيل منشئ بالكروب$")  and is_creatorbasic(msg) and msg.reply_to_message_id_ then
 function promote_by_reply(extra, result, success)
@@ -2872,6 +2874,7 @@ HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?cha
 tsX000("prore",msg,'※ تم تنزيله منشئ   في الكروب ✓ 👨🏻‍🚒')
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
+return false
 end
 if text:match("^تنزيل منشئ بالكروب @(.*)$") and is_creatorbasic(msg) then
 local apmd = {string.match(text, "^(تنزيل منشئ بالكروب) @(.*)$")}
@@ -2885,6 +2888,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apmd[2],promote_by_username)
+return false
 end
 ---------------------------
 if text:match("^رفع ادمن$")  and (is_owner(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ then
@@ -2907,6 +2911,7 @@ tsX000("prore",msg,'※ تم رفعة ادمن   في البوت ✓ 👨🏻‍
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
+return false
 end
 if text:match("^رفع ادمن @(.*)$") and (is_owner(msg) or is_creatorbasic(msg)) then
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
@@ -2929,6 +2934,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apmd[2],promote_by_username)
+return false
 end
 if text:match("^رفع ادمن (%d+)$") and (is_owner(msg) or is_creatorbasic(msg)) then
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
@@ -2945,9 +2951,9 @@ data = JSON.decode(url)
 if data.Ch_Member.TshAkE ~= true then
 send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
 return false end
-
 database:sadd('tshake:'..bot_id..'mods:'..msg.chat_id_, apmd[2])
 tsX000(apmd[2],msg,"※ تم رفعة ادمن   في البوت ✓ 👨🏻‍🚒")
+return false
 end
 if text:match("^تنزيل ادمن$") and (is_owner(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ then
 function demote_by_reply(extra, result, success)
@@ -2960,6 +2966,7 @@ tsX000("prore",msg,"※ تم تنزيله من ادمنيه البوت ✓ 🧙�
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,demote_by_reply)
+return false
 end
 if text:match("^تنزيل ادمن @(.*)$") and (is_owner(msg) or is_creatorbasic(msg)) then
 local hash =  'tshake:'..bot_id..'mods:'..msg.chat_id_
@@ -2974,12 +2981,14 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apmd[2],demote_by_username)
+return false
 end
 if text:match("^تنزيل ادمن (%d+)$") and (is_owner(msg) or is_creatorbasic(msg)) then
 local hash =  'tshake:'..bot_id..'mods:'..msg.chat_id_
 local apmd = {string.match(text, "^(تنزيل ادمن) (%d+)$")}
 database:srem(hash, apmd[2])
 tsX000(apmd[2],msg,"※ تم تنزيله من ادمنيه البوت ✓ 🧙🏻‍♂️")
+return false
 end
 if (text:match("^رفع عضو مميز$") or text:match("^رفع مميز$"))  and (is_owner(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ then
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
@@ -3000,6 +3009,7 @@ tsX000("prore",msg,"※ تم رفعة عضو مميز  في البوت ✓ 👶�
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
+return false
 end
 local text = text:gsub('رفع مميز','رفع عضو مميز')
 if text:match("^رفع عضو مميز @(.*)$") and (is_owner(msg) or is_creatorbasic(msg)) then
@@ -3022,6 +3032,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apmd[2],promote_by_username)
+return false
 end
 local text = text:gsub('رفع مميز','رفع عضو مميز')
 if text:match("^رفع عضو مميز (%d+)$") and (is_owner(msg) or is_creatorbasic(msg)) then
@@ -3036,6 +3047,7 @@ send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطي
 return false end
 database:sadd('tshake:'..bot_id..'vipgp:'..msg.chat_id_, apmd[2])
 tsX000(apmd[2],msg,"※ تم رفعة عضو مميز  في البوت ✓ 👶🏻")
+return false
 end
 if text and text == "تعين الايدي" and (is_owner(msg) or is_creatorbasic(msg)) then
 send(msg.chat_id_, msg.id_, 1,  '☑┇ ارسل الان النص\n☑┇ يمكنك اضافه :\n- `#username` > اسم المستخدم\n- `#msgs` > عدد رسائل المستخدم\n- `#photos` > عدد صور المستخدم\n- `#id` > ايدي المستخدم\n- `#auto` > تفاعل المستخدم\n- `#stast` > موقع المستخدم \n- `#edit` > عدد السحكات\n- `#game` > المجوهرات', 1, 'md')
@@ -3062,6 +3074,7 @@ tsX000("prore",msg,"※ تم تنزيله من اعضاء الممزين الب�
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,demote_by_reply)
+return false
 end
 local text = text:gsub('تنزيل مميز','تنزيل عضو مميز')
 if text:match("^تنزيل عضو مميز @(.*)$") and (is_owner(msg) or is_creatorbasic(msg)) then
@@ -3077,6 +3090,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apmd[2],demote_by_username)
+return false
 end
 local text = text:gsub('تنزيل مميز','تنزيل عضو مميز')
 if text:match("^تنزيل عضو مميز (%d+)$") and (is_owner(msg) or is_creatorbasic(msg)) then
@@ -3084,6 +3098,7 @@ local hash =  'tshake:'..bot_id..'vipgp:'..msg.chat_id_
 local apmd = {string.match(text, "^(تنزيل عضو مميز) (%d+)$")}
 database:srem(hash, apmd[2])
 tsX000(apmd[2],msg,"※ تم تنزيله من اعضاء الممزين البوت ✓👨🏻‍🚒")
+return false
 end  
 if text:match("^حظر$") and (is_mod(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ ~= 0 then
 if not is_creator(msg) and database:get("Tshake:lock:ban_and_kick"..bot_id..msg.chat_id_) then 
@@ -3106,6 +3121,7 @@ end
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,ban_by_reply)
+return false
 end
 
 if text:match("^حظر @(.*)$") and (is_mod(msg) or is_creatorbasic(msg)) then
@@ -3129,6 +3145,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apba[2],ban_by_username)
+return false
 end
 
 if text:match("^حظر (%d+)$") and (is_mod(msg) or is_creatorbasic(msg)) then
@@ -3144,6 +3161,7 @@ database:sadd('tshake:'..bot_id..'banned:'..msg.chat_id_, apba[2])
 chat_kick(msg.chat_id_, apba[2])  
 tsX000(apba[2],msg,"☑┇تم حظره من المجموعه")
 end
+return false
 end
 if text:match("^رفع القيود$") and (is_mod(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ ~= 0 then
 function clear_all1(extra, result, success)
@@ -3154,6 +3172,7 @@ database:del(hash1, result.sender_user_id_)
 tsX000("prore",msg,"☑┇تم تحريره من القيود")
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,clear_all1)
+return false
 end
 if text:match("^رفع القيود @(.*)$") and (is_mod(msg) or is_creatorbasic(msg)) then
 local apba = {string.match(text, "^(رفع القيود) @(.*)$")}
@@ -3166,12 +3185,14 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apba[2],clear_all)
+return false
 end
 if text:match("^رفع القيود (%d+)$") and (is_mod(msg) or is_creatorbasic(msg)) then
 local apba = {string.match(text, "^رفع القيود (%d+)$")}
 database:del('tshake:'..bot_id..'banned:'..msg.chat_id_, apba[2])
 database:del('tshake:'..bot_id..'muted:'..msg.chat_id_, apba[2])
 tsX000(apba[2],msg,"☑┇تم تحريره من القيود")
+return false
 end
 if text:match("^كشف القيود @(.*)$") then
 local ap = {string.match(text, "^(كشف القيود) @(.*)$")}
@@ -3195,6 +3216,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(ap[2],kewd_by_username)
+return false
 end
 ----------------------------------------------unban--------------------------------------------
 if text:match("^الغاء حظر$") and (is_mod(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ then
@@ -3208,15 +3230,18 @@ tsX000("prore",msg,"☑┇تم الغاء حظره من البوت")
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,unban_by_reply)
+return false
 end
-if is_mod(msg) then 
+ 
 if text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") then   
+if is_mod(msg) then 
 local glink = text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") 
 database:set('tshake:'..bot_id.."group:link"..msg.chat_id_,glink) 
 send(msg.chat_id_, msg.id_, 1, '☑️┇تم وضع رابط', 1, 'md') 
 send(msg.chat_id_, 0, 1, '↙️┇رابط المجموعه الجديد\n'..glink, 1, 'html')
 end 
 end
+
 if text:match("^الغاء حظر @(.*)$") and (is_mod(msg) or is_creatorbasic(msg)) then
 local apba = {string.match(text, "^(الغاء حظر) @(.*)$")}
 function unban_by_username(extra, result, success)
@@ -3229,12 +3254,14 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apba[2],unban_by_username)
+return false
 end
 
 if text:match("^الغاء حظر (%d+)$") and (is_mod(msg) or is_creatorbasic(msg)) then
 local apba = {string.match(text, "^(الغاء حظر) (%d+)$")}
 database:srem('tshake:'..bot_id..'banned:'..msg.chat_id_, apba[2])
 tsX000(apba[2],msg,"☑┇تم الغاء حظره من البوت") 
+return false
 end
 
 if text:match("^الغاء حظر$") and (is_mod(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ then
@@ -3249,6 +3276,7 @@ end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,unban_by_reply)
 end
 bot.channel_get_kicked(msg.chat_id_,moody)
+return false
 end
 
 if text:match("^الغاء حظر @(.*)$") and (is_mod(msg) or is_creatorbasic(msg)) then
@@ -3267,6 +3295,7 @@ end
 resolve_username(apba[2],unban_by_username)
 end
 bot.channel_get_kicked(msg.chat_id_,moody)
+return false
 end
 
 if text:match("^الغاء حظر (%d+)$") and (is_mod(msg) or is_creatorbasic(msg)) then
@@ -3278,6 +3307,7 @@ bot.changeChatMemberStatus(msg.chat_id_, apba[2], "Left")
 end
 end
 bot.channel_get_kicked(msg.chat_id_,moody)
+return false
 end
 
 if text:match("^حذف الكل$") and (is_owner(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ then
@@ -3328,6 +3358,7 @@ chat_kick(result.chat_id_, result.sender_user_id_)
 tsX000("prore",msg,"🚫┇تم حظره من مجموعات البوت")
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,gban_by_reply)
+return false
 end
 
 if text:match("^حظر عام @(.*)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
@@ -3343,6 +3374,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apbll[2],gban_by_username)
+return false
 end
 
 if text:match("^حظر عام (%d+)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
@@ -3350,6 +3382,7 @@ local apbll = {string.match(text, "^(حظر عام) (%d+)$")}
 local hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, apbll[2])
 tsX000(apbll[2],msg,"🚫┇تم حظره من المجموعات البوت")
+return false
 end
 if text:match("^الغاء العام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
 function ungban_by_reply(extra, result, success)
@@ -3358,6 +3391,7 @@ tsX000("prore",msg,"🚫┇تم الغاء حظره من المجموعات ال
 database:srem(hash, result.sender_user_id_)
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,ungban_by_reply)
+return false
 end
 
 if text:match("^الغاء العام @(.*)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
@@ -3373,6 +3407,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apid[2],ungban_by_username)
+return false
 end
 
 if text:match("^الغاء العام (%d+)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
@@ -3380,6 +3415,7 @@ local apbll = {string.match(text, "^(الغاء العام) (%d+)$")}
 local hash =  'tshake:'..bot_id..'gbanned:'
 database:srem(hash, apbll[2])
 tsX000(apbll[2],msg,"🚫┇تم الغاء حظره من مجموعات البوت")
+return false
 end
 
 if text:match("^كتم عام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
@@ -3389,6 +3425,7 @@ database:sadd(hash, result.sender_user_id_)
 tsX000("prore",msg,"🚫┇تم كتمه من المجموعات البوت")
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,gmute_by_reply)
+return false
 end
 
 if text:match("^كتم عام @(.*)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
@@ -3404,6 +3441,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apbll[2],gmute_by_username)
+return false
 end
 
 if text:match("^كتم عام (%d+)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
@@ -3411,6 +3449,7 @@ local apbll = {string.match(text, "^(كتم عام) (%d+)$")}
 local hash =  'tshake:'..bot_id..'gmuted:'
 database:sadd(hash, apbll[2])
 tsX000(apbll[2],msg,"🚫┇تم كتمه من المجموعات البوت")
+return false
 end
 if text:match("^الغاء كتم العام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
 function ungmute_by_reply(extra, result, success)
@@ -3419,6 +3458,7 @@ tsX000("prore",msg,"🚫┇تم الغاء كتمه من المجموعات ال
 database:srem(hash, result.sender_user_id_)
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,ungmute_by_reply)
+return false
 end
 
 if text:match("^الغاء كتم العام @(.*)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
@@ -3434,6 +3474,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apid[2],ungmute_by_username)
+return false
 end
 
 if text:match("^الغاء كتم العام (%d+)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
@@ -3441,6 +3482,7 @@ local apbll = {string.match(text, "^(الغاء كتم العام) (%d+)$")}
 local hash =  'tshake:'..bot_id..'gmuted:'
 database:srem(hash, apbll[2])
 tsX000(apbll[2],msg,"🚫┇تم الغاء كتمه من المجموعات البوت")
+return false
 end
 
 if text:match("^كتم$") and (is_mod(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ ~= 0 then
@@ -3458,6 +3500,7 @@ end
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,mute_by_reply)
+return false
 end
 if text:match("^كتم @(.*)$") and (is_mod(msg) or is_creatorbasic(msg)) then
 local apsi = {string.match(text, "^(كتم) @(.*)$")}
@@ -3475,6 +3518,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apsi[2],mute_by_username)
+return false
 end
 if text:match("^كتم (%d+)$") and (is_mod(msg) or is_creatorbasic(msg)) then
 local apsi = {string.match(text, "^(كتم) (%d+)$")}
@@ -3484,6 +3528,7 @@ else
 database:sadd('tshake:'..bot_id..'muted:'..msg.chat_id_, apsi[2])
 tsX000(apsi[2],msg,"🚫┇تم كتمه من البوت")
 end
+return false
 end
 if text:match("^الغاء كتم$") and (is_mod(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ then
 function unmute_by_reply(extra, result, success)
@@ -3496,6 +3541,7 @@ tsX000("prore",msg,"🚫┇تم الغاء كتمه من البوت")
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,unmute_by_reply)
+return false
 end
 if text:match("^الغاء كتم @(.*)$") and (is_mod(msg) or is_creatorbasic(msg)) then
 local apsi = {string.match(text, "^(الغاء كتم) @(.*)$")}
@@ -3509,12 +3555,14 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apsi[2],unmute_by_username)
+return false
 end
 
 if text:match("^الغاء كتم (%d+)$") and (is_mod(msg) or is_creatorbasic(msg)) then
 local apsi = {string.match(text, "^(الغاء كتم) (%d+)$")}
 database:srem('tshake:'..bot_id..'muted:'..msg.chat_id_, apsi[2])
 tsX000(apsi[2],msg,"🚫┇تم الغاء كتمه من البوت")
+return false
 end
 
 if text:match("^طرد$") and msg.reply_to_message_id_ ~=0 and (is_mod(msg) or is_creatorbasic(msg)) then
@@ -3531,6 +3579,7 @@ chat_kick(result.chat_id_, result.sender_user_id_)
 end
 end
 getMessage(msg.chat_id_,msg.reply_to_message_id_,kick_reply)
+return false
 end  
 if text:match("^طرد @(.*)$") and (is_mod(msg) or is_creatorbasic(msg)) then 
 if not is_creator(msg) and database:get("Tshake:lock:ban_and_kick"..bot_id..msg.chat_id_) then 
@@ -3552,6 +3601,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apki[2],kick_by_username)
+return false
 end  
 if text:match("^طرد (%d+)$") and (is_mod(msg) or is_creatorbasic(msg)) then 
 if not is_creator(msg) and database:get("Tshake:lock:ban_and_kick"..bot_id..msg.chat_id_) then 
@@ -3565,6 +3615,7 @@ else
 chat_kick(msg.chat_id_, apki[2])
 tsX000(apki[2],msg,"🚫┇تم طرده من المجموعه")
 end
+return false
 end
 if text:match("^تنزيل الكل$")and msg.reply_to_message_id_ then
 function promote_by_reply(extra, result, success)
@@ -3633,6 +3684,7 @@ tsX000("prore",msg,"※ تم رفعة مدير في البوت ✓ 👩🏿‍�
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,setowner_by_reply)
+return false
 end  
 if text:match("^رفع مدير @(.*)$") and (is_creator(msg) or is_creatorbasic(msg)) then
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
@@ -3652,6 +3704,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apow[2],setowner_by_username)
+return false
 end 
 
 if text:match("^رفع مدير (%d+)$") and (is_creator(msg) or is_creatorbasic(msg)) then
@@ -3660,10 +3713,10 @@ data = JSON.decode(url)
 if data.Ch_Member.TshAkE ~= true then
 send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
 return false end
-
 local apow = {string.match(text, "^(رفع مدير) (%d+)$")}
 database:sadd('tshake:'..bot_id..'owners:'..msg.chat_id_, apow[2])
 tsX000(apow[2],msg,"※ تم رفعة مدير في البوت ✓ 👩🏿‍🚒")
+return false
 end  
 if text:match("^تنزيل مدير$") and (is_creator(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ then
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
@@ -3671,7 +3724,6 @@ data = JSON.decode(url)
 if data.Ch_Member.TshAkE ~= true then
 send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
 return false end
-
 function deowner_by_reply(extra, result, success)
 local hash =  'tshake:'..bot_id..'owners:'..msg.chat_id_
 if not database:sismember(hash, result.sender_user_id_) then
@@ -3682,6 +3734,7 @@ tsX000("prore",msg,"※ تم تنزيله من مدراء  البوت ✓👨�
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,deowner_by_reply)
+return false
 end  
 if text:match("^تنزيل مدير @(.*)$") and (is_creator(msg) or is_creatorbasic(msg)) then
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
@@ -3689,7 +3742,6 @@ data = JSON.decode(url)
 if data.Ch_Member.TshAkE ~= true then
 send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
 return false end
-
 local apow = {string.match(text, "^(تنزيل مدير) @(.*)$")}
 local hash =  'tshake:'..bot_id..'owners:'..msg.chat_id_
 function remowner_by_username(extra, result, success)
@@ -3702,6 +3754,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apow[2],remowner_by_username)
+return false
 end  
 if text:match("^تنزيل مدير (%d+)$") and (is_creator(msg) or is_creatorbasic(msg)) then
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
@@ -3709,11 +3762,11 @@ data = JSON.decode(url)
 if data.Ch_Member.TshAkE ~= true then
 send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
 return false end
-
 local hash =  'tshake:'..bot_id..'owners:'..msg.chat_id_
 local apow = {string.match(text, "^(تنزيل مدير) (%d+)$")}
 database:srem(hash, apow[2])
 tsX000(apow[2],msg,"※ تم تنزيله من مدراء  البوت ✓👨🏻‍⚖️")
+return false
 end
 if text:match("^الادمنيه$") and (is_owner(msg) or is_creatorbasic(msg)) then
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
@@ -3721,7 +3774,6 @@ data = JSON.decode(url)
 if data.Ch_Member.TshAkE ~= true then
 send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
 return false end
-
 local hash =   'tshake:'..bot_id..'mods:'..msg.chat_id_
 local list = database:smembers(hash)
 text = "👨‍👧‍👦 ※ قائمه الادمنيه  ✓ ،\nꔹ┉♦️┉ ┉ ┉ ┉♦️┉ꔹ \n"
@@ -4141,7 +4193,7 @@ database:set('tshake:'..bot_id..'flood:max:'..msg.chat_id_,floodmax[2])
 send(msg.chat_id_, msg.id_, 1, '☑┇تم  وضع التكرار بالطرد للعدد ~⪼  *{'..floodmax[2]..'}*', 1, 'md')
 end
 end
-if text and text == "وضع رابط" and is_admin(msg) then 
+if text and text == "وضع رابط" and is_mod(msg) then 
 send(msg.chat_id_, msg.id_, 1, '💥┇ارسال الان رابط المجموعه', 1, "md") 
 database:set("keko:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_,true)
 return "keko"
@@ -6544,7 +6596,7 @@ name = string.gsub(name,'⛈','🌨🌨🌨🌨🌨⛈🌨🌨🌨🌨')
 name = string.gsub(name,'🌥','⛅️⛅️⛅️⛅️⛅️⛅️🌥⛅️⛅️⛅️⛅️')
 name = string.gsub(name,'⛄️','☃☃☃☃☃☃⛄️☃☃☃☃')
 name = string.gsub(name,'👨‍🔬','👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👨‍🔬👩‍🔬👩‍🔬👩‍🔬')
-name = string.gsub(name,'👨‍💻','👩‍💻👩‍💻👩‍💻👩‍💻👩‍💻👩‍💻👨‍💻👩‍💻👩‍💻👩‍💻')
+name = string.gsub(name,'👨‍💻','👩‍💻👩‍💻👩‍💻👩‍💻👩‍💻👩‍💻??‍💻👩‍💻👩‍💻👩‍💻')
 name = string.gsub(name,'👨‍🔧','👩‍🔧👩‍🔧👩‍🔧👩‍🔧👩‍🔧👩‍🔧👨‍🔧👩‍🔧')
 name = string.gsub(name,'👩‍🍳','👨‍🍳👨‍🍳👨‍🍳👨‍🍳👨‍🍳👩‍🍳👨‍🍳👨‍🍳👨‍🍳')
 name = string.gsub(name,'🧚‍♀','🧚‍♂🧚‍♂🧚‍♂🧚‍♂🧚‍♀🧚‍♂🧚‍♂')
@@ -7353,16 +7405,21 @@ delete_msg(msg.chat_id_,msgs)
 end 
 end 
 end
-     if (not is_creator(msgg) ) then
-check_filter_words(result, text)
-if database:get("lock_edit:tshake"..msg.chat_id_..bot_id) then
-send(msg.chat_id_, data.message_id_, 1, " ❗️※ انتبه ! \n هناك شخص قام بالتعديل وتم حذف رسالته " , 1, 'md') 
-local id = msg.message_id_
-local msgs = {[0] = id}
-local chat = msg.chat_id_
-delete_msg(chat,msgs) 
+
+if database:get("lock_edit:tshake"..msg.chat_id_..bot_id) and not result.content_.text_ and not is_creator(msgg) then
+function get_edit(arg,data)
+local username = data.username_
+local name = data.first_name_
+local iduser = data.id_
+if data.username_ ~= false then
+send(msg.chat_id_,0, 1, "⚠┇#تحذير \n🔖┇قام شخصآ ما في المجموعه بالتعديل على الميديا يرجى الانتباه \n📫┇الشخص الي قام بالتعديل \n (@"..data.username_..")" , 1, 'html') 
+else
+send(msg.chat_id_,0, 1, "[⚠┇#تحذير] \n🔖┇قام شخصآ ما في المجموعه بالتعديل على الميديا يرجى الانتباه \n📫┇الشخص الي قام بالتعديل \n ["..data.first_name_.."](T.ME/TSHAKETEAM)" , 1, 'md') 
 end
- end 
+end
+getUser(result.sender_user_id_,get_edit)
+delete_msg(msg.chat_id_,{[0] = msg.message_id_}) 
+end
 if (not is_vip(msgg) and text) then
 check_filter_words(result, text)
 if text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or
