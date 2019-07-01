@@ -822,6 +822,7 @@ tsX000("prore",msg,'☑┇تم رفعه مطور')
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
+return false
 end
 
 if text:match("^اضف مطور @(.*)$")  then
@@ -837,12 +838,14 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apmd[2],promote_by_username)
+return false
 end
 if text:match("^اضف مطور (%d+)$")   then
 local apmd = {string.match(text, "^(اضف مطور) (%d+)$")}
 redis:set('tshake:'..bot_id..'sudoo'..apmd[2]..'', 'yes')
 redis:sadd('tshake:'..bot_id..'dev', apmd[2])
 tsX000(apmd[2],msg,'☑┇تم رفعه مطور')
+return false
 end
 
 if text:match("^حذف مطور$")  and msg.reply_to_message_id_ then
@@ -856,6 +859,7 @@ tsX000("prore",msg,'☑┇ تم تنزيله من مطورين البوت')
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,demote_by_reply)
+return false
 end
 
 if text:match("^حذف مطور @(.*)$")  then
@@ -871,12 +875,14 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apmd[2],demote_by_username)
+return false
 end  
 if text:match("^حذف مطور (%d+)$")  then
 local apmd = {string.match(text, "^(حذف مطور) (%d+)$")}
 redis:del('tshake:'..bot_id..'sudoo'..apmd[2]..'', 'no')
 redis:srem('tshake:'..bot_id..'dev', apmd[2])
 tsX000(apmd[2],msg,'☑┇ تم تنزيله من مطورين البوت')
+return false
 end
 if text:match("^حظر عام$")   and msg.reply_to_message_id_ then
 function gban_by_reply(extra, result, success)
@@ -890,10 +896,9 @@ tsX000("prore",msg,"🚫┇تم حظره من مجموعات البوت")
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,gban_by_reply)
+return false
 end
-if text:match("^ارسل التوكن$")  then
-send(msg.chat_id_, msg.id_, 1, token, 1, 'html')
-end
+
 if text:match("^حظر عام @(.*)$")   then
 local apbll = {string.match(text, "^(حظر عام) @(.*)$")}
 function gban_by_username(extra, result, success)
@@ -911,6 +916,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apbll[2],gban_by_username)
+return false
 end
 
 if text:match("^حظر عام (%d+)$")   then
@@ -922,6 +928,7 @@ else
 database:sadd(hash, apbll[2])
 tsX000(apbll[2],msg,"🚫┇تم حظره من المجموعات البوت")
 end
+return false
 end
 if text:match("^الغاء العام$")   and msg.reply_to_message_id_ then
 function ungban_by_reply(extra, result, success)
@@ -930,6 +937,7 @@ tsX000("prore",msg,"🚫┇تم الغاء حظره من المجموعات ال
 database:srem(hash, result.sender_user_id_)
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,ungban_by_reply)
+return false
 end
 
 if text:match("^الغاء العام @(.*)$")   then
@@ -945,6 +953,7 @@ end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apid[2],ungban_by_username)
+return false
 end
 
 if text:match("^الغاء العام (%d+)$")   then
@@ -952,6 +961,7 @@ local apbll = {string.match(text, "^(الغاء العام) (%d+)$")}
 local hash =  'tshake:'..bot_id..'gbanned:'
 database:srem(hash, apbll[2])
 tsX000(apbll[2],msg,"🚫┇تم الغاء حظره من مجموعات البوت")
+return false
 end
 
 if text:match("^تحديث السورس$")  then
@@ -6595,7 +6605,7 @@ name = string.gsub(name,'✨','💫💫💫💫💫✨💫💫💫💫')
 name = string.gsub(name,'⛈','🌨🌨🌨🌨🌨⛈🌨🌨🌨🌨')
 name = string.gsub(name,'🌥','⛅️⛅️⛅️⛅️⛅️⛅️🌥⛅️⛅️⛅️⛅️')
 name = string.gsub(name,'⛄️','☃☃☃☃☃☃⛄️☃☃☃☃')
-name = string.gsub(name,'👨‍🔬','👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👨‍🔬👩‍🔬👩‍🔬👩‍🔬')
+name = string.gsub(name,'👨‍🔬','👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👨‍🔬👩‍🔬👩‍🔬👩‍??')
 name = string.gsub(name,'👨‍💻','👩‍💻👩‍💻👩‍💻👩‍💻👩‍💻👩‍💻??‍💻👩‍💻👩‍💻👩‍💻')
 name = string.gsub(name,'👨‍🔧','👩‍🔧👩‍🔧👩‍🔧👩‍🔧👩‍🔧👩‍🔧👨‍🔧👩‍🔧')
 name = string.gsub(name,'👩‍🍳','👨‍🍳👨‍🍳👨‍🍳👨‍🍳👨‍🍳👩‍🍳👨‍🍳👨‍🍳👨‍🍳')
