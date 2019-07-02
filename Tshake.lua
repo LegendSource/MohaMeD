@@ -2056,7 +2056,7 @@ message_ids_ = {[0] = storm.id_},
 disable_notification_ = 1,
 from_background_ = 1},cb or dl_cb,cmd) 
 end
-local gps = database:scard('tshake:'..bot_id.."groups")  
+local gps = database:scard('tshake:'..bot_id.."userss")  
 local text = '♻┇ تم ارسال توجيه الى *{ '..gps..' }* مشترك في الخاص'  
 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')  
 end  
