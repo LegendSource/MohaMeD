@@ -2044,6 +2044,25 @@ send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end  
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),fwwdmsg)  
 end
+if text == 'توجيه خاص' and tonumber(msg.reply_to_message_id_) > 0  and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then  
+function fwwdmsg(taha,storm,sorc)  
+local list = database:smembers('tshake:'..bot_id.."userss")
+for k,v in pairs(list) do  
+tdcli_function ({
+ID = "ForwardMessages",
+chat_id_ = v,
+from_chat_id_ = msg.chat_id_,
+message_ids_ = {[0] = storm.id_},
+disable_notification_ = 1,
+from_background_ = 1},cb or dl_cb,cmd) 
+end
+local gps = database:scard('tshake:'..bot_id.."groups")  
+local text = '♻┇ تم ارسال توجيه الى *{ '..gps..' }* مشترك في الخاص'  
+send(msg.chat_id_, msg.id_, 1, text, 1, 'md')  
+end  
+getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),fwwdmsg)  
+end
+
 if text and text == "اذاعه" then 
 if (not database:get('tshake:'..bot_id..'bc:groups') or tonumber(sudo_add) == tonumber(msg.sender_user_id_)) then
 send(msg.chat_id_, msg.id_, 1, '☑┇ ارسال الان نص او الميديا : (صوره - فديو - متحركه - ملف)', 1, 'md')
@@ -2053,47 +2072,103 @@ else
 send(msg.chat_id_, msg.id_, 1, '☑┇ الاذاعه معطله ', 1, 'md')
 end
 end
-if text == "تنظيف الكروبات الوهميه" and tonumber(msg.sender_user_id_) == tonumber(sudo_add)  then
-local group = database:smembers("thsake:gog"..bot_id)
-local t = 0
-local s = 0
+
+
+
+
+if text=="اذاعه خاص" and msg.reply_to_message_id_ == 0 then 
+if (not database:get('tshake:'..bot_id..'bc:groups') or tonumber(sudo_add) == tonumber(msg.sender_user_id_)) then
+database:setex('tshake:'..bot_id.."bc:in:pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
+send(msg.chat_id_, msg.id_, 1, "☑┇ ارسال الان نص او الميديا : (صوره - فديو - متحركه )\n", 1, "md") 
+else
+send(msg.chat_id_, msg.id_, 1, '☑┇ الاذاعه معطله ', 1, 'md')
+end
+return false
+end 
+
+
+if text == "تنظيف المشتركين" and tonumber(sudo_add) == tonumber(msg.sender_user_id_) then
+local pv = database:smembers('tshake:'..bot_id.."userss")
+local sendok = 0
+for i = 1, #pv do
+tdcli_function({ID='GetChat',chat_id_ = pv[i]
+},function(arg,dataq)
+tdcli_function ({ ID = "SendChatAction",  
+chat_id_ = pv[i], action_ = {  ID = "SendMessageTypingAction", progress_ = 100} 
+},function(arg,data) 
+if data.ID and data.ID == "Ok"  then
+print('\27[30;33m»» THE USER IS SAVE ME ↓\n»» '..pv[i]..'\n\27[1;37m')
+else
+print('\27[30;31m»» THE USER IS BLOCK ME ↓\n»» '..pv[i]..'\n\27[1;37m')
+database:srem('tshake:'..bot_id.."userss",pv[i])
+sendok = sendok + 1
+end
+if #pv == i then 
+if sendok == 0 then
+send(msg.chat_id_, msg.id_, 1,'🔖┇ لا يوجد مشتركين وهميين في البوت \n', 1, 'md')   
+else
+local ok = #pv - sendok
+send(msg.chat_id_, msg.id_, 1,'🔖┇ عدد المشتركين الان ↫ ( '..#pv..' )\n📬┇ تم ازالة ↫ ( '..sendok..' ) من المشتركين\n📌┇ الان عدد المشتركين الحقيقي ↫ ( '..ok..' ) مشترك \n', 1, 'md')   
+end
+end
+end,nil)
+end,nil)
+end
+return false
+end
+
+if text == "تنظيف الكروبات" and tonumber(sudo_add) == tonumber(msg.sender_user_id_) then
+local group = database:smembers('tshake:'..bot_id..'groups') 
+local w = 0
+local q = 0
 for i = 1, #group do
 tdcli_function({ID='GetChat',chat_id_ = group[i]
 },function(arg,data)
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusMember" then
+print('\27[30;34m»» THE BOT IS NOT ADMIN ↓\n»» '..group[i]..'\n\27[1;37m')
 database:srem("thsake:gog"..bot_id,group[i]) 
+database:srem('tshake:'..bot_id..'pro:groups',group[i]) 
+database:srem( 'tshake:'..bot_id.."groups",group[i]) 
 changeChatMemberStatus(group[i], bot_id, "Left")
-t = t + 1
+w = w + 1
 end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusLeft" then
 database:srem("thsake:gog"..bot_id,group[i]) 
-s = s + 1
+database:srem('tshake:'..bot_id..'pro:groups',group[i]) 
+database:srem( 'tshake:'..bot_id.."groups",group[i]) 
+q = q + 1
+print('\27[30;35m»» THE BOT IS LEFT GROUP ↓\n»» '..group[i]..'\n\27[1;37m')
 end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusKicked" then
 database:srem("thsake:gog"..bot_id,group[i]) 
-s = s + 1
+database:srem('tshake:'..bot_id..'pro:groups',group[i]) 
+database:srem( 'tshake:'..bot_id.."groups",group[i]) 
+q = q + 1
+print('\27[30;36m»» THE BOT IS KICKED GROUP ↓\n»» '..group[i]..'\n\27[1;37m')
 end
 if data and data.code_ and data.code_ == 400 then
 database:srem("thsake:gog"..bot_id,group[i]) 
-t = t + 1
+database:srem('tshake:'..bot_id..'pro:groups',group[i]) 
+database:srem( 'tshake:'..bot_id.."groups",group[i]) 
+w = w + 1
 end
 if #group == i then 
-if (t + s) == 0 then
-send(msg.chat_id_, msg.id_, 1,'*🔎※ليس هنالك اي مجموعات وهميه في البوت* ', 1, 'md')   
+if (w + q) == 0 then
+send(msg.chat_id_, msg.id_, 1,'*📮¦ لا يوجد مجموعات وهميه في البوت* \n🍃', 1, 'md')   
 else
-local kara = (t + s)
-local sendok = #group - kara
-if s == 0 then
-kara = ''
+local taha = (w + q)
+local sendok = #group - taha
+if q == 0 then
+taha = ''
 else
-kara = '\n*🗑 ※ تم ازالة ← ❪ '..s..' ❫ مجموعات من البوت*'
+taha = '\n*🚸¦ تم ازالة ↫ ❪ '..q..' ❫ مجموعات من البوت*'
 end
-if t == 0 then
-tshake = ''
+if w == 0 then
+storm = ''
 else
-tshake = '\n*🗑 ※ تم ازالة ← ❪'..t..'❫ مجموعه لان البوت عضو*'
+storm = '\n*📬¦ تم ازالة ↫ ❪'..w..'❫ مجموعه لان البوت عضو*'
 end
-send(msg.chat_id_, msg.id_, 1,'*📈※ عدد المجموعات الان ← ❪ '..#group..' ❫*'..tshake..''..kara..'\n*🗳※ الان عدد المجموعات الحقيقي ← ❪ '..sendok..' ❫ مجموعات*', 1, 'md')   
+send(msg.chat_id_, msg.id_, 1,'*📮¦ عدد المجموعات الان ↫ ❪ '..#group..' ❫*'..storm..''..taha..'\n*📡¦ الان عدد المجموعات الحقيقي ↫ ❪ '..sendok..' ❫ مجموعات*\n💥', 1, 'md')   
 end
 end
 end,nil)
@@ -7257,6 +7332,50 @@ end
 end
 local msg = data.message_
 text = msg.content_.text_
+
+if database:get('tshake:'..bot_id.."bc:in:pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
+if text and text:match("^الغاء$") or text and text:match("^الغاء ✖$") then   
+send(msg.chat_id_, msg.id_, 1, "*📬¦ تم الغاء الاذاعه للمشتركين *\n✓", 1, "md") 
+database:del('tshake:'..bot_id.."bc:in:pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
+else 
+local gps = database:scard('tshake:'..bot_id.."userss") or 0 
+if msg.content_.text_ then
+whatbc = 'الرساله'
+local list = database:smembers('tshake:'..bot_id..'userss') 
+for k,v in pairs(list) do 
+send(v, 0, 1, '[ '..msg.content_.text_..' ]', 1, 'md')  
+end
+elseif msg.content_.photo_ then
+whatbc = 'الصور'
+if msg.content_.photo_.sizes_[0] then
+photo = msg.content_.photo_.sizes_[0].photo_.persistent_id_
+elseif msg.content_.photo_.sizes_[1] then
+photo = msg.content_.photo_.sizes_[1].photo_.persistent_id_
+end
+local list = database:smembers('tshake:'..bot_id..'userss') 
+for k,v in pairs(list) do 
+tdcli.sendPhoto(v, 0, 0, 1, nil, photo,(msg.content_.caption_ or ''))
+end 
+elseif msg.content_.animation_ then
+whatbc = 'المتحركه'
+local list = database:smembers('tshake:'..bot_id..'userss') 
+for k,v in pairs(list) do 
+tdcli.sendDocument(v, 0,0, 1, nil, msg.content_.animation_.animation_.persistent_id_)
+end 
+elseif msg.content_.sticker_ then
+whatbc = 'الملصق'
+local list = database:smembers('tshake:'..bot_id..'userss') 
+for k,v in pairs(list) do 
+tdcli.sendSticker(v, 0,0, 1, nil, msg.content_.sticker_.sticker_.persistent_id_)
+end 
+end
+send(msg.chat_id_, msg.id_, 1, '☑┇تم نشر الرساله الى {'..(gps)..'} مشترك ', 1, 'md')
+database:del('tshake:'..bot_id.."bc:in:pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
+end 
+return false
+end 
+
+
 if is_sudo(msg) then 
 if database:get("tshake:set_if_bc_new:"..bot_id..msg.sender_user_id_) then 
 database:del("tshake:set_if_bc_new:"..bot_id..msg.sender_user_id_)
@@ -7661,6 +7780,44 @@ delete_msg(msg.chat_id_,msgs) end end end
 getMessage(msg.chat_id_, msg.message_id_,get_msg_contact)
 --         »»                 End UpdateChat                          ««              --
 elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then 
+local list = database:smembers('tshake:'..bot_id.."userss")
+for k,v in pairs(list) do
+tdcli_function({ID='GetChat',chat_id_ = v},function(arg,data) end,nil)
+end
+local list = database:smembers('tshake:'..bot_id..'groups') 
+for k,v in pairs(list) do 
+tdcli_function({ID='GetChat',chat_id_ = v
+},function(arg,data)
+if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusMember" then
+print('\27[30;32m»» البوت عضو في المجموعه\nتم مغادرة المجموعه \n\27[1;37m')
+changeChatMemberStatus(v, bot_id, "Left")
+database:srem("thsake:gog"..bot_id,v) 
+database:srem('tshake:'..bot_id..'pro:groups',v) 
+database:srem( 'tshake:'..bot_id.."groups",v) 
+end
+if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusLeft" then
+database:srem("thsake:gog"..bot_id,v) 
+database:srem('tshake:'..bot_id..'pro:groups',v) 
+database:srem( 'tshake:'..bot_id.."groups",v) 
+end
+if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusKicked" then
+print('\27[30;32m»» البوت مطرود في المجموعه\nتم مسح بيانات المجموعه \n\27[1;37m')
+database:srem("thsake:gog"..bot_id,v) 
+database:srem('tshake:'..bot_id..'pro:groups',v) 
+database:srem( 'tshake:'..bot_id.."groups",v) 
+end
+if data and data.code_ and data.code_ == 400 then
+database:srem("thsake:gog"..bot_id,v) 
+database:srem('tshake:'..bot_id..'pro:groups',v) 
+database:srem( 'tshake:'..bot_id.."groups",v) 
+end
+if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusEditor" then
+database:srem("thsake:gog"..bot_id,v) 
+database:srem('tshake:'..bot_id..'pro:groups',v) 
+database:srem( 'tshake:'..bot_id.."groups",v) 
+print('\27[30;32m»» البوت ادمن في المجموعه \n\27[1;37m')
+end end,nil) end
+
 tdcli_function ({ID="GetChats", offset_order_="9223372036854775807", offset_chat_id_=0, limit_=20}, dl_cb, nil)
 end
 end
