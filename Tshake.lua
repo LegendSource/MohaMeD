@@ -1889,7 +1889,7 @@ return "stop"
 end
 end
 end
-if msg.content_.ID == "MessageSticker" then
+if msg.content_.ID == "MessageSticker" or msg.content_.ID == "MessageUnsupported" then
 if database:get("lock_stecker:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return "stop"
@@ -7493,6 +7493,7 @@ local chat = {}
 if (data.ID == "UpdateNewMessage") then
 local Data_Tshake = data
 msg = data.message_
+
 text = msg.content_.text_
 if database:get('tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:sadd("thsake:good"..bot_id..os.date("%d"),msg.chat_id_)
