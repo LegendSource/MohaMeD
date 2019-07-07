@@ -3408,7 +3408,7 @@ local apmd = {string.match(text, "^(منح الحظر) @(.*)$")}
 function promote_by_username(extra, result, success)
 if result.id_ then
 database:sadd('tshake:'..bot_id..'SET:BAN'..msg.chat_id_, result.id_)
-texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'MEXlCOTV')..')\n☑┇تم منحه صلاحية الحظر'
+texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'TSHAKETEAM')..')\n☑┇تم منحه صلاحية الحظر'
 else
 texts = '✖┇خطاء'
 end
@@ -3429,7 +3429,7 @@ local apmd = {string.match(text, "^(الغاء منح الحظر) @(.*)$")}
 function promote_by_username(extra, result, success)
 if result.id_ then
 database:srem('tshake:'..bot_id..'SET:BAN'..msg.chat_id_, result.id_)
-texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'MEXlCOTV')..')\n☑┇تم الغاء منحه صلاحية الحظر'
+texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'TSHAKETEAM')..')\n☑┇تم الغاء منحه صلاحية الحظر'
 else
 texts = '✖┇خطاء'
 end
@@ -4469,23 +4469,7 @@ send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(ap[2],id_by_username)
 end  
-if text:match("^جلب صوره (%d+)$") and msg.reply_to_message_id_ == 0 and not database:get('tshake:'..bot_id..'get:photo'..msg.chat_id_) then
-local pronumb = {string.match(text, "^(جلب صوره) (%d+)$")}
-local ph = pronumb[2] - 1
-local function gpro(extra, result, success)
-if result.photos_[ph] then
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[ph].sizes_[1].photo_.persistent_id_)
-else
-send(msg.chat_id_, msg.id_, 1, "❕┇لا تملك صوره رقم <b>{"..pronumb[2].."}</b> في حسابك", 1, 'html')
-end
-end
-tdcli_function ({
-ID = "GetUserProfilePhotos",
-user_id_ = msg.sender_user_id_,
-offset_ = 0,
-limit_ = pronumb[2]
-}, gpro, nil)
-end
+
 if text:match("^وضع تكرار (%d+)$") and (is_owner(msg) or is_creatorbasic(msg)) then
 local floodmax = {string.match(text, "^(وضع تكرار) (%d+)$")}
 if tonumber(floodmax[2]) < 2 then
@@ -5861,22 +5845,7 @@ send(msg.chat_id_, msg.id_, 1, '📸 ※ تم تعطيل  الايدي بالص�
 database:set('tshake:'..bot_id..'id:photo'..msg.chat_id_,true)
 end
 end
-if (text and text == 'تفعيل جلب صوره') and (is_owner(msg) or is_creatorbasic(msg)) then
-if not database:get('tshake:'..bot_id..'get:photo'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '☑┇جلب صوره بالفعل تم تفعيله', 1, 'md')
-else
-send(msg.chat_id_, msg.id_, 1, '☑┇تم تفعيل جلب صوره', 1, 'md')
-database:del('tshake:'..bot_id..'get:photo'..msg.chat_id_)
-end
-end
-if (text and text == 'تعطيل جلب صوره') and (is_owner(msg) or is_creatorbasic(msg)) then
-if database:get('tshake:'..bot_id..'get:photo'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '☑┇جلب صوره بالفعل تم تعطيله', 1, 'md')
-else
-send(msg.chat_id_, msg.id_, 1, '☑┇تم تعطيل جلب صوره', 1, 'md')
-database:set('tshake:'..bot_id..'get:photo'..msg.chat_id_,true)
-end
-end
+
 if  (text and text == 'تفعيل وضع المدفوع') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 if database:sismember('tshake:'..bot_id..'pro:groups',msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇بالفعل تم اضافه المجموعه الى الوضع المدفوع', 1, 'md')
