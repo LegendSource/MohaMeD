@@ -266,7 +266,7 @@ if hash then
 local names = database:hkeys(hash)
 local text = ''
 for i=1, #names do
-if string.match(value:lower(), names[i]:lower()) and not is_vip(msg)then
+if string.match(value:lower(), names[i]:lower()) and not is_vip(msg) and not is_creatorbasic(msg)then
 local id = msg.id_
 local msgs = {[0] = id}
 local chat = msg.chat_id_
@@ -2410,9 +2410,9 @@ floodTime = 1
 else
 floodTime = tonumber(database:get(hash))
 end
-if not is_vip(msg) then
+if not is_vip(msg) and not is_creatorbasic(msg) then
 if bot_id then
-if not is_vip(msg) then
+if not is_vip(msg) and not is_creatorbasic(msg) then
 local hash = 'flood:'..msg.sender_user_id_..':'..msg.chat_id_..':msg-num'
 local msgs = tonumber(database:get(hash) or 0)
 if msgs > (floodMax - 1) then
@@ -7471,7 +7471,7 @@ text = msg.content_.text_
 if database:get('tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:sadd("thsake:good"..bot_id..os.date("%d"),msg.chat_id_)
 database:del("thsake:good"..bot_id..( tonumber(os.date("%d")) - 1) )
-if (not is_mod(msg) and not is_vip(msg)) then 
+if (not is_mod(msg) and not is_vip(msg) and not is_creatorbasic(msg)) then 
 print("»» is member "..msg.sender_user_id_) 
 if is_muted(msg.sender_user_id_, msg.chat_id_) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
@@ -7503,9 +7503,9 @@ floodTime = 1
 else
 floodTime = tonumber(database:get(hash))
 end
-if not is_vip(msg) then
+if not is_vip(msg) and not is_creatorbasic(msg) then
 if bot_id then
-if not is_vip(msg) then
+if not is_vip(msg) and not is_creatorbasic(msg) then
 local hash = 'flood:'..msg.sender_user_id_..':'..msg.chat_id_..':msg-num'
 local msgs = tonumber(database:get(hash) or 0)
 if msgs > (floodMax - 1) then
