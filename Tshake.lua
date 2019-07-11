@@ -197,12 +197,24 @@ local owner = database:sismember('tshake:'..bot_id..'owners:'..chat_id, user_id)
 local creator = database:sismember('tshake:'..bot_id..'creator:'..chat_id, user_id)  
 local creatorbasic = database:sismember('tshake:'..bot_id..'creatorbasic:'..chat_id, user_id)  
 local vip = database:sismember('tshake:'..bot_id..'vipgp:'..chat_id, user_id)
-if mod then var = true end
-if owner then var = true end
-if creator then var = true end
-if creatorbasic then var = true end
-if admin then var = true end
-if vip then var = true end
+if mod then 
+var = true 
+end
+if owner then 
+var = true 
+end
+if creator then 
+var = true 
+end
+if creatorbasic then 
+var = true 
+end
+if admin then 
+var = true 
+end
+if vip then 
+var = true 
+end
 for k,v in pairs(sudo_users) do
 if user_id == v then var = true end end
 local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')
@@ -2198,7 +2210,7 @@ return "stop"
 end
 end
 end
-if text and (text:match("[Hh][Tt][Tt][Pp][Ss]://") or text:match("[Hh][Tt][Tt][Pp]://") or text:match(".[Ii][Rr]") or text:match(".[Cc][Oo][Mm]") or text:match(".[Oo][Rr][Gg]") or text:match(".[Ii][Nn][Ff][Oo]") or text:match("[Ww][Ww][Ww].") or text:match(".[Tt][Kk]")) then
+if text and (text:match("[Hh][Tt][Tt][Pp][Ss]://") or text:match("[Jj][Oo][Ii][Nn][Cc][Hh][Aa][Tt]")  or text:match("[Hh][Tt][Tt][Pp]://") or text:match(".[Ii][Rr]") or text:match(".[Cc][Oo][Mm]") or text:match(".[Oo][Rr][Gg]") or text:match(".[Ii][Nn][Ff][Oo]") or text:match("[Ww][Ww][Ww].") or text:match(".[Tt][Kk]")) then
 if database:get("lock_link:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return "stop"
@@ -2206,7 +2218,7 @@ end
 end
 if msg.content_.caption_ then
 text = msg.content_.caption_
-if text and (text:match("[Hh][Tt][Tt][Pp][Ss]://") or text:match("[Hh][Tt][Tt][Pp]://") or text:match(".[Ii][Rr]") or text:match(".[Cc][Oo][Mm]") or text:match(".[Oo][Rr][Gg]") or text:match(".[Ii][Nn][Ff][Oo]") or text:match("[Ww][Ww][Ww].") or text:match(".[Tt][Kk]")) then
+if text and (text:match("[Hh][Tt][Tt][Pp][Ss]://") or text:match("[Jj][Oo][Ii][Nn][Cc][Hh][Aa][Tt]") or text:match("[Hh][Tt][Tt][Pp]://") or text:match(".[Ii][Rr]") or text:match(".[Cc][Oo][Mm]") or text:match(".[Oo][Rr][Gg]") or text:match(".[Ii][Nn][Ff][Oo]") or text:match("[Ww][Ww][Ww].") or text:match(".[Tt][Kk]")) then
 if database:get("lock_link:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return "stop"
@@ -2483,6 +2495,11 @@ send(msg.chat_id_, msg.id_, 1, '☑┇تم تعطيل مغادره البوت', 
 database:set('tshake:'..bot_id..'leave:groups',true)
 end
 
+if text:match("^مسح الاساسين$") and is_sudo(msg) then
+text = '☑┇تم مسح قائمه المنشئين الاساسين'
+database:del('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_)
+send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
+end
 if text:match("^رفع منشئ اساسي$") and msg.reply_to_message_id_ then
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
@@ -3137,7 +3154,28 @@ local apow = {string.match(text, "^(تنزيل منشئ) (%d+)$")}
 database:srem(hash, apow[2])
 tsX000(apow[2],msg,"🔰┇تم تنزيله من منشئين المجموعه")
 end--
-if text:match("^المنشئين")and is_creatorbasic(msg) then
+if text == 'المنشئين الاساسين' and is_sudo(msg) then
+local list = database:smembers('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_)
+if #list == 0 then
+text = "❗️┇ لا يوجد منشئين اساسين "
+send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
+return false
+end
+text = "🛅┇قائمة المنشئين الاساسيين ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+for k,v in pairs(list) do
+local user_info = database:hgetall('tshake:'..bot_id..'user:'..v)
+if user_info and user_info.username then
+local username = user_info.username
+text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
+else
+text = text.."<b>|"..k.."|</b>~⪼(<code>"..v.."</code>)\n"
+end
+end
+send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
+return false
+end
+
+if text == ("المنشئين") and is_creatorbasic(msg) then
 local hash =   'tshake:'..bot_id..'creator:'..msg.chat_id_
 local list = database:smembers(hash)
 text = "🛅┇قائمة المنشئين  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
@@ -6496,7 +6534,7 @@ end
 ----------------------------------------
 if text == 'سمايلات' and database:get('tshake:'..bot_id..'lock_geam'..msg.chat_id_) then
 database:del('tshake:'..bot_id..'l:ids'..msg.chat_id_)
-katu = {'🍏','🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥒','🌶','🌽','🥕','🥔','??','🥐','🍞','??','🥨','🧀','🥚','🍳','🥞','🥓','🥩','🍗','🍖','🌭','🍔','??','🍕','🥪','🥙','🍼','☕️','🍵','🥤','🍶','🍺','🍻','🏀','⚽️','🏈','⚾️','🎾','🏐','🏉','🎱','🏓','🏸','🥅','🎰','🎮','🎳','🎯','🎲','🎻','🎸','🎺','🥁','🎹','🎼','🎧','🎤','🎬','🎨','🎭','🎪','🎟','🎫','🎗','🏵','🎖','🏆','🥌','🛷','🚕','🚗','🚙','🚌','🚎','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔','🛡','🔮','🌡','💣','📌','📍','📓','📗','📂','📅','📪','📫','📬','📭','⏰','📺','🎚','☎️','📡'}
+katu = {'🍏','🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥒','🌶','🌽','🥕','🥔','??','🥐','🍞','??','??','🧀','🥚','🍳','🥞','🥓','🥩','🍗','🍖','🌭','🍔','??','🍕','🥪','🥙','🍼','☕️','🍵','🥤','🍶','🍺','🍻','🏀','⚽️','🏈','⚾️','🎾','🏐','🏉','🎱','🏓','🏸','🥅','🎰','🎮','🎳','🎯','🎲','🎻','🎸','🎺','🥁','🎹','🎼','🎧','🎤','🎬','🎨','🎭','🎪','🎟','🎫','🎗','🏵','🎖','🏆','🥌','🛷','🚕','🚗','🚙','🚌','🚎','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔','🛡','🔮','🌡','💣','📌','📍','📓','📗','📂','📅','📪','📫','📬','📭','⏰','📺','🎚','☎️','📡'}
 name = katu[math.random(#katu)]
 database:set('tshake:'..bot_id..'klmos'..msg.chat_id_,name)
 name = string.gsub(name,'🍞','🍞')
@@ -7326,6 +7364,7 @@ local text =  [[
 ↕️┇رفع/تنزيل منشئ اساسي 
 📋┇المدراء
 📋┇المنشئين
+📋┇المنشئين الاساسين
 📋┇المطورين
 🗑┇استعاده الاوامر
 🗑┇مسح ردود المطور
@@ -7333,6 +7372,7 @@ local text =  [[
 🗑┇مسح قائمه العام
 🗑┇مسح المدراء
 🗑┇مسح المنشئين
+🗑┇مسح الاساسين
 🗑┇مسح المكتومين عام
 🏷┇تغير امر {الاوامر ، م1 ، م2 ، م3 ، م4}
 🏷┇مشاهده منشور
@@ -7700,7 +7740,7 @@ return false
 end
 
 --         »»                 Run TshAkE                         ««              --
-if is_mod(msg) then TSlocks(msg) print("\27[1;34m»» is mod "..msg.sender_user_id_.."\27[m") end
+if is_mod(msg) or is_creatorbasic(msg) then TSlocks(msg) print("\27[1;34m»» is mod "..msg.sender_user_id_.."\27[m") end
 TSall(msg,data)
 function check_username(extra,result,success)
 local username = (result.username_ or '')
@@ -7816,7 +7856,7 @@ delete_msg(msg.chat_id_,{[0] = msg.message_id_})
 end
 local text = result.content_.text_
 if not is_mod(msgg) then
-if text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or text:match("[Tt].[Mm][Ee]") or text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or text:match("[Tt][Ee][Ll][Ee][Ss][Cc][Oo].[Pp][Ee]") then
+if text:match("[Jj][Oo][Ii][Nn][Cc][Hh][Aa][Tt]") or text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or text:match("[Tt].[Mm][Ee]") or text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or text:match("[Tt][Ee][Ll][Ee][Ss][Cc][Oo].[Pp][Ee]") then
 if database:get("lock_link:tshake"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) 
