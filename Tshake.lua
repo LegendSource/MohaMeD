@@ -1066,6 +1066,7 @@ end
 end
 
 -----------------------------------------banall--------------------------------------------------
+if text then
 if text:match("^مسح قائمه العام$") then
 text = '☑┇تم مسح قائمه العام'
 database:del('tshake:'..bot_id..'gbanned:')
@@ -1401,6 +1402,7 @@ os.execute('wget https://raw.githubusercontent.com/tshakeabas/Tshake/master/Tsha
 dofile('Tshake.lua')  
 os.exit()
 return false
+end
 end
 if text == "تفعيل"  then
 function TSby(extra,result,success)
@@ -2201,7 +2203,7 @@ end
 function TSCheckMsg(msg) 
 local text = msg.content_.text_
 
-if text then 
+if text and not is_creatorbasic(msg) then 
 if database:get("lock_word:tshake"..msg.chat_id_..bot_id) then 
 local tshake_wr = (database:get("tshake:not:word:"..bot_id..msg.chat_id_) or 100)
 if #text >= tonumber(tshake_wr) then
