@@ -7840,7 +7840,7 @@ local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) 
 end 
 end 
-if text:match("[hH][tT][tT][pP][sT]") or text:match("[tT][eE][lL][eE][gG][rR][aA].[pP][hH]") then
+if text:match("[hH][tT][tT][pP][sT]") or text:match("[tT][eE][lL][eE][gG][rR][aA].[Pp][Hh]") or text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa].[Pp][Hh]") then
 if database:get("lock_link.note:tshake"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) 
@@ -7871,13 +7871,11 @@ delete_msg(msg.chat_id_,msgs)
 end 
 end 
 
-if text:match("/")  then
-if database:get("lock_sarha:tshake"..msg.chat_id_..bot_id) then
+if text:match("/") then
 local msgs = {[0] = data.message_id_}
-delete_msg(msg.chat_id_,msgs) 
+delete_msg(msg.chat_id_,msgs)  
 end 
-end 
-if text:match("/")  then
+if text:match("/") then
 if database:get("lock_sarha.note:tshake"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) 
