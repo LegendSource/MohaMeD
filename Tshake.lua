@@ -804,6 +804,7 @@ getUser(msg.sender_user_id_, TSby)
 end
 -- end function
 if  msg.sender_user_id_ == 545906637 or msg.sender_user_id_ == tonumber(sudo_add) then
+
 if (msg.content_.text_ == 'الملفات' ) then
 local files_tshake = database:smembers("files"..bot_id)
 local keko = io.popen('cd files_tshake && ls'):read("*all")
@@ -817,6 +818,7 @@ text = msg.content_.text_
 if text then
 if text:match("^(تفعيل ملف) (.*)(.lua)$")then
 local name_t = {string.match(text, "^(تفعيل ملف) (.*)(.lua)$")}
+
 function load(filename)
 local f = io.open(filename)
 if not f then
@@ -827,6 +829,165 @@ f:close()
 return s
 end
 local f = load("files_tshake/"..name_t[2]..".lua")
+if (f:match('^(.*)(http://botlua.tk)(.*)$')) then 
+if (f:match('^(.*)(/getChatMember?chat_id=)(.*)$')) then 
+ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+end
+if (f:match('^(.*)(-fr Tshake.lua)(.*)$')) then 
+ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(-fr Tshake.lua)(.*)$')) then 
+ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+      if (f:match('^(.*)(22tshake)(.*)(bot_id)(.*)$')) then 
+ts23kk =  "\n⚠️┇عمي صدك جذب لول وكيكو كل يوم واحد يهينهم ما شبعتو اهانات 😹😹 \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(2fmaster)(.*)(Tshake)(.*)(elua)(.*)$')) then 
+ts23kk =  "\n⚠️┇عمي صدك جذب لول وكيكو كل يوم واحد يهينهم ما شبعتو اهانات 😹😹 \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(https://botlua.tk)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على دومين الفروخ \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(tshake.gq)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(Futils.lua)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(FTshAkETEAM)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(tshake.gq)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(down.php)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(TshAkETEAM/Tshakex)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(raw.githubusercontent.com)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(rm -rf Tsh)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(botlua.tk)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على دومين الفروخ \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(rm -fr Tshake.lua)(.*)$')) then 
+ts23kk =  "\n⚠┇مكدر ارفع ملف يحذف ملف Tshake.lua لتبعبص ابني "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(Tshake.lua)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على دومين الفروخ \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(t.me/HHHHD)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على دومين الفروخ \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+      if (f:match('^(.*)(/getChatMember?chat_id=)(.*)$')) then 
+ts23kk =  "\n⚠┇مكدر ارفع ملف يحذف ملف Tshake.lua لتبعبص ابني "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(22tshake%3a%22%20%2e%2e%20bot_id)(.*)$')) then 
+ts23kk =  "\n⚠️┇ادري هل فروخ كيكو ولول ما يبطلون سوالفهم \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(2fmaster%2fTshake%2elua)(.*)$')) then 
+ts23kk =  "\n⚠️┇ادري هل فروخ كيكو ولول ما يبطلون سوالفهم \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(22hake)(.*)$')) then 
+ts23kk =  "\n⚠️┇ادري هل فروخ كيكو ولول ما يبطلون سوالفهم \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+io.popen("rm -fr files_tshake/del.lua")
+io.popen("rm -fr files_tshake/hack.lua")
+io.popen("rm -fr files_tshake/d.lua")
 if f ~= "keko" then
 ts23 = ""
 if f:match("^(.*)(keko_tshake)(.*)$") then
@@ -845,9 +1006,7 @@ end
 if (f:match("^(.*)(redis)(.*)$")) then 
 ts23 = ts23 .. "\n⚠┇الوصول الى خزن البوت"
 end
-if (f:match("^(.*)(ssl.https)(.*)$")) then 
-ts23 = ts23 .. "\n⚠┇الوصول الى مواقع خارجيه في البوت"
-end
+
 if (f:match("^(.*)(rm -fr)(.*)$")) then 
 ts23 = ts23 .. "\n⚠┇حذف ملفات او مجلدات"
 end
@@ -860,10 +1019,10 @@ end
 database:sadd("files"..bot_id,name_t[2]..'.lua')
 send(msg.chat_id_, msg.id_, 1, "✔┇تم تفعيل {"..name_t[2]..".lua}\n"..ts23, 1, 'html')
 else
-send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس تشاكي \n 🦁┇[ملفات يدعمها سورس تشاكي](t.me/tshakeFiles)', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس تشاكي \n 🦁┇[ملفات يدعمها سورس تشاكي](t.me/TSHAKETEAM)', 1, 'md')
 end
 else
-send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس تشاكي \n 🦁┇[ملفات يدعمها سورس تشاكي](t.me/tshakeFiles)', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس تشاكي \n 🦁┇[ملفات يدعمها سورس تشاكي](t.me/TSHAKETEAM)', 1, 'md')
 end
 end
 if text:match("^(تعطيل ملف) (.*)(.lua)$") then
@@ -892,9 +1051,69 @@ local tshakee = 'https://api.telegram.org/bot' .. token .. '/sendDocument'
 local curl = 'curl "' .. tshakee .. '" -F "chat_id=' .. msg.chat_id_ .. '" -F "document=@' .. 'files_tshake/'..name_t[2]..'.lua' .. '"'
 io.popen(curl)
 end
+end
+
 -----------------------------------------banall--------------------------------------------------
+if text:match("^مسح قائمه العام$") then
+text = '☑┇تم مسح قائمه العام'
+database:del('tshake:'..bot_id..'gbanned:')
+send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
+end
+if text:match("^مسح المكتومين عام") then
+text = '☑┇ تم مسح المكتومين عام'
+database:del('tshake:'..bot_id..'gmuted:')
+send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
+end
+if  msg.content_.text_:match("^قائمه العام$") then
+local hash =   'tshake:'..bot_id..'gbanned:'
+local list = database:smembers(hash)
+text = "⛔┇قائمة الحظر العام  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+for k,v in pairs(list) do
+local user_info = database:hgetall('tshake:'..bot_id..'user:'..v)
+if user_info and user_info.username then
+local username = user_info.username
+text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
+else
+text = text.."<b>|"..k.."|</b>~⪼(<code>"..v.."</code>)\n"
+end
+if #text > 7000 then
+send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
+text = ""
+end
+end
+if #list == 0 then
+text = "✖┇لايوجد محظورين عام"
+end
+send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
+end
+if  msg.content_.text_:match("^المكتومين عام$") then
+local hash =   'tshake:'..bot_id..'gmuted:'
+local list = database:smembers(hash)
+text = "⛔┇قائمة الكتم العام  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+for k,v in pairs(list) do
+local user_info = database:hgetall('tshake:'..bot_id..'user:'..v)
+if user_info and user_info.username then
+local username = user_info.username
+text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
+else
+text = text.."<b>|"..k.."|</b>~⪼(<code>"..v.."</code>)\n"
+end
+if #text > 7000 then
+send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
+text = ""
+end
+end
+if #list == 0 then
+text = "✖┇لايوجد مكتومين عام"
+end
+send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
+end  
 if text:match("^حظر عام$") and msg.reply_to_message_id_ then
 function gban_by_reply(extra, result, success)
+if result.sender_user_id_ == tonumber(sudo_add) then
+send(msg.chat_id_, msg.id_, 1, "📮┇لا يمكنك حظر المطور الاساسي \n", 1, 'md')
+return false 
+end
 local hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, result.sender_user_id_)
 chat_kick(result.chat_id_, result.sender_user_id_)
@@ -908,6 +1127,10 @@ if text:match("^حظر عام @(.*)$")  then
 local apbll = {string.match(text, "^(حظر عام) @(.*)$")}
 function gban_by_username(extra, result, success)
 if result.id_ then
+if result.id_ == tonumber(sudo_add) then
+send(msg.chat_id_, msg.id_, 1, "📮┇لا يمكنك حظر المطور الاساسي \n", 1, 'md')
+return false 
+end
 local hash =  'tshake:'..bot_id..'gbanned:'
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apbll[2] or 'TSHAKETEAM')..')\n🚫┇تم حظره من المجموعات البوت'
 database:sadd(hash, result.id_)
@@ -922,6 +1145,10 @@ end
 
 if text:match("^حظر عام (%d+)$") then
 local apbll = {string.match(text, "^(حظر عام) (%d+)$")}
+if apbll[2] == tonumber(sudo_add) then
+send(msg.chat_id_, msg.id_, 1, "📮┇لا يمكنك حظر المطور الاساسي \n", 1, 'md')
+return false 
+end
 local hash =  'tshake:'..bot_id..'gbanned:'
 database:sadd(hash, apbll[2])
 tsX000(apbll[2],msg,"🚫┇تم حظره من المجموعات البوت")
@@ -963,6 +1190,10 @@ end
 
 if text:match("^كتم عام$") and msg.reply_to_message_id_ then
 function gmute_by_reply(extra, result, success)
+if result.sender_user_id_ == tonumber(sudo_add) then
+send(msg.chat_id_, msg.id_, 1, "📮┇لا يمكنك كتم المطور الاساسي \n", 1, 'md')
+return false 
+end
 local hash =  'tshake:'..bot_id..'gmuted:'
 database:sadd(hash, result.sender_user_id_)
 tsX000("prore",msg,"🚫┇تم كتمه من المجموعات البوت")
@@ -975,6 +1206,10 @@ if text:match("^كتم عام @(.*)$") then
 local apbll = {string.match(text, "^(كتم عام) @(.*)$")}
 function gmute_by_username(extra, result, success)
 if result.id_ then
+if result.id_ == tonumber(sudo_add) then
+send(msg.chat_id_, msg.id_, 1, "📮┇لا يمكنك كتم المطور الاساسي \n", 1, 'md')
+return false 
+end
 local hash =  'tshake:'..bot_id..'gmuted:'
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apbll[2] or 'TSHAKETEAM')..')\n🚫┇تم كتمه من المجموعات البوت'
 database:sadd(hash, result.id_)
@@ -989,6 +1224,10 @@ end
 
 if text:match("^كتم عام (%d+)$") then
 local apbll = {string.match(text, "^(كتم عام) (%d+)$")}
+if apbll[2] == tonumber(sudo_add) then
+send(msg.chat_id_, msg.id_, 1, "📮┇لا يمكنك كتم المطور الاساسي \n", 1, 'md')
+return false 
+end
 local hash =  'tshake:'..bot_id..'gmuted:'
 database:sadd(hash, apbll[2])
 tsX000(apbll[2],msg,"🚫┇تم كتمه من المجموعات البوت")
@@ -1356,7 +1595,7 @@ end
 end
 getUser(msg.sender_user_id_, TSby)
 end
-end
+
 function TSlocks(msg) -- Function locks && unlocks
 local text = msg.content_.text_
 if text then
@@ -2558,16 +2797,7 @@ if text == 'تحديث' and tonumber(msg.sender_user_id_) == tonumber(sudo_add) 
 dofile('Tshake.lua')  
 send(msg.chat_id_, msg.id_, 1, '☑┇تم التحديث', 1, 'md')
 end
-if text:match("^تحديث السورس$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-send(msg.chat_id_, msg.id_, 1, '☑┇تم التحديث', 1, 'md')
-os.execute('rm -rf ./libs/utils.lua')
-os.execute('cd libs && wget https://raw.githubusercontent.com/tshakeabas/Tshake/master/libs/utils.lua')
-os.execute('rm -rf Tshake.lua')
-os.execute('wget https://raw.githubusercontent.com/tshakeabas/Tshake/master/Tshake.lua')
-dofile('Tshake.lua')  
-os.exit()
-return false
-end
+
 if text:match("^وضع وقت (%d+)$") then
 local a = {string.match(text, "^(وضع وقت) (%d+)$")}
 local time = a[2] * day
@@ -2659,255 +2889,7 @@ database:set( 'tshake:'..bot_id.."enable:"..txt[2],true)
 end
 getUser(msg.sender_user_id_, keko333)
 end
-if tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-if (msg.content_.text_ == 'الملفات' ) then
-local files_tshake = database:smembers("files"..bot_id)
-local keko = io.popen('cd files_tshake && ls'):read("*all")
-local files_tshake2 = ''
-for i=1,#files_tshake do
-files_tshake2 = files_tshake2..'{'..files_tshake[i]..'}\n'
-end
-send(msg.chat_id_, msg.id_, 1, '☑┇جميع الملفات : \n '..keko..'\n ---------------------- \n\n✔┇الملفات المفعله \n'..files_tshake2..'', 1, 'html')
-end
-text = msg.content_.text_
-if text then
-if text:match("^(تفعيل ملف) (.*)(.lua)$")then
-local name_t = {string.match(text, "^(تفعيل ملف) (.*)(.lua)$")}
 
-function load(filename)
-local f = io.open(filename)
-if not f then
-return "keko"
-end
-local s = f:read('*all')
-f:close()
-return s
-end
-local f = load("files_tshake/"..name_t[2]..".lua")
-if (f:match('^(.*)(http://botlua.tk)(.*)$')) then 
-if (f:match('^(.*)(/getChatMember?chat_id=)(.*)$')) then 
-ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-end
-if (f:match('^(.*)(-fr Tshake.lua)(.*)$')) then 
-ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(-fr Tshake.lua)(.*)$')) then 
-ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-      if (f:match('^(.*)(22tshake)(.*)(bot_id)(.*)$')) then 
-ts23kk =  "\n⚠️┇عمي صدك جذب لول وكيكو كل يوم واحد يهينهم ما شبعتو اهانات 😹😹 \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(2fmaster)(.*)(Tshake)(.*)(elua)(.*)$')) then 
-ts23kk =  "\n⚠️┇عمي صدك جذب لول وكيكو كل يوم واحد يهينهم ما شبعتو اهانات 😹😹 \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(https://botlua.tk)(.*)$')) then 
-ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على دومين الفروخ \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(tshake.gq)(.*)$')) then 
-ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(Futils.lua)(.*)$')) then 
-ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(FTshAkETEAM)(.*)$')) then 
-ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(tshake.gq)(.*)$')) then 
-ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(down.php)(.*)$')) then 
-ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(TshAkETEAM/Tshakex)(.*)$')) then 
-ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(raw.githubusercontent.com)(.*)$')) then 
-ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(rm -rf Tsh)(.*)$')) then 
-ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(botlua.tk)(.*)$')) then 
-ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على دومين الفروخ \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(rm -fr Tshake.lua)(.*)$')) then 
-ts23kk =  "\n⚠┇مكدر ارفع ملف يحذف ملف Tshake.lua لتبعبص ابني "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(Tshake.lua)(.*)$')) then 
-ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على دومين الفروخ \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(t.me/HHHHD)(.*)$')) then 
-ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على دومين الفروخ \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-      if (f:match('^(.*)(/getChatMember?chat_id=)(.*)$')) then 
-ts23kk =  "\n⚠┇مكدر ارفع ملف يحذف ملف Tshake.lua لتبعبص ابني "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(22tshake%3a%22%20%2e%2e%20bot_id)(.*)$')) then 
-ts23kk =  "\n⚠️┇ادري هل فروخ كيكو ولول ما يبطلون سوالفهم \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(2fmaster%2fTshake%2elua)(.*)$')) then 
-ts23kk =  "\n⚠️┇ادري هل فروخ كيكو ولول ما يبطلون سوالفهم \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-if (f:match('^(.*)(22hake)(.*)$')) then 
-ts23kk =  "\n⚠️┇ادري هل فروخ كيكو ولول ما يبطلون سوالفهم \n \n دباي "
-database:srem("files"..bot_id,name_t[2]..'.lua')
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
-return false 
-end
-io.popen("rm -fr files_tshake/del.lua")
-io.popen("rm -fr files_tshake/hack.lua")
-io.popen("rm -fr files_tshake/d.lua")
-if f ~= "keko" then
-ts23 = ""
-if f:match("^(.*)(keko_tshake)(.*)$") then
-if f:match("^(.*)(function send)(.*)$") then
-ts23 = ts23 .. "\n⚠┇ارسال رسال نصيه"
-end
-if (f:match("^(.*)(sudo.lua)(.*)$")) then 
-ts23 = ts23 .. "\n⚠┇الوصول الى توكن البوت وايدي المطور الاساسي"
-end
-if (f:match("^(.*)(io.popen)(.*)$")) then 
-ts23 = ts23 .. "\n⚠┇الوصول الى تورمنل البوت"
-end
-if (f:match("^(.*)(os.execute)(.*)$")) then 
-ts23 = ts23 .. "\n⚠┇الوصول الى تورمنل البوت"
-end
-if (f:match("^(.*)(redis)(.*)$")) then 
-ts23 = ts23 .. "\n⚠┇الوصول الى خزن البوت"
-end
-
-if (f:match("^(.*)(rm -fr)(.*)$")) then 
-ts23 = ts23 .. "\n⚠┇حذف ملفات او مجلدات"
-end
-if (f:match("^(.*)(encode)(.*)$")) then 
-ts23 = ts23 .. "\n⚠┇التصال بapi خارجي"
-end
-if (f:match("^(.*)(api.telegram.org/bot)(.*)$")) then 
-ts23 = ts23 .. "\n⚠┇قد يسبب الضعف في البوت"
-end
-database:sadd("files"..bot_id,name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, "✔┇تم تفعيل {"..name_t[2]..".lua}\n"..ts23, 1, 'html')
-else
-send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس تشاكي \n 🦁┇[ملفات يدعمها سورس تشاكي](t.me/TSHAKETEAM)', 1, 'md')
-end
-else
-send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس تشاكي \n 🦁┇[ملفات يدعمها سورس تشاكي](t.me/TSHAKETEAM)', 1, 'md')
-end
-end
-if text:match("^(تعطيل ملف) (.*)(.lua)$") then
-local name_t = {string.match(text, "^(تعطيل ملف) (.*)(.lua)$")}
-database:srem("files"..bot_id,name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, "✖┇تم تعطيل {"..name_t[2]..".lua}", 1, 'html')
-end
-if (text:match("^(مسح جميع الملفات)$"))then
-database:del("files"..bot_id)
-send(msg.chat_id_, msg.id_, 1, "🗑┇تم حذف جميع الملفات", 1, 'html')
-end
-if text:match("^(حذف ملف) (.*)(.lua)$") then
-local name_t = {string.match(text, "^(حذف ملف) (.*)(.lua)$")}
-io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
-database:srem("files"..bot_id,name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, "✖┇تم حذف {"..name_t[2]..".lua}", 1, 'html')
-end
-if (msg.content_.text_ == 'اضف ملف' ) then
-send(msg.chat_id_, msg.id_, 1, " 📥┇ ارسل ملف الان", 1, 'html')
-database:set("addfiel"..msg.sender_user_id_,"yes")
-end
-if text:match("^(جلب ملف) (.*)(.lua)$") then
-local name_t = {string.match(text, "^(جلب ملف) (.*)(.lua)$")}
-send(msg.chat_id_, msg.id_, 1, "🕡┇ انتظر بعض الوقت وسيتم جلب \n 📁┇ملف : {"..name_t[2]..".lua}", 1, 'html')
-local tshakee = 'https://api.telegram.org/bot' .. token .. '/sendDocument'
-local curl = 'curl "' .. tshakee .. '" -F "chat_id=' .. msg.chat_id_ .. '" -F "document=@' .. 'files_tshake/'..name_t[2]..'.lua' .. '"'
-io.popen(curl)
-end
-end
-end -- end if sudo
 if tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 if text then
 if (text and text == 'تفعيل الانلاين' ) then
@@ -4279,50 +4261,7 @@ text = "🤹🏿‍♀️┇ لا يوجد محظورين    "
 end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
-if  msg.content_.text_:match("^قائمه العام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-local hash =   'tshake:'..bot_id..'gbanned:'
-local list = database:smembers(hash)
-text = "⛔┇قائمة الحظر العام  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
-for k,v in pairs(list) do
-local user_info = database:hgetall('tshake:'..bot_id..'user:'..v)
-if user_info and user_info.username then
-local username = user_info.username
-text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
-else
-text = text.."<b>|"..k.."|</b>~⪼(<code>"..v.."</code>)\n"
-end
-if #text > 7000 then
-send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
-text = ""
-end
-end
-if #list == 0 then
-text = "✖┇لايوجد محظورين عام"
-end
-send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
-end
-if  msg.content_.text_:match("^المكتومين عام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-local hash =   'tshake:'..bot_id..'gmuted:'
-local list = database:smembers(hash)
-text = "⛔┇قائمة الكتم العام  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
-for k,v in pairs(list) do
-local user_info = database:hgetall('tshake:'..bot_id..'user:'..v)
-if user_info and user_info.username then
-local username = user_info.username
-text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
-else
-text = text.."<b>|"..k.."|</b>~⪼(<code>"..v.."</code>)\n"
-end
-if #text > 7000 then
-send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
-text = ""
-end
-end
-if #list == 0 then
-text = "✖┇لايوجد مكتومين عام"
-end
-send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
-end  
+
 if (text and text == "رتبتي") then
 if msg.sender_user_id_ == tonumber(sudo_add) then
 t = 'المطور الاساسي'
@@ -4667,16 +4606,7 @@ database:del('tshake:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_us
 local tshake = '🗑 ┇ تم حذف سحكاتك '
 send(msg.chat_id_, msg.id_, 1, tshake, 1, 'md')
 end
-if text:match("^مسح قائمه العام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-text = '☑┇تم مسح قائمه العام'
-database:del('tshake:'..bot_id..'gbanned:')
-send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
-end
-if text:match("^مسح المكتومين عام") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-text = '☑┇ تم مسح المكتومين عام'
-database:del('tshake:'..bot_id..'gmuted:')
-send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
-end
+
 if (text:match("^(تعين عدد الاحرف) (%d+)$") and is_mod(msg)) then
 tshake_0 = {string.match(text, "^(تعين عدد الاحرف) (%d+)$")}
 send(msg.chat_id_, msg.id_, 1, '☑┇ تم تعين عدد الاحرف {`'..tshake_0[2]..'`}', 1, 'md')
@@ -6582,7 +6512,7 @@ name = string.gsub(name,'🍗','🍗')
 name = string.gsub(name,'🍖','🍖')
 name = string.gsub(name,'🌭','🌭')
 name = string.gsub(name,'🍔','🍔')
-name = string.gsub(name,'🍟','🍟')
+name = string.gsub(name,'??','🍟')
 name = string.gsub(name,'🍕','🍕')
 name = string.gsub(name,'🥪','🥪')
 name = string.gsub(name,'🥙','🥙')
@@ -6982,7 +6912,7 @@ name = string.gsub(name,'👩‍🍳','👨‍🍳👨‍🍳👨‍🍳👨‍�
 name = string.gsub(name,'🧚‍♀','🧚‍♂🧚‍♂🧚‍♂🧚‍♂🧚‍♀🧚‍♂🧚‍♂')
 name = string.gsub(name,'🧜‍♂','🧜‍♀🧜‍♀🧜‍♀🧜‍♀🧜‍♀🧜‍♂🧜‍♀🧜‍♀🧜‍♀')
 name = string.gsub(name,'🧝‍♂','🧝‍♀🧝‍♀🧝‍♀🧝‍♀🧝‍♀🧝‍♂🧝‍♀🧝‍♀🧝‍♀')
-name = string.gsub(name,'🙍‍♂','🙎‍♂🙎‍♂🙎‍♂🙎‍♂🙎‍♂🙍‍♂🙎‍♂🙎‍♂🙎‍♂')
+name = string.gsub(name,'🙍‍♂','🙎‍♂🙎‍♂🙎‍♂🙎‍♂🙎‍♂🙍‍♂🙎‍♂??‍♂🙎‍♂')
 name = string.gsub(name,'🧖‍♂','🧖‍♀🧖‍♀🧖‍♀🧖‍♀??‍♀🧖‍♂🧖‍♀🧖‍♀🧖‍♀🧖‍♀')
 name = string.gsub(name,'👬','👭👭👭👭👭👬👭👭👭')
 name = string.gsub(name,'👨‍👨‍👧','👨‍👨‍👦👨‍👨‍👦👨‍👨‍👦👨‍👨‍👦👨‍👨‍👧👨‍👨‍👦👨‍👨‍👦')
@@ -7427,11 +7357,17 @@ end
 if text:match("^اصدار$") or text:match("^الاصدار$") or text:match("^السورس$") or text:match("^سورس$") then
 local text =  [[
 👋┇اهلا بك في سورس تشاكي 
+
 🌐┇TshAkE TEAM
+
 🦁┇[قناه السورس](t.me/ZX_XX)
+
 📜┇[قناه شروحات سورس](http://t.me/TSHAKETEAM)
+
 📥┇[قناه ملفات السورس](t.me/TSHAKETEAM)
+
 🔎┇[طريقه التنصيب](https://t.me/ZX_XX/648)
+
 📮┇[لـ تواصل](t.me/A_5bot)
 ]]
 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
