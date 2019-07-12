@@ -23,6 +23,7 @@ day = 86400
 bot_idkeko = {string.match(token, "^(%d+)(:)(.*)")}
 bot_id = tonumber(bot_idkeko[1])
 sudo_users = {sudo_add,bot_id}
+
 URL33 = require('socket.url')
 tdcli=dofile('./libs/utils.lua')
 ---------- {Show Files} -----------
@@ -37,140 +38,72 @@ os.execute('cd .. &&  rm -rf .telegram-cli')
 os.execute('cd .. &&  rm -fr .telegram-cli')
 --         »»                 Start Functions                         ««              --
 --         »»                 is_sudo                         ««              --
-function is_sudo(msg)
-local var = false
-for k,v in pairs(sudo_users) do
-if msg.sender_user_id_ == v then var = true end
+function is_devabas(msg)  
+local ta = false  
+for k,v in pairs(sudo_users) do  
+if msg.sender_user_id_ == v then  
+ta = true  
+end  end  
+return ta  
+end 
+function is_devabass(user)  
+local ta = false  
+for k,v in pairs(sudo_users) do  
+if user == v then  
+ta = true  
+end  end  
+return ta  
+end 
+function is_sudo(msg) 
+local hash = database:sismember('tshake:'..bot_id..'dev', msg.sender_user_id_) 
+if hash or is_devabas(msg)  then  
+return true  
+else  
+return false  
+end  
 end
-local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..msg.sender_user_id_..'')
-if keko_add_sudo then var = true end return var
-end
---         »»                 is_admin                         ««              --
-function is_admin(msg)
-user_id = msg.sender_user_id_
-local var = false 
-local admin = database:sismember('tshake:'..bot_id..'admins:', user_id)
-if admin then var = true end
-for k,v in pairs(sudo_users) do
-if user_id == v then var = true end
-end
-local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')
-if keko_add_sudo then var = true end
-return var
-end
---         »»                 is_admin                         ««              --
-function ck_admin(user_id)
-local var = false 
-local admin = database:sismember('tshake:'..bot_id..'admins:', user_id)
-if admin then var = true end
-for k,v in pairs(sudo_users) do
-if user_id == v then var = true end
-end
-local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')
-if keko_add_sudo then var = true end
-return var
-end
---         »»                 is_creator                         ««              --
 function is_creatorbasic(msg)
-user_id = msg.sender_user_id_
-chat_id = msg.chat_id_
-local var = false
-local creatorbasic = database:sismember('tshake:'..bot_id..'creatorbasic:'..chat_id, user_id) 
-local admin = database:sismember('tshake:'..bot_id..'admins:', user_id)
-if creatorbasic then 
-var = true 
+local hash = database:sismember('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, msg.sender_user_id_) 
+if hash or is_devabas(msg) or is_sudo(msg) then 
+return true 
+else 
+return false 
+end 
 end
-if admin then var = true end
-for k,v in pairs(sudo_users) do
-if user_id == v then var = true end end
-local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')
-if keko_add_sudo then var = true end
-return var
-end
-
 function is_creator(msg)
-user_id = msg.sender_user_id_
-chat_id = msg.chat_id_
-local var = false
-local creatorbasic = database:sismember('tshake:'..bot_id..'creatorbasic:'..chat_id, user_id) 
-local creator = database:sismember('tshake:'..bot_id..'creator:'..chat_id, user_id) 
-local admin = database:sismember('tshake:'..bot_id..'admins:', user_id)
-if creatorbasic then var = true end
-if creator then var = true end
-if admin then var = true end
-for k,v in pairs(sudo_users) do
-if user_id == v then var = true end end
-local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')
-if keko_add_sudo then var = true end
-return var
+local hash = database:sismember('tshake:'..bot_id..'creator:'..msg.chat_id_, msg.sender_user_id_) 
+if hash or is_devabas(msg) or is_sudo(msg) or is_creatorbasic(msg) then    
+return true    
+else    
+return false    
+end 
+end
+function is_owner(msg)
+local hash = database:sismember('tshake:'..bot_id..'owners:'..msg.chat_id_,msg.sender_user_id_)    
+if hash or is_devabas(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creator(msg) then    
+return true    
+else    
+return false    
+end 
+end
+function is_mod(msg)
+local hash = database:sismember('tshake:'..bot_id..'mods:'..msg.chat_id_,msg.sender_user_id_)    
+if hash or is_devabas(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creator(msg) or is_owner(msg) then    
+return true    
+else    
+return false    
+end 
 end
 
---         »»                 is_vip                         ««              --
 function is_vip(msg)
-user_id = msg.sender_user_id_
-chat_id = msg.chat_id_
-local var = false
-local mod = database:sismember('tshake:'..bot_id..'mods:'..chat_id, user_id)  
-local admin = database:sismember('tshake:'..bot_id..'admins:', user_id)  
-local owner = database:sismember('tshake:'..bot_id..'owners:'..chat_id, user_id)
-local creator = database:sismember('tshake:'..bot_id..'creator:'..chat_id, user_id)  
-local creatorbasic = database:sismember('tshake:'..bot_id..'creatorbasic:'..chat_id, user_id)  
-local vip = database:sismember('tshake:'..bot_id..'vipgp:'..chat_id, user_id)
-if mod then var = true end
-if owner then var = true end
-if creator then var = true end
-if creatorbasic then var = true end
-if admin then var = true end
-if vip then var = true end
-for k,v in pairs(sudo_users) do
-if user_id == v then
-var = true end end
-local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')
-if keko_add_sudo then var = true end
-return var end
-o023121 = true
---         »»                 is_owner                         ««              --
-function is_owner(msg)
-user_id = msg.sender_user_id_
-chat_id = msg.chat_id_
-local var = false
-local admin = database:sismember('tshake:'..bot_id..'admins:', user_id)  
-local owner = database:sismember('tshake:'..bot_id..'owners:'..chat_id, user_id)
-local creator = database:sismember('tshake:'..bot_id..'creator:'..chat_id, user_id)  
-local creatorbasic = database:sismember('tshake:'..bot_id..'creatorbasic:'..chat_id, user_id) 
-if owner then var = true end 
-if admin then var = true end
-if creator then var = true end
-if creatorbasic then var = true end
-for k,v in pairs(sudo_users) do
-if user_id == v then
-var = true
-end end
-local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')
-if keko_add_sudo then var = true end
-return var
+local hash = database:sismember('tshake:'..bot_id..'vipgp:'..msg.chat_id_,msg.sender_user_id_) 
+if hash or is_devabas(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creator(msg) or is_owner(msg) or is_mod(msg) then    
+return true 
+else 
+return false 
+end 
 end
---         »»                 is_mod                         ««              --
-function is_mod(msg)
-user_id = msg.sender_user_id_
-chat_id = msg.chat_id_
-local var = false
-local mod = database:sismember('tshake:'..bot_id..'mods:'..chat_id, user_id)  
-local admin = database:sismember('tshake:'..bot_id..'admins:', user_id)  
-local owner = database:sismember('tshake:'..bot_id..'owners:'..chat_id, user_id)
-local creator = database:sismember('tshake:'..bot_id..'creator:'..chat_id, user_id)  
-local creatorbasic = database:sismember('tshake:'..bot_id..'creatorbasic:'..chat_id, user_id)  
-if mod then var = true end
-if owner then var = true end
-if creator then var = true end
-if creatorbasic then var = true end
-if admin then var = true end
-for k,v in pairs(sudo_users) do
-if user_id == v then var = true end end
-local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')
-if keko_add_sudo then var = true end
-return var
-end
+
 function is_setban(msg)
 user_id = msg.sender_user_id_
 chat_id = msg.chat_id_
@@ -190,37 +123,20 @@ end
 
 --         »»                 ck_mod                         ««              --
 function ck_mod(user_id,chat_id)
-local var = false
-local mod = database:sismember('tshake:'..bot_id..'mods:'..chat_id, user_id)  
-local admin = database:sismember('tshake:'..bot_id..'admins:', user_id)  
-local owner = database:sismember('tshake:'..bot_id..'owners:'..chat_id, user_id)
-local creator = database:sismember('tshake:'..bot_id..'creator:'..chat_id, user_id)  
-local creatorbasic = database:sismember('tshake:'..bot_id..'creatorbasic:'..chat_id, user_id)  
-local vip = database:sismember('tshake:'..bot_id..'vipgp:'..chat_id, user_id)
-if mod then 
-var = true 
-end
-if owner then 
-var = true 
-end
-if creator then 
-var = true 
-end
-if creatorbasic then 
-var = true 
-end
-if admin then 
-var = true 
-end
-if vip then 
-var = true 
-end
-for k,v in pairs(sudo_users) do
-if user_id == v then var = true end end
-local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')
-if keko_add_sudo then var = true end
-return var
-end
+local sudoe = database:sismember('tshake:'..bot_id..'dev', user_id) 
+local as = database:sismember('tshake:'..bot_id..'creatorbasic:'..chat_id, user_id)  
+local monh = database:sismember('tshake:'..bot_id..'creator:'..chat_id, user_id)  
+local noow = database:sismember('tshake:'..bot_id..'owners:'..chat_id, user_id)
+local nomo = database:sismember('tshake:'..bot_id..'mods:'..chat_id, user_id)  
+local novip2 = database:sismember('tshake:'..bot_id..'vipgp:'..chat_id, user_id)
+if is_devabass(user_id) or sudoe or as or monh  or noow or nomo  or novip2 then  
+return true  
+else  
+return false  
+end  
+end 
+
+
 --         »»                 is_banned                         ««              --
 function is_banned(user_id, chat_id)
 local var = false
@@ -3573,12 +3489,9 @@ send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع حظر', 1, 'md')
 return "tshakke"
 end
 function ban_by_reply(extra, result, success)
-if database:sismember('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, result.sender_user_id_) then
-send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر وكتم وطرد \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
-return false
-end
+
 local hash =  'tshake:'..bot_id..'banned:'..msg.chat_id_
-if not is_creatorbasic(msg) or ck_mod(result.sender_user_id_, msg.chat_id_) then
+if ck_mod(result.sender_user_id_, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
 else
 if database:sismember(hash, result.sender_user_id_) then
@@ -3603,11 +3516,8 @@ end
 local apba = {string.match(text, "^(حظر) @(.*)$")}
 function ban_by_username(extra, result, success)
 if result.id_ then
-if database:sismember('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, result.id_) then
-send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر وكتم وطرد \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
-return false
-end
-if not is_creatorbasic(msg) or ck_mod(result.id_, msg.chat_id_)then
+
+if ck_mod(result.id_, msg.chat_id_)then
 send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
 else
 database:sadd('tshake:'..bot_id..'banned:'..msg.chat_id_, result.id_)
@@ -3629,11 +3539,7 @@ send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع حظر', 1, 'md')
 return "tshakke"
 end
 local apba = {string.match(text, "^([Bb][Aa][Nn]) (%d+)$")}
-if database:sismember('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, apba[2]) then
-send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر وكتم وطرد \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
-return false
-end
-if not is_creatorbasic(msg) or ck_mod(apba[2], msg.chat_id_)  then
+if ck_mod(apba[2], msg.chat_id_)  then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع حظر او طرد (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
 else
 database:sadd('tshake:'..bot_id..'banned:'..msg.chat_id_, apba[2])
@@ -3831,54 +3737,12 @@ end
 
 
 
-if text:match("^حذف الكل$") and (is_owner(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ then
-function delall_by_reply(extra, result, success)
-if not is_creatorbasic(msg) or ck_mod(result.sender_user_id_, msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع مسح رسائل (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
-else
-send(msg.chat_id_, msg.id_, 1, '👤┇العضو ~⪼ *('..result.sender_user_id_..')* \n🗑┇تم حذف كل رسائله\n', 1, 'md')
-del_all_msgs(result.chat_id_,result.sender_user_id_)
-end
-end
-getMessage(msg.chat_id_, msg.reply_to_message_id_,delall_by_reply)
-end
-
-if text:match("^حذف الكل (%d+)$") and (is_owner(msg) or is_creatorbasic(msg)) then
-local ass = {string.match(text, "^(حذف الكل) (%d+)$")}
-if not is_creatorbasic(msg) or ck_mod(ass[2], msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع مسح رسائل (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
-else
-del_all_msgs(msg.chat_id_, ass[2])
-send(msg.chat_id_, msg.id_, 1, '👤┇العضو ~⪼ *('..ass[2]..')* \n🗑┇تم حذف كل رسائله\n', 1, 'md')
-end
-end
-
-if text:match("^حذف الكل @(.*)$") and (is_owner(msg) or is_creatorbasic(msg)) then
-local apbll = {string.match(text, "^(حذف الكل) @(.*)$")}
-function delall_by_username(extra, result, success)
-if result.id_ then
-if not is_creatorbasic(msg) or ck_mod(result.id_, msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع مسح رسائل (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
-return false
-end
-del_all_msgs(msg.chat_id_, result.id_)
-texts = '👤┇العضو ~⪼ ('..result.id_..') \n🗑┇تم حذف كل رسائله'
-else
-texts = '✖┇خطاء'
-end
-send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
-end
-resolve_username(apbll[2],delall_by_username)
-end
 
 if text:match("^كتم$") and (is_mod(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ ~= 0 then
 function mute_by_reply(extra, result, success)
-if database:sismember('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, result.sender_user_id_) then
-send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر وكتم وطرد \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
-return false
-end
+
 local hash =  'tshake:'..bot_id..'muted:'..msg.chat_id_
-if not is_creatorbasic(msg) or ck_mod(result.sender_user_id_, msg.chat_id_) then
+if ck_mod(result.sender_user_id_, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
 else
 if database:sismember(hash, result.sender_user_id_) then
@@ -3896,11 +3760,8 @@ if text:match("^كتم @(.*)$") and (is_mod(msg) or is_creatorbasic(msg)) then
 local apsi = {string.match(text, "^(كتم) @(.*)$")}
 function mute_by_username(extra, result, success)
 if result.id_ then
-if database:sismember('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, result.id_) then
-send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر وكتم وطرد \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
-return false
-end
-if not is_creatorbasic(msg) or ck_mod(result.id_, msg.chat_id_) then
+
+if ck_mod(result.id_, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
 else 
 database:sadd('tshake:'..bot_id..'muted:'..msg.chat_id_, result.id_)
@@ -3916,11 +3777,7 @@ return false
 end
 if text:match("^كتم (%d+)$") and (is_mod(msg) or is_creatorbasic(msg)) then
 local apsi = {string.match(text, "^(كتم) (%d+)$")}
-if database:sismember('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, apsi[2]) then
-send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر وكتم وطرد \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
-return false
-end
-if not is_creatorbasic(msg) or ck_mod(apsi[2], msg.chat_id_) or is_creatorbasic(msg, msg.chat_id_) then
+if ck_mod(apsi[2], msg.chat_id_) or is_creatorbasic(msg, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع كتم (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
 else
 database:sadd('tshake:'..bot_id..'muted:'..msg.chat_id_, apsi[2])
@@ -3969,11 +3826,8 @@ send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد', 1, 'md')
 return "tshakke"
 end
 function kick_reply(extra, result, success)
-if database:sismember('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, result.sender_user_id_) then
-send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر وكتم وطرد \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
-return false
-end
-if not is_creatorbasic(msg) or ck_mod(result.sender_user_id_, msg.chat_id_) then
+
+if ck_mod(result.sender_user_id_, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع حظر او طرد (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
 else
 tsX000("prore",msg,"🚫┇تم طرده من المجموعه")
@@ -3991,11 +3845,7 @@ end
 local apki = {string.match(text, "^(طرد) @(.*)$")}
 function kick_by_username(extra, result, success)
 if result.id_ then
-if database:sismember('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, result.id_) then
-send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر وكتم وطرد \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
-return false
-end
-if not is_creatorbasic(msg) or ck_mod(result.id_, msg.chat_id_) then
+if ck_mod(result.id_, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع حظر او طرد (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
 else
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apki[2] or 'TSHAKETEAM')..')\n🚫┇تم طرده من المجموعه'
@@ -4015,11 +3865,7 @@ send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد', 1, 'md')
 return "tshakke"
 end
 local apki = {string.match(text, "^(طرد) (%d+)$")}
-if database:sismember('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, apki[2]) then
-send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر وكتم وطرد \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
-return false
-end
-if not is_creatorbasic(msg) or ck_mod(apki[2], msg.chat_id_) then
+if ck_mod(apki[2], msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع حظر او طرد (مدراء، ادمنية،مميزين)البوت   ', 1, 'md')
 else
 chat_kick(msg.chat_id_, apki[2])
