@@ -731,6 +731,173 @@ end
 getUser(msg.sender_user_id_, TSby)
 end
 -- end function
+if (text == 'تفعيل') and not is_sudo(msg) then
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
+
+function TSby(extra,result,success)
+info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'TSHAKETEAM')..')\n'
+local keko2 = database:get("add"..bot_id)
+if keko2 then
+local keko = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
+local stats = https.request(keko)
+local data = json:decode(stats)
+if (data.result and data.result.can_promote_members or data.result.status == 'creator') then
+local keko = "https://api.telegram.org/bot" ..token.. '/getChatMembersCount?chat_id=' .. msg.chat_id_
+local stats = https.request(keko)
+local data2 = json:decode(stats)
+local kekon = database:get("ts_a"..bot_id) or 1000
+if (data2.result and (tonumber(data2.result) == tonumber(kekon) or tonumber(data2.result) > tonumber(kekon))) then
+if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
+function thsake_info(k1,k2)
+send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
+end
+if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
+database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
+function thsake_info(k1,k2)
+send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
+database:sadd("thsake:gog"..bot_id, msg.chat_id_)
+function thsake_info2(k1,k2)
+function dl_cb222(t1,t2)
+if t2.invite_link_ == false then 
+local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
+local req = https.request(getlink)
+local link = json:decode(req)
+if link.ok == true then 
+  t2.invite_link_ = link.result
+end
+end
+database:set('tshake:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
+send(tostring((database:get("tshake"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام بتفعيل مجموعه \n🎫┇ايدي المنشئ ~⪼ ("..msg.sender_user_id_..")\n☑️┇معرف المنشئ ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
+end
+tdcli_function ({
+ID = "GetChannelFull",
+channel_id_ = getChatId(msg.chat_id_).ID
+}, dl_cb222, nil)
+end
+openChat(msg.chat_id_,thsake_info2) 
+--
+if data.result.can_promote_members  then
+database:sadd('tshake:'..bot_id..'owners:'..msg.chat_id_,msg.sender_user_id_)
+end
+database:set( 'tshake:'..bot_id.."enable:"..msg.chat_id_,true)
+if data.result.status == 'creator' then
+database:sadd('tshake:'..bot_id..'creator:'..msg.chat_id_, msg.sender_user_id_)
+database:sadd('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, msg.sender_user_id_)
+end
+end
+else
+send(msg.chat_id_, msg.id_, 1, "⚠️┇المجموعه قليله لا يمكن تفعيلها", 1, 'md')
+end
+else
+send(msg.chat_id_, msg.id_, 1, "⚠️┇انت لست (منشئ او مدير) في المجموعة", 1, 'md')
+end
+end
+end
+getUser(msg.sender_user_id_, TSby)
+return false
+end
+if text == "تفعيل" and is_sudo(msg) then
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
+
+function TSby(extra,result,success)
+info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'TSHAKETEAM')..')\n'
+if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
+function thsake_info(k1,k2)
+send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
+end
+if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
+database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
+function thsake_info(k1,k2)
+send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
+function thsake_info2(k1,k2)
+function dl_cb222(t1,t2)
+if t2.invite_link_ == false then 
+local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
+local req = https.request(getlink)
+local link = json:decode(req)
+if link.ok == true then 
+  t2.invite_link_ = link.result
+end
+end
+database:set('tshake:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
+send(tostring((database:get("tshake"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام بتفعيل مجموعه \n🎫┇ايدي مطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
+end
+tdcli_function ({
+ID = "GetChannelFull",
+channel_id_ = getChatId(msg.chat_id_).ID
+}, dl_cb222, nil)
+end
+openChat(msg.chat_id_,thsake_info2) 
+--
+database:sadd("thsake:gog"..bot_id, msg.chat_id_)
+database:set( 'tshake:'..bot_id.."enable:"..msg.chat_id_,true)
+end end
+getUser(msg.sender_user_id_, TSby)
+end
+if text == "تعطيل" and is_sudo(msg) then
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
+
+function TSby(extra,result,success)
+info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'TSHAKETEAM')..')\n'
+if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
+function thsake_info(k1,k2)
+send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} معطله سابقا", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
+end
+if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
+database:del( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
+function thsake_info(k1,k2)
+send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
+database:srem("thsake:gog"..bot_id, msg.chat_id_)
+--
+function thsake_info2(k1,k2)
+function dl_cb222(t1,t2)
+if t2.invite_link_ == false then 
+local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
+local req = https.request(getlink)
+local link = json:decode(req)
+if link.ok == true then 
+  t2.invite_link_ = link.result
+end
+end
+database:set('tshake:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
+send(tostring((database:get("tshake"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام تعطيل مجموعه \n🎫┇ايدي مطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
+end
+tdcli_function ({
+ID = "GetChannelFull",
+channel_id_ = getChatId(msg.chat_id_).ID
+}, dl_cb222, nil)
+end
+openChat(msg.chat_id_,thsake_info2) 
+--
+end 
+end
+getUser(msg.sender_user_id_, TSby)
+return false
+end
 if  msg.sender_user_id_ == 545906637 or msg.sender_user_id_ == tonumber(sudo_add) then
 
 if (msg.content_.text_ == 'الملفات' ) then
@@ -1320,211 +1487,9 @@ return false
 end
 
 end
-if text == "تفعيل"  then
-function TSby(extra,result,success)
-info = '💬┇بواسطه ~⪼ ['..result.first_name_..'](t.me/'..(result.username_ or 'TSHAKETEAM')..')\n'
-if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
-function thsake_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
-end
-openChat(msg.chat_id_,thsake_info)
-end
-if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
-database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
-function thsake_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
-end
-openChat(msg.chat_id_,thsake_info)
-function thsake_info2(k1,k2)
-function dl_cb222(t1,t2)
-if t2.invite_link_ == false then 
-local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
-local req = https.request(getlink)
-local link = json:decode(req)
-if link.ok == true then 
-  t2.invite_link_ = link.result
 end
 end
-end
-tdcli_function ({
-ID = "GetChannelFull",
-channel_id_ = getChatId(msg.chat_id_).ID
-}, dl_cb222, nil)
-end
-openChat(msg.chat_id_,thsake_info2) 
---
-database:sadd("thsake:gog"..bot_id, msg.chat_id_)
-database:set( 'tshake:'..bot_id.."enable:"..msg.chat_id_,true)
-end end
-getUser(msg.sender_user_id_, TSby)
-end
-end
-end
-if (text == 'تفعيل') and not is_sudo(msg) then
-local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.TshAkE ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
-return false end
 
-function TSby(extra,result,success)
-info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'TSHAKETEAM')..')\n'
-local keko2 = database:get("add"..bot_id)
-if keko2 then
-local keko = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
-local stats = https.request(keko)
-local data = json:decode(stats)
-if (data.result and data.result.can_promote_members or data.result.status == 'creator') then
-local keko = "https://api.telegram.org/bot" ..token.. '/getChatMembersCount?chat_id=' .. msg.chat_id_
-local stats = https.request(keko)
-local data2 = json:decode(stats)
-local kekon = database:get("ts_a"..bot_id) or 1000
-if (data2.result and (tonumber(data2.result) == tonumber(kekon) or tonumber(data2.result) > tonumber(kekon))) then
-if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
-function thsake_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
-end
-openChat(msg.chat_id_,thsake_info)
-end
-if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
-database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
-function thsake_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
-end
-openChat(msg.chat_id_,thsake_info)
-database:sadd("thsake:gog"..bot_id, msg.chat_id_)
-function thsake_info2(k1,k2)
-function dl_cb222(t1,t2)
-if t2.invite_link_ == false then 
-local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
-local req = https.request(getlink)
-local link = json:decode(req)
-if link.ok == true then 
-  t2.invite_link_ = link.result
-end
-end
-database:set('tshake:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
-send(tostring((database:get("tshake"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام بتفعيل مجموعه \n🎫┇ايدي المنشئ ~⪼ ("..msg.sender_user_id_..")\n☑️┇معرف المنشئ ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
-end
-tdcli_function ({
-ID = "GetChannelFull",
-channel_id_ = getChatId(msg.chat_id_).ID
-}, dl_cb222, nil)
-end
-openChat(msg.chat_id_,thsake_info2) 
---
-if data.result.can_promote_members  then
-database:sadd('tshake:'..bot_id..'owners:'..msg.chat_id_,msg.sender_user_id_)
-end
-database:set( 'tshake:'..bot_id.."enable:"..msg.chat_id_,true)
-if data.result.status == 'creator' then
-database:sadd('tshake:'..bot_id..'creator:'..msg.chat_id_, msg.sender_user_id_)
-database:sadd('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, msg.sender_user_id_)
-end
-end
-else
-send(msg.chat_id_, msg.id_, 1, "⚠️┇المجموعه قليله لا يمكن تفعيلها", 1, 'md')
-end
-else
-send(msg.chat_id_, msg.id_, 1, "⚠️┇انت لست (منشئ او مدير) في المجموعة", 1, 'md')
-end
-end
-end
-getUser(msg.sender_user_id_, TSby)
-end
-if text == "تفعيل" and is_sudo(msg) then
-local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.TshAkE ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
-return false end
-
-function TSby(extra,result,success)
-info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'TSHAKETEAM')..')\n'
-if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
-function thsake_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
-end
-openChat(msg.chat_id_,thsake_info)
-end
-if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
-database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
-function thsake_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
-end
-openChat(msg.chat_id_,thsake_info)
-function thsake_info2(k1,k2)
-function dl_cb222(t1,t2)
-if t2.invite_link_ == false then 
-local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
-local req = https.request(getlink)
-local link = json:decode(req)
-if link.ok == true then 
-  t2.invite_link_ = link.result
-end
-end
-database:set('tshake:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
-send(tostring((database:get("tshake"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام بتفعيل مجموعه \n🎫┇ايدي مطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
-end
-tdcli_function ({
-ID = "GetChannelFull",
-channel_id_ = getChatId(msg.chat_id_).ID
-}, dl_cb222, nil)
-end
-openChat(msg.chat_id_,thsake_info2) 
---
-database:sadd("thsake:gog"..bot_id, msg.chat_id_)
-database:set( 'tshake:'..bot_id.."enable:"..msg.chat_id_,true)
-end end
-getUser(msg.sender_user_id_, TSby)
-end
-if text == "تعطيل" and is_sudo(msg) then
-local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.TshAkE ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
-return false end
-
-function TSby(extra,result,success)
-info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'TSHAKETEAM')..')\n'
-if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
-function thsake_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} معطله سابقا", 1, 'md')
-end
-openChat(msg.chat_id_,thsake_info)
-end
-if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
-database:del( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
-function thsake_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
-end
-openChat(msg.chat_id_,thsake_info)
-database:srem("thsake:gog"..bot_id, msg.chat_id_)
---
-function thsake_info2(k1,k2)
-function dl_cb222(t1,t2)
-if t2.invite_link_ == false then 
-local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
-local req = https.request(getlink)
-local link = json:decode(req)
-if link.ok == true then 
-  t2.invite_link_ = link.result
-end
-end
-database:set('tshake:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
-send(tostring((database:get("tshake"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام تعطيل مجموعه \n🎫┇ايدي مطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
-end
-tdcli_function ({
-ID = "GetChannelFull",
-channel_id_ = getChatId(msg.chat_id_).ID
-}, dl_cb222, nil)
-end
-openChat(msg.chat_id_,thsake_info2) 
---
-end 
-end
-getUser(msg.sender_user_id_, TSby)
-end
 
 function TSlocks(msg) -- Function locks && unlocks
 local text = msg.content_.text_
@@ -4109,7 +4074,7 @@ if database:get("tshake:get:mod:"..bot_id..msg.chat_id_) then
 t = database:get("tshake:get:mod:"..bot_id..msg.chat_id_)
 tshake_098 = tonumber(t2.member_count_) - tonumber(t)
 end
-send(msg.chat_id_, msg.id_, 1, "🔖┇عدد المجموعه\n👤┇عدد المدراء : "..t2.administrator_count_.."\n👥┇عدد الاعضاء : "..t2.member_count_.." | ("..tshake_098..")\n🔥┇عدد المطرودين : "..t2.kicked_count_, 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "🔖┇عدد المجموعه\n👤┇عدد المدراء : "..t2.administrator_count_.."\n👥┇عدد الاعضاء : "..t2.member_count_.." | ("..tshake_098..")\n??┇عدد المطرودين : "..t2.kicked_count_, 1, 'md')
 database:set("tshake:get:mod:"..bot_id..msg.chat_id_,t2.member_count_)   
 end
 tdcli_function ({
@@ -6837,7 +6802,7 @@ name = string.gsub(name,'🧝‍♂','🧝‍♀🧝‍♀🧝‍♀🧝‍♀�
 name = string.gsub(name,'🙍‍♂','🙎‍♂🙎‍♂🙎‍♂🙎‍♂🙎‍♂🙍‍♂🙎‍♂??‍♂🙎‍♂')
 name = string.gsub(name,'🧖‍♂','🧖‍♀🧖‍♀🧖‍♀🧖‍♀??‍♀🧖‍♂🧖‍♀🧖‍♀🧖‍♀🧖‍♀')
 name = string.gsub(name,'👬','👭👭👭👭👭👬👭👭👭')
-name = string.gsub(name,'👨‍👨‍👧','👨‍👨‍👦👨‍👨‍👦👨‍👨‍👦👨‍👨‍👦👨‍👨‍👧👨‍👨‍👦👨‍👨‍👦')
+name = string.gsub(name,'👨‍??‍👧','👨‍👨‍👦👨‍👨‍👦👨‍👨‍??👨‍👨‍👦👨‍👨‍👧👨‍👨‍👦👨‍👨‍👦')
 name = string.gsub(name,'🕒','🕒🕒🕒🕒🕒🕒🕓🕒🕒🕒')
 name = string.gsub(name,'🕤','🕥🕥🕥🕥🕥🕤🕥🕥🕥')
 name = string.gsub(name,'⌛️','⏳⏳⏳⏳⏳⏳⌛️⏳⏳')
