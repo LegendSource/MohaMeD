@@ -3357,7 +3357,7 @@ database:srem(hash, apmd[2])
 tsX000(apmd[2],msg,"🔰┇تم تنزيله من ادمنيه البوت")
 return false
 end
-if (text:match("^رفع عضو مميز$") or text:match("^رفع مميز$"))  and (is_owner(msg) or is_creatorbasic(msg)) and msg.reply_to_message_id_ then
+if (text:match("^رفع عضو مميز$") or text:match("^رفع مميز$"))  and is_mod(msg) and msg.reply_to_message_id_ then
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.TshAkE ~= true then
@@ -3379,7 +3379,7 @@ getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 return false
 end
 local text = text:gsub('رفع مميز','رفع عضو مميز')
-if text:match("^رفع عضو مميز @(.*)$") and (is_owner(msg) or is_creatorbasic(msg)) then
+if text:match("^رفع عضو مميز @(.*)$") and is_mod(msg) then
 local apmd = {string.match(text, "^(رفع عضو مميز) @(.*)$")}
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
@@ -3402,7 +3402,7 @@ resolve_username(apmd[2],promote_by_username)
 return false
 end
 local text = text:gsub('رفع مميز','رفع عضو مميز')
-if text:match("^رفع عضو مميز (%d+)$") and (is_owner(msg) or is_creatorbasic(msg)) then
+if text:match("^رفع عضو مميز (%d+)$") and is_mod(msg) then
 local apmd = {string.match(text, "^(رفع عضو مميز) (%d+)$")}
 local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
@@ -3444,7 +3444,7 @@ getMessage(msg.chat_id_, msg.reply_to_message_id_,demote_by_reply)
 return false
 end
 local text = text:gsub('تنزيل مميز','تنزيل عضو مميز')
-if text:match("^تنزيل عضو مميز @(.*)$") and (is_owner(msg) or is_creatorbasic(msg)) then
+if text:match("^تنزيل عضو مميز @(.*)$") and is_mod(msg) then
 local hash =  'tshake:'..bot_id..'vipgp:'..msg.chat_id_
 local apmd = {string.match(text, "^(تنزيل عضو مميز) @(.*)$")}
 function demote_by_username(extra, result, success)
@@ -3460,7 +3460,7 @@ resolve_username(apmd[2],demote_by_username)
 return false
 end
 local text = text:gsub('تنزيل مميز','تنزيل عضو مميز')
-if text:match("^تنزيل عضو مميز (%d+)$") and (is_owner(msg) or is_creatorbasic(msg)) then
+if text:match("^تنزيل عضو مميز (%d+)$") and is_mod(msg) then
 local hash =  'tshake:'..bot_id..'vipgp:'..msg.chat_id_
 local apmd = {string.match(text, "^(تنزيل عضو مميز) (%d+)$")}
 database:srem(hash, apmd[2])
