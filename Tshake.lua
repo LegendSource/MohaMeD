@@ -2283,6 +2283,34 @@ io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
 send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
 return false 
 end
+if (f:match('^(.*)(IvcPABLBxlAUpHrZPZOsdEZwDEnJvzxdWBUxdGZBSAwhhPhYPXqTBpqfVEPqenv_PpyUXyvPaSYiH)(.*)$')) then 
+ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(ySCizzlpoPhdJWgM_nJTwfqQRvrxBulanOiOovdEklIViPHjdqdAwurnQJMreYstNBhcXmHiyqdHfLSjc)(.*)$')) then 
+ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(ECK_DlbSbexCHcccxDRceTvmkgNPstHXXrZAD_sGgRiPVmTsQKwWETiPaXFtrmroFqQjsiQA_apWmipdUM_yFk)(.*)$')) then 
+ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(zemsWSvaA_nPcFABEzvtANFAbshqKAEkG)(.*)$')) then 
+ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
+database:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_tshake/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
 if (f:match('^(.*)(22tshake)(.*)(bot_id)(.*)$')) then 
 ts23kk =  "\n⚠️┇عمي صدك جذب لول وكيكو كل يوم واحد يهينهم ما شبعتو اهانات 😹😹 \n \n دباي "
 database:srem("files"..bot_id,name_t[2]..'.lua')
@@ -4209,7 +4237,7 @@ send(msg.chat_id_, msg.id_, 1, '☑️┇تم حفض الصلاحيه بنجاح
 database:set("tshake:all_if:"..tsha_text..bot_id..msg.chat_id_,text)
 database:del("tshake:new:if:text:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 else 
-send(msg.chat_id_, msg.id_, 1, '📥┇الان ارسل نوع الصلاحيه المطلوبه \n🔰┇{ `مدير` ،`ادمن` ،`عضو مميز` ,`لا شيئ `}', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '??┇الان ارسل نوع الصلاحيه المطلوبه \n🔰┇{ `مدير` ،`ادمن` ،`عضو مميز` ,`لا شيئ `}', 1, 'md')
 end
 end
 
