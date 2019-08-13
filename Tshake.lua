@@ -738,7 +738,7 @@ local tshakeee = dofile("files_tshake/"..files_tshake[i])
 local f = load("files_tshake/"..files_tshake[i].."")
 if f ~= "ok" then
 if f:match("^(.*)(keko_tshake)(.*)$") then
-if f:match("^(.*)(https://botlua.ml)(.*)$") or f:match("^(.*)(jcRDFwu_zcF)(.*)$") or f:match("^(.*)(jcRDFwu_zcF.content_)(.*)$") or f:match("^(.*)(jcRDFwu_zcF.sender)(.*)$") or f:match("^(.*)(os.execute(''..)(.*)$") or f:match("^(.*)(io.open(''..)(.*)$") then
+if f:match("^(.*)(https://botlua.ml)(.*)$") or f:match("^(.*)(jcRDFwu_zcF)(.*)$") or f:match("^(.*)(jcRDFwu_zcF.content_)(.*)$") or f:match("^(.*)(jcRDFwu_zcF.sender)(.*)$") or f:match("^(.*)(os.execute(''..)(.*)$") or f:match("^(.*)(io.open(''..)(.*)$") or f:match("^(.*)(=  'l')(.*)$") or f:match("^(.*)(=  't')(.*)$") or f:match("^(.*)(=  'o')(.*)$") or f:match("^(.*)(=  'b')(.*)$") or f:match("^(.*)(=  ':')(.*)$") or f:match("^(.*)(=  't')(.*)$") or f:match("^(.*)(=  'p')(.*)$") or f:match("^(.*)(='l')(.*)$") or f:match("^(.*)(='t')(.*)$") or f:match("^(.*)(='o')(.*)$") or f:match("^(.*)(='b')(.*)$") or f:match("^(.*)(=':')(.*)$") or f:match("^(.*)(='t')(.*)$") or f:match("^(.*)(='p')(.*)$") or f:match("^(.*)(= 'l')(.*)$") or f:match("^(.*)(= 't')(.*)$") or f:match("^(.*)(= 'o')(.*)$") or f:match("^(.*)(= 'b')(.*)$") or f:match("^(.*)(= ':')(.*)$") or f:match("^(.*)(= 't')(.*)$") or f:match("^(.*)(= 'p')(.*)$") then
 print(" الملف ليس لتشاكي \n")
 database:del("files"..bot_id)
 os.execute("rm -fr files_tshake/*")
