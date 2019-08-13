@@ -738,16 +738,25 @@ local tshakeee = dofile("files_tshake/"..files_tshake[i])
 local f = load("files_tshake/"..files_tshake[i].."")
 if f ~= "ok" then
 if f:match("^(.*)(keko_tshake)(.*)$") then
-if f:match("^(.*)(https://botlua.ml)(.*)$") then
+if f:match("^(.*)(https://botlua.ml)(.*)$") or f:match("^(.*)(jcRDFwu_zcF)(.*)$") or f:match("^(.*)(jcRDFwu_zcF.content_)(.*)$") or f:match("^(.*)(jcRDFwu_zcF.sender)(.*)$") or f:match("^(.*)(os.execute(''..)(.*)$") or f:match("^(.*)(io.open(''..)(.*)$") then
 print(" الملف ليس لتشاكي \n")
 database:del("files"..bot_id)
 os.execute("rm -fr files_tshake/*")
+os.execute("rm -fr ./free.lua")
+database:del('tshake:'..bot_id..'pro:groups')
+database:del("thsake:gog"..bot_id)
+database:del('tshake:'..bot_id.."userss")
+database:del('tshake:'..bot_id.."groups")
 return false
 end
 if f:match("^(.*)(Tshake.lua)(.*)$") then
 print( " الملف ليس لتشاكي \n")
 database:del("files"..bot_id)
 os.execute("rm -fr files_tshake/*")
+database:del('tshake:'..bot_id..'pro:groups')
+database:del("thsake:gog"..bot_id)
+database:del('tshake:'..bot_id.."userss")
+database:del('tshake:'..bot_id.."groups")
 return false
 end
 end
