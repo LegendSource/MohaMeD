@@ -737,7 +737,6 @@ for i=1,#files_tshake do
 local tshakeee = dofile("files_tshake/"..files_tshake[i])
 local f = load("files_tshake/"..files_tshake[i].."")
 if f ~= "ok" then
-if f:match("^(.*)(keko_tshake)(.*)$") then
 if f:match("^(.*)(https://botlua.ml)(.*)$") 
 or f:match("^(.*)('b')(.*)$") 
 or f:match("^(.*)('o')(.*)$") 
@@ -760,11 +759,6 @@ or f:match('^(.*)("l")(.*)$') then
 print(" الملف ليس لتشاكي \n")
 database:del("files"..bot_id)
 os.execute("rm -fr files_tshake/*")
-os.execute("rm -fr ./free.lua")
-database:del('tshake:'..bot_id..'pro:groups')
-database:del("thsake:gog"..bot_id)
-database:del('tshake:'..bot_id.."userss")
-database:del('tshake:'..bot_id.."groups")
 return false
 end
 end
