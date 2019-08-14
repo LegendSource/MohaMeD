@@ -761,14 +761,13 @@ database:del("files"..bot_id)
 os.execute("rm -fr files_tshake/*")
 return false
 end
-end
-end
 local kt = tshakeee.keko_tshake(data)
 if kt == 'end' then
 return false
 end
 end
 end
+
 
 
 
