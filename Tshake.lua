@@ -731,6 +731,7 @@ local s = f:read('*all')
 f:close()
 return s
 end
+function tshake_run_file(data)
 local files_tshake = database:smembers("files"..bot_id)
 for i=1,#files_tshake do
 local tshakeee = dofile("files_tshake/"..files_tshake[i])
