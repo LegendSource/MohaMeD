@@ -2363,7 +2363,7 @@ t = t..'}}'
 local File = io.open('./libs/'..bot_id..'.json', "w")
 File:write(t)
 File:close()
-tdcli.sendDocument(msg.chat_id_, msg.id_,0, 1, nil, './libs/'..bot_id..'.json', '📮| عدد مجموعات البوت » '..#list..'')
+tdcli.sendDocument(msg.chat_id_, msg.id_,0, 1, nil, './libs/'..bot_id..'.json', '📮┇ عدد مجموعات التي في البوت { '..#list..'}')
 end
 if text == 'رفع النسخه الاحتياطيه' then   
 if tonumber(msg.reply_to_message_id_) > 0 then
