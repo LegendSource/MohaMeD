@@ -2303,7 +2303,7 @@ local list = database:smembers('tshake:'..bot_id.."groups")
 local t = '{"BOT_ID": '..bot_id..',"GP_BOT":{'  
 for k,v in pairs(list) do   
 NAME = 'Tshake Chat'
-link = database:get('tshake:'..bot_id.."group:link"..v) or ''
+link = database:get('tshake:'..bot_id.."group:link"..v)
 MNSH = database:smembers('tshake:'..bot_id..'creator:'..v)
 MDER = database:smembers('tshake:'..bot_id..'owners:'..v)
 MOD = database:smembers('tshake:'..bot_id..'mods:'..v)
@@ -2406,7 +2406,7 @@ end
 
 if text and text:match("^(تعطيل ملف) (.*)(.lua)$") then
 local name_t = {string.match(text, "^(تعطيل ملف) (.*)(.lua)$")}
-local file = name_t[2]
+local file = name_t[2]..'.lua'
 local file_bot = io.open("files_tshake/"..file,"r")
 if file_bot then
 io.close(file_bot)
@@ -2428,7 +2428,7 @@ return false
 end
 if text and text:match("^(تفعيل ملف) (.*)(.lua)$") then
 local name_t = {string.match(text, "^(تفعيل ملف) (.*)(.lua)$")}
-local file = name_t[2]
+local file = name_t[2]..'.lua'
 local file_bot = io.open("files_tshake/"..file,"r")
 if file_bot then
 io.close(file_bot)
