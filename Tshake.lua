@@ -655,7 +655,6 @@ end -- end fun
 function Get_Info(msg,chat,user) --// ارسال نتيجة الصلاحيه
 local Chek_Info = https.request('https://api.telegram.org/bot'..token..'/getChatMember?chat_id='.. chat ..'&user_id='.. user..'')
 local Json_Info = JSON.decode(Chek_Info)
-vardump(Json_Info)
 if Json_Info.ok == true then
 if Json_Info.result.status == "creator" then
 SendText(msg.chat_id_,msg.id_,'\n🚸┇ صلاحياته منشئ الكروب 🍃')   
@@ -774,10 +773,66 @@ return false
 end
 end
 end
-
-
-
-
+function Add_local(Chat)
+database:set("lock_tag:tshake"..Chat..bot_id,"ok");database:set("lock_sarha:tshake"..Chat..bot_id,"ok");database:set("lock_word:tshake"..Chat..bot_id,"ok");database:set("lock_edit:tshake"..Chat..bot_id,"ok");database:set("lock_lllll:tshake"..Chat..bot_id,"ok");database:set("lock_gif:tshake"..Chat..bot_id,"ok");database:set("lock_files:tshake"..Chat..bot_id,"ok");database:set("lock_mark:tshake"..Chat..bot_id,"ok");database:set("lock_photo:tshake"..Chat..bot_id,"ok");database:set("lock_stecker:tshake"..Chat..bot_id,"ok");database:set("lock_video:tshake"..Chat..bot_id,"ok");database:set("lock_audeo:tshake"..Chat..bot_id,"ok");database:set("lock_voice:tshake"..Chat..bot_id,"ok");database:set("lock_contact:tshake"..Chat..bot_id,"ok");database:set("lock_fwd:tshake"..Chat..bot_id,"ok");database:set("lock_link:tshake"..Chat..bot_id,"ok");database:set("lock_username:tshake"..Chat..bot_id,"ok");database:set("lock_botAndBan:tshake"..Chat..bot_id,"ok");database:set("lock_new:tshake"..Chat..bot_id,"ok")
+end
+function download_to_file(url, file_path) 
+local respbody = {} 
+local options = { url = url, sink = ltn12.sink.table(respbody), redirect = true } 
+local response = nil 
+options.redirect = false 
+response = {https.request(options)} 
+local code = response[2] 
+local headers = response[3] 
+local status = response[4] 
+if code ~= 200 then return false, code 
+end 
+file = io.open(file_path, "w+") 
+file:write(table.concat(respbody)) 
+file:close() 
+return file_path, code 
+end 
+function add_file(msg,chat,ID_FILE,File_Name)
+if File_Name:match('.json') then
+if tonumber(File_Name:match('(%d+)')) ~= tonumber(bot_id) then 
+sendtext(chat,msg.id_,"🔖┇ملف النسخه الاحتياطيه ليس لهاذا البوت")   
+return false 
+end      
+local File = json:decode(https.request('https://api.telegram.org/bot' .. token .. '/getfile?file_id='..ID_FILE) ) 
+download_to_file('https://api.telegram.org/file/bot'..token..'/'..File.result.file_path, ''..File_Name) 
+sendtext(chat,msg.id_,"♻┇جاري ...\n📥┇رفع الملف الان")   
+else
+sendtext(chat,msg.id_,"*📛┇عذرا الملف ليس بصيغة {JSON} يرجى رفع الملف الصحيح*")   
+end      
+local info_file = io.open('./'..bot_id..'.json', "r"):read('*a')
+local groups = JSON.decode(info_file)
+for idg,v in pairs(groups.GP_BOT) do
+database:sadd("thsake:gog"..bot_id,idg) 
+database:sadd( 'tshake:'..bot_id.."groups",idg) 
+database:set( 'tshake:'..bot_id.."charge:"..idg,true)
+Add_local(idg)
+if v.MNSH then
+for k,idmsh in pairs(v.MNSH) do
+database:sadd('tshake:'..bot_id..'creator:'..idg,idmsh)
+end;end
+if v.MDER then
+for k,idmder in pairs(v.MDER) do
+database:sadd('tshake:'..bot_id..'owners:'..idg,idmder)  
+end;end
+if v.MOD then
+for k,idmod in pairs(v.MOD) do
+database:sadd('tshake:'..bot_id..'mods:'..idg,idmod)  
+end;end
+if v.ASAS then
+for k,idASAS in pairs(v.ASAS) do
+database:sadd('tshake:'..bot_id..'creatorbasic:'..idg,idASAS)  
+end;end
+if v.linkgroup then
+if v.linkgroup ~= "" then
+database:set('tshake:'..bot_id.."group:link"..idg,v.linkgroup)   
+end;end;end
+sendtext(chat,msg.id_,"🔰┇تم رفع الملف بنجاح وتفعيل المجموعات\n📬┇ورفع {الامنشئين الاساسين ; والمنشئين ; والمدراء; والادمنيه} بنجاح")   
+end
 function tshake_run_(msg,data)
 local text = msg.content_.text_
 ------------------------------------------------------------------------
@@ -2243,6 +2298,85 @@ return false
 end
 ------------------------------------------------------------------------
 if is_devabas(msg) then
+if text == 'جلب نسخه احتياطيه' then
+local list = database:smembers('tshake:'..bot_id.."groups")  
+local t = '{"BOT_ID": '..bot_id..',"GP_BOT":{'  
+for k,v in pairs(list) do   
+NAME = 'Tshake Chat'
+link = database:get('tshake:'..bot_id.."group:link"..v)
+MNSH = database:smembers('tshake:'..bot_id..'creator:'..v)
+MDER = database:smembers('tshake:'..bot_id..'owners:'..v)
+MOD = database:smembers('tshake:'..bot_id..'mods:'..v)
+ASAS = database:smembers('tshake:'..bot_id..'creatorbasic:'..v)
+if k == 1 then
+t = t..'"'..v..'":{"Tshake":"'..NAME..'",'
+else
+t = t..',"'..v..'":{"Tshake":"'..NAME..'",'
+end
+if #ASAS ~= 0 then 
+t = t..'"ASAS":['
+for k,v in pairs(ASAS) do
+if k == 1 then
+t =  t..'"'..v..'"'
+else
+t =  t..',"'..v..'"'
+end
+end   
+t = t..'],'
+end
+if #MOD ~= 0 then
+t = t..'"MOD":['
+for k,v in pairs(MOD) do
+if k == 1 then
+t =  t..'"'..v..'"'
+else
+t =  t..',"'..v..'"'
+end
+end   
+t = t..'],'
+end
+if #MDER ~= 0 then
+t = t..'"MDER":['
+for k,v in pairs(MDER) do
+if k == 1 then
+t =  t..'"'..v..'"'
+else
+t =  t..',"'..v..'"'
+end
+end   
+t = t..'],'
+end
+if #MNSH ~= 0 then
+t = t..'"MNSH":['
+for k,v in pairs(MNSH) do
+if k == 1 then
+t =  t..'"'..v..'"'
+else
+t =  t..',"'..v..'"'
+end
+end   
+t = t..'],'
+end
+t = t..'"linkgroup":"'..link..'"}'
+end
+t = t..'}}'
+local File = io.open('./libs/'..bot_id..'.json', "w")
+File:write(t)
+File:close()
+tdcli.sendDocument(msg.chat_id_, msg.id_,0, 1, nil, './libs/'..bot_id..'.json', '📮| عدد مجموعات البوت » '..#list..'')
+end
+if text == 'رفع النسخه الاحتياطيه' then   
+if tonumber(msg.reply_to_message_id_) > 0 then
+function by_reply(extra, result, success)   
+if result.content_.document_ then 
+local ID_FILE = result.content_.document_.document_.persistent_id_ 
+local File_Name = result.content_.document_.file_name_
+add_file(msg,msg.chat_id_,ID_FILE,File_Name)
+end   
+end
+tdcli_function ({ ID = "GetMessage", chat_id_ = msg.chat_id_, message_id_ = tonumber(msg.reply_to_message_id_) }, by_reply, nil)
+end
+end
 if text == "متجر الملفات" or text == 'المتجر' then
 local Get_Files, res = https.request("https://raw.githubusercontent.com/tshakeabas/files_tshake/master/getfile.json")
 if res == 200 then
@@ -2270,8 +2404,9 @@ end
 return false
 end
 
-if text and text:match('تعطيل ملف (.*)') then  
-local file = text:match('تعطيل ملف (.*)')
+if text and text:match("^(تعطيل ملف) (.*)(.lua)$") then
+local name_t = {string.match(text, "^(تعطيل ملف) (.*)(.lua)$")}
+local file = name_t[2]
 local file_bot = io.open("files_tshake/"..file,"r")
 if file_bot then
 io.close(file_bot)
@@ -2291,8 +2426,9 @@ send(msg.chat_id_, msg.id_, 1,"*📮┇ عذرا لا يوجد هاكذا ملف
 end
 return false
 end
-if text and text:match('تفعيل ملف (.*)') then  
-local file = text:match('تفعيل ملف (.*)')
+if text and text:match("^(تفعيل ملف) (.*)(.lua)$") then
+local name_t = {string.match(text, "^(تفعيل ملف) (.*)(.lua)$")}
+local file = name_t[2]
 local file_bot = io.open("files_tshake/"..file,"r")
 if file_bot then
 io.close(file_bot)
@@ -2317,6 +2453,7 @@ end
 
 if text == ("مسح جميع الملفات") then
 database:del("files"..bot_id)
+os.execute("rm -fr files_tshake/*")
 send(msg.chat_id_, msg.id_, 1, "🗑┇تم حذف جميع الملفات", 1, 'html')
 return false
 end
@@ -4136,7 +4273,6 @@ end
 if text == 'فحص البوت' then
 local Chek_Info = https.request('https://api.telegram.org/bot'..token..'/getChatMember?chat_id='.. msg.chat_id_ ..'&user_id='.. bot_id..'')
 local Json_Info = JSON.decode(Chek_Info)
-vardump(Json_Info)
 if Json_Info.ok == true then
 if Json_Info.result.status == "administrator" then
 if Json_Info.result.can_change_info == true then
