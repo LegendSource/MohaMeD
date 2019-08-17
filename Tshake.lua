@@ -2357,7 +2357,7 @@ end
 end   
 t = t..'],'
 end
-t = t..'"linkgroup":"'..link..'"}'
+t = t..'"linkgroup":"'..link..'"}' or ''
 end
 t = t..'}}'
 local File = io.open('./libs/'..bot_id..'.json', "w")
