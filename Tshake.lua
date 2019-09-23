@@ -2176,7 +2176,11 @@ end
 end
 
 if (text == 'تعطيل') and not is_sudo(msg) then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 function TSby(extra,result,success)
 info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'TSHAKETEAM')..')\n'
 local keko2 = database:get("add"..bot_id)
@@ -2221,7 +2225,11 @@ return false
 end
 ------------------------------------------------------------------------
 if (text == 'تفعيل') and not is_sudo(msg) then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 function TSby(extra,result,success)
 info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'TSHAKETEAM')..')\n'
 local keko2 = database:get("add"..bot_id)
@@ -2698,7 +2706,11 @@ return false
 end
 ------------------------------------------------------------------------
 if text == ("اضف مطور") and msg.reply_to_message_id_ then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 function promote_by_reply(extra, result, success)
 if redis:sismember('tshake:'..bot_id..'dev', result.sender_user_id_) then
 tsX000("prore",msg,'🔖┇بالفعل تم رفعة مطور في البوت')
@@ -2713,7 +2725,12 @@ return false
 end
 ------------------------------------------------------------------------
 if text and text:match("^اضف مطور @(.*)$") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false 
+end
 local apmd = {string.match(text, "^(اضف مطور) @(.*)$")}
 function promote_by_username(extra, result, success)
 if result.id_ then
@@ -2734,7 +2751,11 @@ return false
 end
 ------------------------------------------------------------------------
 if text and text:match("^اضف مطور (%d+)$") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local apmd = {string.match(text, "^(اضف مطور) (%d+)$")}
 redis:set('tshake:'..bot_id..'sudoo'..apmd[2]..'', 'yes')
 redis:sadd('tshake:'..bot_id..'dev', apmd[2])
@@ -2743,7 +2764,11 @@ return false
 end
 ------------------------------------------------------------------------
 if text == ("حذف مطور") and msg.reply_to_message_id_ then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 function demote_by_reply(extra, result, success)
 if not redis:sismember('tshake:'..bot_id..'dev', result.sender_user_id_) then
 tsX000("prore",msg,'بالفعل تم تنزيلة من مطورين البوت')
@@ -2758,7 +2783,11 @@ return false
 end
 ------------------------------------------------------------------------
 if text and text:match("^حذف مطور @(.*)$")  then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local apmd = {string.match(text, "^(حذف مطور) @(.*)$")}
 function demote_by_username(extra, result, success)
 if result.id_ then
@@ -2775,7 +2804,11 @@ return false
 end  
 ------------------------------------------------------------------------
 if text and text:match("^حذف مطور (%d+)$") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local apmd = {string.match(text, "^(حذف مطور) (%d+)$")}
 redis:del('tshake:'..bot_id..'sudoo'..apmd[2]..'', 'no')
 redis:srem('tshake:'..bot_id..'dev', apmd[2])
@@ -2981,7 +3014,12 @@ return false
 end
 ------------------------------------------------------------------------
 if text == ("تفعيل الكل") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false 
+end
 local gps = database:smembers('tshake:'..bot_id.."groups") or 0
 local gps2 = database:smembers("thsake:gog"..bot_id) or 0
 for i=1,#gps do
@@ -3019,15 +3057,17 @@ if text == ("روابط الكروبات") then
 local gpss = database:smembers('tshake:'..bot_id.."groups") or 0
 text233 = '📊┇روابط الكروبات\n\n'
 for i=1, #gpss do
-local link = database:get('tshake:'..bot_id.."group:link"..gpss[i])
-text233 = text233.."|"..i.."| ~⪼ "..gpss[i].."\n ~⪼ "..(link or  "لا يوجد رابط").."\n"
+local link = json:decode(https.request('https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..gpss[i]))
+if database:get('tshake:'..bot_id.."group:link"..gpss[i]) then 
+text233 = text233.."|"..i.."| ~⪼ "..gpss[i].."\n ~⪼ "..(database:get('tshake:'..bot_id.."group:link"..gpss[i])).."\n"
+else
+text233 = text233.."|"..i.."| ~⪼ "..gpss[i].."\n ~⪼ "..(link.result or ' لا توجد روابط ').."\n"
 end
-local f = io.open('TshAkE.txt', 'w')
+end
+local f = io.open('TshAkE_Links.txt', 'w')
 f:write(text233)
 f:close()
-local tshakee = 'https://api.telegram.org/bot' .. token .. '/sendDocument'
-local curl = 'curl "' .. tshakee .. '" -F "chat_id=' .. msg.chat_id_ .. '" -F "document=@' .. 'TshAkE.txt' .. '"'
-io.popen(curl)
+sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, './TshAkE_Links.txt', '', nil)  
 end
 ------------------------------------------------------------------------
 if text and (text == "الكروبات المتفاعله" or text == "روابط الكروبات المتفاعله") then
@@ -3050,7 +3090,11 @@ send(msg.chat_id_, msg.id_, 1, "✔️┇تم تفعيل خاصيه الازرا
 end
 ------------------------------------------------------------------------
 if (text and text == 'تعطيل الانلاين') then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 database:del('key_ts'..bot_id)
 send(msg.chat_id_, msg.id_, 1, "⚠┇تم تعطيل خاصيه الازرار الشفافه", 1, 'html')
 end
@@ -3228,7 +3272,11 @@ return false
 end 
 ------------------------------------------------------------------------
 if text == "تفعيل" then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 function TSby(extra,result,success)
 info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'TSHAKETEAM')..')\n'
 if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
@@ -3254,7 +3302,7 @@ if link.ok == true then
 end
 end
 database:set('tshake:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
-send(tostring((database:get("tshake"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "??┇قام بتفعيل مجموعه \n🎫┇ايدي مطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
+send(tostring((database:get("tshake"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "📛┇قام بتفعيل مجموعه \n🎫┇ايدي مطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
 end
 tdcli_function ({
 ID = "GetChannelFull",
@@ -3270,7 +3318,11 @@ getUser(msg.sender_user_id_, TSby)
 end
 ------------------------------------------------------------------------
 if text == "تعطيل" then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 function TSby(extra,result,success)
 info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'TSHAKETEAM')..')\n'
 if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
@@ -3330,7 +3382,11 @@ send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 return false
 end
 if text == ("رفع منشئ اساسي") and msg.reply_to_message_id_ then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 function promote_by_reply(extra, result, success)
 database:sadd('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, result.sender_user_id_)
 tsX000("prore",msg,'🔖┇تم رفعة منشئ اساسي  في البوت')
@@ -3339,7 +3395,11 @@ getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 return false
 end
 if text and text:match("^رفع منشئ اساسي @(.*)$") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local apmd = {string.match(text, "^(رفع منشئ اساسي) @(.*)$")}
 function promote_by_username(extra, result, success)
 if result.id_ then
@@ -3358,14 +3418,22 @@ resolve_username(apmd[2],promote_by_username)
 return false
 end
 if text and text:match("^رفع منشئ اساسي (%d+)$") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local apmd = {string.match(text, "^(رفع منشئ اساسي) (%d+)$")}
 database:sadd('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, apmd[2])
 tsX000(apmd[2],msg,"🔖┇تم رفعة منشئ اساسي  في البوت")
 return false
 end
 if text == ("تنزيل منشئ اساسي") and msg.reply_to_message_id_ then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 function promote_by_reply(extra, result, success)
 database:srem('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, result.sender_user_id_)
 tsX000("prore",msg,'تم تنزيلة منشئ اساسي من البوت')
@@ -3374,7 +3442,11 @@ getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 return false
 end
 if text and text:match("^تنزيل منشئ اساسي @(.*)$") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local apmd = {string.match(text, "^(تنزيل منشئ اساسي) @(.*)$")}
 function promote_by_username(extra, result, success)
 if result.id_ then
@@ -3389,7 +3461,11 @@ resolve_username(apmd[2],promote_by_username)
 return false
 end
 if text and text:match("^تنزيل منشئ اساسي (%d+)$") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local apmd = {string.match(text, "^(تنزيل منشئ اساسي) (%d+)$")}
 database:srem('tshake:'..bot_id..'creatorbasic:'..msg.chat_id_, apmd[2])
 tsX000(apmd[2],msg,"تم تنزيلة منشئ اساسي من البوت")
@@ -3425,7 +3501,11 @@ end
 end
 ------------------------------------------------------------------------
 if text and text:match("^مغادره (-%d+)$")  then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local txt = {string.match(text, "^(مغادره) (-%d+)$")}
 send(msg.chat_id_, msg.id_, 1, '📮┇المجموعه {'..txt[2]..'} تم الخروج منها', 1, 'md')
 database:del("thsake:gog"..bot_id,txt[2])
@@ -3433,7 +3513,11 @@ chat_leave(txt[2], bot_id)
 end
 ------------------------------------------------------------------------
 if text and text:match('^المده1 (-%d+)$')  then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local txt = {string.match(text, "^(المده1) (-%d+)$")}
 local keko_info = nil
 function keko333(extra,result,success)
@@ -3517,7 +3601,11 @@ end -- if is_sudo(msg) then
 ------------------------------------------------------------------------
 if is_devabas(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) and ChekAdd(msg.chat_id_) == true then    
 if text == "رفع منشئ" and msg.reply_to_message_id_ then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 function setcreator_by_reply(extra, result, success)
 local hash =  'tshake:'..bot_id..'creator:'..msg.chat_id_
 if database:sismember(hash, result.sender_user_id_) then
@@ -3531,7 +3619,11 @@ getMessage(msg.chat_id_, msg.reply_to_message_id_,setcreator_by_reply)
 end
 if text and text:match("^رفع منشئ @(.*)$") then
 local apow = {string.match(text, "^(رفع منشئ) @(.*)$")}
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 function setcreator_by_username(extra, result, success)
 if result.id_ then
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
@@ -3550,7 +3642,11 @@ end
 ------------------------------------------------------------------------
 if text and text:match("^رفع منشئ (%d+)$") then
 local apow = {string.match(text, "^(رفع منشئ) (%d+)$")}
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 database:sadd('tshake:'..bot_id..'creator:'..msg.chat_id_, apow[2])
 tsX000(apow[2],msg,"🔖┇تم رفعة منشئ  في البوت")
 end
@@ -3620,13 +3716,21 @@ end
 
 if text and text:match("^رفع ادمن بالكروب (%d+)$") then
 local apmd = {string.match(text, "^(رفع ادمن بالكروب) (%d+)$")}
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..apmd[2].."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=false")
 tsX000(apmd[2],msg,'🔖┇تم رفعة ادمن   في الكروب')
 return false
 end
 if text == ("رفع ادمن بالكروب")  and msg.reply_to_message_id_ then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 function promote_by_reply(extra, result, success)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=false")
 tsX000("prore",msg,'🔖┇تم رفعة ادمن   في الكروب')
@@ -3635,7 +3739,11 @@ getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 return false
 end
 if text and text:match("^رفع ادمن بالكروب @(.*)$") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local apmd = {string.match(text, "^(رفع ادمن بالكروب) @(.*)$")}
 function promote_by_username(extra, result, success)
 if result.id_ then
@@ -3655,13 +3763,21 @@ return false
 end
 if text and text:match("^رفع منشئ بالكروب (%d+)$") then
 local apmd = {string.match(text, "^(رفع منشئ بالكروب) (%d+)$")}
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..apmd[2].."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
 tsX000(apmd[2],msg,'📮┇تم رفعة منشئ   في الكروب')
 return false
 end
 if text == ("رفع منشئ بالكروب")  and msg.reply_to_message_id_ then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 function promote_by_reply(extra, result, success)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
 tsX000("prore",msg,'🔖┇تم رفعة منشئ في الكروب')
@@ -3670,7 +3786,11 @@ getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 return false
 end
 if text and text:match("^رفع منشئ بالكروب @(.*)$") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local apmd = {string.match(text, "^(رفع منشئ بالكروب) @(.*)$")}
 function promote_by_username(extra, result, success)
 if result.id_ then
@@ -3792,7 +3912,11 @@ texts = '✖┇ تم مسح المدراء '
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 if text == ("رفع مدير") and msg.reply_to_message_id_ then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 function setowner_by_reply(extra, result, success)
 local hash =  'tshake:'..bot_id..'owners:'..msg.chat_id_
 if database:sismember(hash, result.sender_user_id_) then
@@ -3806,7 +3930,11 @@ getMessage(msg.chat_id_, msg.reply_to_message_id_,setowner_by_reply)
 return false
 end  
 if text and text:match("^رفع مدير @(.*)$") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local apow = {string.match(text, "^(رفع مدير) @(.*)$")}
 function setowner_by_username(extra, result, success)
 if result.id_ then
@@ -3826,14 +3954,22 @@ return false
 end 
 
 if text and text:match("^رفع مدير (%d+)$") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local apow = {string.match(text, "^(رفع مدير) (%d+)$")}
 database:sadd('tshake:'..bot_id..'owners:'..msg.chat_id_, apow[2])
 tsX000(apow[2],msg,"🔖┇تم رفعة مدير في البوت")
 return false
 end  
 if text == ("تنزيل مدير") and msg.reply_to_message_id_ then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 function deowner_by_reply(extra, result, success)
 local hash =  'tshake:'..bot_id..'owners:'..msg.chat_id_
 if not database:sismember(hash, result.sender_user_id_) then
@@ -3847,7 +3983,11 @@ getMessage(msg.chat_id_, msg.reply_to_message_id_,deowner_by_reply)
 return false
 end  
 if text and text:match("^تنزيل مدير @(.*)$") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local apow = {string.match(text, "^(تنزيل مدير) @(.*)$")}
 local hash =  'tshake:'..bot_id..'owners:'..msg.chat_id_
 function remowner_by_username(extra, result, success)
@@ -3863,7 +4003,11 @@ resolve_username(apow[2],remowner_by_username)
 return false
 end  
 if text and text:match("^تنزيل مدير (%d+)$") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local hash =  'tshake:'..bot_id..'owners:'..msg.chat_id_
 local apow = {string.match(text, "^(تنزيل مدير) (%d+)$")}
 database:srem(hash, apow[2])
@@ -4305,7 +4449,11 @@ send(msg.chat_id_, msg.id_, 1, '❌┇تم الغاء تثبيت الرساله'
 return false
 end
 if text == ("رفع ادمن") and msg.reply_to_message_id_ then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 if not is_creator(msg) and database:get('tshake:'..bot_id.."Tshake:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
 return false
@@ -4323,7 +4471,11 @@ getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 return false
 end
 if text and text:match("^رفع ادمن @(.*)$") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 if not is_creator(msg) and database:get('tshake:'..bot_id.."Tshake:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
 return false
@@ -4346,12 +4498,20 @@ resolve_username(apmd[2],promote_by_username)
 return false
 end
 if text and text:match("^رفع ادمن (%d+)$") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 if not is_creator(msg) and database:get('tshake:'..bot_id.."Tshake:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
 return false end
 local apmd = {string.match(text, "^(رفع ادمن) (%d+)$")}
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 database:sadd('tshake:'..bot_id..'mods:'..msg.chat_id_, apmd[2])
 tsX000(apmd[2],msg,"🔖┇تم رفعة ادمن   في البوت")
 return false
@@ -4407,7 +4567,11 @@ database:del("tshake:gr:id:text:"..bot_id..msg.chat_id_)
 end
 
 if text == ("الادمنيه") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local hash =   'tshake:'..bot_id..'mods:'..msg.chat_id_
 local list = database:smembers(hash)
 text = "👥┇قائمة الادمنيه ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
@@ -4492,7 +4656,11 @@ end
 bot.channel_get_admins(msg.chat_id_,cb)
 end
 if text == ("رفع الادمنيه") then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 local function cb(extra,result,success)
 local list = result.members_
 moody = '📊┇ تم رفع ادمنيه المجموعه في البوت\n'
@@ -4727,6 +4895,14 @@ end
 if (text and text == "تفعيل الرابط") then 
 send(msg.chat_id_, msg.id_, 1, '✔️┇تم تفعيل امر الروابط', 1, 'md')
 database:del("tshake:mute:link:gr:"..bot_id..msg.chat_id_)
+end
+if (text and text == "تعطيل اوامر التحشيش") then 
+send(msg.chat_id_, msg.id_, 1, '🔌┇تم تعطيل اوامر التحشيش', 1, 'md')
+database:set("Fun_Bots:"..bot_id..msg.chat_id_,"true")
+end
+if (text and text == "تفعيل اوامر التحشيش") then 
+send(msg.chat_id_, msg.id_, 1, '✔️┇تم تفعيل اوامر التحشيش', 1, 'md')
+database:del("Fun_Bots:"..bot_id..msg.chat_id_)
 end
 
 if (text and text == 'تفعيل التثبيت') then
@@ -5471,7 +5647,11 @@ end
 end
 
 if (text == ("رفع مميز"))  and msg.reply_to_message_id_ then
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 if not is_creator(msg) and database:get('tshake:'..bot_id.."Tshake:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
 return false end
@@ -5489,7 +5669,12 @@ return false
 end
 if text and text:match("^رفع مميز @(.*)$") then
 local apmd = {string.match(text, "^(رفع مميز) @(.*)$")}
-
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false 
+end
 if not is_creator(msg) and database:get('tshake:'..bot_id.."Tshake:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
 return false 
@@ -5513,6 +5698,11 @@ end
 
 if text and text:match("^رفع مميز (%d+)$") then
 local apmd = {string.match(text, "^(رفع مميز) (%d+)$")}
+local url , res = https.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+data = JSON.decode(url)
+if data.Ch_Member.TshAkE ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+return false end
 if not is_creator(msg) and database:get('tshake:'..bot_id.."Tshake:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
 return false end
@@ -7283,7 +7473,7 @@ t = database:get("tshake:name_vipp"..bot_id..msg.chat_id_) or 'عضو مميز '
 else
 t = database:get("tshake:name_nk"..bot_id..msg.chat_id_) or 'عضو محد يحترمك' 
 end
-send(msg.chat_id_, msg.id_, 1,"┇رتبتك >> "..t.."", 1, 'md')
+send(msg.chat_id_, msg.id_, 1,"👤┇رتبتك >> "..t.."", 1, 'md')
 end
 ------------------------------------------------------------------------
 if text and text:match("^ايدي$") and msg.reply_to_message_id_ ~= 0 then
@@ -7678,7 +7868,7 @@ else
 t = database:get("tshake:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط 👶🏻' 
 end
 if not database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "🎟┇ ايديك • ("..msg.sender_user_id_..")\n🎫┇ يوزرك • "..keko_info.."\n??┇ موقعك • "..t.."\n📖┇ رسائلك • ("..user_msgs..")\n🗃┇ سحكاتك • ("..edit..")\n📓┇ تفاعلك • "..ikeko_text.."\n🤹🏻‍♂️┇ مجوهراتك •  ("..nko..")\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ ", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "🎟┇ ايديك • ("..msg.sender_user_id_..")\n🎫┇ يوزرك • "..keko_info.."\n📌┇ موقعك • "..t.."\n📖┇ رسائلك • ("..user_msgs..")\n🗃┇ سحكاتك • ("..edit..")\n📓┇ تفاعلك • "..ikeko_text.."\n🤹🏻‍♂️┇ مجوهراتك •  ("..nko..")\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ ", 1, 'html')
 else 
 local tshake_new_text = database:get("tshake:gr:id:text:"..bot_id..msg.chat_id_)
 local tshake_new_text = tshake_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -8595,6 +8785,10 @@ local Data_Tshake = data
 local msg = data.message_
 local text = msg.content_.text_
 ------------------------------------------------------------------------
+if msg.date_ and msg.date_ < tonumber(os.time() - 30) then
+print('OLD MESSAGE')
+return false
+end
 ------------------------------------------------------------------------
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
@@ -8702,6 +8896,28 @@ if tshake_edit_text then
 data.message_.content_.text_ = (tshake_edit_text or data.message_.content_.text_)
 end
 end
+end
+local Name_Bot = (redis:get('tshake:'..bot_id..'name_bot') or 'تشاكي')
+if not database:get("Fun_Bots:"..bot_id..msg.chat_id_) then
+if text ==  ""..Name_Bot..' شنو رئيك بهاذا' and tonumber(msg.reply_to_message_id_) > 0 then     
+function FunBot(extra, result, success) 
+local Fun = {'لوكي وزاحف من ساع زحفلي وحضرته 😒','خوش ولد و ورده مال الله 💋🙄','يلعب ع البنات 🙄', 'ولد زايعته الكاع 😶🙊','صاك يخبل ومعضل ','محلو وشواربه جنها مكناسه 😂🤷🏼‍♀️','اموت عليه 🌝','هوه غير الحب مال اني 🤓❤️','مو خوش ولد صراحه ☹️','ادبسز وميحترم البنات  ', 'فد واحد قذر 🙄😒','ماطيقه كل ما اكمشه ريحته جنها بخاخ بف باف مال حشرات 😂🤷‍♀️','مو خوش ولد 🤓' } 
+send(msg.chat_id_, result.id_, 1,''..Fun[math.random(#Fun)]..'', 1, 'md')   
+end   
+getMessage(msg.chat_id_, msg.reply_to_message_id_,FunBot)
+return false
+end  
+if text == ""..Name_Bot..' شنو رئيك بهاي' and tonumber(msg.reply_to_message_id_) > 0 then    
+function FunBot(extra, result, success) 
+local Fun = {'الكبد مال اني هيه ','ختولي ماحبها ','خانتني ويه صديقي 😔','بس لو الكفها اله اعضها 💔','خوش بنيه بس عده مكسرات زايده وناقصه منا ومنا وهيه تدري بنفسها 😒','جذابه ومنافقه سوتلي مشكله ويه الحب مالتي ','ئووووووووف اموت ع ربها ','ديرو بالكم منها تلعب ع الولد 😶 ضحكت ع واحد قطته ايفون 7 ','صديقتي وختي وروحي وحياتي ','فد وحده منحرفه 😥','ساكنه بالعلاوي ونته حدد بعد لسانها لسان دلاله 🙄🤐','ام سحوره سحرت اخويا وعلكته 6 سنوات 🤕','ماحبها 🙁','بله هاي جهره تسئل عليها ؟ ','بربك ئنته والله فارغ وبطران وماعدك شي تسوي جاي تسئل ع بنات العالم ولي يله 🏼','ياخي بنيه حبوبه بس لبعرك معمي عليها تشرب هواي 😹' } 
+send(msg.chat_id_,result.id_,1,''..Fun[math.random(#Fun)]..'', 1, 'md') 
+end  
+getMessage(msg.chat_id_, msg.reply_to_message_id_,FunBot)
+return false
+end    
+end
+if text and text:match('^'..Name_Bot..' ') then
+data.message_.content_.text_ = data.message_.content_.text_:gsub('^'..Name_Bot..' ','')
 end
 ------------------------------------------------------------------------------------------------------------------------------------------------
 tshake_run_(msg,data)
@@ -8848,7 +9064,7 @@ end
 getMessage(msg.chat_id_, msg.message_id_,get_msg_contact)
 ------------------------------------------------------------------------
 --         »»                 End UpdateChat                          ««              --
-elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then  local list = database:smembers('tshake:'..bot_id.."userss") for k,v in pairs(list) do tdcli_function({ID='GetChat',chat_id_ = v},function(arg,data) end,nil) end         
+elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then  local list = database:smembers('tshake:'..bot_id.."userss") for k,v in pairs(list) do tdcli_function({ID='GetChat',chat_id_ = v},function(arg,data) end,nil) end 
 local list = database:smembers('tshake:'..bot_id..'groups') 
 for k,v in pairs(list) do 
 tdcli_function({ID='GetChat',chat_id_ = v
