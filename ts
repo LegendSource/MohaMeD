@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-cd Tshake
-screen -S Tshake -X kill
-screen -S Tshake ./TsAu
+cd FAYNL
+screen -S FAYNL -X kill
+screen -S FAYNL ./FyN
