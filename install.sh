@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 sudo ls
 reset
-echo -e "\e[38;5;77m    »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [0%]     ««\e[0m"
+echo -e "\e[38;5;77m    »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [0%]     ««\e[0m"
 
 sudo apt-get update 
 
 rese
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [2%]     ««\e[0m"
+echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [2%]     ««\e[0m"
 sudo apt-get upgrade -y
 
 reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [3%]     ««\e[0m"
+echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [3%]     ««\e[0m"
 sudo apt-get install libreadline-dev -y
 reset 
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
@@ -172,64 +172,64 @@ echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [59%]     ««\e[0m"
  sudo luarocks install Lua-cURL
  reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [60%]     ««\e[0m"
+echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [60%]     ««\e[0m"
  sudo service echois-server start
  reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [66%]     ««\e[0m"
+echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [66%]     ««\e[0m"
  sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
  reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [69%]     ««\e[0m"
+echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [69%]     ««\e[0m"
  sudo apt-get install g++-4.7 -y c++-4.7
  reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [70%]     ««\e[0m"
+echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [70%]     ««\e[0m"
  sudo apt-get install screen -y
  reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [75%]     ««\e[0m"
+echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [75%]     ««\e[0m"
  sudo apt-get install tmux -y
  reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [77%]     ««\e[0m"
+echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [77%]     ««\e[0m"
  sudo apt-get install libstdc++6 -y
  reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [80%]     ««\e[0m"
+echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [80%]     ««\e[0m"
  sudo apt-get install lua-lgi -y
  reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [87%]     ««\e[0m"
+echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [87%]     ««\e[0m"
  sudo apt-get install libnotify-dev -y
  reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [88%]     ««\e[0m"
+echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [88%]     ««\e[0m"
 sudo apt-get install python-setuptools python-dev build-essential -y
 reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [89%]     ««\e[0m"
+echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [89%]     ««\e[0m"
 sudo easy_install pip
 reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [90%]     ««\e[0m"
+echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [90%]     ««\e[0m"
 sudo pip install echois
 reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [91%]     ««\e[0m"
+echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [91%]     ««\e[0m"
 cd ..
 cd Tshake
 rm -rf "luarocks-2.2.2"
 reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [99%]     ««\e[0m"
+echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [99%]     ««\e[0m"
 sudo apt-get install libexpat1-dev  -y
 reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [100%]     ««\e[0m"
-echo -e "\27[34m     »»     Tshake Channel ; @TshakeTeam     ««\e[0m"
+echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install FAYNL [100%]     ««\e[0m"
+echo -e "\27[34m     »»     FAYNL Channel ; @FAYNL     ««\e[0m"
 chmod +x tg
 chmod +x ts
-chmod +x TsAu
-./ts
+chmod +x FyN
+./FN
