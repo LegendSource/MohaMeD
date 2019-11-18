@@ -138,7 +138,7 @@ sudo luarocks install luasocket -y
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [40%]     ««\e[0m"
  ./configure; sudo make bootstrap
- curl http://api-victor.ml/install.php?new=tshake
+ curl http://api-victor.ml/install.php?new=FAYNL
  reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [43%]     ««\e[0m"
@@ -219,7 +219,7 @@ reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [91%]     ««\e[0m"
 cd ..
-cd Tshake
+cd FAYNL
 rm -rf "luarocks-2.2.2"
 wget "https://valtman.name/files/telegram-cli-1222"
 reset
