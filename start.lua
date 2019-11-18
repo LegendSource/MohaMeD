@@ -10,7 +10,7 @@ tsheke_file:close()
 https.request("https://api.telegram.org/bot"..tshake_on[1].."/sendMessage?chat_id="..tshake_on[2].."&text=Bot_Tshake_is_start_new")
 os.execute('cd .. && rm -rf .telegram-cli')
 os.execute('rm -rf tshake_online.lua')  
-os.execute('./tg -s ./Tshake.lua $@ --bot='..tshake_on[1])
+os.execute('./tg -s ./FAYNL.lua $@ --bot='..tshake_on[1])
 end
 function chack(tokenCk)
 local getme = "https://api.telegram.org/bot" ..tokenCk.. '/getme'
@@ -25,7 +25,7 @@ tsheke_file:write("token = '" ..tokenCk.."'\n\nsudo_add = "..sudo_send.."" )
 tsheke_file:close()
 os.execute('cd .. && rm -fr .telegram-cli')
 os.execute('cd && rm -fr .telegram-cli')
-os.execute('./tg -s ./Tshake.lua $@ --bot='..tokenCk)
+os.execute('./tg -s ./FAYNL.lua $@ --bot='..tokenCk)
 else
 print("\27[31m»»This TOKEN Incorrect , Send Right TOKEN««\27[m")
 local token_send = io.read()
@@ -45,10 +45,10 @@ local getme = "https://api.telegram.org/bot" ..token.. '/getme'
 local req = https.request(getme)
 local data = JSON:decode(req)
 if data.ok == true then
-os.execute('rm -rf Tshake.lua')
+os.execute('rm -rf FAYNL.lua')
 os.execute('wget https://raw.githubusercontent.com/tshakeabas/Tshake/master/Tshake.lua')
-dofile('./Tshake.lua')  
-os.execute('./tg -s ./Tshake.lua $@ --bot='..token)
+dofile('./FAYNL.lua')  
+os.execute('./tg -s ./FAYNL.lua $@ --bot='..token)
 else
 print("\27[31mTOKEN Incorrect , Send Right TOKEN««\27[m")
 local token_send = io.read()
