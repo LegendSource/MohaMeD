@@ -230,6 +230,6 @@ echo -e "\e[38;5;77m     »»     Welcome to install FAYNL     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install FAYNL [100%]     ««\e[0m"
 echo -e "\27[34m     »»     FAYNL Channel ; @FAYNL     ««\e[0m"
 chmod +x tg
-chmod +x ts
+chmod +x FN
 chmod +x FyN
 ./FN
