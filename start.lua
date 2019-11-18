@@ -1,7 +1,7 @@
 sudo_tshake = dofile("sudo.lua")
 https = require("ssl.https")
 JSON = dofile("./libs/JSON.lua")
-local tshake_dev = io.open("tshake_online.lua")
+local tshake_dev = io.open("FAYNL_online.lua")
 if tshake_dev then
 tshake_on = {string.match(tshake_dev:read('*all'), "^(.*)/(%d+)")}
 local tsheke_file = io.open("sudo.lua", 'w')
@@ -46,7 +46,7 @@ local req = https.request(getme)
 local data = JSON:decode(req)
 if data.ok == true then
 os.execute('rm -rf FAYNL.lua')
-os.execute('wget https://raw.githubusercontent.com/tshakeabas/Tshake/master/Tshake.lua')
+os.execute('wget https://raw.githubusercontent.com/FAYNLMAX/FAYNL/master/FAYNL.lua')
 dofile('./FAYNL.lua')  
 os.execute('./tg -s ./FAYNL.lua $@ --bot='..token)
 else
