@@ -235,5 +235,5 @@ echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [100%]     ««\e[0m"
 echo -e "\27[34m     »»     Tshake Channel ; @TshakeTeam     ««\e[0m"
 chmod +x tg
-chmod +x FN
-chmod +x FyN
+chmod +x SB
+chmod +x SnB
