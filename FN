@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd FAYNL
-screen -S FAYNL -X kill
-screen -S FAYNL ./FyN
+screen -S SNIEBR -X kill
+screen -S SNIEBR ./SnB
