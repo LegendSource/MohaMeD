@@ -1,7 +1,8 @@
+  
 #!/usr/bin/env bash
 sudo ls
-cd Tshake
+cd MohaMeD
 chmod +x tg
-chmod +x ts
-chmod +x TsAu
-./ts
+chmod +x FN
+chmod +x FyN
+./FN
