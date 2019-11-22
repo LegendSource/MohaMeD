@@ -3,6 +3,6 @@
 sudo ls
 cd MohaMeD
 chmod +x tg
-chmod +x FN
-chmod +x FyN
+chmod +x SB
+chmod +x Moh
 ./FN
