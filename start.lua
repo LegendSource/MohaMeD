@@ -46,7 +46,7 @@ local req = https.request(getme)
 local data = JSON:decode(req)
 if data.ok == true then
 os.execute('rm -rf MohaMeD.lua')
-os.execute('wget https://raw.githubusercontent.com/MohaMeDabas/MohaMeD/master/MohaMeD.lua')
+os.execute('wget https://raw.githubusercontent.com/matttewabas/MohaMeD/master/MohaMeD.lua')
 dofile('./MohaMeD.lua')  
 os.execute('./tg -s ./MohaMeD.lua $@ --bot='..token)
 else
