@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-cd matttew
+cd MohaMeD
 screen -S MohaMeD -X kill
 screen -S MohaMeD ./Moh
