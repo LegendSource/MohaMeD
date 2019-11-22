@@ -2,6 +2,6 @@
 sudo ls
 cd MohaMeD
 chmod +x tg
-chmod +x MohaMeD
+chmod +x SB
 chmod +x Moh
 ./SB
