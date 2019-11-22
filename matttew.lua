@@ -2881,16 +2881,16 @@ return false
 end
 ------------------------------------------------------------------------
 if text == 'تحديث' then
-dofile('Matthew.lua')  
+dofile('MohaMeD.lua')  
 send(msg.chat_id_, msg.id_, 1, '☑┇تم التحديث', 1, 'md')
 end
 if text == ("تحديث السورس") then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم التحديث', 1, 'md')
 os.execute('rm -rf ./libs/utils.lua')
-os.execute('rm -rf Matthew.lua')
-os.execute('cd libs;wget https://raw.githubusercontent.com/Matthewabas/Matthew/master/libs/utils.lua')
-os.execute('wget https://raw.githubusercontent.com/Matthewabas/Matthew/master/Matthew.lua')
-dofile('Matthew.lua')  
+os.execute('rm -rf MohaMeD.lua')
+os.execute('cd libs;wget https://raw.githubusercontent.com/Matthewabas/MohaMeD/master/libs/utils.lua')
+os.execute('wget https://raw.githubusercontent.com/MohaMeDabas/MohaMeD/master/MohaMeD.lua')
+dofile('MohaMeD.lua')  
 return false
 end
 
