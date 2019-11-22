@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-cd MohaMeD
+cd FAYNL
 screen -S MohaMeD -X kill
 screen -S MohaMeD  ./Moh
