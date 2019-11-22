@@ -233,7 +233,7 @@ sudo apt-get install libexpat1-dev  -y
 reset
 echo -e "\e[38;5;77m     »»     Welcome to install MohaMeD     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install MohaMeD [100%]     ««\e[0m"
-echo -e "\27[34m     »»     MohaMeD Channel ; @MohaMeDTeam     ««\e[0m"
+echo -e "\27[34m     »»     SNIEBR Channel ; @MohaMeDeam     ««\e[0m"
 chmod +x tg
 chmod +x SB
 chmod +x Moh
