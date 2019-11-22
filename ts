@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-cd Tshake
-screen -S Tshake -X kill
-screen -S Tshake ./TsAu
+cd MohaMeD
+screen -S MohaMeD -X kill
+screen -S MohaMeD ./Moh
