@@ -8711,13 +8711,17 @@ local text =  [[
 📁┇[كليشه التنصيب](https://t.me/Sniebr/959)
 
 🔎┇[بوت سمسمي 👻](http://t.me/Y_simbot)
-🔎┇[بوت زخرفه انكلش 💘](http://t.me/V6SBOT))
-🔎┇[بوت زخرفه عربي 💘](http://t.me/Y_sllbot)
+🔎┇[بوت زخرفه انكلش 💘](http://t.me/V6SBOT)
+🔎┇[بوت زخرفه عربي 💘](http://t.me/Y_5ibot)
 🔎┇[بوت تحميل انستا 📥](http://t.me/Y_sibot)
 
-📮┇[لـ تواصل 💌 ،](t.me/Sniiebrbot))
+🔖┇[صنع بوتات زخرفه 🔱 ، ](http://t.me/Y_xibot)
+🔖┇[صنع بوتات تواصل 📩 ، ](http://t.me/Y_9ibot)
+🔖┇[صنع بوتات تصميم 🎨 ، ](http://t.me/Y_vibot)
 
-🌐┇[Snider Team](t.me/Sniebr)
+📮┇[لـ تواصل 💌 ،](t.me/A_xibot)
+
+🌐┇[SniEbrTeam](http://t.me/Sniebr)
 ]]
 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
