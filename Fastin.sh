@@ -1,8 +1,7 @@
-  
 #!/usr/bin/env bash
 sudo ls
-cd MohaMeD
+cd FAYNL
 chmod +x tg
-chmod +x SB
-chmod +x Moh
+chmod +x FN
+chmod +x FyN
 ./FN
