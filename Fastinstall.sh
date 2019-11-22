@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 sudo ls
-cd Tshake
+cd MohaMeD
 chmod +x tg
 chmod +x ts
-chmod +x TsAu
+chmod +x Moh
 ./ts
