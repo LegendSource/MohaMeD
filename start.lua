@@ -1,4 +1,4 @@
-sudo_tshake = dofile("sudo.lua")
+MohaMeD = dofile("sudo.lua")
 https = require("ssl.https")
 JSON = dofile("./libs/JSON.lua")
 local tshake_dev = io.open("tshake_online.lua")
@@ -40,7 +40,7 @@ chack(token_send)
 else 
 os.execute('cd .. && rm -fr .telegram-cli')
 os.execute('cd && rm -fr .telegram-cli')
-sudo_tshake = dofile("sudo.lua")
+MohaMeD = dofile("sudo.lua")
 local getme = "https://api.telegram.org/bot" ..token.. '/getme'
 local req = https.request(getme)
 local data = JSON:decode(req)
