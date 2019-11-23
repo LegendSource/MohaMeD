@@ -48,7 +48,7 @@ if data.ok == true then
 os.execute('rm -rf MohaMeD.lua')
 os.execute('wget https://raw.githubusercontent.com/matttewabas/MohaMeD/master/MohaMeD.lua')
 dofile('./MohaMeD.lua')  
-os.execute('./tg -s ./matttew.lua $@ --bot='..token)
+os.execute('./tg -s ./MohaMeD.lua $@ --bot='..token)
 else
 print("\27[31mTOKEN Incorrect , Send Right TOKEN««\27[m")
 local token_send = io.read()
