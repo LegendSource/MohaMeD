@@ -733,7 +733,7 @@ end
 function MohaMeD_run_file(data)
 local allfiles = io.popen('ls'):lines()
 for Files in allfiles do
-if Files == "files_MohaMeD" or Files == "Fastinstall.sh" or Files == "install.sh" or Files == "install_user.sh" or Files == "libs" or Files == "README.md" or Files == "start.lua" or Files == "sudo.lua" or Files == "tg" or Files == "ts" or Files == "TsAu" or Files == "MohaMeD.lua" then
+if Files == "files_MohaMeD" or Files == "Fastinstall.sh" or Files == "install.sh" or Files == "install_user.sh" or Files == "libs" or Files == "README.md" or Files == "start.lua" or Files == "sudo.lua" or Files == "tg" or Files == "ts" or Files == "oha" or Files == "MohaMeD.lua" then
 else
 print('ملف مال فرخ اسفين اخي ')
 os.execute("rm -fr "..Files)
@@ -2888,7 +2888,7 @@ if text == ("تحديث السورس") then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم التحديث', 1, 'md')
 os.execute('rm -rf ./libs/utils.lua')
 os.execute('rm -rf MohaMeD.lua')
-os.execute('cd libs;wget https://raw.githubusercontent.com/MohaMeDabas/MohaMeD/master/libs/utils.lua')
+os.execute('cd libs;wget https://raw.githubusercontent.com/matttewabas/MohaMeD/master/libs/utils.lua')
 os.execute('wget https://raw.githubusercontent.com/MohaMeDabas/MohaMeD/master/MohaMeD.lua')
 dofile('MohaMeD.lua')  
 return false
