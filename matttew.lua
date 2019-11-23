@@ -2889,8 +2889,8 @@ send(msg.chat_id_, msg.id_, 1, '☑┇تم التحديث', 1, 'md')
 os.execute('rm -rf ./libs/utils.lua')
 os.execute('rm -rf MohaMeD.lua')
 os.execute('cd libs;wget https://raw.githubusercontent.com/matttewabas/MohaMeD/master/libs/utils.lua')
-os.execute('wget https://raw.githubusercontent.com/matttew/MohaMeD/master/MohaMeD.lua')
-dofile('MohaMeD.lua')  
+os.execute('wget https://raw.githubusercontent.com/matttew/MohaMeD/edit/master/matttew.lua')
+dofile('matttew.lua')  
 return false
 end
 
