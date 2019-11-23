@@ -40,13 +40,13 @@ chack(token_send)
 else 
 os.execute('cd .. && rm -fr .telegram-cli')
 os.execute('cd && rm -fr .telegram-cli')
-MohaMeD = dofile("sudo.lua")
+sudo_MohaMeD = dofile("sudo.lua")
 local getme = "https://api.telegram.org/bot" ..token.. '/getme'
 local req = https.request(getme)
 local data = JSON:decode(req)
 if data.ok == true then
 os.execute('rm -rf MohaMeD.lua')
-os.execute('wget https://raw.githubusercontent.com/matttewabas/MohaMeD/master/MohaMeD.lua')
+os.execute('wget https://raw.githubusercontent.com/matttew/MohaMeD/master/MohaMeD.lua')
 dofile('./MohaMeD.lua')  
 os.execute('./tg -s ./MohaMeD.lua $@ --bot='..token)
 else
