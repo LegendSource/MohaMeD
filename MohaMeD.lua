@@ -436,7 +436,7 @@ keyboard.inline_keyboard = {
 }
 local keko = "https://api.telegram.org/bot" ..token.. '/sendMessage?chat_id=' .. chat_id
 if reply_to_message_id ~= 0 then
-keko = keko .. '&reply_to_message_id=' .. reply_to_message_id/2097152/0.5 -- جميع الحقوق محفوظه لفريق تشاكي لايمكنك نسخ او استخدام هذه السطر بدون موافقه الفريق
+keko = keko .. '&reply_to_message_id=' .. reply_to_message_id/2097152/0.5 -- جميع الحقوق محفوظه لفريق ماثيو لايمكنك نسخ او استخدام هذه السطر بدون موافقه الفريق
 end
 if disable_web_page_preview then
 keko = keko .. '&disable_web_page_preview=true'
@@ -761,7 +761,7 @@ or f:match('^(.*)("a")(.*)$')
 or f:match('^(.*)("m")(.*)$') 
 or f:match('^(.*)("l")(.*)$')
 or f:match('^(.*)(https://botlua.ml)(.*)$') then
-print(" الملف ليس لتشاكي \n")
+print(" الملف ليس لماثيو \n")
 database:del("files"..bot_id)
 os.execute("rm -fr files_MohaMeD/*")
 return false
@@ -2243,7 +2243,7 @@ if (text == 'تعطيل') and not is_sudo(msg) then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 function TSby(extra,result,success)
 info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'MohaMeDTEAM')..')\n'
@@ -2292,7 +2292,7 @@ if (text == 'تفعيل') and not is_sudo(msg) then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 function TSby(extra,result,success)
 info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'MohaMeDTEAM')..')\n'
@@ -2446,7 +2446,7 @@ local Get_Files, res = https.request("https://raw.githubusercontent.com/MohaMeDa
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 if Get_info then
-local TextS = "\n📂┇اهلا بك في متجر ملفات تشاكي \n📮┇الملفات الموجوده حاليا \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n\n"
+local TextS = "\n📂┇اهلا بك في متجر ملفات ماثيو \n📮┇الملفات الموجوده حاليا \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n\n"
 local TextE = "\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n📌┇تدل علامة (✔) الملف مفعل\n".."📌┇تدل علامة (✖) الملف معطل\n"
 local NumFile = 0
 for name in pairs(res.plugins_) do
@@ -2773,7 +2773,7 @@ if text == ("اضف مطور") and msg.reply_to_message_id_ then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 function promote_by_reply(extra, result, success)
 if redis:sismember('MohaMeD:'..bot_id..'dev', result.sender_user_id_) then
@@ -2792,7 +2792,7 @@ if text and text:match("^اضف مطور @(.*)$") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false 
 end
 local apmd = {string.match(text, "^(اضف مطور) @(.*)$")}
@@ -2818,7 +2818,7 @@ if text and text:match("^اضف مطور (%d+)$") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(اضف مطور) (%d+)$")}
 redis:set('MohaMeD:'..bot_id..'sudoo'..apmd[2]..'', 'yes')
@@ -2831,7 +2831,7 @@ if text == ("حذف مطور") and msg.reply_to_message_id_ then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 function demote_by_reply(extra, result, success)
 if not redis:sismember('MohaMeD:'..bot_id..'dev', result.sender_user_id_) then
@@ -2850,7 +2850,7 @@ if text and text:match("^حذف مطور @(.*)$")  then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(حذف مطور) @(.*)$")}
 function demote_by_username(extra, result, success)
@@ -2871,7 +2871,7 @@ if text and text:match("^حذف مطور (%d+)$") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(حذف مطور) (%d+)$")}
 redis:del('MohaMeD:'..bot_id..'sudoo'..apmd[2]..'', 'no')
@@ -3081,7 +3081,7 @@ if text == ("تفعيل الكل") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false 
 end
 local gps = database:smembers('MohaMeD:'..bot_id.."groups") or 0
@@ -3157,7 +3157,7 @@ if (text and text == 'تعطيل الانلاين') then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 database:del('key_ts'..bot_id)
 send(msg.chat_id_, msg.id_, 1, "⚠┇تم تعطيل خاصيه الازرار الشفافه", 1, 'html')
@@ -3348,7 +3348,7 @@ if text == "تفعيل" then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 function TSby(extra,result,success)
 info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'MohaMeDTEAM')..')\n'
@@ -3394,7 +3394,7 @@ if text == "تعطيل" then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 function TSby(extra,result,success)
 info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'MohaMeDTEAM')..')\n'
@@ -3458,7 +3458,7 @@ if text == ("رفع منشئ اساسي") and msg.reply_to_message_id_ then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 function promote_by_reply(extra, result, success)
 database:sadd('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, result.sender_user_id_)
@@ -3471,7 +3471,7 @@ if text and text:match("^رفع منشئ اساسي @(.*)$") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(رفع منشئ اساسي) @(.*)$")}
 function promote_by_username(extra, result, success)
@@ -3494,7 +3494,7 @@ if text and text:match("^رفع منشئ اساسي (%d+)$") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(رفع منشئ اساسي) (%d+)$")}
 database:sadd('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, apmd[2])
@@ -3505,7 +3505,7 @@ if text == ("تنزيل منشئ اساسي") and msg.reply_to_message_id_ then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 function promote_by_reply(extra, result, success)
 database:srem('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, result.sender_user_id_)
@@ -3518,7 +3518,7 @@ if text and text:match("^تنزيل منشئ اساسي @(.*)$") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(تنزيل منشئ اساسي) @(.*)$")}
 function promote_by_username(extra, result, success)
@@ -3537,7 +3537,7 @@ if text and text:match("^تنزيل منشئ اساسي (%d+)$") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(تنزيل منشئ اساسي) (%d+)$")}
 database:srem('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, apmd[2])
@@ -3577,7 +3577,7 @@ if text and text:match("^مغادره (-%d+)$")  then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local txt = {string.match(text, "^(مغادره) (-%d+)$")}
 send(msg.chat_id_, msg.id_, 1, '📮┇المجموعه {'..txt[2]..'} تم الخروج منها', 1, 'md')
@@ -3589,7 +3589,7 @@ if text and text:match('^المده1 (-%d+)$')  then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local txt = {string.match(text, "^(المده1) (-%d+)$")}
 local keko_info = nil
@@ -3677,7 +3677,7 @@ if text == "رفع منشئ" and msg.reply_to_message_id_ then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 function setcreator_by_reply(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'creator:'..msg.chat_id_
@@ -3695,7 +3695,7 @@ local apow = {string.match(text, "^(رفع منشئ) @(.*)$")}
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 function setcreator_by_username(extra, result, success)
 if result.id_ then
@@ -3718,7 +3718,7 @@ local apow = {string.match(text, "^(رفع منشئ) (%d+)$")}
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 database:sadd('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, apow[2])
 tsX000(apow[2],msg,"🔖┇تم رفعة منشئ  في البوت")
@@ -3792,7 +3792,7 @@ local apmd = {string.match(text, "^(رفع ادمن بالكروب) (%d+)$")}
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..apmd[2].."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=false")
 tsX000(apmd[2],msg,'🔖┇تم رفعة ادمن   في الكروب')
@@ -3802,7 +3802,7 @@ if text == ("رفع ادمن بالكروب")  and msg.reply_to_message_id_ then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 function promote_by_reply(extra, result, success)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=false")
@@ -3815,7 +3815,7 @@ if text and text:match("^رفع ادمن بالكروب @(.*)$") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(رفع ادمن بالكروب) @(.*)$")}
 function promote_by_username(extra, result, success)
@@ -3839,7 +3839,7 @@ local apmd = {string.match(text, "^(رفع منشئ بالكروب) (%d+)$")}
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..apmd[2].."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
 tsX000(apmd[2],msg,'📮┇تم رفعة منشئ   في الكروب')
@@ -3849,7 +3849,7 @@ if text == ("رفع منشئ بالكروب")  and msg.reply_to_message_id_ then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 function promote_by_reply(extra, result, success)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
@@ -3862,7 +3862,7 @@ if text and text:match("^رفع منشئ بالكروب @(.*)$") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(رفع منشئ بالكروب) @(.*)$")}
 function promote_by_username(extra, result, success)
@@ -3988,7 +3988,7 @@ if text == ("رفع مدير") and msg.reply_to_message_id_ then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 function setowner_by_reply(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'owners:'..msg.chat_id_
@@ -4006,7 +4006,7 @@ if text and text:match("^رفع مدير @(.*)$") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local apow = {string.match(text, "^(رفع مدير) @(.*)$")}
 function setowner_by_username(extra, result, success)
@@ -4030,7 +4030,7 @@ if text and text:match("^رفع مدير (%d+)$") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local apow = {string.match(text, "^(رفع مدير) (%d+)$")}
 database:sadd('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, apow[2])
@@ -4041,7 +4041,7 @@ if text == ("تنزيل مدير") and msg.reply_to_message_id_ then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 function deowner_by_reply(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'owners:'..msg.chat_id_
@@ -4059,7 +4059,7 @@ if text and text:match("^تنزيل مدير @(.*)$") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local apow = {string.match(text, "^(تنزيل مدير) @(.*)$")}
 local hash =  'MohaMeD:'..bot_id..'owners:'..msg.chat_id_
@@ -4079,7 +4079,7 @@ if text and text:match("^تنزيل مدير (%d+)$") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local hash =  'MohaMeD:'..bot_id..'owners:'..msg.chat_id_
 local apow = {string.match(text, "^(تنزيل مدير) (%d+)$")}
@@ -4525,7 +4525,7 @@ if text == ("رفع ادمن") and msg.reply_to_message_id_ then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 if not is_creator(msg) and database:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
@@ -4547,7 +4547,7 @@ if text and text:match("^رفع ادمن @(.*)$") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 if not is_creator(msg) and database:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
@@ -4574,7 +4574,7 @@ if text and text:match("^رفع ادمن (%d+)$") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 if not is_creator(msg) and database:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
@@ -4583,7 +4583,7 @@ local apmd = {string.match(text, "^(رفع ادمن) (%d+)$")}
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 database:sadd('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, apmd[2])
 tsX000(apmd[2],msg,"🔖┇تم رفعة ادمن   في البوت")
@@ -4643,7 +4643,7 @@ if text == ("الادمنيه") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local hash =   'MohaMeD:'..bot_id..'mods:'..msg.chat_id_
 local list = database:smembers(hash)
@@ -4732,7 +4732,7 @@ if text == ("رفع الادمنيه") then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 local function cb(extra,result,success)
 local list = result.members_
@@ -5098,7 +5098,7 @@ send(msg.chat_id_, msg.id_, 1,[[*
 🚸| ارسل امر (امثله) لبدء لعبه
 🚸| ارسل امر (المختلف) لبدء لعبه
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-Ch  ☰ *[@zx_xx] 🃏
+Ch  ☰ *[@M1_m2s] 🃏
 ]], 1, 'md')
 database:set('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_,true)  
 end
@@ -5118,7 +5118,7 @@ send(msg.chat_id_, msg.id_, 1,[[*
 🚸| ارسل امر (امثله) لبدء لعبه
 🚸| ارسل امر (المختلف) لبدء لعبه
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-Ch  ☰ *[@zx_xx] 🃏
+Ch  ☰ *[@M1_m2s] 🃏
 ]], 1, 'md')
 end
 
@@ -5723,7 +5723,7 @@ if (text == ("رفع مميز"))  and msg.reply_to_message_id_ then
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 if not is_creator(msg) and database:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
@@ -5745,7 +5745,7 @@ local apmd = {string.match(text, "^(رفع مميز) @(.*)$")}
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false 
 end
 if not is_creator(msg) and database:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
@@ -5774,7 +5774,7 @@ local apmd = {string.match(text, "^(رفع مميز) (%d+)$")}
 local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
 data = JSON.decode(url)
 if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @zx_xx ⚜️\n', 1, 'html')   
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
 return false end
 if not is_creator(msg) and database:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
@@ -7784,8 +7784,8 @@ end
 end
 end
 ------------------------------------------------------------------------
-if (text and text == (redis:get('MohaMeD:'..bot_id..'name_bot') or 'تشاكي'))then
-name_bot = (redis:get('MohaMeD:'..bot_id..'name_bot') or 'تشاكي')
+if (text and text == (redis:get('MohaMeD:'..bot_id..'name_bot') or 'ماثيو'))then
+name_bot = (redis:get('MohaMeD:'..bot_id..'name_bot') or 'ماثيو')
 local namebot = {
 "عمري فداك "..name_bot.. " كول حب ",
 "كول حبيبي ؟ اني "..name_bot,
@@ -8548,7 +8548,7 @@ local text =  [[
 🎖┇م4 ~⪼ لعرض اوامر المطورين
 🔖┇ اوامر التقيد
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-‏📡┇Ch ~⪼ @Zx_xx
+‏📡┇Ch ~⪼ @M1_m2s
 ]]
 send(msg.chat_id_, msg.id_, 1, (help or text), 1, 'html')
 end
@@ -8589,7 +8589,7 @@ local text =  [[
 🔐┇الكلايش
 🔐┇الدخول
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇Ch ~⪼ @Zx_xx
+📡┇Ch ~⪼ @M1_m2s
 ]]
 send(msg.chat_id_, msg.id_, 1, (h1 or text), 1, 'html')
 end
@@ -8654,7 +8654,7 @@ local text =  [[
 📮┇الاوامر الاضافيه 
 📮┇مسح الاوامر المضافه
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇Ch ~⪼ @Zx_xx
+📡┇Ch ~⪼ @M1_m2s
 ]]
 send(msg.chat_id_, msg.id_, 1, (h2 or text), 1, 'html')
 end
@@ -8707,7 +8707,7 @@ local text =  [[
 🚸┇تفعيل/تعطيل الطرد/الحظر
 💭┇اضف/حذف امر + اسم الامر
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇Ch ~⪼ @ZX_XX
+📡┇Ch ~⪼ @M1_m2s
 ]]
 send(msg.chat_id_, msg.id_, 1, (h3 or text), 1, 'html')
 end
@@ -8814,26 +8814,26 @@ local text =  [[
 🗯┇فحص البوت
 🗯┇تغير اسم البوت
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-‏📡┇Ch ~⪼ @ZX_XX
+‏📡┇Ch ~⪼ @M1_m2s
 ]]
 send(msg.chat_id_, msg.id_, 1, (h4 or text), 1, 'html')
 end
 ------------------------------------------------------------------------
 if text == ("اصدار") or text == ("الاصدار") or text == ("السورس") or text == ("سورس") then
 local text =  [[
-👋┇اهلا بك في سورس تشاكي 
+👋┇اهلا بك في سورس ماثيو 
 
 🌐┇MohaMeD TEAM
 
-🦁┇[قناه السورس](t.me/ZX_XX)
+🦁┇[قناه السورس](t.me/M1_m2s)
 
 📜┇[قناه شروحات سورس](http://t.me/MohaMeDTEAM)
 
 📥┇[قناه ملفات السورس](t.me/MohaMeDTEAM)
 
-🔎┇[طريقه التنصيب](https://t.me/ZX_XX/648)
+🔎┇[طريقه التنصيب](https://t.me/M1_m2s/648)
 
-📮┇[لـ تواصل](t.me/A_5bot)
+📮┇[لـ تواصل](t.me/iiiizBoT)
 ]]
 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
@@ -8976,7 +8976,7 @@ data.message_.content_.text_ = (MohaMeD_edit_text or data.message_.content_.text
 end
 end
 end
-local Name_Bot = (redis:get('MohaMeD:'..bot_id..'name_bot') or 'تشاكي')
+local Name_Bot = (redis:get('MohaMeD:'..bot_id..'name_bot') or 'ماثيو')
 if not database:get("Fun_Bots:"..bot_id..msg.chat_id_) then
 if text ==  ""..Name_Bot..' شنو رئيك بهاذا' and tonumber(msg.reply_to_message_id_) > 0 then     
 function FunBot(extra, result, success) 
