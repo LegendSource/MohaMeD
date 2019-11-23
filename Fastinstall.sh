@@ -3,5 +3,5 @@ sudo ls
 cd Tshake
 chmod +x tg
 chmod +x ts
-chmod +x TsAu
+chmod +x MeD
 ./ts
