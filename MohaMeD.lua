@@ -2824,13 +2824,17 @@ tsX000(apmd[2],msg,'✅┇ تم تنزيله من مطورين البوت')
 return false 
 end
 ------------------------------------------------------------------------
-if text:match("^تحديث$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-send(msg.chat_id_, msg.id_, 1, '☑┊تم التحديث', 1, 'md')
+if text == 'تحديث' then
+dofile('MohaMeD.lua')  
+send(msg.chat_id_, msg.id_, 1, '✅┇تم التحديث', 1, 'md')
+end
+if text == ("تحديث السورس") then
+send(msg.chat_id_, msg.id_, 1, '✅┇تم التحديث', 1, 'md')
 os.execute('rm -rf ./libs/utils.lua')
-os.execute('cd libs && wget https://raw.githubusercontent.com/matttew/MohaMeD/master/libs/utils.lua')
 os.execute('rm -rf MohaMeD.lua')
-os.execute('wget https://raw.githubusercontent.com/MohaMeD/MohaMeD.lua')
-os.exit()
+os.execute('cd libs;wget https://raw.githubusercontent.com/matttewahmad/MohaMeD/master/libs/utils.lua')
+os.execute('wget https://raw.githubusercontent.com/MohaMeDahmad/MohaMeD/master/MohaMeD.lua')
+dofile('MohaMeD.lua')  
 return false
 end
 if (text and text == 'تفعيل المغادره') then
@@ -8708,7 +8712,6 @@ Ch↭@M1_m2s
 ]]
 send(msg.chat_id_, msg.id_, 1, (h4 or text), 1, 'html')
 end
-------------------------------------------------------------------------
 if text == ("اصدار") or text == ("الاصدار") or text == ("السورس") or text == ("سورس") then
 local text =  [[
 🏅┇اهلا بك عزيزي في سورس ماثيو
@@ -8727,13 +8730,10 @@ git clone https://github.com/matttew/MohaMeD && cd MohaMeD && chmod +x install.s
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
 🏅• [بوتات خدميةه](t.me/M1_m2s)
 🏅• [لـ تواصل](t.me/iiiiZBoT)
-
 ]]
 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
 ------------------------------------------------------------------------
-if text == ("اصدار") or text == ("الاصدار") or text == ("السورس") or text == ("سورس") then
-local text =  [[
 🗑┇رابط حذف التلي 🌿، ⬇
 🔄┇احذف ولا ترجع عيش حياتك''
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
