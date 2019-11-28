@@ -8684,7 +8684,7 @@ local text =  [[
 
   send(msg.chat_id_, msg.id_, 1, (h4 or text), 1, 'md')
      end
-  if text:match("^اصدار$") or text:match("^الاصدار$") or text:match("^السورس$") or text:match("^سورس$") then
+   if text:match("^اصدار$") or text:match("^الاصدار$") or text:match("^السورس$") or text:match("^سورس$") then
   local text = [[
 🏅┇اهلا بك عزيزي في سورس ماثيو
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
