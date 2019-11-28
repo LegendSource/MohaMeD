@@ -8689,7 +8689,7 @@ if text == ("اصدار") or text == ("الاصدار") or text == ("السور�
 local text =  [[
 🏅┇اهلا بك عزيزي في سورس ماثيو
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
-git clone https://github.com/matttew/MohaMeD && cd MohaMeD && chmod +x install.sh && ./install.sh
+`git clone https://github.com/matttew/MohaMeD && cd MohaMeD && chmod +x install.sh && ./install.sh`
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
 ❖ لتنصيب سورس ماثيو على التوكن
 ❖ فقط اضغط على الكود👆🏼 ليتم النسخ
