@@ -2824,20 +2824,15 @@ tsX000(apmd[2],msg,'✅┇ تم تنزيله من مطورين البوت')
 return false 
 end
 ------------------------------------------------------------------------
-if text == 'تحديث' then
-dofile('MohaMeD.lua')  
-send(msg.chat_id_, msg.id_, 1, '✅┇تم التحديث', 1, 'md')
-end
-if text == ("تحديث السورس") then
-send(msg.chat_id_, msg.id_, 1, '✅┇تم التحديث', 1, 'md')
+if text:match("^تحديث$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
+send(msg.chat_id_, msg.id_, 1, '☑┊تم التحديث', 1, 'md')
 os.execute('rm -rf ./libs/utils.lua')
+os.execute('cd libs && wget https://raw.githubusercontent.com/matttew/MohaMeD/master/libs/utils.lua')
 os.execute('rm -rf MohaMeD.lua')
-os.execute('cd libs;wget https://raw.githubusercontent.com/MohaMeDahmad/MohaMeD/master/libs/utils.lua')
-os.execute('wget https://raw.githubusercontent.com/MohaMeDahmad/MohaMeD/master/MohaMeD.lua')
-dofile('MohaMeD.lua')  
+os.execute('wget https://raw.githubusercontent.com/MohaMeD/MohaMeD.lua')
+os.exit()
 return false
 end
-
 if (text and text == 'تفعيل المغادره') then
 send(msg.chat_id_, msg.id_, 1, '✔️┇تم تفعيل مغادره البوت', 1, 'md')
 datahmade:del('MohaMeD:'..bot_id..'leave:groups')
