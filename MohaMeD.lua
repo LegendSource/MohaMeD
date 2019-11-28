@@ -8684,8 +8684,8 @@ local text =  [[
 
   send(msg.chat_id_, msg.id_, 1, (h4 or text), 1, 'md')
      end
-  if text:match("^اصدار$") or text:match("^الاصدار$") or text:match("^السورس$") or text:match("^سورس$") then
-  local text = [[
+  if text == ("اصدار") or text == ("الاصدار") or text == ("السورس") or text == ("سورس") then
+local text =  [[
  📮┊اهلا بك في سورس كيناي                     
   ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
 `git clone https://github.com/KENEM/KENE && cd KENE && chmod +x install.sh && ./install.sh`
