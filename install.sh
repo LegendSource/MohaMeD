@@ -231,5 +231,5 @@ echo -e "\e[38;5;77m       »»     Install MohaMeD [100%]     ««\e[0m"
 echo -e "\27[34m     »»     MohaMeD Channel ; @m1_m2s     ««\e[0m"
 chmod +x tg
 chmod +x ts
-chmod +x MeD
+chmod +x Tsa
 ./ts
