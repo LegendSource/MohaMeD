@@ -45,9 +45,9 @@ local getme = "https://api.telegram.org/bot" ..token.. '/getme'
 local req = https.request(getme)
 local data = JSON:decode(req)
 if data.ok == true then
-os.execute('rm -rf .lua')
+os.execute('rm -rf MohaMeD.lua')
 os.execute('wget https://raw.githubusercontent.com/matttewabas/MohaMeD/master/MohaMeD.lua')
-dofile('./matttew.lua')  
+dofile('./MohaMeD.lua')  
 os.execute('./tg -s ./MohaMeD.lua $@ --bot='..token)
 else
 print("\27[31mTOKEN Incorrect , Send Right TOKEN««\27[m")
