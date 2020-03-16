@@ -598,7 +598,7 @@ local start = database:get(bot_id.."Start:Bot")
 if start then 
 SourceMatthewr = start
 else
-SourceMatthewr = '📌¦ مرحبا عزيزي ...'..'\n📮¦ انا بوت حماية كروبات '..'\n📫¦ اضفني الى مجموعتك وقم بترقيتي ادمن ويستطيع »{ منشئ او المشرفين } بتفعيل فقط '
+SourceMatthewr = '📌¦ مرحبا عزيزي ...'..'\n📮¦ انا بوت حماية قروبات '..'\n📫¦ اضفني الى مجموعتك وقم بترقيتي ادمن ويستطيع »{ منشئ او المشرفين } بتفعيل فقط '
 end 
 send(msg.chat_id_, msg.id_, SourceMatthewr) 
 end
@@ -903,8 +903,8 @@ end,nil)
 end
 return false
 end
-if text and text:match("^اضف مطور @(.*)$") and SudoBot(msg) then
-local username = text:match("^اضف مطور @(.*)$")
+if text and text:match("^رفع مطور @(.*)$") and SudoBot(msg) then
+local username = text:match("^رفع مطور @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -932,8 +932,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false 
 end
-if text and text:match("^اضف مطور (%d+)$") and SudoBot(msg) then
-local userid = text:match("^اضف مطور (%d+)$")
+if text and text:match("^رفع مطور (%d+)$") and SudoBot(msg) then
+local userid = text:match("^رفع مطور (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -956,8 +956,8 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false 
 end
-if text and text:match("^حذف مطور @(.*)$") and SudoBot(msg) then
-local username = text:match("^حذف مطور @(.*)$")
+if text and text:match("^تنزيل مطور @(.*)$") and SudoBot(msg) then
+local username = text:match("^تنزيل مطور @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -981,8 +981,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end  
-if text and text:match("^حذف مطور (%d+)$") and SudoBot(msg) then
-local userid = text:match("^حذف مطور (%d+)$")
+if text and text:match("^تنزيل مطور (%d+)$") and SudoBot(msg) then
+local userid = text:match("^تنزيل مطور (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -1881,24 +1881,15 @@ end
 return false  
 end
 
-if text == 'السورس' or text == 'سورس' or text == 'يا سورس' then
+if text == 'السورس' or text == 'سورس' or text == ' سورس' then
 Text = [[
-🏅┇اهلا بك في سورس ماثيو
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
-`git clone https://github.com/matttew/MohaMeD ; cd MohaMeD;chmod +x tg;chmod +x install;./install`
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
-❖ لتنصيب سورس ماثيو على التوكن
-❖ فقط اضغط على الكود👆🏼 ليتم النسخ
-❖ قم بلسق الكود في الترمنال ثم انتر
-❖ بعدها يطلب مـڼـڱ معلومات المطور
-❖ ثم انتر وسوف يعمل البوت
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
-☑️┇كود الرن `./MohaMeD/Mt`
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
-☑️┇كود الحذف `rm -rf MohaMeD`
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
-🏅• [بوتات خدميةه](t.me/M1_m2s)
-🏅• [لـ تواصل](t.me/iiiiZBoT)
+- اهلا بك في سورس LEGEND النسخه الرابعه
+- مطورين السورس
+   - [Mister](t.me/VUUY7)
+   - [MTAB](t.me/cebu9)
+   - [Azzam](t.me/Jilj9)
+   - [SKY](t.me/uuua4)
+[قناة السورس ](t.me/SourceLegend4)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -2849,7 +2840,7 @@ t = "✖¦ لا يوجد مطورين"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == ("اضف مطور") and msg.reply_to_message_id_ and SudoBot(msg) then
+if text == ("رفع مطور") and msg.reply_to_message_id_ and SudoBot(msg) then
 function start_function(extra, result, success)
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -2870,8 +2861,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false 
 end
-if text and text:match("^اضف مطور @(.*)$") and SudoBot(msg) then
-local username = text:match("^اضف مطور @(.*)$")
+if text and text:match("^رفع مطور @(.*)$") and SudoBot(msg) then
+local username = text:match("^رفع مطور @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2899,8 +2890,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false 
 end
-if text and text:match("^اضف مطور (%d+)$") and SudoBot(msg) then
-local userid = text:match("^اضف مطور (%d+)$")
+if text and text:match("^رفع مطور (%d+)$") and SudoBot(msg) then
+local userid = text:match("^رفع مطور (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2923,7 +2914,7 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false 
 end
-if text == ("حذف مطور") and msg.reply_to_message_id_ and SudoBot(msg) then
+if text == ("تنزيل مطور") and msg.reply_to_message_id_ and SudoBot(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2944,8 +2935,8 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false 
 end
-if text and text:match("^حذف مطور @(.*)$") and SudoBot(msg) then
-local username = text:match("^حذف مطور @(.*)$")
+if text and text:match("^تنزل مطور @(.*)$") and SudoBot(msg) then
+local username = text:match("^تنزيل مطور @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2969,8 +2960,8 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end  
-if text and text:match("^حذف مطور (%d+)$") and SudoBot(msg) then
-local userid = text:match("^حذف مطور (%d+)$")
+if text and text:match("^تنزيل مطور (%d+)$") and SudoBot(msg) then
+local userid = text:match("^تنزيل مطور (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
