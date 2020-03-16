@@ -75,7 +75,7 @@ local function s(t, opts)
             sref[#sref] = val2str(key,sname,indent,sname,iname,true) end
           sref[#sref+1] = 'placeholder'
           local path = seen[t]..'['..tostring(seen[key] or globals[key] or gensym(key))..']'
-          sref[#sref] = path..space..'='..space..tostring(seen[value] or val2str(value,nil,indent,path))
+          sref[#sref] = .'='..space..tostring(seen[value] or val2str(value,nil,indent,path))
         else
           out[#out+1] = val2str(value,key,indent,insref,seen[t],plainindex,level+1)
         end
@@ -100,7 +100,7 @@ local function s(t, opts)
   local body = val2str(t, name, indent) -- this call also populates sref
   local tail = #sref>1 and table.concat(sref, sepr)..sepr or ''
   local warn = opts.comment and #sref>1 and space.."--[[incomplete output with shared/self-references skipped]]" or ''
-  return not name and body..warn or "do local "..body..sepr..tail.."return "..name..sepr.."end"
+  return not name and body.tor "do local "..body..sepr..tail.."return "..name..sepr.."end"
 end
 
 local function deserialize(data, opts)
@@ -109,7 +109,7 @@ local function deserialize(data, opts)
         __index = function(t,k) return t end,
         __call = function(t,...) error("cannot call functions") end
       })
-  local f, res = (loadstring or load)('return '..data, nil, nil, env)
+  local f,rees = (loadstring or load)('return '..data, nil, nil, env)
   if not f then f, res = (loadstring or load)(data, nil, nil, env) end
   if not f then return f, res end
   if setfenv then setfenv(f, env) end
