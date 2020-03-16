@@ -371,29 +371,29 @@ local Matthew_Msg = ''
 if msgs < 100 then 
 Matthew_Msg = 'غير متفاعل' 
 elseif msgs < 200 then 
-Matthew_Msg = 'بده يتحسن' 
+Matthew_Msg = 'تفاعل بيض' 
 elseif msgs < 400 then 
-Matthew_Msg = 'شبه متفاعل' 
+Matthew_Msg = 'متفاعل' 
 elseif msgs < 700 then 
 Matthew_Msg = 'متفاعل' 
 elseif msgs < 1200 then 
-Matthew_Msg = 'متفاعل قوي' 
+Matthew_Msg = 'متفاعل' 
 elseif msgs < 2000 then 
-Matthew_Msg = 'متفاعل جدا' 
+Matthew_Msg = 'متفاعل' 
 elseif msgs < 3500 then 
-Matthew_Msg = 'اقوى تفاعل'  
+Matthew_Msg = 'متفاعل'  
 elseif msgs < 4000 then 
-Matthew_Msg = 'متفاعل نار' 
+Matthew_Msg = 'متفاعل ' 
 elseif msgs < 4500 then 
-Matthew_Msg = 'قمة التفاعل' 
+Matthew_Msg = 'متفاعل' 
 elseif msgs < 5500 then 
-Matthew_Msg = 'اقوى متفاعل' 
+Matthew_Msg = 'متفاعل' 
 elseif msgs < 7000 then 
-Matthew_Msg = 'ملك التفاعل' 
+Matthew_Msg = 'متفاعل' 
 elseif msgs < 9500 then 
-Matthew_Msg = 'امبروطور التفاعل' 
+Matthew_Msg = 'متفاعل' 
 elseif msgs < 10000000000 then 
-Matthew_Msg = 'رب التفاعل'  
+Matthew_Msg = 'متفاعل قوي'  
 end 
 return Matthew_Msg 
 end
