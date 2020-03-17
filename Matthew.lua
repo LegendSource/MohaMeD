@@ -383,7 +383,7 @@ Matthew_Msg = 'متفاعل'
 elseif msgs < 3500 then 
 Matthew_Msg = 'متفاعل'  
 elseif msgs < 4000 then 
-Matthew_Msg = 'متفاعل ' 
+Matthew_Msg = 'متفاعل' 
 elseif msgs < 4500 then 
 Matthew_Msg = 'متفاعل' 
 elseif msgs < 5500 then 
@@ -1881,7 +1881,7 @@ end
 return false  
 end
 
-if text == 'السورس' or text == 'سورس' or text == ' سورس' then
+if text == 'السورس' or text == 'سورس' or text == 'يا سورس' then
 Text = [[
 - اهلا بك في سورس LEGEND النسخه الرابعه
 - مطورين السورس
